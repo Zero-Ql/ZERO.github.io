@@ -1,0 +1,1 @@
+fetch("https://v1.hitokoto.cn").then(t=>t.json()).then(t=>{var o=document.querySelector("#hitokoto_text");o.href="https://hitokoto.cn/?uuid="+t.uuid,o.innerText=t.hitokoto}).catch(console.error);
