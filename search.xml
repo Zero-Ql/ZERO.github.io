@@ -3670,4 +3670,59 @@ Shell选项:hB<br>
         <tag>junit</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JSON</title>
+    <url>/2024/04/03/JSON/</url>
+    <content><![CDATA[<h3 id="JSON-简介"><a class="header-anchor" href="#JSON-简介">¶</a>JSON 简介</h3>
+<blockquote>
+<p><code>JSON</code>: <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation( <code>JavaScript</code> 对象表示法)</p>
+<p><code>JSON</code> 是存储和交换文本信息的语法，类似 <code>XML</code>。</p>
+<p><code>JSON</code> 比 <code>XML</code> 更小、更快，更易解析。</p>
+<p><code>JSON</code> 易于人阅读和编写。</p>
+<p><code>C</code>、<code>Python</code>、<code>C++</code>、<code>Java</code>、<code>PHP</code>、<code>Go</code>等编程语言都支持 <code>JSON</code></p>
+</blockquote>
+<p>例子：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;sites&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;bing&quot;</span> <span class="punctuation">,</span> <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span><span class="string">&quot;www.bing.com&quot;</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span> </span><br><span class="line">    <span class="punctuation">&#123;</span> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;google&quot;</span> <span class="punctuation">,</span> <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span><span class="string">&quot;www.google.com&quot;</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span> </span><br><span class="line">    <span class="punctuation">&#123;</span> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;baidu&quot;</span> <span class="punctuation">,</span> <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span><span class="string">&quot;www.baidu.com&quot;</span> <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="对象"><a class="header-anchor" href="#对象">¶</a>对象</h3>
+<p>在 <code>JSON</code> 中使用<code>&#123;&#125;</code>来定义一个对象。左括号<code>&#123;</code>开始，右括号<code>&#125;</code>结束。每个 <code>&quot;键&quot;</code> 后跟一个冒号 <code>:</code> ，名称/值对使用逗号 <code>,</code> 分隔</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;张三&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span><span class="number">20</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="嵌套对象"><a class="header-anchor" href="#嵌套对象">¶</a>嵌套对象</h4>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;num&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;student&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;namelist&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;name1&quot;</span><span class="punctuation">:</span><span class="string">&quot;张三&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;name2&quot;</span><span class="punctuation">:</span><span class="string">&quot;李四&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;agelist&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;age1&quot;</span><span class="punctuation">:</span><span class="number">20</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;age2&quot;</span><span class="punctuation">:</span><span class="number">21</span></span><br><span class="line">		<span class="punctuation">&#125;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="数组"><a class="header-anchor" href="#数组">¶</a>数组</h3>
+<p>中括号 <code>[]</code> 保存的数组是值（<code>value</code>）的有序集合。一个数组以左中括号 <code>[</code> 开始， 右中括号 <code>]</code> 结束，值之间使用逗号 <code>,</code> 分隔。</p>
+<p>值（<code>value</code>）可以是双引号括起来的字符串（<code>string</code>）、数值(<code>number</code>)、<code>true</code>、<code>false</code>、 <code>null</code>、对象（<code>object</code>）或者数组（<code>array</code>），它们是可以嵌套，值不能为键值对。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span><span class="string">&quot;str&quot;</span><span class="punctuation">,</span><span class="number">100</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<h4 id="嵌套数组"><a class="header-anchor" href="#嵌套数组">¶</a>嵌套数组</h4>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;num&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;张三&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">20</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;李四&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">21</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<h3 id="JSON-parse"><a class="header-anchor" href="#JSON-parse">¶</a><code>JSON.parse()</code></h3>
+<p>此方法为 <code>JavaScript</code> 的内置函数，用于将 <code>JSON</code> 字符串解析为原生 <code>JavaScript</code> 对象或值</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">JSON</span>.<span class="title function_">parse</span>(text[, reviver])</span><br></pre></td></tr></table></figure>
+<p><code>text</code></p>
+<p>​	要被解析成 <code>JavaScript</code> 值的字符串</p>
+<p><code>reviver</code>(可选)</p>
+<p>​	转换器，如果传入该参数 (函数)，可以用来修改解析生成的原始值，调用时机在 <code>parse</code> 函数返回之前</p>
+<p>返回值</p>
+<p>​	与给定的 <code>JSON text</code> 相对应的 <code>Object</code>、<code>Array</code>、<code>string</code>、<code>number</code>、<code>boolean</code> 或者 <code>null</code> 值</p>
+<p>异常</p>
+<p>​	若传入的字符串不符合 JSON 规范，则会抛出此异常</p>
+<p>使用 <code>reviver</code> 函数</p>
+<blockquote>
+<p>如果指定了 <code>reviver</code> 函数，则解析出的 <code>JavaScript</code> 值（解析值）会经过一次转换后才将被最终返回（返回值）。更具体点讲就是：解析值本身以及它所包含的所有属性，会按照一定的顺序（从最最里层的属性开始，一级级往外，最终到达顶层，也就是解析值本身）分别的去调用 <code>reviver</code> 函数，在调用过程中，当前属性所属的对象会作为 <code>this</code> 值，当前属性名和属性值会分别作为第一个和第二个参数传入 <code>reviver</code> 中。如果 <code>reviver</code> 返回 <code>undefined</code>，则当前属性会从所属对象中删除，如果返回了其他值，则返回的值会成为当前属性新的属性值。</p>
+<p>当遍历到最顶层的值（解析值）时，传入 <code>reviver</code> 函数的参数会是空字符串 <code>&quot;&quot;</code>（因为此时已经没有真正的属性）和当前的解析值（有可能已经被修改过了），当前的 <code>this</code> 值会是 <code>&#123;&quot;&quot;: 修改过的解析值&#125;</code>，在编写 <code>reviver</code> 函数时，要注意到这个特例。（这个函数的遍历顺序依照：从最内层开始，按照层级顺序，依次向外遍历）</p>
+</blockquote>
+<p>更多请参阅:</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse() - JavaScript | MDN (mozilla.org)</a></p>
+<p><a href="https://www.runoob.com/json/json-tutorial.html">JSON 教程 | 菜鸟教程 (runoob.com)</a></p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>JavaScript</tag>
+        <tag>JSON</tag>
+      </tags>
+  </entry>
 </search>
