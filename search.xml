@@ -4194,4 +4194,300 @@ Shell选项:hB<br>
         <tag>spring注解</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SpringBoot基础</title>
+    <url>/2024/04/16/SpringBoot%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h3 id="Springboot-简介"><a class="header-anchor" href="#Springboot-简介">¶</a><em>Springboot</em> 简介</h3>
+<blockquote>
+<blockquote>
+<p>​	<em>Spring Boot</em>是由<em>Pivotal</em>团队提供的全新框架，其设计目的是用来简化新<em>Spring</em>应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。通过这种方式，<em>Spring Boot</em>致力于在蓬勃发展的快速应用开发领域(<em>rapid application development</em>)成为领导者。</p>
+</blockquote>
+<p>引用自百度百科</p>
+</blockquote>
+<p>总结：使用 <em>springboot</em>可以很快的创建一个<em>springweb</em>项目，极大的简化<em>spring</em>的配置，让你专注于后端开发而不用关心繁琐的配置。</p>
+<h3 id="Springboot-项目结构"><a class="header-anchor" href="#Springboot-项目结构">¶</a><em>Springboot</em> 项目结构</h3>
+<ul>
+<li><em>resources</em> 资源文件夹
+<ul>
+<li><em>static</em> 保存所有静态资源（<em>js、css、images</em>等）</li>
+<li><em>templates</em> 保存所有模板页面</li>
+<li><em>application.properties</em> 文件，用来编写一些服务器配置文件。但是更推荐使用 <em>yaml</em> 后缀来配置。</li>
+</ul>
+</li>
+</ul>
+<h3 id="JSR303-校验"><a class="header-anchor" href="#JSR303-校验">¶</a><em>JSR303</em> 校验</h3>
+<p>使用 <em>JSR303</em> 校验可以很轻松的在后端完成数据校验工作，只需要在要校验的实体类上加入相应的注解即可。</p>
+<table>
+    <tr align="center">
+        <th colspan="2"><b>空检查</b></th>
+    </tr>
+    <tr align="center">
+        <td><b>注解</b></td>
+        <td><b>说明</b></td>
+    </tr>
+    <tr align="center">
+        <td>@Null</td>
+        <td>验证对象是否为null</td>
+    </tr>
+    <tr align="center">
+        <td>@NotNull</td>
+        <td>验证对象是否不为null，无法检查长度为0的字符串</td>
+    </tr>
+    <tr align="center">
+        <td>@NotBlank</td>
+        <td>检查约束字符串是不是Null还有被Trim的长度是否大于0，只对字符串，且会去掉前后空格</td>
+    </tr>
+    <tr align="center">
+        <td>@NotEmpty</td>
+        <td>检查约束元素是否为Null或者是EMPTY</td>
+    </tr>
+</table>
+<table>
+    <tr align="center">
+        <th colspan="2"><b>Booelan检查</b></th>
+    </tr>
+    <tr align="center">
+        <td><b>注解</b></td>
+        <td><b>说明</b></td>
+    </tr>
+    <tr align="center">
+        <td>@AssertTrue</td>
+        <td>验证Boolean对象是否为true</td>
+    </tr>
+    <tr align="center">
+        <td>@AssertFalse</td>
+        <td>验证Boolean对象是否为false</td>
+    </tr>
+</table>
+<table>
+    <tr align="center">
+        <th colspan="2"><b>长度检查</b></th>
+    </tr>
+    <tr align="center">
+        <td><b>注解</b></td>
+        <td><b>说明</b></td>
+    </tr>
+    <tr align="center">
+        <td>@Size(min=,max=)</td>
+        <td>验证对象(Array,Collection,Map,String)大小是否在给定范围之内</td>
+    </tr>
+    <tr align="center">
+        <td>@Length(min=,max=)</td>
+        <td>验证对象的长度是否在给定范围内</td>
+    </tr>
+</table>
+<table>
+    <tr align="center">
+        <th colspan="2"><b>日期检查</b></th>
+    </tr>
+    <tr align="center">
+        <td><b>注解</b></td>
+        <td><b>说明</b></td>
+    </tr>
+    <tr align="center">
+        <td>@Past</td>
+        <td>验证Date和Calendar对象是否在当前时间之前</td>
+    </tr>
+    <tr align="center">
+        <td>@Future</td>
+        <td>验证Date和Calendar对象是否在当前时间之后</td>
+    </tr>
+    <tr align="center">
+        <td>@Pattern</td>
+        <td>验证String对象是否符合正则表达式的规则</td>
+    </tr>
+</table>
+<p>除了上面的注解标签，还可以自定义数据校验规则</p>
+<hr>
+<p><em>TODO</em></p>
+]]></content>
+      <categories>
+        <category>spring系列</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>java</tag>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringMVC</title>
+    <url>/2024/04/16/SpringMVC/</url>
+    <content><![CDATA[<h3 id="Spring-MVC原理"><a class="header-anchor" href="#Spring-MVC原理">¶</a>Spring MVC原理</h3>
+<h4 id="Spring-MVC工作原理图"><a class="header-anchor" href="#Spring-MVC工作原理图">¶</a><code>Spring MVC工作原理图</code></h4>
+<p><img src="https://s21.ax1x.com/2024/04/11/pFX1khn.png" alt="img" loading="lazy"></p>
+<blockquote>
+<p>在没有使用SpringMVC之前我们都是使用Servlet在做Web开发。但是使用Servlet开发在接收请求参数，数据共享，页面跳转等操作相对比较复杂。servlet是java进行web开发的标准，既然springMVC是对servlet的封装，那么很显然<strong>SpringMVC底层就是Servlet，SpringMVC就是对Servlet进行深层次的封装</strong></p>
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/100723581">SpringMVC【入门篇】 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+</blockquote>
+<h3 id="MVC模式"><a class="header-anchor" href="#MVC模式">¶</a>MVC模式</h3>
+<p>MVC模式(<code>Model</code>-<code>View</code>-<code>Controller</code>)：解决页面代码和后台代码的分离</p>
+<p>MVC分别是：模型<code>model(javabean)</code>、视图<code>view(jsp/img)</code>、控制器<code>Controller(Action/servlet)</code>。</p>
+<p>C存在的目的就是为了保证M和V的一致性，当M发生改变时，C可以把M中的新内容更新到V中</p>
+<hr>
+<p><em>TODO</em></p>
+]]></content>
+      <categories>
+        <category>spring系列</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>java</tag>
+        <tag>springmvc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring基础</title>
+    <url>/2024/04/16/Spring%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h3 id="Spring、Spring-MVC、Spring-Boot、Spring-Cloud"><a class="header-anchor" href="#Spring、Spring-MVC、Spring-Boot、Spring-Cloud">¶</a>Spring、Spring MVC、Spring Boot、Spring Cloud</h3>
+<blockquote>
+<ol>
+<li><strong>Spring</strong>：
+<ul>
+<li><code>Spring</code> 是一个轻量级的<strong>控制反转 (<code>IoC</code>)</strong> 和<strong>面向切面 (<code>AOP</code>)</strong> 的容器框架。</li>
+<li>它使你能够编写更干净、更可管理、并且更易于测试的代码。</li>
+<li><code>Spring</code> 提供了基础功能，适用于开发 <code>WEB</code> 层、业务层、持久层等多个方面。</li>
+</ul>
+</li>
+<li><strong>Spring MVC</strong>：
+<ul>
+<li><code>Spring MVC</code> 是 <code>Spring</code> 的一个模块，是一个<strong>Web 框架</strong>。</li>
+<li>通过 <code>Dispatcher Servlet</code>、<code>ModelAndView</code> 和 <code>View Resolver</code>，它使得开发 <code>Web</code> 应用变得很容易。</li>
+<li>主要针对网站应用程序或者服务开发，处理 URL 路由、<code>Session</code>、模板引擎、静态 <code>Web</code> 资源等。</li>
+</ul>
+</li>
+<li><strong>Spring Boot</strong>：
+<ul>
+<li><code>Spring Boot</code> 是为简化 <code>Spring</code> 配置的<strong>快速开发整合包</strong>。</li>
+<li>它约定优于配置，简化了 <code>Spring</code> 的配置流程。</li>
+<li>更专注于开发<strong>微服务后台接口</strong>，不涉及前端视图。</li>
+</ul>
+</li>
+<li><strong>Spring Cloud</strong>：
+<ul>
+<li><code>Spring Cloud</code> 构建于 <code>Spring Boot</code> 之上，是一个关注全局的<strong>服务治理框架</strong>。</li>
+<li>它用于整合和管理多个 <code>Spring Boot</code> 单体微服务。</li>
+<li><code>Spring Cloud</code> 依赖于 <code>Spring Boot</code> 开发，但 <code>Spring Boot</code> 可以独立开发。</li>
+</ul>
+</li>
+</ol>
+<p>总结：</p>
+<ul>
+<li>Spring 是核心，提供了基础功能。</li>
+<li>Spring MVC 是基于 Spring 的一个 MVC 框架。</li>
+<li>Spring Boot 是为简化 Spring 配置的快速开发整合包。</li>
+<li>Spring Cloud 是构建在 Spring Boot 之上的服务治理框架。</li>
+</ul>
+</blockquote>
+<h3 id="介绍"><a class="header-anchor" href="#介绍">¶</a>介绍</h3>
+<p><code>spring</code>是一个专注于 <code>Java EE</code> 开发的框架，它会使我们编写出来的 <code>Java</code> 程序 更快，更容易，更安全。</p>
+<h3 id="Spring的分层架构设计模式"><a class="header-anchor" href="#Spring的分层架构设计模式">¶</a>Spring的分层架构设计模式</h3>
+<ol>
+<li>
+<p><strong>表示层（Controller层）</strong>：</p>
+<ul>
+<li>表示层是Web应用的入口，负责接收HTTP请求并处理。</li>
+<li>在Spring中，它提供了与Spring MVC和Struts2等框架的整合。</li>
+<li>控制器层处理用户请求，协调业务逻辑层和持久层之间的交互。</li>
+</ul>
+</li>
+<li>
+<p><strong>服务层（Service层）</strong>：</p>
+<ul>
+<li>也称为业务逻辑层，负责处理业务逻辑，与项目需求紧密相关。</li>
+<li>在Spring中，可以管理事务、记录日志等。</li>
+<li>服务层通过调用持久层的方法来操作数据，对外提供接口。</li>
+</ul>
+</li>
+<li>
+<p><strong>持久层（DAO层）</strong>：</p>
+<ul>
+<li>也被称为数据访问层，负责将数据持久化到数据库中。</li>
+<li>基本上，它主要用于数据库的增删改查操作。</li>
+<li>DAO层是一个接口，具体的实现在Mapper.xml或者其他地方。</li>
+</ul>
+</li>
+</ol>
+<h3 id="声明组件扫描器"><a class="header-anchor" href="#声明组件扫描器">¶</a>声明组件扫描器</h3>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;你要扫描的包名&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Spring-相关网站"><a class="header-anchor" href="#Spring-相关网站">¶</a><code>Spring</code> 相关网站</h3>
+<ul>
+<li><code>Spring MVC API</code>
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/">Overview (Spring Framework 6.1.5 API)</a></li>
+</ul>
+</li>
+<li><code>Spring Boot API</code>
+<ul>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/">Overview (Spring Boot 3.2.4 API)</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><em>TODO</em></p>
+]]></content>
+      <categories>
+        <category>spring系列</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>java</tag>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>springboot多模块开发</title>
+    <url>/2024/04/16/springboot%E5%A4%9A%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="介绍"><a class="header-anchor" href="#介绍">¶</a>介绍</h3>
+<p>为了解决项目越来越大的问题，使用了多模块开发来使层次更加清晰。</p>
+<p>架构大致如下：</p>
+<p><img src="https://s21.ax1x.com/2024/04/15/pFvWf3j.png" alt="springboot多模块开发1" loading="lazy"></p>
+<h3 id="流程"><a class="header-anchor" href="#流程">¶</a>流程</h3>
+<p>（1）新建 <code>springboot</code> 项目；<br>
+（2）在新建后的 <code>springboot</code> 项目中新建多个 <code>module(模块)</code>；<br>
+（3）修改 <code>pom</code> 文件以及删除多余的文件及文件夹；<br>
+（4）将原项目的代码放进去；</p>
+<h3 id="多模块开发的坑"><a class="header-anchor" href="#多模块开发的坑">¶</a>多模块开发的坑</h3>
+<p>由于第一次使用多模块开发，并不熟练，所以踩了很多坑，这里记录一下</p>
+<ol>
+<li>访问后台接口报<code>404</code></li>
+</ol>
+<p>​	访问所有接口都报404，这是由于<code>spring</code>没有扫描到你写的<code>bean</code>所导致的，一般来说，<code>spring</code> 容器只会扫描启动类所在的包以及其下的子包中的所有类，但是开发不会将所有的模块都放在一个包下面，所以如果你<code>service</code>、<code>dao</code>等模块放在了启动类所在的包之外，那么<code>spring</code>就不会去扫描注册这些<code>bean</code></p>
+<p>​	解决方法是在启动类的<code>@SpringBootApplication</code>注解上面加上<code>scanBasePackages=&#123;&quot;xxx.xxxxx.*&quot;&#125;</code></p>
+<p>​	<code>xxx.xxxxx</code> 是你所共有的包，就比如说我所有的模块都是以 <code>com.example.xxx</code> 开始。</p>
+<p>​	如：</p>
+<p><img src="https://s21.ax1x.com/2024/04/15/pFvfnqP.png" alt="springboot多模块开发2" loading="lazy"></p>
+<p>​	要查看 <code>spring</code> 有没有注册你的 <code>bean</code> 可以到服务的 <code>Actuator</code> 中查看</p>
+<p><img src="https://s21.ax1x.com/2024/04/15/pFv5css.png" alt="springboot多模块开发3" loading="lazy"></p>
+<ol start="2">
+<li>
+<p><code>springboot</code>多模块的<code>@Resource</code>、<code>@Autowired</code> 注入为<code>NULL</code></p>
+<p>方法一：</p>
+</li>
+</ol>
+<p>​	导致注入失败的原因是因为使用了 <code>new</code> 去使用这个方法，只需要将此类自动注入即可解决问题</p>
+<p>报错的代码:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GetStudentController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping(path = &quot;/GetStudent&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> JsonResult&lt;String&gt; <span class="title function_">getStudent</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">var</span> <span class="variable">studentInformation</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">getStudent</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JsonResult</span>&lt;&gt;(studentInformation.getStudent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改之后的：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GetStudentController</span> &#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    getStudent studentInformation;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(path = &quot;/GetStudent&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> JsonResult&lt;String&gt; <span class="title function_">getStudent</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JsonResult</span>&lt;&gt;(studentInformation.getStudent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​	方法二：</p>
+<p>​	封装一个 <code>StaticMethodGetBean</code> 的类，此类实现了 <code>ApplicationContextAware</code> 接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StaticMethodGetBean</span>&lt;T&gt; <span class="keyword">implements</span> <span class="title class_">ApplicationContextAware</span> &#123;</span><br><span class="line">    <span class="comment">// Spring应用上下文，用于访问应用上下文中的bean</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ApplicationContext applicationContext;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置应用上下文。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> applicationContext Spring应用上下文实例</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setApplicationContext</span><span class="params">(ApplicationContext applicationContext)</span> &#123;</span><br><span class="line">        StaticMethodGetBean.applicationContext = applicationContext;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 通过类类型获取应用上下文中的bean。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> clazz 要获取的bean的类类型</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 返回bean的实例，如果不存在则返回null</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> &lt;T&gt; bean的类型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T <span class="title function_">getBean</span><span class="params">(Class&lt;T&gt; clazz)</span> &#123;</span><br><span class="line">        <span class="comment">// 尝试获取bean实例，如果不存在则返回null</span></span><br><span class="line">        <span class="keyword">return</span> applicationContext.getBean(clazz) != <span class="literal">null</span> ? applicationContext.getBean(clazz) : <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在要使用的地方直接调用 <code>getBean</code> 方法获取即可</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GetStudentController</span>&#123;</span><br><span class="line"><span class="meta">@RequestMapping(path = &quot;/GetStudent&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> JsonResult&lt;String&gt; <span class="title function_">getStudent</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">var</span> <span class="variable">studentInformation</span> <span class="operator">=</span> StaticMethodGetBean.getBean(getStudent.class);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JsonResult</span>&lt;&gt;(studentInformation.getStudent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="https://blog.csdn.net/yangyifan0/article/details/130570051">SpringBoot 简单多模块构建_springboot创建多模块项目</a></p>
+<hr>
+<p><em>TODO</em></p>
+]]></content>
+      <categories>
+        <category>spring系列</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>java</tag>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
 </search>
