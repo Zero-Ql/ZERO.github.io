@@ -3802,8 +3802,15 @@ Shell选项:hB<br>
 </ul>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * MyFilter类实现了Filter接口，用于对HTTP请求进行过滤。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Log</span>4j2 注解用于配置日志记录器。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@WebFilter</span>(&quot;/*&quot;) 注解指定了此过滤器应用于所有请求。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Log4j2</span></span><br><span class="line"><span class="meta">@WebFilter(&quot;/*&quot;)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 过滤器的初始化方法。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filterConfig 过滤器配置对象，提供了配置信息。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ServletException 如果初始化过程中出现异常，则抛出ServletException。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">        log.info(<span class="string">&quot;初始化过滤器&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 过滤器的核心方法，用于处理请求和响应。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> servletRequest 客户端的请求对象。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> servletResponse 用于向客户端发送响应的对象。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filterChain 过滤器链，用于将请求传递给下一个过滤器或servlet。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException 如果处理请求或响应时发生IO错误，则抛出IOException。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ServletException 如果处理请求时发生Servlet相关错误，则抛出ServletException。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        log.info(<span class="string">&quot;过滤器开始工作&quot;</span>);</span><br><span class="line">        <span class="comment">// 通过过滤器链将请求传递给下一个过滤器或servlet(放行)</span></span><br><span class="line">        filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">        log.info(<span class="string">&quot;过滤器结束工作&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 过滤器的销毁方法，用于执行过滤器的清理工作。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;销毁过滤器&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​	如果有多个过滤器，使用 <code>@WebFilter</code> 注解会根据类名的字符排序来决定执行顺序，此外，还需要在启动类加入<code>@ServletComponentScan</code> 注解</p>
+<p>例子：</p>
+<p><em>AllFilter</em>:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Log4j2</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AllFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 过滤器的初始化方法。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filterConfig 过滤器配置对象，提供了配置信息。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ServletException 如果初始化过程中出现异常，则抛出ServletException。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">        log.info(<span class="string">&quot;初始化AllFilter过滤器&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 过滤器的核心方法，用于拦截请求并进行处理。</span></span><br><span class="line"><span class="comment">     * 如果请求来自本机，则放行；否则，返回403禁止访问。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> servletRequest  代表客户端的请求</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> servletResponse 用于向客户端发送响应</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filterChain     过滤器链，用于将请求传递给下一个过滤器或servlet</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException      如果发生输入/输出错误</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ServletException 如果处理请求时发生异常</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        log.info(<span class="string">&quot;AllFilter过滤器开始工作&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取客户端IP地址</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">ip</span> <span class="operator">=</span> servletRequest.getRemoteHost();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断IP是否为本机，是则放行，否则返回 403 错误</span></span><br><span class="line">        <span class="keyword">if</span> (ip.equals(<span class="string">&quot;0:0:0:0:0:0:0:1&quot;</span>) || ip.equals(<span class="string">&quot;127.0.0.1&quot;</span>)) &#123;</span><br><span class="line">            filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 设置响应编码和类型，写入禁止访问的消息</span></span><br><span class="line">            servletResponse.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">            servletResponse.setContentType(<span class="string">&quot;application/json;charset=UTF-8&quot;</span>);</span><br><span class="line">            servletResponse.getWriter().write(<span class="string">&quot;&#123;\&quot;code\&quot;:\&quot;403\&quot;,\&quot;msg\&quot;:\&quot;非本机IP，禁止访问\&quot;&#125;&quot;</span>);</span><br><span class="line">            log.error(<span class="string">&quot;&#123;&#125; 非本机IP，禁止访问&quot;</span>, ip);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        log.info(<span class="string">&quot;AllFilter过滤器结束工作&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 过滤器的销毁方法，用于执行过滤器的清理工作。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;销毁AllFilter过滤器&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>LoginFilter</em>:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Log4j2</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoginFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">    <span class="comment">// 定义需要过滤的URL地址数组</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String[] urls = &#123;</span><br><span class="line">            <span class="string">&quot;/login.html&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 过滤器初始化方法。</span></span><br><span class="line"><span class="comment">     * 该方法在过滤器实例化后立即调用，用于执行过滤器的初始化逻辑。</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filterConfig 过滤器配置对象，提供了配置文件中定义的过滤器参数。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ServletException 如果初始化过程中出现Servlet相关异常，则抛出。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">        log.info(<span class="string">&quot;初始化login过滤器&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 执行过滤逻辑的方法。</span></span><br><span class="line"><span class="comment">     * 该方法会在每个请求到达时被调用，用于判断请求是否需要进行过滤处理。</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> servletRequest 客户端请求对象，包含了客户端发送的请求信息。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> servletResponse 用于向客户端发送响应的对象。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filterChain 过滤器链对象，用于将请求传递给下一个过滤器或servlet。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException 如果处理请求或响应时发生IO异常，则抛出。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ServletException 如果处理请求或响应时发生Servlet相关异常，则抛出。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        log.info(<span class="string">&quot;login过滤器开始执行&quot;</span>);</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(Arrays.asList(urls)); <span class="comment">// 将URL数组转换为List方便后续操作</span></span><br><span class="line">        <span class="type">var</span> <span class="variable">httpServletRequest</span> <span class="operator">=</span> (HttpServletRequest) servletRequest;</span><br><span class="line">        <span class="type">var</span> <span class="variable">url</span> <span class="operator">=</span> httpServletRequest.getRequestURL(); <span class="comment">// 获取请求的完整URL</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">regex</span> <span class="operator">=</span> <span class="string">&quot;/[^/]+\\.html$&quot;</span>; <span class="comment">// 定义匹配HTML文件的正则表达式</span></span><br><span class="line">        <span class="type">var</span> <span class="variable">pattern</span> <span class="operator">=</span> Pattern.compile(regex); <span class="comment">// 编译正则表达式为Pattern对象</span></span><br><span class="line">        <span class="type">var</span> <span class="variable">matcher</span> <span class="operator">=</span> pattern.matcher(url); <span class="comment">// 创建Matcher对象用于匹配URL</span></span><br><span class="line">        <span class="keyword">if</span> (matcher.find()) &#123; <span class="comment">// 如果URL中存在匹配的部分</span></span><br><span class="line">            <span class="keyword">if</span> (list.contains(matcher.group())) &#123; <span class="comment">// 检查是否为需要过滤的URL</span></span><br><span class="line">                filterChain.doFilter(servletRequest, servletResponse); <span class="comment">// 继续过滤链</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                log.warn(<span class="string">&quot;访问路径错误 &#123;&#125;&quot;</span>, url); <span class="comment">// 记录非法访问尝试</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        log.info(<span class="string">&quot;login过滤器执行结束&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 过滤器销毁方法。</span></span><br><span class="line"><span class="comment">     * 该方法在应用停止时调用，用于执行过滤器的销毁逻辑，释放资源。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;销毁login过滤器&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果需要过滤指定的请求，需要在配置类中添加一个<code>Bean</code></p>
+<p><em>FilterConfig</em>:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span> <span class="comment">// 标识为配置类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FilterConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> AllFilter allFilter; <span class="comment">// 注入AllFilter实例</span></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> LoginFilter loginFilter; <span class="comment">// 注入LoginFilter实例</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 配置AllFilter的注册信息。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> FilterRegistrationBean&lt;AllFilter&gt; 返回AllFilter的注册bean配置。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> FilterRegistrationBean&lt;AllFilter&gt; <span class="title function_">allFilterRegistrationBean</span><span class="params">()</span> &#123;</span><br><span class="line">        FilterRegistrationBean&lt;AllFilter&gt; allFilterBean = <span class="keyword">new</span> <span class="title class_">FilterRegistrationBean</span>&lt;&gt;();</span><br><span class="line">        allFilterBean.setFilter(allFilter); <span class="comment">// 设置过滤器实例</span></span><br><span class="line">        allFilterBean.addUrlPatterns(<span class="string">&quot;/*&quot;</span>); <span class="comment">// 设置过滤器的URL模式</span></span><br><span class="line">        allFilterBean.setName(<span class="string">&quot;allFilter&quot;</span>); <span class="comment">// 设置过滤器的名称</span></span><br><span class="line">        allFilterBean.setOrder(<span class="number">1</span>); <span class="comment">// 设置过滤器的执行顺序</span></span><br><span class="line">        <span class="keyword">return</span> allFilterBean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 配置LoginFilter的注册信息。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> FilterRegistrationBean&lt;LoginFilter&gt; 返回LoginFilter的注册bean配置。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> FilterRegistrationBean&lt;LoginFilter&gt; <span class="title function_">loginFilterRegistrationBean</span><span class="params">()</span> &#123;</span><br><span class="line">        FilterRegistrationBean&lt;LoginFilter&gt; loginFilterBean = <span class="keyword">new</span> <span class="title class_">FilterRegistrationBean</span>&lt;&gt;();</span><br><span class="line">        loginFilterBean.setFilter(loginFilter); <span class="comment">// 设置过滤器实例</span></span><br><span class="line">        loginFilterBean.addUrlPatterns(<span class="string">&quot;*.html&quot;</span>); <span class="comment">// 设置过滤器的URL模式</span></span><br><span class="line">        loginFilterBean.setName(<span class="string">&quot;loginFilter&quot;</span>); <span class="comment">// 设置过滤器的名称</span></span><br><span class="line">        loginFilterBean.setOrder(<span class="number">2</span>); <span class="comment">// 设置过滤器的执行顺序</span></span><br><span class="line">        <span class="keyword">return</span> loginFilterBean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>allFilterRegistrationBean</code>过滤所有请求，<code>loginFilterRegistrationBean()</code> 过滤所有以<code>.html</code>结尾的请求</p>
 <h3 id="拦截器"><a class="header-anchor" href="#拦截器">¶</a>拦截器</h3>
 <h3 id="监听器"><a class="header-anchor" href="#监听器">¶</a>监听器</h3>
 <ol>
@@ -4005,7 +4012,7 @@ Shell选项:hB<br>
   <entry>
     <title>spring开发注解集合</title>
     <url>/2024/04/16/spring%E5%BC%80%E5%8F%91%E6%B3%A8%E8%A7%A3%E9%9B%86%E5%90%88/</url>
-    <content><![CDATA[<h3 id="Spring-IoC-的常用注解"><a class="header-anchor" href="#Spring-IoC-的常用注解">¶</a>Spring IoC 的常用注解</h3>
+    <content><![CDATA[<h3 id="Spring-的常用注解"><a class="header-anchor" href="#Spring-的常用注解">¶</a>Spring 的常用注解</h3>
 <ul>
 <li>
 <p><code>@Component(value=&quot;&quot;)</code></p>
@@ -4073,6 +4080,28 @@ Shell选项:hB<br>
 </li>
 </ul>
 </li>
+<li>
+<p><code>@RestControllerAdvice</code></p>
+<ul>
+<li>
+<blockquote>
+<p>1）此注解是 <code>spring</code> 框架的一个注解，用于定义一个全局的异常处理控制器。通常与 <code>@ExceptionHandler</code> 注解一起使用。</p>
+<p>2）<code>@RestControllerAdvice</code> 等同于 <code>@ControllerAdvice</code> 加上 <code>@ResponseBody</code> 注解，表示该类中的方法负责处理异常，并将处理结果作为<code>HTTP</code>响应的主体返回。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p><code>@ResponseStatus</code></p>
+<ul>
+<li>
+<blockquote>
+<p>1）此注解为 <code>Spring</code> 框架提供的一个注解，用于指示方法应该返回特定的HTTP状态码和可选的原因短语。</p>
+<p>2）接收 <code>value</code> 和 <code>code(可选)</code> ，类型为 <code>HTTPStatus</code> 枚举类的常量值</p>
+</blockquote>
+</li>
+</ul>
+</li>
 </ul>
 <h3 id="Spring-MVC-的常用注解"><a class="header-anchor" href="#Spring-MVC-的常用注解">¶</a>Spring MVC 的常用注解</h3>
 <ul>
@@ -4107,16 +4136,16 @@ Shell选项:hB<br>
 </blockquote>
 <ul>
 <li>
-<p><code>path</code>：可以处理的 <code>url</code> 路径，<code>value</code> 效果和 <code>path</code> 相同</p>
+<p><em>path</em>：可以处理的 <code>url</code> 路径，<code>value</code> 效果和 <code>path</code> 相同</p>
 </li>
 <li>
-<p><code>method</code>：此属性用来定义浏览器的请求方式，可以使用此属性指定方法仅处理哪些请求。有四种基本请求方式：1. <code>RequestMethod.GET</code>（查）2. <code>RequestMethod.POST</code>（增） 3. <code>RequestMethod.PUT</code>（改） 4. <code>RequestMethod.DELETE</code>（删）。常用的只有 1、2 两种</p>
+<p><em>method</em>：此属性用来定义浏览器的请求方式，可以使用此属性指定方法仅处理哪些请求。有四种基本请求方式：1. <code>RequestMethod.GET</code>（查）2. <code>RequestMethod.POST</code>（增） 3. <code>RequestMethod.PUT</code>（改） 4. <code>RequestMethod.DELETE</code>（删）。常用的只有 1、2 两种</p>
 </li>
 <li>
-<p><code>params</code>：可以使用此属性限制请求参数，只有带指定参数的请求才会被响应</p>
+<p><em>params</em>：可以使用此属性限制请求参数，只有带指定参数的请求才会被响应</p>
 </li>
 <li>
-<p><code>headers</code>：此属性表示请求头，可以使用此属性限制客户端发来的请求</p>
+<p><em>headers</em>：此属性表示请求头，可以使用此属性限制客户端发来的请求</p>
 </li>
 </ul>
 </li>
@@ -4162,6 +4191,17 @@ Shell选项:hB<br>
 </li>
 </ul>
 </li>
+<li>
+<p><code>@ExceptionHandler</code></p>
+<ul>
+<li>
+<blockquote>
+<p>1）此注解是<code>Spring MVC</code>中用于标记处理特定异常的方法</p>
+<p>2）可以接受多种异常<code>@ExceptionHandler(value = &#123;NullPointerException.class, IllegalArgumentException.class, IllegalStateException.class&#125;</code></p>
+</blockquote>
+</li>
+</ul>
+</li>
 </ul>
 <h3 id="其他注解"><a class="header-anchor" href="#其他注解">¶</a>其他注解</h3>
 <p><code>@Resource</code></p>
@@ -4175,11 +4215,15 @@ Shell选项:hB<br>
 </blockquote>
 </li>
 </ul>
+<p><code>@WebServlet</code></p>
+<ul>
+<li></li>
+</ul>
 <h3 id="注入方式"><a class="header-anchor" href="#注入方式">¶</a>注入方式</h3>
 <ul>
 <li><code>byName</code>
 <ul>
-<li>简单说就是使用变量名去 <code>IoC</code>  容器中匹配合适<code>bean</code>的<code>id</code>属性</li>
+<li>简单说就是使用变量名去<code>IoC</code>容器中匹配合适<code>bean</code>的<code>id</code>属性</li>
 </ul>
 </li>
 <li><code>byType</code>
@@ -4192,9 +4236,7 @@ Shell选项:hB<br>
 <h3 id="封装实体类接收表单数据"><a class="header-anchor" href="#封装实体类接收表单数据">¶</a>封装实体类接收表单数据</h3>
 <p>在表单数据过多时，可以封装实体类接收参数</p>
 <p><em>Demo</em>：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/login&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">login</span><span class="params">(User user)</span>&#123;<span class="comment">//直接传入实体类的对象</span></span><br><span class="line">    System.out.println(user.getUsername);</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;ok&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p><em>TODO</em></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@RequestMapping(&quot;/login&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">login</span><span class="params">(User user)</span>&#123;<span class="comment">//直接传入实体类的对象</span></span><br><span class="line">    System.out.println(user.getUsername);</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;ok&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>spring系列</category>
@@ -4336,7 +4378,6 @@ Shell选项:hB<br>
 <h3 id="MVC模式"><a class="header-anchor" href="#MVC模式">¶</a>MVC模式</h3>
 <p>MVC模式(<code>Model</code>-<code>View</code>-<code>Controller</code>)：解决页面代码和后台代码的分离</p>
 <p>MVC分别是：模型<code>model(javabean)</code>、视图<code>view(jsp/img)</code>、控制器<code>Controller(Action/servlet)</code>。</p>
-<p>注：此处的控制器是前端控制器<code>(DispatcherServlet)</code></p>
 <p>C存在的目的就是为了保证M和V的一致性，当M发生改变时，C可以把M中的新内容更新到V中</p>
 <hr>
 <p><em>TODO</em></p>
@@ -4351,7 +4392,7 @@ Shell选项:hB<br>
       </tags>
   </entry>
   <entry>
-    <title>Spring基础</title>
+    <title>SpringBoot基础</title>
     <url>/2024/04/16/Spring%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h3 id="Spring、Spring-MVC、Spring-Boot、Spring-Cloud"><a class="header-anchor" href="#Spring、Spring-MVC、Spring-Boot、Spring-Cloud">¶</a>Spring、Spring MVC、Spring Boot、Spring Cloud</h3>
 <blockquote>
@@ -4446,12 +4487,12 @@ Shell选项:hB<br>
       <tags>
         <tag>原创</tag>
         <tag>java</tag>
-        <tag>spring</tag>
+        <tag>springboot</tag>
       </tags>
   </entry>
   <entry>
     <title>springboot多模块开发</title>
-    <url>/2024/04/16/springboot%E5%A4%9A%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
+    <url>/2024/04/22/springboot%E5%A4%9A%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
     <content><![CDATA[<h3 id="介绍"><a class="header-anchor" href="#介绍">¶</a>介绍</h3>
 <p>为了解决项目越来越大的问题，使用了多模块开发来使层次更加清晰。</p>
 <p>架构大致如下：</p>
