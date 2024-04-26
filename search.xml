@@ -106,6 +106,30 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker构建镜像及使用的笔记</title>
+    <url>/2023/09/11/Docker%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%9A%84%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h4>
+<p>本文并不记录详细过程，只是为了记录一下大概构建及使用的经过（还有踩坑记录，重点！！！）</p>
+<hr>
+<h4 id="开始"><a class="header-anchor" href="#开始">¶</a>开始</h4>
+<p>由于一些特殊原因，我需要一个包含 nodejs 的基础镜像来构建一个新的镜像，但是由于各种原因，没能下成，并且我也不知道哪些镜像中含有 nodejs，所以没办法，只能自己构建一个含有 nodejs 的镜像，为了使镜像最小化，我选择了 alpine 发行的 Linux 镜像</p>
+<p>直接 docker pull alpine ，没毛病，下好之后准备 run 的，结果发现根本没有 bash 这个命令，查过资料才发现，它还是用的 sh 。。。。</p>
+<p>好了，重新 run ，<code>docker run -it alpine /bin/sh</code> .</p>
+<p>这下没毛病了，进了终端，然后竟然发现无从下手！！！（毕竟 alpine 跟 centos 不一样），一开始用的 yum ，结果直接 not found ，，查了资料发现，这玩意儿连 yum 都没有。。只能用 apk ，不愧是最小的 Linux .</p>
+<p>在用 apk 将 nodejs 下好后，直接构建，然后尼玛又少了 npm ，淦！</p>
+<p>同样的方法，用 apk 下好之后，构建！！！不出意外的话又出意外了，构建的时候有一步比较吃 cpu 资源 ，我用服务器构建了两次，</p>
+<hr>
+<p>TODO</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker的使用-叁</title>
     <url>/2023/09/08/Docker%E7%9A%84%E4%BD%BF%E7%94%A8-%E5%8F%81/</url>
     <content><![CDATA[<h4 id="Dockerfile的使用"><a class="header-anchor" href="#Dockerfile的使用">¶</a>Dockerfile的使用</h4>
@@ -166,30 +190,6 @@
 <hr>
 <p>示例: <a href="http://8.222.153.91:32770/saolei.jsp?level=8&amp;leiNum=8&amp;size=8">扫雷</a></p>
 <p>END</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker构建镜像及使用的笔记</title>
-    <url>/2023/09/11/Docker%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%9A%84%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h4>
-<p>本文并不记录详细过程，只是为了记录一下大概构建及使用的经过（还有踩坑记录，重点！！！）</p>
-<hr>
-<h4 id="开始"><a class="header-anchor" href="#开始">¶</a>开始</h4>
-<p>由于一些特殊原因，我需要一个包含 nodejs 的基础镜像来构建一个新的镜像，但是由于各种原因，没能下成，并且我也不知道哪些镜像中含有 nodejs，所以没办法，只能自己构建一个含有 nodejs 的镜像，为了使镜像最小化，我选择了 alpine 发行的 Linux 镜像</p>
-<p>直接 docker pull alpine ，没毛病，下好之后准备 run 的，结果发现根本没有 bash 这个命令，查过资料才发现，它还是用的 sh 。。。。</p>
-<p>好了，重新 run ，<code>docker run -it alpine /bin/sh</code> .</p>
-<p>这下没毛病了，进了终端，然后竟然发现无从下手！！！（毕竟 alpine 跟 centos 不一样），一开始用的 yum ，结果直接 not found ，，查了资料发现，这玩意儿连 yum 都没有。。只能用 apk ，不愧是最小的 Linux .</p>
-<p>在用 apk 将 nodejs 下好后，直接构建，然后尼玛又少了 npm ，淦！</p>
-<p>同样的方法，用 apk 下好之后，构建！！！不出意外的话又出意外了，构建的时候有一步比较吃 cpu 资源 ，我用服务器构建了两次，</p>
-<hr>
-<p>TODO</p>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -357,6 +357,107 @@
       <tags>
         <tag>原创</tag>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git同时部署多个仓库</title>
+    <url>/2023/10/26/Git%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AA%E4%BB%93%E5%BA%93/</url>
+    <content><![CDATA[<h4 id="私有仓库的配置"><a class="header-anchor" href="#私有仓库的配置">¶</a>私有仓库的配置</h4>
+<p>刚需：先在服务器端创建 git 用户，并且配置用户密码</p>
+<p>可以使用下面的命令创建和修改</p>
+<blockquote>
+<p>useradd git</p>
+<p>passwd git</p>
+<p>#注：密码要输入两次确认</p>
+</blockquote>
+<h5 id="服务器端配置："><a class="header-anchor" href="#服务器端配置：">¶</a>服务器端配置：</h5>
+<blockquote>
+<p>su git 	#切换到 git 用户</p>
+<p>cd 	#进入用户家目录</p>
+<p>mkdir .ssh ; cd .ssh  	#创建 .ssh 配置目录并进入</p>
+<p>touch authorized_keys 	#创建 authorized_keys 来存放公钥</p>
+<p>chmod 700 /home/git/.ssh/ ; chmod 600 /home/git/.ssh/authorized_keys 	#修改 .ssh 及 authorized_keys 的权限</p>
+<p>vim /etc/ssh/sshd_config</p>
+<p>#在此文件中查找以下字段是否存在或取消注释</p>
+<p>#1. RSAAuthentication yes</p>
+<p>#2. PubkeyAuthentication yes</p>
+<p>#3. AuthorizedkeysFile .ssh/authorized_keys</p>
+</blockquote>
+<h5 id="客户端生成公钥："><a class="header-anchor" href="#客户端生成公钥：">¶</a>客户端生成公钥：</h5>
+<blockquote>
+<p>ssh-keygen -t rsa -f “id_rsa_git” 	#使用 -f 来区分生成的公钥文件</p>
+</blockquote>
+<h4 id="配置-Github-和-Gitee-仓库"><a class="header-anchor" href="#配置-Github-和-Gitee-仓库">¶</a>配置 Github 和 Gitee 仓库</h4>
+<blockquote>
+<p>ssh-keygen -t rsa -C “<a href="mailto:2704984649@qq.com">2704984649@qq.com</a>” -f “id_rsa_gitee”</p>
+<p>ssh-keygen -t rsa -C “<a href="mailto:2704984649@qq.com">2704984649@qq.com</a>” -f “id_rsa_github”</p>
+</blockquote>
+<p>注：生成公钥请在 C:\Users\ 用户名 \ .ssh\ 这个目录下的终端里进行，文件名为 .pub 后缀的文件为公钥文件</p>
+<p>然后将不同仓库的公钥里的值分别添加到不同的仓库里即可</p>
+<p>私有仓库则将值添加到 git 用户的 .ssh/authorized_keys 里</p>
+<p>注：可以使用 echo “值” &gt;&gt; authorized_keys 将值追加到文件里，这样可以防止覆盖以前配置的 ssh 公钥，防止其他用户无法使用免密登录</p>
+<p>然后配置本地主机的 C:\Users\ 用户名 \ .ssh\ 这个目录下的 config.config 文件来解决 ssh 冲突问题 ，没有就创建一个，然后填入以下内容</p>
+<blockquote>
+<p>#git 用户</p>
+<p>Host githost 	#别名<br>
+HostName 8.222.153.91 	#主机地址<br>
+Post 5213 	#端口<br>
+User git 	#用户名<br>
+IdentityFile ~/.ssh/id_rsa.pub 	#公钥位置，一般位于 C:\\Users\qingtian\.ssh\ 下</p>
+<p>#root 用户</p>
+<p>Host roothost<br>
+HostName 8.222.153.91<br>
+Post 5213<br>
+User root<br>
+IdentityFile ~/.ssh/id_rsa.pub</p>
+<p>#git 登录 github</p>
+<p>Host <a href="http://github.com">github.com</a><br>
+HostName <a href="http://github.com">github.com</a><br>
+User git<br>
+IdentityFile ~/.ssh/id_rsa_github.pub</p>
+<p>#git 登录 gitee</p>
+<p>Host <a href="http://gitee.com">gitee.com</a><br>
+HostName <a href="http://gitee.com">gitee.com</a><br>
+User git<br>
+IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
+</blockquote>
+<p>也可以在使用 ssh 的时候在后面使用 -p 参数指定端口</p>
+<blockquote>
+<p>ssh <a href="mailto:git@8.222.153.91">git@8.222.153.91</a> -p 5213</p>
+</blockquote>
+<p>然后可以使用下面的命令测试登录：</p>
+<blockquote>
+<p>ssh -T <a href="mailto:git@gitee.com">git@gitee.com</a></p>
+<p>ssh -T <a href="mailto:git@github.com">git@github.com</a></p>
+</blockquote>
+<h4 id="查看-git-的-push-模式"><a class="header-anchor" href="#查看-git-的-push-模式">¶</a>查看 git 的 push 模式</h4>
+<blockquote>
+<p>git remote -v</p>
+<p>git remote set-url origin 你的仓库地址 	#修改不同的模式用不同的仓库地址</p>
+</blockquote>
+<h4 id="坑"><a class="header-anchor" href="#坑">¶</a>坑</h4>
+<ol>
+<li>如果使用 ssh -T <a href="mailto:git@gitee.com">git@gitee.com</a> 或者 ssh -T <a href="mailto:git@github.com">git@github.com</a> 来测试登录显示如下报错：</li>
+</ol>
+<blockquote>
+<p><a href="mailto:git@gitee.com">git@gitee.com</a>: Permission denied (publickey).</p>
+</blockquote>
+<h5 id="解决"><a class="header-anchor" href="#解决">¶</a>解决</h5>
+<p>如果检查公钥配置没有问题，使用下面的命令将本机的 git 仓库与相对应的 SSH Key 关联上即可</p>
+<blockquote>
+<p>ssh-agent bash 	#打开身份代理验证连接</p>
+<p>ssh-add ~/.ssh/id_rsa_gitee 	#你的 gitee 私钥文件位置</p>
+<p>ssh-add ~/.ssh/id_rsa_github 	#你的 github 私钥文件位置</p>
+</blockquote>
+<ol start="2">
+<li>在关闭 git bash 窗口后要重新添加关联，暂无解决办法</li>
+</ol>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -639,107 +740,6 @@
 <p><code>git remote rm &lt;仓库别名&gt;</code></p>
 <hr>
 <p>END</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git同时部署多个仓库</title>
-    <url>/2023/10/26/Git%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AA%E4%BB%93%E5%BA%93/</url>
-    <content><![CDATA[<h4 id="私有仓库的配置"><a class="header-anchor" href="#私有仓库的配置">¶</a>私有仓库的配置</h4>
-<p>刚需：先在服务器端创建 git 用户，并且配置用户密码</p>
-<p>可以使用下面的命令创建和修改</p>
-<blockquote>
-<p>useradd git</p>
-<p>passwd git</p>
-<p>#注：密码要输入两次确认</p>
-</blockquote>
-<h5 id="服务器端配置："><a class="header-anchor" href="#服务器端配置：">¶</a>服务器端配置：</h5>
-<blockquote>
-<p>su git 	#切换到 git 用户</p>
-<p>cd 	#进入用户家目录</p>
-<p>mkdir .ssh ; cd .ssh  	#创建 .ssh 配置目录并进入</p>
-<p>touch authorized_keys 	#创建 authorized_keys 来存放公钥</p>
-<p>chmod 700 /home/git/.ssh/ ; chmod 600 /home/git/.ssh/authorized_keys 	#修改 .ssh 及 authorized_keys 的权限</p>
-<p>vim /etc/ssh/sshd_config</p>
-<p>#在此文件中查找以下字段是否存在或取消注释</p>
-<p>#1. RSAAuthentication yes</p>
-<p>#2. PubkeyAuthentication yes</p>
-<p>#3. AuthorizedkeysFile .ssh/authorized_keys</p>
-</blockquote>
-<h5 id="客户端生成公钥："><a class="header-anchor" href="#客户端生成公钥：">¶</a>客户端生成公钥：</h5>
-<blockquote>
-<p>ssh-keygen -t rsa -f “id_rsa_git” 	#使用 -f 来区分生成的公钥文件</p>
-</blockquote>
-<h4 id="配置-Github-和-Gitee-仓库"><a class="header-anchor" href="#配置-Github-和-Gitee-仓库">¶</a>配置 Github 和 Gitee 仓库</h4>
-<blockquote>
-<p>ssh-keygen -t rsa -C “<a href="mailto:2704984649@qq.com">2704984649@qq.com</a>” -f “id_rsa_gitee”</p>
-<p>ssh-keygen -t rsa -C “<a href="mailto:2704984649@qq.com">2704984649@qq.com</a>” -f “id_rsa_github”</p>
-</blockquote>
-<p>注：生成公钥请在 C:\Users\ 用户名 \ .ssh\ 这个目录下的终端里进行，文件名为 .pub 后缀的文件为公钥文件</p>
-<p>然后将不同仓库的公钥里的值分别添加到不同的仓库里即可</p>
-<p>私有仓库则将值添加到 git 用户的 .ssh/authorized_keys 里</p>
-<p>注：可以使用 echo “值” &gt;&gt; authorized_keys 将值追加到文件里，这样可以防止覆盖以前配置的 ssh 公钥，防止其他用户无法使用免密登录</p>
-<p>然后配置本地主机的 C:\Users\ 用户名 \ .ssh\ 这个目录下的 config.config 文件来解决 ssh 冲突问题 ，没有就创建一个，然后填入以下内容</p>
-<blockquote>
-<p>#git 用户</p>
-<p>Host githost 	#别名<br>
-HostName 8.222.153.91 	#主机地址<br>
-Post 5213 	#端口<br>
-User git 	#用户名<br>
-IdentityFile ~/.ssh/id_rsa.pub 	#公钥位置，一般位于 C:\\Users\qingtian\.ssh\ 下</p>
-<p>#root 用户</p>
-<p>Host roothost<br>
-HostName 8.222.153.91<br>
-Post 5213<br>
-User root<br>
-IdentityFile ~/.ssh/id_rsa.pub</p>
-<p>#git 登录 github</p>
-<p>Host <a href="http://github.com">github.com</a><br>
-HostName <a href="http://github.com">github.com</a><br>
-User git<br>
-IdentityFile ~/.ssh/id_rsa_github.pub</p>
-<p>#git 登录 gitee</p>
-<p>Host <a href="http://gitee.com">gitee.com</a><br>
-HostName <a href="http://gitee.com">gitee.com</a><br>
-User git<br>
-IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
-</blockquote>
-<p>也可以在使用 ssh 的时候在后面使用 -p 参数指定端口</p>
-<blockquote>
-<p>ssh <a href="mailto:git@8.222.153.91">git@8.222.153.91</a> -p 5213</p>
-</blockquote>
-<p>然后可以使用下面的命令测试登录：</p>
-<blockquote>
-<p>ssh -T <a href="mailto:git@gitee.com">git@gitee.com</a></p>
-<p>ssh -T <a href="mailto:git@github.com">git@github.com</a></p>
-</blockquote>
-<h4 id="查看-git-的-push-模式"><a class="header-anchor" href="#查看-git-的-push-模式">¶</a>查看 git 的 push 模式</h4>
-<blockquote>
-<p>git remote -v</p>
-<p>git remote set-url origin 你的仓库地址 	#修改不同的模式用不同的仓库地址</p>
-</blockquote>
-<h4 id="坑"><a class="header-anchor" href="#坑">¶</a>坑</h4>
-<ol>
-<li>如果使用 ssh -T <a href="mailto:git@gitee.com">git@gitee.com</a> 或者 ssh -T <a href="mailto:git@github.com">git@github.com</a> 来测试登录显示如下报错：</li>
-</ol>
-<blockquote>
-<p><a href="mailto:git@gitee.com">git@gitee.com</a>: Permission denied (publickey).</p>
-</blockquote>
-<h5 id="解决"><a class="header-anchor" href="#解决">¶</a>解决</h5>
-<p>如果检查公钥配置没有问题，使用下面的命令将本机的 git 仓库与相对应的 SSH Key 关联上即可</p>
-<blockquote>
-<p>ssh-agent bash 	#打开身份代理验证连接</p>
-<p>ssh-add ~/.ssh/id_rsa_gitee 	#你的 gitee 私钥文件位置</p>
-<p>ssh-add ~/.ssh/id_rsa_github 	#你的 github 私钥文件位置</p>
-</blockquote>
-<ol start="2">
-<li>在关闭 git bash 窗口后要重新添加关联，暂无解决办法</li>
-</ol>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -1206,103 +1206,218 @@ IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
       </tags>
   </entry>
   <entry>
-    <title>Linux2023.9.15作业</title>
-    <url>/2023/09/15/Linux2023-9-15%E4%BD%9C%E4%B8%9A/</url>
-    <content><![CDATA[<blockquote>
-<p>题目要求：</p>
-<p>1、创建用户和用户组</p>
-<p>请按照以下要求创建用户、用户组：</p>
-<p>新建一个名为adminuser的组，组id为40000</p>
-<p>新建一个名为natasha的用户，并将adminuser作为其附属组</p>
-<p>新建一个名为harry的用户，并将adminuser作为其附属组</p>
-<p>新建一个名为sarah的用户，其不属于adminuser组，并将其shell设置为不可登陆shell</p>
-<p>natasha、harry和sarah三个用户的密码均设置为glegunge</p>
-<p>2、复制文件/etc/fstab到/var/tmp目录下，并按照以下要求配置/var/tmp/fstab文件的权限:</p>
-<p>该文件的所属人为root</p>
-<p>该文件的所属组为root</p>
-<p>该文件对任何人均没有执行权限</p>
-<p>用户natasha对该文件有读和写的权限</p>
-<p>用户harry对该文件既不能读也不能写</p>
-<p>所有其他用户（包括当前已有用户及未来创建的用户）对该文件都有读的权限</p>
-<p>3、打包文件</p>
-<p>请对/etc/sysconfig目录进行打包并用bzip2压缩，生成的文件保存为/root/sysconfig.tar.bz2</p>
-<p>4、创建一个大小为500M的分区，永久挂载到/test目录下</p>
+    <title>JavaScript笔记 - 1</title>
+    <url>/2023/11/22/JavaScript%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="说明"><a class="header-anchor" href="#说明">¶</a>说明</h3>
+<blockquote>
+<p>因本人主学<code>Java</code>,所以下文包括以后的笔记绝大部分都是与Java做对比</p>
 </blockquote>
 <hr>
-<h5 id="创建用户和用户组"><a class="header-anchor" href="#创建用户和用户组">¶</a>创建用户和用户组</h5>
+<h3 id="概览"><a class="header-anchor" href="#概览">¶</a>概览</h3>
+<p>JavaScript 的类型有</p>
+<ul>
+<li><code>Number</code> (数字)</li>
+<li><code>String</code> (字符串)</li>
+<li><code>Boolean</code> (布尔值)</li>
+<li><code>Symbol</code> (符号)</li>
+<li><code>Object</code> (对象)
+<ul>
+<li><code>Function</code> (函数)</li>
+<li><code>Array</code> (数组)</li>
+<li><code>Date</code> (日期)</li>
+<li><code>RegExp</code> (正则表达式)</li>
+</ul>
+</li>
+<li><code>null</code> (空)</li>
+<li><code>undefined</code> (未定义)</li>
+</ul>
+<p>注：在 <code>JavaScript</code> 中，所有的类型都是对象</p>
+<h4 id="数据类型"><a class="header-anchor" href="#数据类型">¶</a>数据类型</h4>
+<h5 id="变量-常量"><a class="header-anchor" href="#变量-常量">¶</a>变量 &amp; 常量</h5>
+<p>在 2015 年之前，使用 <code>var</code> 定义变量，但在 2015 年之后，ES 6 新增了两个关键字 ：<code>lei</code> 、<code>const</code></p>
+<p><code>var</code> 声明的变量在全局都能使用，但是注意，如果在代码块外声明了变量，然后在代码块中声明了同名的变量，在代码块外的变量就会被重新定义</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">10</span> ;</span><br><span class="line"><span class="comment">//此处输出 x 为 10</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">var</span> x = <span class="number">2</span> ;</span><br><span class="line">    <span class="comment">//此处输出 x 为 2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line"><span class="comment">//此处输出 x 为 2</span></span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<blockquote>
+<p>2</p>
+</blockquote>
+<p><code>let</code> 声明的变量只在 <code>let</code> 命令所在的代码块有效，即 <code>let</code> 所在的花括号内</p>
+<p><code>const</code> 声明的对象为基本类型（数字，字符串，布尔值等），那么它就是常量，即不可更改的。但是也是相对的，如果它的值为一个复合类型，那么它的值就是可变的，可以修改它的属性或元素</p>
+<blockquote>
+<p><code>let</code> 和 <code>const</code> 都是块级作用域，即只在声明所在的代码块中有效</p>
+</blockquote>
+<h5 id="数字"><a class="header-anchor" href="#数字">¶</a>数字</h5>
+<p>与 Java 不一样，JavaScript 没有整数(<code>int</code>)亦或者整型(<code>Integer</code>)，除了 <code>BigInt</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span> / <span class="number">2</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="number">3</span> / <span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<blockquote>
+<p>1.5</p>
+<p>1</p>
+</blockquote>
+<p>JavaScript 提供了两个内置函数用于将字符串转换为整型和将浮点数转换为整型</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>parseInt(String str , Number radix)</code></td>
+<td style="text-align:center">接收两个参数，<code>str</code>为要转换的字符串，<code>radix</code>为目标整数的基进制，返回转换后的指定进制数</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>parseFloat(String str)</code></td>
+<td style="text-align:center">接收一个参数，<code>str</code> 为要转换的字符串，返回转换后的十进制数</td>
+</tr>
+</tbody>
+</table>
+<p>要转换字符串为整数也可以使用一元运算符 <code>'+'</code>。</p>
+<p>如果给定的字符串没有 <code>Number</code>(数值)类型，那么此时就会返回一个 <code>NaN</code>(Not a Number的缩写) 值</p>
+<p>除了 <code>NaN</code>，JavaScript 还提供了两个特殊值，<code>Infinity</code>(正无穷) 和 <code>-Infinity</code>(负无穷)</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> list = &#123;</span><br><span class="line">    name : <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">    id : <span class="string">&quot;1234&quot;</span>, </span><br><span class="line">    str : <span class="string">&quot;1234.567&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(list.<span class="property">id</span>,<span class="number">10</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(list.<span class="property">str</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="string">&quot;123&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(list.<span class="property">name</span>));</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<blockquote>
+<p>1234</p>
+<p>1234.567</p>
+<p>123</p>
+<p>NaN</p>
+</blockquote>
+<p>可以使用 <code>isNaN()</code> 来判断一个变量是否为 <code>NaN</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">isNaN</span>(<span class="title class_">NaN</span>));</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<blockquote>
+<p>true</p>
+</blockquote>
+<p>可以使用 <code>isFinite()</code> 来判断一个变量是否为一个有穷数，如果值为 <code>Infinity</code>、<code>-Infinity</code> 或 <code>NaN</code> ，那么就返回 <code>false</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">isFinite</span>(<span class="title class_">Infinity</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">isFinite</span>(-<span class="title class_">Infinity</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">isFinite</span>(<span class="title class_">NaN</span>));</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<blockquote>
+<p>false</p>
+<p>false</p>
+<p>false</p>
+</blockquote>
+<blockquote>
+<p>小知识1：使用 <code>parseInt()</code> 及 <code>parseFloat()</code> 时，这两个函数回尝试逐个解析字符串中的字符，直到遇到一个无法被解析的字符，然后返回该字符之前所有数字组成的数字。</p>
+</blockquote>
+<blockquote>
+<p>小知识2：使用单目运算符 <code>'+'</code> 来转换字符串时，只要字符串中包含无法转换的字符，就会返回 <code>NaN</code></p>
+</blockquote>
+<h5 id="字符串"><a class="header-anchor" href="#字符串">¶</a>字符串</h5>
+<blockquote>
+<p>在 JavaScript 中，所有字符串都是一串 <code>Unicode</code>字符序列。更准确的说，它是一串 <code>UTF-16</code> 编码单元的序列，每一个编码单元由一个 16 位二进制数表示。每一个 <code>Unicode</code>字符由一个或两个编码单元表示。</p>
+</blockquote>
+<p>在 JavaScript 中，<code>String</code> 是一个对象，因此你可以像操作普通对象一样对它进行操作。</p>
+<p>使用 <code>length</code> 方法获取它的长度，使用 <code>charAt(0)</code> 返回第一个字符</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="property">length</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">charAt</span>(<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<blockquote>
+<p>5</p>
+<p>h</p>
+</blockquote>
+<h5 id="其他类型"><a class="header-anchor" href="#其他类型">¶</a>其他类型</h5>
+<p><code>null</code> 表示一个空值，<code>undefined</code> 是一个 <code>undefined</code>(未定义)类型的对象，表示一个未初始化的值，即没有被分配空间的值。在变量声明之后并未赋值，那么它的值就是 <code>undefined</code>。</p>
+<p>JavaScript 的逻辑值与 Java 中的一样，<code>false</code>、<code>0</code>、空字符串(<code>&quot;&quot;</code>)、<code>NaN</code>、<code>null</code>、<code>undefined</code> 都是 <code>false</code>，其余为 <code>true</code></p>
+<p>逻辑运算符也同 Java 一样，<code>&amp;&amp;</code>(逻辑与)、<code>||</code>(逻辑或)、<code>!</code>(逻辑非)，用法也一样</p>
+<p>小技巧：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="title class_">CacheName</span> &amp;&amp; o.<span class="title function_">getName</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用逻辑与可以事先检测该参数是否为空，防止意外的赋值</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="title class_">CacheName</span> || ( <span class="title class_">CacheName</span> = o.<span class="property">getName</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用逻辑或可以在参数无效时使用默认值</p>
+</blockquote>
+<h4 id="控制结构"><a class="header-anchor" href="#控制结构">¶</a>控制结构</h4>
+<p>JavaScript 的 <code>if</code>、<code>else if</code>、<code>while</code>、<code>do...while</code>、<code>switch</code> 都同 Java 一样，稍微有点不同的就是 <code>for</code> ，普通的 <code>for</code> 和 Java 相同，但是 <code>for...in</code> 和 <code>for...of</code> 稍微有点不同，在 Java 中，与之对应的是 <code>foreach</code>也就是增强 <code>for</code>。</p>
+<h5 id="for-in"><a class="header-anchor" href="#for-in">¶</a><code>for...in</code></h5>
+<p>使用 <code>for...in</code> 迭代可枚举属性，可以遍历属性名和属性值，但是无法使用 <code>for...of</code> 迭代可枚举属性</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> list = &#123;</span><br><span class="line">    name : <span class="string">&quot;Tom&quot;</span>,</span><br><span class="line">    sex : <span class="string">&quot;男&quot;</span>,</span><br><span class="line">    age :<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">const</span> l <span class="keyword">in</span> list)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(l);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(list[l]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<blockquote>
+<p>naem</p>
+<p>Tom</p>
+<p>sex</p>
+<p>男</p>
+<p>age</p>
+<p>18</p>
+</blockquote>
+<h5 id="for-of"><a class="header-anchor" href="#for-of">¶</a><code>for...of</code></h5>
+<p>使用 <code>for...of</code> 迭代可枚举对象</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> list = [<span class="string">&quot;name&quot;</span>,<span class="string">&quot;sex&quot;</span>,<span class="string">&quot;age&quot;</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">const</span> l <span class="keyword">of</span> list)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(l);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(list[l]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<blockquote>
+<p>name</p>
+<p>undefined</p>
+<p>sex</p>
+<p>undefined</p>
+<p>age</p>
+<p>undefined</p>
+</blockquote>
+<p>注：之所以是 <code>undefined</code> 是因为 <code>list</code> 的元素并没有初始化，所有未初始化的变量一律是 <code>undefined</code></p>
+<h4 id="在任意浏览器中运行"><a class="header-anchor" href="#在任意浏览器中运行">¶</a>在任意浏览器中运行</h4>
+<p>在浏览器中按 <code>F12</code> 进入检查模式，然后在选项卡中找到源代码，在里面可以新建代码片段，也可以直接在控制台输入代码，然后用 <code>Ctrl+Enter</code> 运行</p>
+<p><img src="https://z1.ax1x.com/2023/11/07/pilWwRS.png" alt="1" loading="lazy"></p>
+<h4 id="输入输出"><a class="header-anchor" href="#输入输出">¶</a>输入输出</h4>
+<p>JavaScript 并没有提供任何打印或输出函数。但可以通过不同的方式输出数据。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>window.alert()</code></td>
+<td style="text-align:center">弹出警告窗</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>document.write()</code></td>
+<td style="text-align:center">将内容写入到 HTML 文档中</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>innerHTML()</code></td>
+<td style="text-align:center">将内容写入到 HTML 元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>console.log()</code></td>
+<td style="text-align:center">将内容写入到浏览器的控制台</td>
+</tr>
+</tbody>
+</table>
 <ol>
-<li>新建一个名为adminuser的组，组id为40000</li>
+<li>由当前页面弹出警告信息弹窗</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">groupadd -g 40000 adminuser</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">alert</span>(<span class="string">&quot;你好！&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="https://z1.ax1x.com/2023/11/11/pi8vJsJ.jpg" alt="2" loading="lazy"></p>
 <ol start="2">
-<li>新建一个名为natasha的用户，并将adminuser作为其附属组</li>
+<li>直接将内容写入 HTML 中，如果在 HTML 文档加载完后执行 <code>document.write()</code> , 则整个页面内容将被覆盖</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">useradd -G adminuser natasha</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;HELLO WORLD!&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>可以将 JavaScript 直接写在 HTML 文档中 , 这时的 HTML 文档是不会被覆盖的</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>JavaScript练习<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;demo&quot;</span>&gt;</span></span><br><span class="line">				你好 世界!</span><br><span class="line">			<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">			<span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;HELLO WORLD!&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">		</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol start="3">
-<li>新建一个名为harry的用户，并将adminuser作为其附属组</li>
+<li>将内容写入指定HTML元素中，覆盖原有的元素内容</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">useradd -G adminuser harry</span><br></pre></td></tr></table></figure>
+<p><code>document.getElementById(&quot;demo&quot;)</code> 是使用 id 属性来查找 HTML 元素的 JavaScript 代码</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;demo&quot;</span>).<span class="property">innerHTML</span>=<span class="string">&quot;哈喽&quot;</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>JavaScript练习<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;demo&quot;</span>&gt;</span></span><br><span class="line">				你好 世界!</span><br><span class="line">			<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">			<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;demo&quot;</span>).<span class="property">innerHTML</span>=<span class="string">&quot;HELLO WORLD!&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">		</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol start="4">
-<li>新建一个名为sarah的用户，其不属于adminuser组，并将其shell设置为不可登陆shell</li>
+<li>将值写到控制台</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">useradd -s /usr/sbin/nologin sarah</span><br></pre></td></tr></table></figure>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWsWAf.png" alt="pPWsWAf.png" loading="lazy"></p>
-<ol start="5">
-<li>natasha、harry和sarah三个用户的密码均设置为glegunge</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">passwd &lt;用户名&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWsfN8.png" alt="pPWsfN8.png" loading="lazy"></p>
-<p>测试：</p>
-<p>查看组 id 及附属组</p>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWs2HP.png" alt="pPWs2HP.png" loading="lazy"></p>
-<p>测试 sarah 的 shell 登录</p>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWsqH0.png" alt="pPWsqH0.png" loading="lazy"></p>
-<h5 id="复制文件-etc-fstab到-var-tmp目录下，并按照以下要求配置-var-tmp-fstab文件的权限"><a class="header-anchor" href="#复制文件-etc-fstab到-var-tmp目录下，并按照以下要求配置-var-tmp-fstab文件的权限">¶</a>复制文件/etc/fstab到/var/tmp目录下，并按照以下要求配置/var/tmp/fstab文件的权限:</h5>
-<p>先复制</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp /etc/fstab /var/tmp</span><br></pre></td></tr></table></figure>
-<ol>
-<li>该文件的所属人为root，该文件的所属组为root</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW6pi8.png" alt="pPW6pi8.png" loading="lazy"></p>
-<ol start="2">
-<li>该文件对任何人均没有执行权限，用户natasha对该文件有读和写的权限，用户harry对该文件既不能读也不能写</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW69JS.png" alt="pPW69JS.png" loading="lazy"></p>
-<ol start="3">
-<li>所有其他用户（包括当前已有用户及未来创建的用户）对该文件都有读的权限</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWyxdP.png" alt="pPWyxdP.png" loading="lazy"></p>
-<h5 id="打包文件"><a class="header-anchor" href="#打包文件">¶</a>打包文件</h5>
-<ol>
-<li>请对/etc/sysconfig目录进行打包并用bzip2压缩，生成的文件保存为/root/sysconfig.tar.bz2</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWyzIf.png" alt="pPWyzIf.png" loading="lazy"></p>
-<h5 id="创建分区"><a class="header-anchor" href="#创建分区">¶</a>创建分区</h5>
-<ol>
-<li>创建一个大小为500M的分区</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW26T1.png" alt="pPW26T1.png" loading="lazy"></p>
-<ol start="2">
-<li>使用 mkfs 将 sda4 格式化为 ext4 文件系统</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW2wSU.png" alt="pPW2wSU.png" loading="lazy"></p>
-<ol start="3">
-<li>将分区挂载到 /test 目录，如果没有请自行创建</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW2aWT.png" alt="pPW2aWT.png" loading="lazy"></p>
-<ol start="4">
-<li>使用开机自启实现永久挂载目录</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW2UYV.png" alt="pPW2UYV.png" loading="lazy"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>JavaScript练习<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;demo&quot;</span>&gt;</span></span><br><span class="line">				你好 世界!</span><br><span class="line">			<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;HELLO WORLD!&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">		</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://z1.ax1x.com/2023/11/11/pi8vGM4.jpg" alt="3" loading="lazy"></p>
 <hr>
 <p>END</p>
 ]]></content>
       <categories>
-        <category>编程技巧</category>
+        <category>前端学习笔记</category>
       </categories>
       <tags>
         <tag>原创</tag>
-        <tag>Linux</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -1590,6 +1705,106 @@ IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
       </tags>
   </entry>
   <entry>
+    <title>Linux2023.9.15作业</title>
+    <url>/2023/09/15/Linux2023-9-15%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[<blockquote>
+<p>题目要求：</p>
+<p>1、创建用户和用户组</p>
+<p>请按照以下要求创建用户、用户组：</p>
+<p>新建一个名为adminuser的组，组id为40000</p>
+<p>新建一个名为natasha的用户，并将adminuser作为其附属组</p>
+<p>新建一个名为harry的用户，并将adminuser作为其附属组</p>
+<p>新建一个名为sarah的用户，其不属于adminuser组，并将其shell设置为不可登陆shell</p>
+<p>natasha、harry和sarah三个用户的密码均设置为glegunge</p>
+<p>2、复制文件/etc/fstab到/var/tmp目录下，并按照以下要求配置/var/tmp/fstab文件的权限:</p>
+<p>该文件的所属人为root</p>
+<p>该文件的所属组为root</p>
+<p>该文件对任何人均没有执行权限</p>
+<p>用户natasha对该文件有读和写的权限</p>
+<p>用户harry对该文件既不能读也不能写</p>
+<p>所有其他用户（包括当前已有用户及未来创建的用户）对该文件都有读的权限</p>
+<p>3、打包文件</p>
+<p>请对/etc/sysconfig目录进行打包并用bzip2压缩，生成的文件保存为/root/sysconfig.tar.bz2</p>
+<p>4、创建一个大小为500M的分区，永久挂载到/test目录下</p>
+</blockquote>
+<hr>
+<h5 id="创建用户和用户组"><a class="header-anchor" href="#创建用户和用户组">¶</a>创建用户和用户组</h5>
+<ol>
+<li>新建一个名为adminuser的组，组id为40000</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">groupadd -g 40000 adminuser</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>新建一个名为natasha的用户，并将adminuser作为其附属组</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">useradd -G adminuser natasha</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>新建一个名为harry的用户，并将adminuser作为其附属组</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">useradd -G adminuser harry</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>新建一个名为sarah的用户，其不属于adminuser组，并将其shell设置为不可登陆shell</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">useradd -s /usr/sbin/nologin sarah</span><br></pre></td></tr></table></figure>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWsWAf.png" alt="pPWsWAf.png" loading="lazy"></p>
+<ol start="5">
+<li>natasha、harry和sarah三个用户的密码均设置为glegunge</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">passwd &lt;用户名&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWsfN8.png" alt="pPWsfN8.png" loading="lazy"></p>
+<p>测试：</p>
+<p>查看组 id 及附属组</p>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWs2HP.png" alt="pPWs2HP.png" loading="lazy"></p>
+<p>测试 sarah 的 shell 登录</p>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWsqH0.png" alt="pPWsqH0.png" loading="lazy"></p>
+<h5 id="复制文件-etc-fstab到-var-tmp目录下，并按照以下要求配置-var-tmp-fstab文件的权限"><a class="header-anchor" href="#复制文件-etc-fstab到-var-tmp目录下，并按照以下要求配置-var-tmp-fstab文件的权限">¶</a>复制文件/etc/fstab到/var/tmp目录下，并按照以下要求配置/var/tmp/fstab文件的权限:</h5>
+<p>先复制</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp /etc/fstab /var/tmp</span><br></pre></td></tr></table></figure>
+<ol>
+<li>该文件的所属人为root，该文件的所属组为root</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW6pi8.png" alt="pPW6pi8.png" loading="lazy"></p>
+<ol start="2">
+<li>该文件对任何人均没有执行权限，用户natasha对该文件有读和写的权限，用户harry对该文件既不能读也不能写</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW69JS.png" alt="pPW69JS.png" loading="lazy"></p>
+<ol start="3">
+<li>所有其他用户（包括当前已有用户及未来创建的用户）对该文件都有读的权限</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWyxdP.png" alt="pPWyxdP.png" loading="lazy"></p>
+<h5 id="打包文件"><a class="header-anchor" href="#打包文件">¶</a>打包文件</h5>
+<ol>
+<li>请对/etc/sysconfig目录进行打包并用bzip2压缩，生成的文件保存为/root/sysconfig.tar.bz2</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWyzIf.png" alt="pPWyzIf.png" loading="lazy"></p>
+<h5 id="创建分区"><a class="header-anchor" href="#创建分区">¶</a>创建分区</h5>
+<ol>
+<li>创建一个大小为500M的分区</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW26T1.png" alt="pPW26T1.png" loading="lazy"></p>
+<ol start="2">
+<li>使用 mkfs 将 sda4 格式化为 ext4 文件系统</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW2wSU.png" alt="pPW2wSU.png" loading="lazy"></p>
+<ol start="3">
+<li>将分区挂载到 /test 目录，如果没有请自行创建</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW2aWT.png" alt="pPW2aWT.png" loading="lazy"></p>
+<ol start="4">
+<li>使用开机自启实现永久挂载目录</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW2UYV.png" alt="pPW2UYV.png" loading="lazy"></p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>编程技巧</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux2023-9-18作业</title>
     <url>/2023/09/18/Linux2023-9-18%E4%BD%9C%E4%B8%9A/</url>
     <content><![CDATA[<blockquote>
@@ -1659,221 +1874,6 @@ IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
       <tags>
         <tag>原创</tag>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript笔记 - 1</title>
-    <url>/2023/11/22/JavaScript%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="说明"><a class="header-anchor" href="#说明">¶</a>说明</h3>
-<blockquote>
-<p>因本人主学<code>Java</code>,所以下文包括以后的笔记绝大部分都是与Java做对比</p>
-</blockquote>
-<hr>
-<h3 id="概览"><a class="header-anchor" href="#概览">¶</a>概览</h3>
-<p>JavaScript 的类型有</p>
-<ul>
-<li><code>Number</code> (数字)</li>
-<li><code>String</code> (字符串)</li>
-<li><code>Boolean</code> (布尔值)</li>
-<li><code>Symbol</code> (符号)</li>
-<li><code>Object</code> (对象)
-<ul>
-<li><code>Function</code> (函数)</li>
-<li><code>Array</code> (数组)</li>
-<li><code>Date</code> (日期)</li>
-<li><code>RegExp</code> (正则表达式)</li>
-</ul>
-</li>
-<li><code>null</code> (空)</li>
-<li><code>undefined</code> (未定义)</li>
-</ul>
-<p>注：在 <code>JavaScript</code> 中，所有的类型都是对象</p>
-<h4 id="数据类型"><a class="header-anchor" href="#数据类型">¶</a>数据类型</h4>
-<h5 id="变量-常量"><a class="header-anchor" href="#变量-常量">¶</a>变量 &amp; 常量</h5>
-<p>在 2015 年之前，使用 <code>var</code> 定义变量，但在 2015 年之后，ES 6 新增了两个关键字 ：<code>lei</code> 、<code>const</code></p>
-<p><code>var</code> 声明的变量在全局都能使用，但是注意，如果在代码块外声明了变量，然后在代码块中声明了同名的变量，在代码块外的变量就会被重新定义</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">10</span> ;</span><br><span class="line"><span class="comment">//此处输出 x 为 10</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">var</span> x = <span class="number">2</span> ;</span><br><span class="line">    <span class="comment">//此处输出 x 为 2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line"><span class="comment">//此处输出 x 为 2</span></span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<blockquote>
-<p>2</p>
-</blockquote>
-<p><code>let</code> 声明的变量只在 <code>let</code> 命令所在的代码块有效，即 <code>let</code> 所在的花括号内</p>
-<p><code>const</code> 声明的对象为基本类型（数字，字符串，布尔值等），那么它就是常量，即不可更改的。但是也是相对的，如果它的值为一个复合类型，那么它的值就是可变的，可以修改它的属性或元素</p>
-<blockquote>
-<p><code>let</code> 和 <code>const</code> 都是块级作用域，即只在声明所在的代码块中有效</p>
-</blockquote>
-<h5 id="数字"><a class="header-anchor" href="#数字">¶</a>数字</h5>
-<p>与 Java 不一样，JavaScript 没有整数(<code>int</code>)亦或者整型(<code>Integer</code>)，除了 <code>BigInt</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span> / <span class="number">2</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="number">3</span> / <span class="number">2</span>));</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<blockquote>
-<p>1.5</p>
-<p>1</p>
-</blockquote>
-<p>JavaScript 提供了两个内置函数用于将字符串转换为整型和将浮点数转换为整型</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">函数名</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>parseInt(String str , Number radix)</code></td>
-<td style="text-align:center">接收两个参数，<code>str</code>为要转换的字符串，<code>radix</code>为目标整数的基进制，返回转换后的指定进制数</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>parseFloat(String str)</code></td>
-<td style="text-align:center">接收一个参数，<code>str</code> 为要转换的字符串，返回转换后的十进制数</td>
-</tr>
-</tbody>
-</table>
-<p>要转换字符串为整数也可以使用一元运算符 <code>'+'</code>。</p>
-<p>如果给定的字符串没有 <code>Number</code>(数值)类型，那么此时就会返回一个 <code>NaN</code>(Not a Number的缩写) 值</p>
-<p>除了 <code>NaN</code>，JavaScript 还提供了两个特殊值，<code>Infinity</code>(正无穷) 和 <code>-Infinity</code>(负无穷)</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> list = &#123;</span><br><span class="line">    name : <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">    id : <span class="string">&quot;1234&quot;</span>, </span><br><span class="line">    str : <span class="string">&quot;1234.567&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(list.<span class="property">id</span>,<span class="number">10</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(list.<span class="property">str</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="string">&quot;123&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseInt</span>(list.<span class="property">name</span>));</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<blockquote>
-<p>1234</p>
-<p>1234.567</p>
-<p>123</p>
-<p>NaN</p>
-</blockquote>
-<p>可以使用 <code>isNaN()</code> 来判断一个变量是否为 <code>NaN</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">isNaN</span>(<span class="title class_">NaN</span>));</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<blockquote>
-<p>true</p>
-</blockquote>
-<p>可以使用 <code>isFinite()</code> 来判断一个变量是否为一个有穷数，如果值为 <code>Infinity</code>、<code>-Infinity</code> 或 <code>NaN</code> ，那么就返回 <code>false</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">isFinite</span>(<span class="title class_">Infinity</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">isFinite</span>(-<span class="title class_">Infinity</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">isFinite</span>(<span class="title class_">NaN</span>));</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<blockquote>
-<p>false</p>
-<p>false</p>
-<p>false</p>
-</blockquote>
-<blockquote>
-<p>小知识1：使用 <code>parseInt()</code> 及 <code>parseFloat()</code> 时，这两个函数回尝试逐个解析字符串中的字符，直到遇到一个无法被解析的字符，然后返回该字符之前所有数字组成的数字。</p>
-</blockquote>
-<blockquote>
-<p>小知识2：使用单目运算符 <code>'+'</code> 来转换字符串时，只要字符串中包含无法转换的字符，就会返回 <code>NaN</code></p>
-</blockquote>
-<h5 id="字符串"><a class="header-anchor" href="#字符串">¶</a>字符串</h5>
-<blockquote>
-<p>在 JavaScript 中，所有字符串都是一串 <code>Unicode</code>字符序列。更准确的说，它是一串 <code>UTF-16</code> 编码单元的序列，每一个编码单元由一个 16 位二进制数表示。每一个 <code>Unicode</code>字符由一个或两个编码单元表示。</p>
-</blockquote>
-<p>在 JavaScript 中，<code>String</code> 是一个对象，因此你可以像操作普通对象一样对它进行操作。</p>
-<p>使用 <code>length</code> 方法获取它的长度，使用 <code>charAt(0)</code> 返回第一个字符</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="property">length</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">charAt</span>(<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<blockquote>
-<p>5</p>
-<p>h</p>
-</blockquote>
-<h5 id="其他类型"><a class="header-anchor" href="#其他类型">¶</a>其他类型</h5>
-<p><code>null</code> 表示一个空值，<code>undefined</code> 是一个 <code>undefined</code>(未定义)类型的对象，表示一个未初始化的值，即没有被分配空间的值。在变量声明之后并未赋值，那么它的值就是 <code>undefined</code>。</p>
-<p>JavaScript 的逻辑值与 Java 中的一样，<code>false</code>、<code>0</code>、空字符串(<code>&quot;&quot;</code>)、<code>NaN</code>、<code>null</code>、<code>undefined</code> 都是 <code>false</code>，其余为 <code>true</code></p>
-<p>逻辑运算符也同 Java 一样，<code>&amp;&amp;</code>(逻辑与)、<code>||</code>(逻辑或)、<code>!</code>(逻辑非)，用法也一样</p>
-<p>小技巧：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="title class_">CacheName</span> &amp;&amp; o.<span class="title function_">getName</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>使用逻辑与可以事先检测该参数是否为空，防止意外的赋值</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="title class_">CacheName</span> || ( <span class="title class_">CacheName</span> = o.<span class="property">getName</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>使用逻辑或可以在参数无效时使用默认值</p>
-</blockquote>
-<h4 id="控制结构"><a class="header-anchor" href="#控制结构">¶</a>控制结构</h4>
-<p>JavaScript 的 <code>if</code>、<code>else if</code>、<code>while</code>、<code>do...while</code>、<code>switch</code> 都同 Java 一样，稍微有点不同的就是 <code>for</code> ，普通的 <code>for</code> 和 Java 相同，但是 <code>for...in</code> 和 <code>for...of</code> 稍微有点不同，在 Java 中，与之对应的是 <code>foreach</code>也就是增强 <code>for</code>。</p>
-<h5 id="for-in"><a class="header-anchor" href="#for-in">¶</a><code>for...in</code></h5>
-<p>使用 <code>for...in</code> 迭代可枚举属性，可以遍历属性名和属性值，但是无法使用 <code>for...of</code> 迭代可枚举属性</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> list = &#123;</span><br><span class="line">    name : <span class="string">&quot;Tom&quot;</span>,</span><br><span class="line">    sex : <span class="string">&quot;男&quot;</span>,</span><br><span class="line">    age :<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">const</span> l <span class="keyword">in</span> list)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(l);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(list[l]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<blockquote>
-<p>naem</p>
-<p>Tom</p>
-<p>sex</p>
-<p>男</p>
-<p>age</p>
-<p>18</p>
-</blockquote>
-<h5 id="for-of"><a class="header-anchor" href="#for-of">¶</a><code>for...of</code></h5>
-<p>使用 <code>for...of</code> 迭代可枚举对象</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> list = [<span class="string">&quot;name&quot;</span>,<span class="string">&quot;sex&quot;</span>,<span class="string">&quot;age&quot;</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">const</span> l <span class="keyword">of</span> list)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(l);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(list[l]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<blockquote>
-<p>name</p>
-<p>undefined</p>
-<p>sex</p>
-<p>undefined</p>
-<p>age</p>
-<p>undefined</p>
-</blockquote>
-<p>注：之所以是 <code>undefined</code> 是因为 <code>list</code> 的元素并没有初始化，所有未初始化的变量一律是 <code>undefined</code></p>
-<h4 id="在任意浏览器中运行"><a class="header-anchor" href="#在任意浏览器中运行">¶</a>在任意浏览器中运行</h4>
-<p>在浏览器中按 <code>F12</code> 进入检查模式，然后在选项卡中找到源代码，在里面可以新建代码片段，也可以直接在控制台输入代码，然后用 <code>Ctrl+Enter</code> 运行</p>
-<p><img src="https://z1.ax1x.com/2023/11/07/pilWwRS.png" alt="1" loading="lazy"></p>
-<h4 id="输入输出"><a class="header-anchor" href="#输入输出">¶</a>输入输出</h4>
-<p>JavaScript 并没有提供任何打印或输出函数。但可以通过不同的方式输出数据。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">名称</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>window.alert()</code></td>
-<td style="text-align:center">弹出警告窗</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>document.write()</code></td>
-<td style="text-align:center">将内容写入到 HTML 文档中</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>innerHTML()</code></td>
-<td style="text-align:center">将内容写入到 HTML 元素</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>console.log()</code></td>
-<td style="text-align:center">将内容写入到浏览器的控制台</td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li>由当前页面弹出警告信息弹窗</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">alert</span>(<span class="string">&quot;你好！&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p><img src="https://z1.ax1x.com/2023/11/11/pi8vJsJ.jpg" alt="2" loading="lazy"></p>
-<ol start="2">
-<li>直接将内容写入 HTML 中，如果在 HTML 文档加载完后执行 <code>document.write()</code> , 则整个页面内容将被覆盖</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;HELLO WORLD!&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>可以将 JavaScript 直接写在 HTML 文档中 , 这时的 HTML 文档是不会被覆盖的</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>JavaScript练习<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;demo&quot;</span>&gt;</span></span><br><span class="line">				你好 世界!</span><br><span class="line">			<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">			<span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;HELLO WORLD!&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">		</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>将内容写入指定HTML元素中，覆盖原有的元素内容</li>
-</ol>
-<p><code>document.getElementById(&quot;demo&quot;)</code> 是使用 id 属性来查找 HTML 元素的 JavaScript 代码</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;demo&quot;</span>).<span class="property">innerHTML</span>=<span class="string">&quot;哈喽&quot;</span>;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>JavaScript练习<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;demo&quot;</span>&gt;</span></span><br><span class="line">				你好 世界!</span><br><span class="line">			<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">			<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;demo&quot;</span>).<span class="property">innerHTML</span>=<span class="string">&quot;HELLO WORLD!&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">		</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>将值写到控制台</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>JavaScript练习<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;demo&quot;</span>&gt;</span></span><br><span class="line">				你好 世界!</span><br><span class="line">			<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;HELLO WORLD!&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">		</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://z1.ax1x.com/2023/11/11/pi8vGM4.jpg" alt="3" loading="lazy"></p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>前端学习笔记</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -1995,105 +1995,6 @@ IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
         <tag>java</tag>
         <tag>spring</tag>
         <tag>ResponseEntity</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring基础</title>
-    <url>/2024/04/16/Spring%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h3 id="Spring、Spring-MVC、Spring-Boot、Spring-Cloud"><a class="header-anchor" href="#Spring、Spring-MVC、Spring-Boot、Spring-Cloud">¶</a>Spring、Spring MVC、Spring Boot、Spring Cloud</h3>
-<blockquote>
-<ol>
-<li><strong>Spring</strong>：
-<ul>
-<li><code>Spring</code> 是一个轻量级的<strong>控制反转 (<code>IoC</code>)</strong> 和<strong>面向切面 (<code>AOP</code>)</strong> 的容器框架。</li>
-<li>它使你能够编写更干净、更可管理、并且更易于测试的代码。</li>
-<li><code>Spring</code> 提供了基础功能，适用于开发 <code>WEB</code> 层、业务层、持久层等多个方面。</li>
-</ul>
-</li>
-<li><strong>Spring MVC</strong>：
-<ul>
-<li><code>Spring MVC</code> 是 <code>Spring</code> 的一个模块，是一个<strong>Web 框架</strong>。</li>
-<li>通过 <code>Dispatcher Servlet</code>、<code>ModelAndView</code> 和 <code>View Resolver</code>，它使得开发 <code>Web</code> 应用变得很容易。</li>
-<li>主要针对网站应用程序或者服务开发，处理 URL 路由、<code>Session</code>、模板引擎、静态 <code>Web</code> 资源等。</li>
-</ul>
-</li>
-<li><strong>Spring Boot</strong>：
-<ul>
-<li><code>Spring Boot</code> 是为简化 <code>Spring</code> 配置的<strong>快速开发整合包</strong>。</li>
-<li>它约定优于配置，简化了 <code>Spring</code> 的配置流程。</li>
-<li>更专注于开发<strong>微服务后台接口</strong>，不涉及前端视图。</li>
-</ul>
-</li>
-<li><strong>Spring Cloud</strong>：
-<ul>
-<li><code>Spring Cloud</code> 构建于 <code>Spring Boot</code> 之上，是一个关注全局的<strong>服务治理框架</strong>。</li>
-<li>它用于整合和管理多个 <code>Spring Boot</code> 单体微服务。</li>
-<li><code>Spring Cloud</code> 依赖于 <code>Spring Boot</code> 开发，但 <code>Spring Boot</code> 可以独立开发。</li>
-</ul>
-</li>
-</ol>
-<p>总结：</p>
-<ul>
-<li>Spring 是核心，提供了基础功能。</li>
-<li>Spring MVC 是基于 Spring 的一个 MVC 框架。</li>
-<li>Spring Boot 是为简化 Spring 配置的快速开发整合包。</li>
-<li>Spring Cloud 是构建在 Spring Boot 之上的服务治理框架。</li>
-</ul>
-</blockquote>
-<h3 id="介绍"><a class="header-anchor" href="#介绍">¶</a>介绍</h3>
-<p><code>spring</code>是一个专注于 <code>Java EE</code> 开发的框架，它会使我们编写出来的 <code>Java</code> 程序 更快，更容易，更安全。</p>
-<h3 id="Spring的分层架构设计模式"><a class="header-anchor" href="#Spring的分层架构设计模式">¶</a>Spring的分层架构设计模式</h3>
-<ol>
-<li>
-<p><strong>表示层（Controller层）</strong>：</p>
-<ul>
-<li>表示层是Web应用的入口，负责接收HTTP请求并处理。</li>
-<li>在Spring中，它提供了与Spring MVC和Struts2等框架的整合。</li>
-<li>控制器层处理用户请求，协调业务逻辑层和持久层之间的交互。</li>
-</ul>
-</li>
-<li>
-<p><strong>服务层（Service层）</strong>：</p>
-<ul>
-<li>也称为业务逻辑层，负责处理业务逻辑，与项目需求紧密相关。</li>
-<li>在Spring中，可以管理事务、记录日志等。</li>
-<li>服务层通过调用持久层的方法来操作数据，对外提供接口。</li>
-</ul>
-</li>
-<li>
-<p><strong>持久层（DAO层）</strong>：</p>
-<ul>
-<li>也被称为数据访问层，负责将数据持久化到数据库中。</li>
-<li>基本上，它主要用于数据库的增删改查操作。</li>
-<li>DAO层是一个接口，具体的实现在Mapper.xml或者其他地方。</li>
-</ul>
-</li>
-</ol>
-<h3 id="声明组件扫描器"><a class="header-anchor" href="#声明组件扫描器">¶</a>声明组件扫描器</h3>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;你要扫描的包名&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="Spring-相关网站"><a class="header-anchor" href="#Spring-相关网站">¶</a><code>Spring</code> 相关网站</h3>
-<ul>
-<li><code>Spring MVC API</code>
-<ul>
-<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/">Overview (Spring Framework 6.1.5 API)</a></li>
-</ul>
-</li>
-<li><code>Spring Boot API</code>
-<ul>
-<li><a href="https://docs.spring.io/spring-boot/docs/current/api/">Overview (Spring Boot 3.2.4 API)</a></li>
-</ul>
-</li>
-</ul>
-<hr>
-<p><em>TODO</em></p>
-]]></content>
-      <categories>
-        <category>spring系列</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>java</tag>
-        <tag>spring</tag>
       </tags>
   </entry>
   <entry>
@@ -2241,6 +2142,105 @@ IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
       </tags>
   </entry>
   <entry>
+    <title>Spring基础</title>
+    <url>/2024/04/16/Spring%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h3 id="Spring、Spring-MVC、Spring-Boot、Spring-Cloud"><a class="header-anchor" href="#Spring、Spring-MVC、Spring-Boot、Spring-Cloud">¶</a>Spring、Spring MVC、Spring Boot、Spring Cloud</h3>
+<blockquote>
+<ol>
+<li><strong>Spring</strong>：
+<ul>
+<li><code>Spring</code> 是一个轻量级的<strong>控制反转 (<code>IoC</code>)</strong> 和<strong>面向切面 (<code>AOP</code>)</strong> 的容器框架。</li>
+<li>它使你能够编写更干净、更可管理、并且更易于测试的代码。</li>
+<li><code>Spring</code> 提供了基础功能，适用于开发 <code>WEB</code> 层、业务层、持久层等多个方面。</li>
+</ul>
+</li>
+<li><strong>Spring MVC</strong>：
+<ul>
+<li><code>Spring MVC</code> 是 <code>Spring</code> 的一个模块，是一个<strong>Web 框架</strong>。</li>
+<li>通过 <code>Dispatcher Servlet</code>、<code>ModelAndView</code> 和 <code>View Resolver</code>，它使得开发 <code>Web</code> 应用变得很容易。</li>
+<li>主要针对网站应用程序或者服务开发，处理 URL 路由、<code>Session</code>、模板引擎、静态 <code>Web</code> 资源等。</li>
+</ul>
+</li>
+<li><strong>Spring Boot</strong>：
+<ul>
+<li><code>Spring Boot</code> 是为简化 <code>Spring</code> 配置的<strong>快速开发整合包</strong>。</li>
+<li>它约定优于配置，简化了 <code>Spring</code> 的配置流程。</li>
+<li>更专注于开发<strong>微服务后台接口</strong>，不涉及前端视图。</li>
+</ul>
+</li>
+<li><strong>Spring Cloud</strong>：
+<ul>
+<li><code>Spring Cloud</code> 构建于 <code>Spring Boot</code> 之上，是一个关注全局的<strong>服务治理框架</strong>。</li>
+<li>它用于整合和管理多个 <code>Spring Boot</code> 单体微服务。</li>
+<li><code>Spring Cloud</code> 依赖于 <code>Spring Boot</code> 开发，但 <code>Spring Boot</code> 可以独立开发。</li>
+</ul>
+</li>
+</ol>
+<p>总结：</p>
+<ul>
+<li>Spring 是核心，提供了基础功能。</li>
+<li>Spring MVC 是基于 Spring 的一个 MVC 框架。</li>
+<li>Spring Boot 是为简化 Spring 配置的快速开发整合包。</li>
+<li>Spring Cloud 是构建在 Spring Boot 之上的服务治理框架。</li>
+</ul>
+</blockquote>
+<h3 id="介绍"><a class="header-anchor" href="#介绍">¶</a>介绍</h3>
+<p><code>spring</code>是一个专注于 <code>Java EE</code> 开发的框架，它会使我们编写出来的 <code>Java</code> 程序 更快，更容易，更安全。</p>
+<h3 id="Spring的分层架构设计模式"><a class="header-anchor" href="#Spring的分层架构设计模式">¶</a>Spring的分层架构设计模式</h3>
+<ol>
+<li>
+<p><strong>表示层（Controller层）</strong>：</p>
+<ul>
+<li>表示层是Web应用的入口，负责接收HTTP请求并处理。</li>
+<li>在Spring中，它提供了与Spring MVC和Struts2等框架的整合。</li>
+<li>控制器层处理用户请求，协调业务逻辑层和持久层之间的交互。</li>
+</ul>
+</li>
+<li>
+<p><strong>服务层（Service层）</strong>：</p>
+<ul>
+<li>也称为业务逻辑层，负责处理业务逻辑，与项目需求紧密相关。</li>
+<li>在Spring中，可以管理事务、记录日志等。</li>
+<li>服务层通过调用持久层的方法来操作数据，对外提供接口。</li>
+</ul>
+</li>
+<li>
+<p><strong>持久层（DAO层）</strong>：</p>
+<ul>
+<li>也被称为数据访问层，负责将数据持久化到数据库中。</li>
+<li>基本上，它主要用于数据库的增删改查操作。</li>
+<li>DAO层是一个接口，具体的实现在Mapper.xml或者其他地方。</li>
+</ul>
+</li>
+</ol>
+<h3 id="声明组件扫描器"><a class="header-anchor" href="#声明组件扫描器">¶</a>声明组件扫描器</h3>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;你要扫描的包名&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Spring-相关网站"><a class="header-anchor" href="#Spring-相关网站">¶</a><code>Spring</code> 相关网站</h3>
+<ul>
+<li><code>Spring MVC API</code>
+<ul>
+<li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/">Overview (Spring Framework 6.1.5 API)</a></li>
+</ul>
+</li>
+<li><code>Spring Boot API</code>
+<ul>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/api/">Overview (Spring Boot 3.2.4 API)</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><em>TODO</em></p>
+]]></content>
+      <categories>
+        <category>spring系列</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>java</tag>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Typora的破解</title>
     <url>/2023/11/07/Typora%E7%9A%84%E7%A0%B4%E8%A7%A3/</url>
     <content><![CDATA[<h4 id="前言（废话）"><a class="header-anchor" href="#前言（废话）">¶</a>前言（<s>废话</s>）</h4>
@@ -2313,6 +2313,79 @@ IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
         <tag>markdown</tag>
         <tag>破解</tag>
         <tag>Typora</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Win至Linux的免密登录</title>
+    <url>/2023/09/09/Win%E8%87%B3Linux%E7%9A%84%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/</url>
+    <content><![CDATA[<h4 id="配置-Windows-端"><a class="header-anchor" href="#配置-Windows-端">¶</a>配置 Windows 端</h4>
+<ol>
+<li>先在 Windows 下生成公钥文件</li>
+</ol>
+<p>使用 win+R 打开运行对话框，输入 cmd 打开命令提示符（或者随便打开一个文件夹 --&gt; 右键 --&gt; 在终端中打开）</p>
+<p>输入以下命令：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">ssh<span class="literal">-keygen</span> <span class="literal">-t</span> rsa</span><br></pre></td></tr></table></figure>
+<p>之后无脑回车确定</p>
+<p><img src="https://s1.ax1x.com/2023/09/09/pPcuprT.png" alt="powershell1" loading="lazy"></p>
+<ol start="2">
+<li>找到你默认存放公钥的位置</li>
+</ol>
+<p><img src="https://s1.ax1x.com/2023/09/09/pPcuPZF.png" alt="powershell2" loading="lazy"></p>
+<ol start="3">
+<li>将你生成的公钥文件传到 Linux 服务器上</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scp 你公钥存放的位置/.ssh/id_rsa.pub  你要登录的用户名<span class="selector-tag">@</span>你服务器的ip:~/.ssh</span><br></pre></td></tr></table></figure>
+<p>上传完毕之后 Windows 端的配置就完成了</p>
+<h4 id="配置-Linux-端"><a class="header-anchor" href="#配置-Linux-端">¶</a>配置 Linux 端</h4>
+<ol>
+<li>先登录到 Linux 服务器</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">ssh root<span class="selector-tag">@</span>你服务器的ip</span><br></pre></td></tr></table></figure>
+<p>在输入密码后就能登录上去</p>
+<ol start="2">
+<li>在当前用户家目录下找到 <code>.ssh</code> 文件夹</li>
+</ol>
+<p>使用以下命令查看：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls -a</span><br></pre></td></tr></table></figure>
+<p>然后使用以下命令将 <code>id_rsa.pub</code> 文件的内容追加到 <code>authorized_keys</code> 中</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>然后用 <code>chmod</code> 修改文件的权限</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod 600 .ssh/authorized_keys</span><br><span class="line">chmod 700 .ssh</span><br></pre></td></tr></table></figure>
+<h5 id="修改SSH的配置文件"><a class="header-anchor" href="#修改SSH的配置文件">¶</a>修改SSH的配置文件</h5>
+<ol>
+<li>使用以下命令进入 <code>ssh</code> 的配置文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>找到下面的三句不被注释掉，没有直接添加</li>
+</ol>
+<p>温馨提示：可以使用 <code>斜杠“/”</code> 来快速查找</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">RSAAuthentication yes </span><br><span class="line">PubkeyAuthentication yes </span><br><span class="line">AuthorizedKeysFile .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>然后 <code>:wq</code> 保存并退出</p>
+<ol start="3">
+<li>使用以下命令重启SSH服务</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
+<h4 id="测试免密登录"><a class="header-anchor" href="#测试免密登录">¶</a>测试免密登录</h4>
+<p>在 Windows 的 power shell 上输入以下命令：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">ssh root<span class="selector-tag">@</span>你服务器的ip</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2023/09/09/pPcQcQI.png" alt="powershell3" loading="lazy"></p>
+<p>可以看到，直接连上了服务器，到这你的免密登录就成功了</p>
+<h4 id="使用指定端口登录"><a class="header-anchor" href="#使用指定端口登录">¶</a>使用指定端口登录</h4>
+<p>一般来说，为了服务器的安全起见，我们都会更改 SSH 的默认登录端口</p>
+<p>可以在服务器 ip 后加 -p 参数来指定要使用的端口</p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>计算机知识</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>电脑技术</tag>
+        <tag>SSH</tag>
       </tags>
   </entry>
   <entry>
@@ -2505,79 +2578,6 @@ frp 是一个高性能的反向代理应用，支持 tcp, udp, http, https 协�
       <tags>
         <tag>原创</tag>
         <tag>frp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Win至Linux的免密登录</title>
-    <url>/2023/09/09/Win%E8%87%B3Linux%E7%9A%84%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/</url>
-    <content><![CDATA[<h4 id="配置-Windows-端"><a class="header-anchor" href="#配置-Windows-端">¶</a>配置 Windows 端</h4>
-<ol>
-<li>先在 Windows 下生成公钥文件</li>
-</ol>
-<p>使用 win+R 打开运行对话框，输入 cmd 打开命令提示符（或者随便打开一个文件夹 --&gt; 右键 --&gt; 在终端中打开）</p>
-<p>输入以下命令：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">ssh<span class="literal">-keygen</span> <span class="literal">-t</span> rsa</span><br></pre></td></tr></table></figure>
-<p>之后无脑回车确定</p>
-<p><img src="https://s1.ax1x.com/2023/09/09/pPcuprT.png" alt="powershell1" loading="lazy"></p>
-<ol start="2">
-<li>找到你默认存放公钥的位置</li>
-</ol>
-<p><img src="https://s1.ax1x.com/2023/09/09/pPcuPZF.png" alt="powershell2" loading="lazy"></p>
-<ol start="3">
-<li>将你生成的公钥文件传到 Linux 服务器上</li>
-</ol>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scp 你公钥存放的位置/.ssh/id_rsa.pub  你要登录的用户名<span class="selector-tag">@</span>你服务器的ip:~/.ssh</span><br></pre></td></tr></table></figure>
-<p>上传完毕之后 Windows 端的配置就完成了</p>
-<h4 id="配置-Linux-端"><a class="header-anchor" href="#配置-Linux-端">¶</a>配置 Linux 端</h4>
-<ol>
-<li>先登录到 Linux 服务器</li>
-</ol>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">ssh root<span class="selector-tag">@</span>你服务器的ip</span><br></pre></td></tr></table></figure>
-<p>在输入密码后就能登录上去</p>
-<ol start="2">
-<li>在当前用户家目录下找到 <code>.ssh</code> 文件夹</li>
-</ol>
-<p>使用以下命令查看：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls -a</span><br></pre></td></tr></table></figure>
-<p>然后使用以下命令将 <code>id_rsa.pub</code> 文件的内容追加到 <code>authorized_keys</code> 中</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>然后用 <code>chmod</code> 修改文件的权限</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod 600 .ssh/authorized_keys</span><br><span class="line">chmod 700 .ssh</span><br></pre></td></tr></table></figure>
-<h5 id="修改SSH的配置文件"><a class="header-anchor" href="#修改SSH的配置文件">¶</a>修改SSH的配置文件</h5>
-<ol>
-<li>使用以下命令进入 <code>ssh</code> 的配置文件</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>找到下面的三句不被注释掉，没有直接添加</li>
-</ol>
-<p>温馨提示：可以使用 <code>斜杠“/”</code> 来快速查找</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">RSAAuthentication yes </span><br><span class="line">PubkeyAuthentication yes </span><br><span class="line">AuthorizedKeysFile .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-<p>然后 <code>:wq</code> 保存并退出</p>
-<ol start="3">
-<li>使用以下命令重启SSH服务</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
-<h4 id="测试免密登录"><a class="header-anchor" href="#测试免密登录">¶</a>测试免密登录</h4>
-<p>在 Windows 的 power shell 上输入以下命令：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">ssh root<span class="selector-tag">@</span>你服务器的ip</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/09/09/pPcQcQI.png" alt="powershell3" loading="lazy"></p>
-<p>可以看到，直接连上了服务器，到这你的免密登录就成功了</p>
-<h4 id="使用指定端口登录"><a class="header-anchor" href="#使用指定端口登录">¶</a>使用指定端口登录</h4>
-<p>一般来说，为了服务器的安全起见，我们都会更改 SSH 的默认登录端口</p>
-<p>可以在服务器 ip 后加 -p 参数来指定要使用的端口</p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>计算机知识</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>电脑技术</tag>
-        <tag>SSH</tag>
       </tags>
   </entry>
   <entry>
@@ -3748,30 +3748,6 @@ Shell选项:hB<br>
       </tags>
   </entry>
   <entry>
-    <title>windows之重装系统</title>
-    <url>/2023/06/17/windows%E4%B9%8B%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h5 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h5>
-<p>之所以写这篇文章，是因为我朋友电脑出问题，把系统重装了一下，其实我在很早之前就写过一篇重装系统的教程，但是是放在了石墨文档上面，那时候还没有自己的个人博客呢（笑）</p>
-<h5 id="正文"><a class="header-anchor" href="#正文">¶</a>正文</h5>
-<p>此文章不会教你怎么装系统，但是我会把我以前写的那篇教程放出来，需要的可以自行下载查看</p>
-<blockquote>
-<p><a href="https://8.222.153.91:39811/down/iS8YyJSjuWpd.docx">下载链接:</a> 提取码:YunYi</p>
-</blockquote>
-<p>至于怎么获取Windows的系统镜像，你可以去阿里的国内镜像点去找，或者清华的镜像点也行。我并不会提供镜像的下载，毕竟一个镜像就有好几个g，我这小水管带宽可供不起.</p>
-<hr>
-<p>顺便吐槽一下，我朋友那电脑，真是大毛病没有，小毛病不断，不是网卡驱动掉了，就是电脑蓝屏，属实买的血亏。</p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>计算机知识</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>电脑技术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>springboot多模块开发</title>
     <url>/2024/04/22/springboot%E5%A4%9A%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
     <content><![CDATA[<h3 id="介绍"><a class="header-anchor" href="#介绍">¶</a>介绍</h3>
@@ -3822,6 +3798,106 @@ Shell选项:hB<br>
         <tag>原创</tag>
         <tag>java</tag>
         <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>windows之重装系统</title>
+    <url>/2023/06/17/windows%E4%B9%8B%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h5 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h5>
+<p>之所以写这篇文章，是因为我朋友电脑出问题，把系统重装了一下，其实我在很早之前就写过一篇重装系统的教程，但是是放在了石墨文档上面，那时候还没有自己的个人博客呢（笑）</p>
+<h5 id="正文"><a class="header-anchor" href="#正文">¶</a>正文</h5>
+<p>此文章不会教你怎么装系统，但是我会把我以前写的那篇教程放出来，需要的可以自行下载查看</p>
+<blockquote>
+<p><a href="https://8.222.153.91:39811/down/iS8YyJSjuWpd.docx">下载链接:</a> 提取码:YunYi</p>
+</blockquote>
+<p>至于怎么获取Windows的系统镜像，你可以去阿里的国内镜像点去找，或者清华的镜像点也行。我并不会提供镜像的下载，毕竟一个镜像就有好几个g，我这小水管带宽可供不起.</p>
+<hr>
+<p>顺便吐槽一下，我朋友那电脑，真是大毛病没有，小毛病不断，不是网卡驱动掉了，就是电脑蓝屏，属实买的血亏。</p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>计算机知识</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>电脑技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>windows重装系统重制版</title>
+    <url>/2023/11/29/windows%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E5%88%B6%E7%89%88/</url>
+    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
+<p><strong>重要</strong>：在阅读本文章前请确保你已拥有以下技能：</p>
+<ul>
+<li>学会正常使用搜索引擎</li>
+<li>拥有基本的动手能力</li>
+<li>拥有义务教育阶段要求的知识水平</li>
+</ul>
+<p>如果没有以上技能，请立即停止阅读本文章并关闭浏览器。</p>
+<p>如果你有以上技能，并在完整阅读本文章内容后出现疑问，请先阅读提问的智慧再向我提问，否则别问我问题，我只会忽略你。</p>
+<blockquote>
+<p>提问的智慧：<a href="https://ask.icodeq.com/">提问的智慧(中文版)</a></p>
+</blockquote>
+<hr>
+<h3 id="正文"><a class="header-anchor" href="#正文">¶</a>正文</h3>
+<h4 id="准备工作"><a class="header-anchor" href="#准备工作">¶</a>准备工作</h4>
+<p>重装系统有很多方法，本次使用的是使用 Wepe 工具箱将 U 盘 做成pe启动盘来重装系统。</p>
+<h5 id="微pe下载"><a class="header-anchor" href="#微pe下载">¶</a>微pe下载</h5>
+<blockquote>
+<p><a href="https://www.wepe.com.cn">官网</a></p>
+</blockquote>
+<p>直接去它官网下载，具体怎么把 U 盘做成系统启动盘请自行百度，网上一搜一大把教程。</p>
+<h4 id="重装"><a class="header-anchor" href="#重装">¶</a>重装</h4>
+<ol>
+<li>
+<p>先去下载你要重装系统的镜像，在哪下载请自行浏览器搜索。</p>
+</li>
+<li>
+<p>将 U 盘插入已经下载了镜像的电脑，并将镜像移入 U 盘中的 F 盘。</p>
+</li>
+</ol>
+<p>注意：下图的 EFI 盘是系统盘，请不要将任何文件放入其中，如果你没有，请忽略。</p>
+<p><img src="https://z1.ax1x.com/2023/11/29/piDrqe0.jpg" alt="0" loading="lazy"></p>
+<ol start="3">
+<li>将 U 盘插入要重装系统的电脑，然后重启电脑，并在重启过程中不断的按 F2 键以进入系统 BIOS，不同的电脑进入的方法或快捷键不一样，请自行浏览器搜索你自己电脑进入的方法，本文所使用的电脑为华硕天选2。</li>
+<li>进入 BIOS 后，在下图右边所示位置应该有两个盘，将下面的 UEFI 盘移动到 Windows Boot 盘的上面，有可能你的盘名字和我的不一样，但是名字应该都是差不多的。</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/11/29/piDDX2d.jpg" alt="1" loading="lazy"></p>
+<ol start="5">
+<li>重启电脑进入 wepe 桌面，点击桌面上的分区工具。</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/11/29/piDDHUO.jpg" alt="2" loading="lazy"></p>
+<ol start="6">
+<li>然后选择你要分盘的硬盘，之后选上面的快速分区。</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/11/29/piDDb5D.jpg" alt="3" loading="lazy"></p>
+<ol start="7">
+<li>将你的分区表类型改为 GPI(GUID)，一般是默认的。</li>
+<li>分区数目就是你要分几个磁盘就选几个分区，一般两个磁盘就够了，在右边可以设置每个分区(磁盘)的大小，第一个硬盘一般都是 C 盘，建议将大小设置为 120 G 。</li>
+<li>然后将创建新 ESP 分区勾选上，勾选不了的就将上面的保留现有的 ESP 分区取消勾选。</li>
+<li>对齐分区到此扇区数的整数倍选择 4096 扇区。</li>
+<li>最后点击确定。</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/11/29/piDDLPe.jpg" alt="4" loading="lazy"></p>
+<ol start="12">
+<li>回到桌面，点击 Windows安装器。</li>
+<li>进入之后先选择你在 U 盘里的镜像，然后选择你要安装系统的位置，一般安装到 C 盘。</li>
+<li>最后点击安装。</li>
+<li>在一切完毕之后重启电脑就 ok 了。</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/11/29/piDDO8H.jpg" alt="5" loading="lazy"></p>
+<h3 id="免责声明"><a class="header-anchor" href="#免责声明">¶</a>免责声明</h3>
+<p>本文的内容仅供读者参考，不构成任何投资、法律或其他方面的建议。本文的信息和数据来自公开渠道，作者不保证其准确性和完整性。读者在阅读本文后，应自行判断其适用性和可靠性，并自行承担由此可能产生的所有风险和责任。作者对读者因阅读本文而造成的任何直接或间接的损失或损害概不负责。</p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>计算机知识</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>电脑技术</tag>
       </tags>
   </entry>
   <entry>
@@ -3900,61 +3976,6 @@ Shell选项:hB<br>
       <tags>
         <tag>原创</tag>
         <tag>frp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>可道云桌面搭建笔记</title>
-    <url>/2023/09/08/%E5%8F%AF%E9%81%93%E4%BA%91%E6%A1%8C%E9%9D%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="可道云桌面搭建"><a class="header-anchor" href="#可道云桌面搭建">¶</a>可道云桌面搭建</h4>
-<ol>
-<li>先创建 dockerfile-two 及 kod-two 文件夹（因为我之前搭过一遍，但是忘记截图了，所以重搭一遍，防止文件名重复所以用 -two ）</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p dockerfile-two/kod-two</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP6lYIe.png" alt="pP6lYIe.png" loading="lazy"></p>
-<ol start="2">
-<li>使用 scp 将所必要的文件传到服务器上（请务必不要照抄我的命令）</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp .\source\* root@8.222.153.91:/root/dockerfile-two/kod-two/</span><br></pre></td></tr></table></figure>
-<ul>
-<li>实在不会上传那就用下面的这条命令吧（复制粘贴总会吧？）</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl -O https://zero-li.fun/资源/source.tar ; tar -xf source.tar ; mv -f source/* ./ ; rm -rf sour*</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP61SeK.png" alt="pP61SeK.png" loading="lazy"></p>
-<ol start="3">
-<li>使用 vim 创建 dockerfile 文件并填入以下内容：</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim dockerfile</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FROM centos:centos7    # 改为你的基础镜像</span><br><span class="line"></span><br><span class="line">ADD Centos-7.repo /etc/yum.repos.d/</span><br><span class="line"></span><br><span class="line">ADD epel-7.repo /etc/yum.repos.d/</span><br><span class="line"></span><br><span class="line">RUN yum -y install nginx php-fpm php-gd php-mbstring unzip</span><br><span class="line"></span><br><span class="line">RUN sed -i &#x27;/^user/c user=nginx&#x27; /etc/php-fpm.d/www.conf</span><br><span class="line"></span><br><span class="line">RUN sed -i &#x27;/^group/c group=nginx&#x27; /etc/php-fpm.d/www.conf</span><br><span class="line"></span><br><span class="line">COPY nginx.conf /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">RUN mkdir /code</span><br><span class="line"></span><br><span class="line">WORKDIR /code/</span><br><span class="line"></span><br><span class="line">COPY kodexplorer4.40.zip .</span><br><span class="line"></span><br><span class="line">RUN unzip kodexplorer4.40.zip</span><br><span class="line"></span><br><span class="line">RUN chown -R nginx.nginx .</span><br><span class="line"></span><br><span class="line">ADD init.sh /init.sh</span><br><span class="line"></span><br><span class="line">EXPOSE 80</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [&quot;/bin/bash&quot;,&quot;/init.sh&quot;]</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP68PxA.png" alt="pP68PxA.png" loading="lazy"></p>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP68krt.png" alt="pP68krt.png" loading="lazy"></p>
-<ol start="4">
-<li>然后用 vim 创建一个名为 <a href="http://init.sh">init.sh</a> 的 shell 脚本并写入以下内容：</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim init.sh</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">  </span><br><span class="line">php-fpm -D</span><br><span class="line"></span><br><span class="line">echo &quot;$1&quot; &gt;&gt; /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">nginx -g &#x27;daemon off;&#x27;</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP68UG4.png" alt="pP68UG4.png" loading="lazy"></p>
-<ol start="5">
-<li>之后执行以下命令</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker build -t kod:v1 . ; docker run -itd -p 25567:80 kod:v1 &#x27;#testtest&#x27;</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP68sZ6.png" alt="pP68sZ6.png" loading="lazy"></p>
-<ol start="6">
-<li>
-<p>在浏览器访问</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">你的IP:25567/kodexplorer4.40/index.php</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP68ydK.png" alt="pP68ydK.png" loading="lazy"></p>
-<hr>
-<p>示例：<a href="http://8.222.153.91:25569/kodexplorer4.40/index.php?user/login">可道云桌面</a></p>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>可道云</tag>
       </tags>
   </entry>
   <entry>
@@ -4051,79 +4072,14 @@ Shell选项:hB<br>
       </tags>
   </entry>
   <entry>
-    <title>windows重装系统重制版</title>
-    <url>/2023/11/29/windows%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E5%88%B6%E7%89%88/</url>
-    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
-<p><strong>重要</strong>：在阅读本文章前请确保你已拥有以下技能：</p>
-<ul>
-<li>学会正常使用搜索引擎</li>
-<li>拥有基本的动手能力</li>
-<li>拥有义务教育阶段要求的知识水平</li>
-</ul>
-<p>如果没有以上技能，请立即停止阅读本文章并关闭浏览器。</p>
-<p>如果你有以上技能，并在完整阅读本文章内容后出现疑问，请先阅读提问的智慧再向我提问，否则别问我问题，我只会忽略你。</p>
-<blockquote>
-<p>提问的智慧：<a href="https://ask.icodeq.com/">提问的智慧(中文版)</a></p>
-</blockquote>
-<hr>
-<h3 id="正文"><a class="header-anchor" href="#正文">¶</a>正文</h3>
-<h4 id="准备工作"><a class="header-anchor" href="#准备工作">¶</a>准备工作</h4>
-<p>重装系统有很多方法，本次使用的是使用 Wepe 工具箱将 U 盘 做成pe启动盘来重装系统。</p>
-<h5 id="微pe下载"><a class="header-anchor" href="#微pe下载">¶</a>微pe下载</h5>
-<blockquote>
-<p><a href="https://www.wepe.com.cn">官网</a></p>
-</blockquote>
-<p>直接去它官网下载，具体怎么把 U 盘做成系统启动盘请自行百度，网上一搜一大把教程。</p>
-<h4 id="重装"><a class="header-anchor" href="#重装">¶</a>重装</h4>
-<ol>
-<li>
-<p>先去下载你要重装系统的镜像，在哪下载请自行浏览器搜索。</p>
-</li>
-<li>
-<p>将 U 盘插入已经下载了镜像的电脑，并将镜像移入 U 盘中的 F 盘。</p>
-</li>
-</ol>
-<p>注意：下图的 EFI 盘是系统盘，请不要将任何文件放入其中，如果你没有，请忽略。</p>
-<p><img src="https://z1.ax1x.com/2023/11/29/piDrqe0.jpg" alt="0" loading="lazy"></p>
-<ol start="3">
-<li>将 U 盘插入要重装系统的电脑，然后重启电脑，并在重启过程中不断的按 F2 键以进入系统 BIOS，不同的电脑进入的方法或快捷键不一样，请自行浏览器搜索你自己电脑进入的方法，本文所使用的电脑为华硕天选2。</li>
-<li>进入 BIOS 后，在下图右边所示位置应该有两个盘，将下面的 UEFI 盘移动到 Windows Boot 盘的上面，有可能你的盘名字和我的不一样，但是名字应该都是差不多的。</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/11/29/piDDX2d.jpg" alt="1" loading="lazy"></p>
-<ol start="5">
-<li>重启电脑进入 wepe 桌面，点击桌面上的分区工具。</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/11/29/piDDHUO.jpg" alt="2" loading="lazy"></p>
-<ol start="6">
-<li>然后选择你要分盘的硬盘，之后选上面的快速分区。</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/11/29/piDDb5D.jpg" alt="3" loading="lazy"></p>
-<ol start="7">
-<li>将你的分区表类型改为 GPI(GUID)，一般是默认的。</li>
-<li>分区数目就是你要分几个磁盘就选几个分区，一般两个磁盘就够了，在右边可以设置每个分区(磁盘)的大小，第一个硬盘一般都是 C 盘，建议将大小设置为 120 G 。</li>
-<li>然后将创建新 ESP 分区勾选上，勾选不了的就将上面的保留现有的 ESP 分区取消勾选。</li>
-<li>对齐分区到此扇区数的整数倍选择 4096 扇区。</li>
-<li>最后点击确定。</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/11/29/piDDLPe.jpg" alt="4" loading="lazy"></p>
-<ol start="12">
-<li>回到桌面，点击 Windows安装器。</li>
-<li>进入之后先选择你在 U 盘里的镜像，然后选择你要安装系统的位置，一般安装到 C 盘。</li>
-<li>最后点击安装。</li>
-<li>在一切完毕之后重启电脑就 ok 了。</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/11/29/piDDO8H.jpg" alt="5" loading="lazy"></p>
-<h3 id="免责声明"><a class="header-anchor" href="#免责声明">¶</a>免责声明</h3>
-<p>本文的内容仅供读者参考，不构成任何投资、法律或其他方面的建议。本文的信息和数据来自公开渠道，作者不保证其准确性和完整性。读者在阅读本文后，应自行判断其适用性和可靠性，并自行承担由此可能产生的所有风险和责任。作者对读者因阅读本文而造成的任何直接或间接的损失或损害概不负责。</p>
-<hr>
-<p>END</p>
+    <title>测试文章</title>
+    <url>/2023/04/27/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<p>Test测试</p>
+<!-- more -->  
+<p><img src="/images/test.jpg" alt="图片" loading="lazy"></p>
 ]]></content>
-      <categories>
-        <category>计算机知识</category>
-      </categories>
       <tags>
         <tag>原创</tag>
-        <tag>电脑技术</tag>
       </tags>
   </entry>
   <entry>
@@ -4225,17 +4181,6 @@ Shell选项:hB<br>
       </tags>
   </entry>
   <entry>
-    <title>测试文章</title>
-    <url>/2023/04/27/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<p>Test测试</p>
-<!-- more -->  
-<p><img src="/images/test.jpg" alt="图片" loading="lazy"></p>
-]]></content>
-      <tags>
-        <tag>原创</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>湖北飞young算号器</title>
     <url>/2023/06/13/%E6%B9%96%E5%8C%97%E9%A3%9Eyoung%E7%AE%97%E5%8F%B7%E5%99%A8/</url>
     <content><![CDATA[<hr>
@@ -4288,30 +4233,6 @@ Shell选项:hB<br>
       </tags>
   </entry>
   <entry>
-    <title>记一次电脑启动原神蓝屏解决方案</title>
-    <url>/2023/05/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B5%E8%84%91%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%A5%9E%E8%93%9D%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
-    <content><![CDATA[<ul>
-<li>
-<p>原因：</p>
-<p>电脑启动原神时蓝屏，退出代码为 kernel-security_check_failure（内核安全检查失败）</p>
-</li>
-<li>
-<p>解决方法：</p>
-<p>进入设置 windows 安全中心将内核隔离的内核模式硬件强制堆栈保护关闭即可</p>
-</li>
-</ul>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>编程技巧</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>计算机</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>记一次打暑假工的经历</title>
     <url>/2023/06/28/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%89%93%E6%9A%91%E5%81%87%E5%B7%A5%E7%9A%84%E7%BB%8F%E5%8E%86/</url>
     <content><![CDATA[<p>一切的不顺，全都来之于能力的不足</p>
@@ -4345,6 +4266,30 @@ Shell选项:hB<br>
         <tag>原创</tag>
         <tag>记录</tag>
         <tag>暑假工</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记一次电脑启动原神蓝屏解决方案</title>
+    <url>/2023/05/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B5%E8%84%91%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%A5%9E%E8%93%9D%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<ul>
+<li>
+<p>原因：</p>
+<p>电脑启动原神时蓝屏，退出代码为 kernel-security_check_failure（内核安全检查失败）</p>
+</li>
+<li>
+<p>解决方法：</p>
+<p>进入设置 windows 安全中心将内核隔离的内核模式硬件强制堆栈保护关闭即可</p>
+</li>
+</ul>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>编程技巧</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>计算机</tag>
       </tags>
   </entry>
   <entry>
@@ -4394,6 +4339,61 @@ Shell选项:hB<br>
       <tags>
         <tag>原创</tag>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>可道云桌面搭建笔记</title>
+    <url>/2023/09/08/%E5%8F%AF%E9%81%93%E4%BA%91%E6%A1%8C%E9%9D%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="可道云桌面搭建"><a class="header-anchor" href="#可道云桌面搭建">¶</a>可道云桌面搭建</h4>
+<ol>
+<li>先创建 dockerfile-two 及 kod-two 文件夹（因为我之前搭过一遍，但是忘记截图了，所以重搭一遍，防止文件名重复所以用 -two ）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p dockerfile-two/kod-two</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP6lYIe.png" alt="pP6lYIe.png" loading="lazy"></p>
+<ol start="2">
+<li>使用 scp 将所必要的文件传到服务器上（请务必不要照抄我的命令）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp .\source\* root@8.222.153.91:/root/dockerfile-two/kod-two/</span><br></pre></td></tr></table></figure>
+<ul>
+<li>实在不会上传那就用下面的这条命令吧（复制粘贴总会吧？）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl -O https://zero-li.fun/资源/source.tar ; tar -xf source.tar ; mv -f source/* ./ ; rm -rf sour*</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP61SeK.png" alt="pP61SeK.png" loading="lazy"></p>
+<ol start="3">
+<li>使用 vim 创建 dockerfile 文件并填入以下内容：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim dockerfile</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FROM centos:centos7    # 改为你的基础镜像</span><br><span class="line"></span><br><span class="line">ADD Centos-7.repo /etc/yum.repos.d/</span><br><span class="line"></span><br><span class="line">ADD epel-7.repo /etc/yum.repos.d/</span><br><span class="line"></span><br><span class="line">RUN yum -y install nginx php-fpm php-gd php-mbstring unzip</span><br><span class="line"></span><br><span class="line">RUN sed -i &#x27;/^user/c user=nginx&#x27; /etc/php-fpm.d/www.conf</span><br><span class="line"></span><br><span class="line">RUN sed -i &#x27;/^group/c group=nginx&#x27; /etc/php-fpm.d/www.conf</span><br><span class="line"></span><br><span class="line">COPY nginx.conf /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">RUN mkdir /code</span><br><span class="line"></span><br><span class="line">WORKDIR /code/</span><br><span class="line"></span><br><span class="line">COPY kodexplorer4.40.zip .</span><br><span class="line"></span><br><span class="line">RUN unzip kodexplorer4.40.zip</span><br><span class="line"></span><br><span class="line">RUN chown -R nginx.nginx .</span><br><span class="line"></span><br><span class="line">ADD init.sh /init.sh</span><br><span class="line"></span><br><span class="line">EXPOSE 80</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [&quot;/bin/bash&quot;,&quot;/init.sh&quot;]</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP68PxA.png" alt="pP68PxA.png" loading="lazy"></p>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP68krt.png" alt="pP68krt.png" loading="lazy"></p>
+<ol start="4">
+<li>然后用 vim 创建一个名为 <a href="http://init.sh">init.sh</a> 的 shell 脚本并写入以下内容：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim init.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">  </span><br><span class="line">php-fpm -D</span><br><span class="line"></span><br><span class="line">echo &quot;$1&quot; &gt;&gt; /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">nginx -g &#x27;daemon off;&#x27;</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP68UG4.png" alt="pP68UG4.png" loading="lazy"></p>
+<ol start="5">
+<li>之后执行以下命令</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker build -t kod:v1 . ; docker run -itd -p 25567:80 kod:v1 &#x27;#testtest&#x27;</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP68sZ6.png" alt="pP68sZ6.png" loading="lazy"></p>
+<ol start="6">
+<li>
+<p>在浏览器访问</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">你的IP:25567/kodexplorer4.40/index.php</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP68ydK.png" alt="pP68ydK.png" loading="lazy"></p>
+<hr>
+<p>示例：<a href="http://8.222.153.91:25569/kodexplorer4.40/index.php?user/login">可道云桌面</a></p>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>可道云</tag>
       </tags>
   </entry>
   <entry>
