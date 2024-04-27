@@ -749,61 +749,6 @@ IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
       </tags>
   </entry>
   <entry>
-    <title>JSON</title>
-    <url>/2024/04/03/JSON/</url>
-    <content><![CDATA[<h3 id="JSON-简介"><a class="header-anchor" href="#JSON-简介">¶</a>JSON 简介</h3>
-<blockquote>
-<p><code>JSON</code>: <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation( <code>JavaScript</code> 对象表示法)</p>
-<p><code>JSON</code> 是存储和交换文本信息的语法，类似 <code>XML</code>。</p>
-<p><code>JSON</code> 比 <code>XML</code> 更小、更快，更易解析。</p>
-<p><code>JSON</code> 易于人阅读和编写。</p>
-<p><code>C</code>、<code>Python</code>、<code>C++</code>、<code>Java</code>、<code>PHP</code>、<code>Go</code>等编程语言都支持 <code>JSON</code></p>
-</blockquote>
-<p>例子：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;sites&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;bing&quot;</span> <span class="punctuation">,</span> <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span><span class="string">&quot;www.bing.com&quot;</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span> </span><br><span class="line">    <span class="punctuation">&#123;</span> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;google&quot;</span> <span class="punctuation">,</span> <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span><span class="string">&quot;www.google.com&quot;</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span> </span><br><span class="line">    <span class="punctuation">&#123;</span> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;baidu&quot;</span> <span class="punctuation">,</span> <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span><span class="string">&quot;www.baidu.com&quot;</span> <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="对象"><a class="header-anchor" href="#对象">¶</a>对象</h3>
-<p>在 <code>JSON</code> 中使用<code>&#123;&#125;</code>来定义一个对象。左括号<code>&#123;</code>开始，右括号<code>&#125;</code>结束。每个 <code>&quot;键&quot;</code> 后跟一个冒号 <code>:</code> ，名称/值对使用逗号 <code>,</code> 分隔</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;张三&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span><span class="number">20</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h4 id="嵌套对象"><a class="header-anchor" href="#嵌套对象">¶</a>嵌套对象</h4>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;num&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;student&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;namelist&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;name1&quot;</span><span class="punctuation">:</span><span class="string">&quot;张三&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;name2&quot;</span><span class="punctuation">:</span><span class="string">&quot;李四&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;agelist&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;age1&quot;</span><span class="punctuation">:</span><span class="number">20</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;age2&quot;</span><span class="punctuation">:</span><span class="number">21</span></span><br><span class="line">		<span class="punctuation">&#125;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="数组"><a class="header-anchor" href="#数组">¶</a>数组</h3>
-<p>中括号 <code>[]</code> 保存的数组是值（<code>value</code>）的有序集合。一个数组以左中括号 <code>[</code> 开始， 右中括号 <code>]</code> 结束，值之间使用逗号 <code>,</code> 分隔。</p>
-<p>值（<code>value</code>）可以是双引号括起来的字符串（<code>string</code>）、数值(<code>number</code>)、<code>true</code>、<code>false</code>、 <code>null</code>、对象（<code>object</code>）或者数组（<code>array</code>），它们是可以嵌套，值不能为键值对。</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span><span class="string">&quot;str&quot;</span><span class="punctuation">,</span><span class="number">100</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-<h4 id="嵌套数组"><a class="header-anchor" href="#嵌套数组">¶</a>嵌套数组</h4>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;num&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;张三&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">20</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;李四&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">21</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-<h3 id="JSON-parse"><a class="header-anchor" href="#JSON-parse">¶</a><code>JSON.parse()</code></h3>
-<p>此方法为 <code>JavaScript</code> 的内置函数，用于将 <code>JSON</code> 字符串解析为原生 <code>JavaScript</code> 对象或值</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">JSON</span>.<span class="title function_">parse</span>(text[, reviver])</span><br></pre></td></tr></table></figure>
-<p><code>text</code></p>
-<p>​	要被解析成 <code>JavaScript</code> 值的字符串</p>
-<p><code>reviver</code>(可选)</p>
-<p>​	转换器，如果传入该参数 (函数)，可以用来修改解析生成的原始值，调用时机在 <code>parse</code> 函数返回之前</p>
-<p>返回值</p>
-<p>​	与给定的 <code>JSON text</code> 相对应的 <code>Object</code>、<code>Array</code>、<code>string</code>、<code>number</code>、<code>boolean</code> 或者 <code>null</code> 值</p>
-<p>异常</p>
-<p>​	若传入的字符串不符合 JSON 规范，则会抛出此异常</p>
-<p>使用 <code>reviver</code> 函数</p>
-<blockquote>
-<p>如果指定了 <code>reviver</code> 函数，则解析出的 <code>JavaScript</code> 值（解析值）会经过一次转换后才将被最终返回（返回值）。更具体点讲就是：解析值本身以及它所包含的所有属性，会按照一定的顺序（从最最里层的属性开始，一级级往外，最终到达顶层，也就是解析值本身）分别的去调用 <code>reviver</code> 函数，在调用过程中，当前属性所属的对象会作为 <code>this</code> 值，当前属性名和属性值会分别作为第一个和第二个参数传入 <code>reviver</code> 中。如果 <code>reviver</code> 返回 <code>undefined</code>，则当前属性会从所属对象中删除，如果返回了其他值，则返回的值会成为当前属性新的属性值。</p>
-<p>当遍历到最顶层的值（解析值）时，传入 <code>reviver</code> 函数的参数会是空字符串 <code>&quot;&quot;</code>（因为此时已经没有真正的属性）和当前的解析值（有可能已经被修改过了），当前的 <code>this</code> 值会是 <code>&#123;&quot;&quot;: 修改过的解析值&#125;</code>，在编写 <code>reviver</code> 函数时，要注意到这个特例。（这个函数的遍历顺序依照：从最内层开始，按照层级顺序，依次向外遍历）</p>
-</blockquote>
-<p>更多请参阅:</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse() - JavaScript | MDN (mozilla.org)</a></p>
-<p><a href="https://www.runoob.com/json/json-tutorial.html">JSON 教程 | 菜鸟教程 (runoob.com)</a></p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>前端学习笔记</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>JavaScript</tag>
-        <tag>JSON</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JUnit</title>
     <url>/2024/03/11/JUnit/</url>
     <content><![CDATA[<h3 id="JUnit-介绍"><a class="header-anchor" href="#JUnit-介绍">¶</a>JUnit 介绍</h3>
@@ -971,6 +916,61 @@ IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
         <tag>原创</tag>
         <tag>java</tag>
         <tag>junit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JSON</title>
+    <url>/2024/04/03/JSON/</url>
+    <content><![CDATA[<h3 id="JSON-简介"><a class="header-anchor" href="#JSON-简介">¶</a>JSON 简介</h3>
+<blockquote>
+<p><code>JSON</code>: <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation( <code>JavaScript</code> 对象表示法)</p>
+<p><code>JSON</code> 是存储和交换文本信息的语法，类似 <code>XML</code>。</p>
+<p><code>JSON</code> 比 <code>XML</code> 更小、更快，更易解析。</p>
+<p><code>JSON</code> 易于人阅读和编写。</p>
+<p><code>C</code>、<code>Python</code>、<code>C++</code>、<code>Java</code>、<code>PHP</code>、<code>Go</code>等编程语言都支持 <code>JSON</code></p>
+</blockquote>
+<p>例子：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;sites&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;bing&quot;</span> <span class="punctuation">,</span> <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span><span class="string">&quot;www.bing.com&quot;</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span> </span><br><span class="line">    <span class="punctuation">&#123;</span> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;google&quot;</span> <span class="punctuation">,</span> <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span><span class="string">&quot;www.google.com&quot;</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span> </span><br><span class="line">    <span class="punctuation">&#123;</span> <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;baidu&quot;</span> <span class="punctuation">,</span> <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span><span class="string">&quot;www.baidu.com&quot;</span> <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="对象"><a class="header-anchor" href="#对象">¶</a>对象</h3>
+<p>在 <code>JSON</code> 中使用<code>&#123;&#125;</code>来定义一个对象。左括号<code>&#123;</code>开始，右括号<code>&#125;</code>结束。每个 <code>&quot;键&quot;</code> 后跟一个冒号 <code>:</code> ，名称/值对使用逗号 <code>,</code> 分隔</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;张三&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span><span class="number">20</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="嵌套对象"><a class="header-anchor" href="#嵌套对象">¶</a>嵌套对象</h4>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;num&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;student&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;namelist&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;name1&quot;</span><span class="punctuation">:</span><span class="string">&quot;张三&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;name2&quot;</span><span class="punctuation">:</span><span class="string">&quot;李四&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;agelist&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;age1&quot;</span><span class="punctuation">:</span><span class="number">20</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;age2&quot;</span><span class="punctuation">:</span><span class="number">21</span></span><br><span class="line">		<span class="punctuation">&#125;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="数组"><a class="header-anchor" href="#数组">¶</a>数组</h3>
+<p>中括号 <code>[]</code> 保存的数组是值（<code>value</code>）的有序集合。一个数组以左中括号 <code>[</code> 开始， 右中括号 <code>]</code> 结束，值之间使用逗号 <code>,</code> 分隔。</p>
+<p>值（<code>value</code>）可以是双引号括起来的字符串（<code>string</code>）、数值(<code>number</code>)、<code>true</code>、<code>false</code>、 <code>null</code>、对象（<code>object</code>）或者数组（<code>array</code>），它们是可以嵌套，值不能为键值对。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span><span class="string">&quot;str&quot;</span><span class="punctuation">,</span><span class="number">100</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<h4 id="嵌套数组"><a class="header-anchor" href="#嵌套数组">¶</a>嵌套数组</h4>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;num&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;张三&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">20</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;李四&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">21</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<h3 id="JSON-parse"><a class="header-anchor" href="#JSON-parse">¶</a><code>JSON.parse()</code></h3>
+<p>此方法为 <code>JavaScript</code> 的内置函数，用于将 <code>JSON</code> 字符串解析为原生 <code>JavaScript</code> 对象或值</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">JSON</span>.<span class="title function_">parse</span>(text[, reviver])</span><br></pre></td></tr></table></figure>
+<p><code>text</code></p>
+<p>​	要被解析成 <code>JavaScript</code> 值的字符串</p>
+<p><code>reviver</code>(可选)</p>
+<p>​	转换器，如果传入该参数 (函数)，可以用来修改解析生成的原始值，调用时机在 <code>parse</code> 函数返回之前</p>
+<p>返回值</p>
+<p>​	与给定的 <code>JSON text</code> 相对应的 <code>Object</code>、<code>Array</code>、<code>string</code>、<code>number</code>、<code>boolean</code> 或者 <code>null</code> 值</p>
+<p>异常</p>
+<p>​	若传入的字符串不符合 JSON 规范，则会抛出此异常</p>
+<p>使用 <code>reviver</code> 函数</p>
+<blockquote>
+<p>如果指定了 <code>reviver</code> 函数，则解析出的 <code>JavaScript</code> 值（解析值）会经过一次转换后才将被最终返回（返回值）。更具体点讲就是：解析值本身以及它所包含的所有属性，会按照一定的顺序（从最最里层的属性开始，一级级往外，最终到达顶层，也就是解析值本身）分别的去调用 <code>reviver</code> 函数，在调用过程中，当前属性所属的对象会作为 <code>this</code> 值，当前属性名和属性值会分别作为第一个和第二个参数传入 <code>reviver</code> 中。如果 <code>reviver</code> 返回 <code>undefined</code>，则当前属性会从所属对象中删除，如果返回了其他值，则返回的值会成为当前属性新的属性值。</p>
+<p>当遍历到最顶层的值（解析值）时，传入 <code>reviver</code> 函数的参数会是空字符串 <code>&quot;&quot;</code>（因为此时已经没有真正的属性）和当前的解析值（有可能已经被修改过了），当前的 <code>this</code> 值会是 <code>&#123;&quot;&quot;: 修改过的解析值&#125;</code>，在编写 <code>reviver</code> 函数时，要注意到这个特例。（这个函数的遍历顺序依照：从最内层开始，按照层级顺序，依次向外遍历）</p>
+</blockquote>
+<p>更多请参阅:</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse() - JavaScript | MDN (mozilla.org)</a></p>
+<p><a href="https://www.runoob.com/json/json-tutorial.html">JSON 教程 | 菜鸟教程 (runoob.com)</a></p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>JavaScript</tag>
+        <tag>JSON</tag>
       </tags>
   </entry>
   <entry>
@@ -2581,6 +2581,106 @@ frp 是一个高性能的反向代理应用，支持 tcp, udp, http, https 协�
       </tags>
   </entry>
   <entry>
+    <title>hexo及SSL获取</title>
+    <url>/2023/04/30/hexo%E7%9A%84%E9%83%A8%E7%BD%B2%E5%8F%8ASSL%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h4 id="注意：本文只记录大概过程-具体教程百度上都有"><a class="header-anchor" href="#注意：本文只记录大概过程-具体教程百度上都有">¶</a>注意：本文只记录大概过程( 具体教程百度上都有 )</h4>
+<hr>
+<h5 id="hexo"><a class="header-anchor" href="#hexo">¶</a>hexo</h5>
+<p>这是一个开源的博客框架，你可以通过这个框架快速搭建属于你的个人博客</p>
+<blockquote>
+<p>官网:<a href="https://hexo.io/zh-cn/">Hexo</a></p>
+</blockquote>
+<p>跟着官方文档走就能搭好(大概吧)</p>
+<p>搭建个人博客首先要一个托管平台，下面我就说两个常见的:</p>
+<p>1.自掏腰包买个云服务器(本站就是通过这种方式搭建的)，这种方式对于我们这种搭建个人博客的群体而言并不是很划算，毕竟一个云服务器少说几十，多则上百(买了服务器，我的钱包已经瘪瘪的啦😭)</p>
+<p>2.使用那些免费的托管平台，比如github pages，这个的话好处是它是免费的，但是由于它的服务器在国外，所以有点时灵时不灵的，当然，你要是挂个梯子，啥网站上不去勒🤨</p>
+<p>关于hexo怎么搭建，我只说一下大致搭建流程，具体的网上的教程比我讲的详细多了，我就不多说了</p>
+<p>首先你要在本地(windows)下一个node.js(应该不会有人下错吧？)，毕竟这个框架是基于这个东西运行的，至于版本最好选择大于12的版本</p>
+<blockquote>
+<p>官网：<a href="https://nodejs.org/zh-cn">Node.js (nodejs.org)</a>( 官网有中文版，这点还是挺不错的 )</p>
+</blockquote>
+<p>下载好之后直接无脑next，然后在控制台用<code>node -v;npm -v </code>检查版本来看是否安装成功</p>
+<p><img src="https://s1.ax1x.com/2023/04/30/p93OgEV.png" alt="p93OgEV.png" loading="lazy"></p>
+<p>下载好之后直接使用<code>npm install -g hexo-cli</code>安装hexo</p>
+<p>装好之后用<code>hexo -v</code>查看版本</p>
+<p>然后创建一个网站，将hexo-blog名换成你要创建的网站名称即可</p>
+<p><code>hexo init hexo-blog</code></p>
+<p>然后进入hexo-blog文件夹,比如我的在D盘的hexo目录下</p>
+<p><code>cd D:\hexo\hexo-blog</code></p>
+<p><img src="https://s1.ax1x.com/2023/04/30/p93O7Hx.png" alt="p93O7Hx.png" loading="lazy"></p>
+<p>将网站初始化</p>
+<p><code>npm install</code></p>
+<p>使用<code>hexo g</code>来生成静态资源，生成的资源在public下，生成静态资源之前可以先清除缓存<code>hexo clean</code></p>
+<p>用<code>hexo s</code>来开启服务器端</p>
+<p><img src="https://s1.ax1x.com/2023/04/30/p93OqUK.png" alt="p93OqUK.png" loading="lazy"></p>
+<p><img src="https://s1.ax1x.com/2023/04/30/p93OouR.png" alt="p93OouR.png" loading="lazy"></p>
+<p>启动之后可以用ctrl加鼠标左键点击<code>http://localhost:4000/</code>来在本地查看网页</p>
+<p>至于为什么你们的网站和我的不一样，因为我更改了主题，关于主题你们可以自行百度，毕竟每个主题的配置文档都不一样</p>
+<p>至此hexo本地搭建就完成了</p>
+<hr>
+<h5 id="关于怎么部署"><a class="header-anchor" href="#关于怎么部署">¶</a>关于怎么部署</h5>
+<p>云服务器的部署就直接将生成的静态文件全部上传到云服务器上就行了（<s>git弄不会</s>）</p>
+<blockquote>
+<p>Time：2023.9.11</p>
+<p>也可以看看下面这篇博客:</p>
+<p><a href="http://t.csdn.cn/QSZ5G">blog</a></p>
+<p>至于怎么指定 git push 时登录的端口，将 config.yml 文件的 deploy 里的 repo 改为以下格式：</p>
+<blockquote>
+<p>ssh://&lt;你要登录的用户名&gt;@&lt;你的服务器ip&gt;:&lt;你要使用的 SSH 端口号&gt;/home/&lt;你要登录的用户目录&gt;/&lt;远端 git 仓库&gt;</p>
+</blockquote>
+<p>例如：</p>
+<blockquote>
+<p>ssh://git@xxxxxx:2000/home/git/blog.git</p>
+</blockquote>
+</blockquote>
+<p>github pages的部署你要先创建一个仓库，然后再设置里面开启pages功能，开启需要一点时间，可以再操作种查看进度，具体的直接百度吧</p>
+<hr>
+<h5 id="SSL"><a class="header-anchor" href="#SSL">¶</a>SSL</h5>
+<p>本章重点来了，首先是ssl是什么，以及它和https的关系</p>
+<ul>
+<li>
+<p>它是一个安全套接层协议(Secure Sockets Layer)，用来在服务器和浏览器之间进行安全的数据传输和身份认证</p>
+</li>
+<li>
+<p>https其实就是使用了ssl的http协议，至于为什么使用https而不使用http，就是因为http是使用明文传输数据的，这种方式极其容易被第三方截获和修改，而且以为它是明文的原因，第三方攻击者可以直接读懂其中的信息（比如某校的校园网程序，就是通过http来传输的，我可以直接通过抓包来获取它加密后的密码，如果它改用https，那我宿舍就要为网络发愁咯）</p>
+</li>
+</ul>
+<p>既然介绍完ssl，那现在说说怎么获取吧，关于ssl的获取大致分为两种:</p>
+<ul>
+<li>
+<p>直接使用你的钞能力买买买</p>
+</li>
+<li>
+<p>去找免费的用( <em><s>白嫖</s></em> )</p>
+</li>
+</ul>
+<p>像我这种穷逼当然选择第二种啦</p>
+<p>本站使用的就是阿里云的免费ssl证书，你也可以使用别的平台的免费证书，比如腾讯云，华为云，百度云等</p>
+<p>关于怎么获取</p>
+<ul>
+<li>首先你要有一个阿里云的账号，登录之后搜索ssl证书，之后按照截图点击购买免费证书</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2023/04/30/p93OvgH.png" alt="p93OvgH.png" loading="lazy"></p>
+<p>阿里的ssl免费证书每年都能购买(好像吧)，一次能买20张，想多买就要给钱钱咯</p>
+<p>使用的话也挺简单的，如果你是阿里云的话可以直接部署，至于怎么部署就需要你慢慢研究啦</p>
+<p>我是直接下载的证书来进行部署的，可以下载的类型挺多的</p>
+<p><img src="https://s1.ax1x.com/2023/04/30/p93OTD1.png" alt="p93OTD1.png" loading="lazy"></p>
+<p>下载好之后是一个zip的压缩包，里面有key和pem为后缀的文件(不同类型有所差异)</p>
+<p>可以在宝塔面板里部署下载的证书（其实就是把对应文件里的内容复制过去）</p>
+<p><img src="https://s1.ax1x.com/2023/04/30/p93ObE6.png" alt="p93ObE6.png" loading="lazy"></p>
+<p>然后保存就可以了</p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>编程技巧</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>harbor本地仓库搭建</title>
     <url>/2023/09/12/harbor%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h4 id="创建-Harbor-仓库"><a class="header-anchor" href="#创建-Harbor-仓库">¶</a>创建 Harbor 仓库</h4>
@@ -2681,106 +2781,6 @@ frp 是一个高性能的反向代理应用，支持 tcp, udp, http, https 协�
         <tag>原创</tag>
         <tag>Docker</tag>
         <tag>harbor</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo及SSL获取</title>
-    <url>/2023/04/30/hexo%E7%9A%84%E9%83%A8%E7%BD%B2%E5%8F%8ASSL%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<h4 id="注意：本文只记录大概过程-具体教程百度上都有"><a class="header-anchor" href="#注意：本文只记录大概过程-具体教程百度上都有">¶</a>注意：本文只记录大概过程( 具体教程百度上都有 )</h4>
-<hr>
-<h5 id="hexo"><a class="header-anchor" href="#hexo">¶</a>hexo</h5>
-<p>这是一个开源的博客框架，你可以通过这个框架快速搭建属于你的个人博客</p>
-<blockquote>
-<p>官网:<a href="https://hexo.io/zh-cn/">Hexo</a></p>
-</blockquote>
-<p>跟着官方文档走就能搭好(大概吧)</p>
-<p>搭建个人博客首先要一个托管平台，下面我就说两个常见的:</p>
-<p>1.自掏腰包买个云服务器(本站就是通过这种方式搭建的)，这种方式对于我们这种搭建个人博客的群体而言并不是很划算，毕竟一个云服务器少说几十，多则上百(买了服务器，我的钱包已经瘪瘪的啦😭)</p>
-<p>2.使用那些免费的托管平台，比如github pages，这个的话好处是它是免费的，但是由于它的服务器在国外，所以有点时灵时不灵的，当然，你要是挂个梯子，啥网站上不去勒🤨</p>
-<p>关于hexo怎么搭建，我只说一下大致搭建流程，具体的网上的教程比我讲的详细多了，我就不多说了</p>
-<p>首先你要在本地(windows)下一个node.js(应该不会有人下错吧？)，毕竟这个框架是基于这个东西运行的，至于版本最好选择大于12的版本</p>
-<blockquote>
-<p>官网：<a href="https://nodejs.org/zh-cn">Node.js (nodejs.org)</a>( 官网有中文版，这点还是挺不错的 )</p>
-</blockquote>
-<p>下载好之后直接无脑next，然后在控制台用<code>node -v;npm -v </code>检查版本来看是否安装成功</p>
-<p><img src="https://s1.ax1x.com/2023/04/30/p93OgEV.png" alt="p93OgEV.png" loading="lazy"></p>
-<p>下载好之后直接使用<code>npm install -g hexo-cli</code>安装hexo</p>
-<p>装好之后用<code>hexo -v</code>查看版本</p>
-<p>然后创建一个网站，将hexo-blog名换成你要创建的网站名称即可</p>
-<p><code>hexo init hexo-blog</code></p>
-<p>然后进入hexo-blog文件夹,比如我的在D盘的hexo目录下</p>
-<p><code>cd D:\hexo\hexo-blog</code></p>
-<p><img src="https://s1.ax1x.com/2023/04/30/p93O7Hx.png" alt="p93O7Hx.png" loading="lazy"></p>
-<p>将网站初始化</p>
-<p><code>npm install</code></p>
-<p>使用<code>hexo g</code>来生成静态资源，生成的资源在public下，生成静态资源之前可以先清除缓存<code>hexo clean</code></p>
-<p>用<code>hexo s</code>来开启服务器端</p>
-<p><img src="https://s1.ax1x.com/2023/04/30/p93OqUK.png" alt="p93OqUK.png" loading="lazy"></p>
-<p><img src="https://s1.ax1x.com/2023/04/30/p93OouR.png" alt="p93OouR.png" loading="lazy"></p>
-<p>启动之后可以用ctrl加鼠标左键点击<code>http://localhost:4000/</code>来在本地查看网页</p>
-<p>至于为什么你们的网站和我的不一样，因为我更改了主题，关于主题你们可以自行百度，毕竟每个主题的配置文档都不一样</p>
-<p>至此hexo本地搭建就完成了</p>
-<hr>
-<h5 id="关于怎么部署"><a class="header-anchor" href="#关于怎么部署">¶</a>关于怎么部署</h5>
-<p>云服务器的部署就直接将生成的静态文件全部上传到云服务器上就行了（<s>git弄不会</s>）</p>
-<blockquote>
-<p>Time：2023.9.11</p>
-<p>也可以看看下面这篇博客:</p>
-<p><a href="http://t.csdn.cn/QSZ5G">blog</a></p>
-<p>至于怎么指定 git push 时登录的端口，将 config.yml 文件的 deploy 里的 repo 改为以下格式：</p>
-<blockquote>
-<p>ssh://&lt;你要登录的用户名&gt;@&lt;你的服务器ip&gt;:&lt;你要使用的 SSH 端口号&gt;/home/&lt;你要登录的用户目录&gt;/&lt;远端 git 仓库&gt;</p>
-</blockquote>
-<p>例如：</p>
-<blockquote>
-<p>ssh://git@xxxxxx:2000/home/git/blog.git</p>
-</blockquote>
-</blockquote>
-<p>github pages的部署你要先创建一个仓库，然后再设置里面开启pages功能，开启需要一点时间，可以再操作种查看进度，具体的直接百度吧</p>
-<hr>
-<h5 id="SSL"><a class="header-anchor" href="#SSL">¶</a>SSL</h5>
-<p>本章重点来了，首先是ssl是什么，以及它和https的关系</p>
-<ul>
-<li>
-<p>它是一个安全套接层协议(Secure Sockets Layer)，用来在服务器和浏览器之间进行安全的数据传输和身份认证</p>
-</li>
-<li>
-<p>https其实就是使用了ssl的http协议，至于为什么使用https而不使用http，就是因为http是使用明文传输数据的，这种方式极其容易被第三方截获和修改，而且以为它是明文的原因，第三方攻击者可以直接读懂其中的信息（比如某校的校园网程序，就是通过http来传输的，我可以直接通过抓包来获取它加密后的密码，如果它改用https，那我宿舍就要为网络发愁咯）</p>
-</li>
-</ul>
-<p>既然介绍完ssl，那现在说说怎么获取吧，关于ssl的获取大致分为两种:</p>
-<ul>
-<li>
-<p>直接使用你的钞能力买买买</p>
-</li>
-<li>
-<p>去找免费的用( <em><s>白嫖</s></em> )</p>
-</li>
-</ul>
-<p>像我这种穷逼当然选择第二种啦</p>
-<p>本站使用的就是阿里云的免费ssl证书，你也可以使用别的平台的免费证书，比如腾讯云，华为云，百度云等</p>
-<p>关于怎么获取</p>
-<ul>
-<li>首先你要有一个阿里云的账号，登录之后搜索ssl证书，之后按照截图点击购买免费证书</li>
-</ul>
-<p><img src="https://s1.ax1x.com/2023/04/30/p93OvgH.png" alt="p93OvgH.png" loading="lazy"></p>
-<p>阿里的ssl免费证书每年都能购买(好像吧)，一次能买20张，想多买就要给钱钱咯</p>
-<p>使用的话也挺简单的，如果你是阿里云的话可以直接部署，至于怎么部署就需要你慢慢研究啦</p>
-<p>我是直接下载的证书来进行部署的，可以下载的类型挺多的</p>
-<p><img src="https://s1.ax1x.com/2023/04/30/p93OTD1.png" alt="p93OTD1.png" loading="lazy"></p>
-<p>下载好之后是一个zip的压缩包，里面有key和pem为后缀的文件(不同类型有所差异)</p>
-<p>可以在宝塔面板里部署下载的证书（其实就是把对应文件里的内容复制过去）</p>
-<p><img src="https://s1.ax1x.com/2023/04/30/p93ObE6.png" alt="p93ObE6.png" loading="lazy"></p>
-<p>然后保存就可以了</p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>编程技巧</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -3510,6 +3510,83 @@ Shell选项:hB<br>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>springboot多模块开发</title>
+    <url>/2024/04/22/springboot%E5%A4%9A%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="介绍"><a class="header-anchor" href="#介绍">¶</a>介绍</h3>
+<p>为了解决项目越来越大的问题，使用了多模块开发来使层次更加清晰。</p>
+<p>架构大致如下：</p>
+<p><img src="https://s21.ax1x.com/2024/04/15/pFvWf3j.png" alt="springboot多模块开发1" loading="lazy"></p>
+<h3 id="流程"><a class="header-anchor" href="#流程">¶</a>流程</h3>
+<p>（1）新建 <code>springboot</code> 项目；<br>
+（2）在新建后的 <code>springboot</code> 项目中新建多个 <code>module(模块)</code>；<br>
+（3）修改 <code>pom</code> 文件以及删除多余的文件及文件夹；<br>
+（4）将原项目的代码放进去；</p>
+<h3 id="多模块开发的坑"><a class="header-anchor" href="#多模块开发的坑">¶</a>多模块开发的坑</h3>
+<p>由于第一次使用多模块开发，并不熟练，所以踩了很多坑，这里记录一下</p>
+<ol>
+<li>访问后台接口报<code>404</code></li>
+</ol>
+<p>​	访问所有接口都报404，这是由于<code>spring</code>没有扫描到你写的<code>bean</code>所导致的，一般来说，<code>spring</code> 容器只会扫描启动类所在的包以及其下的子包中的所有类，但是开发不会将所有的模块都放在一个包下面，所以如果你<code>service</code>、<code>dao</code>等模块放在了启动类所在的包之外，那么<code>spring</code>就不会去扫描注册这些<code>bean</code></p>
+<p>​	解决方法是在启动类的<code>@SpringBootApplication</code>注解上面加上<code>scanBasePackages=&#123;&quot;xxx.xxxxx.*&quot;&#125;</code></p>
+<p>​	<code>xxx.xxxxx</code> 是你所共有的包，就比如说我所有的模块都是以 <code>com.example.xxx</code> 开始。</p>
+<p>​	如：</p>
+<p><img src="https://s21.ax1x.com/2024/04/15/pFvfnqP.png" alt="springboot多模块开发2" loading="lazy"></p>
+<p>​	要查看 <code>spring</code> 有没有注册你的 <code>bean</code> 可以到服务的 <code>Actuator</code> 中查看</p>
+<p><img src="https://s21.ax1x.com/2024/04/15/pFv5css.png" alt="springboot多模块开发3" loading="lazy"></p>
+<ol start="2">
+<li>
+<p><code>springboot</code>多模块的<code>@Resource</code>、<code>@Autowired</code> 注入为<code>NULL</code></p>
+<p>方法一：</p>
+</li>
+</ol>
+<p>​	导致注入失败的原因是因为使用了 <code>new</code> 去使用这个方法，只需要将此类自动注入即可解决问题</p>
+<p>报错的代码:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GetStudentController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping(path = &quot;/GetStudent&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> JsonResult&lt;String&gt; <span class="title function_">getStudent</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">var</span> <span class="variable">studentInformation</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">getStudent</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JsonResult</span>&lt;&gt;(studentInformation.getStudent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改之后的：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GetStudentController</span> &#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    getStudent studentInformation;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(path = &quot;/GetStudent&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> JsonResult&lt;String&gt; <span class="title function_">getStudent</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JsonResult</span>&lt;&gt;(studentInformation.getStudent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​	方法二：</p>
+<p>​	封装一个 <code>StaticMethodGetBean</code> 的类，此类实现了 <code>ApplicationContextAware</code> 接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StaticMethodGetBean</span>&lt;T&gt; <span class="keyword">implements</span> <span class="title class_">ApplicationContextAware</span> &#123;</span><br><span class="line">    <span class="comment">// Spring应用上下文，用于访问应用上下文中的bean</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ApplicationContext applicationContext;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置应用上下文。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> applicationContext Spring应用上下文实例</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setApplicationContext</span><span class="params">(ApplicationContext applicationContext)</span> &#123;</span><br><span class="line">        StaticMethodGetBean.applicationContext = applicationContext;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 通过类类型获取应用上下文中的bean。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> clazz 要获取的bean的类类型</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 返回bean的实例，如果不存在则返回null</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> &lt;T&gt; bean的类型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T <span class="title function_">getBean</span><span class="params">(Class&lt;T&gt; clazz)</span> &#123;</span><br><span class="line">        <span class="comment">// 尝试获取bean实例，如果不存在则返回null</span></span><br><span class="line">        <span class="keyword">return</span> applicationContext.getBean(clazz) != <span class="literal">null</span> ? applicationContext.getBean(clazz) : <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在要使用的地方直接调用 <code>getBean</code> 方法获取即可</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GetStudentController</span>&#123;</span><br><span class="line"><span class="meta">@RequestMapping(path = &quot;/GetStudent&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> JsonResult&lt;String&gt; <span class="title function_">getStudent</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">var</span> <span class="variable">studentInformation</span> <span class="operator">=</span> StaticMethodGetBean.getBean(getStudent.class);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JsonResult</span>&lt;&gt;(studentInformation.getStudent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="https://blog.csdn.net/yangyifan0/article/details/130570051">SpringBoot 简单多模块构建_springboot创建多模块项目</a></p>
+<hr>
+<p><em>TODO</em></p>
+]]></content>
+      <categories>
+        <category>spring系列</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>java</tag>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>windows之重装系统</title>
+    <url>/2023/06/17/windows%E4%B9%8B%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h5 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h5>
+<p>之所以写这篇文章，是因为我朋友电脑出问题，把系统重装了一下，其实我在很早之前就写过一篇重装系统的教程，但是是放在了石墨文档上面，那时候还没有自己的个人博客呢（笑）</p>
+<h5 id="正文"><a class="header-anchor" href="#正文">¶</a>正文</h5>
+<p>此文章不会教你怎么装系统，但是我会把我以前写的那篇教程放出来，需要的可以自行下载查看</p>
+<blockquote>
+<p><a href="https://8.222.153.91:39811/down/iS8YyJSjuWpd.docx">下载链接:</a> 提取码:YunYi</p>
+</blockquote>
+<p>至于怎么获取Windows的系统镜像，你可以去阿里的国内镜像点去找，或者清华的镜像点也行。我并不会提供镜像的下载，毕竟一个镜像就有好几个g，我这小水管带宽可供不起.</p>
+<hr>
+<p>顺便吐槽一下，我朋友那电脑，真是大毛病没有，小毛病不断，不是网卡驱动掉了，就是电脑蓝屏，属实买的血亏。</p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>计算机知识</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>电脑技术</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>spring开发注解集合</title>
     <url>/2024/04/16/spring%E5%BC%80%E5%8F%91%E6%B3%A8%E8%A7%A3%E9%9B%86%E5%90%88/</url>
     <content><![CDATA[<h3 id="Spring-的常用注解"><a class="header-anchor" href="#Spring-的常用注解">¶</a>Spring 的常用注解</h3>
@@ -3745,83 +3822,6 @@ Shell选项:hB<br>
         <tag>原创</tag>
         <tag>java</tag>
         <tag>spring注解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>springboot多模块开发</title>
-    <url>/2024/04/22/springboot%E5%A4%9A%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h3 id="介绍"><a class="header-anchor" href="#介绍">¶</a>介绍</h3>
-<p>为了解决项目越来越大的问题，使用了多模块开发来使层次更加清晰。</p>
-<p>架构大致如下：</p>
-<p><img src="https://s21.ax1x.com/2024/04/15/pFvWf3j.png" alt="springboot多模块开发1" loading="lazy"></p>
-<h3 id="流程"><a class="header-anchor" href="#流程">¶</a>流程</h3>
-<p>（1）新建 <code>springboot</code> 项目；<br>
-（2）在新建后的 <code>springboot</code> 项目中新建多个 <code>module(模块)</code>；<br>
-（3）修改 <code>pom</code> 文件以及删除多余的文件及文件夹；<br>
-（4）将原项目的代码放进去；</p>
-<h3 id="多模块开发的坑"><a class="header-anchor" href="#多模块开发的坑">¶</a>多模块开发的坑</h3>
-<p>由于第一次使用多模块开发，并不熟练，所以踩了很多坑，这里记录一下</p>
-<ol>
-<li>访问后台接口报<code>404</code></li>
-</ol>
-<p>​	访问所有接口都报404，这是由于<code>spring</code>没有扫描到你写的<code>bean</code>所导致的，一般来说，<code>spring</code> 容器只会扫描启动类所在的包以及其下的子包中的所有类，但是开发不会将所有的模块都放在一个包下面，所以如果你<code>service</code>、<code>dao</code>等模块放在了启动类所在的包之外，那么<code>spring</code>就不会去扫描注册这些<code>bean</code></p>
-<p>​	解决方法是在启动类的<code>@SpringBootApplication</code>注解上面加上<code>scanBasePackages=&#123;&quot;xxx.xxxxx.*&quot;&#125;</code></p>
-<p>​	<code>xxx.xxxxx</code> 是你所共有的包，就比如说我所有的模块都是以 <code>com.example.xxx</code> 开始。</p>
-<p>​	如：</p>
-<p><img src="https://s21.ax1x.com/2024/04/15/pFvfnqP.png" alt="springboot多模块开发2" loading="lazy"></p>
-<p>​	要查看 <code>spring</code> 有没有注册你的 <code>bean</code> 可以到服务的 <code>Actuator</code> 中查看</p>
-<p><img src="https://s21.ax1x.com/2024/04/15/pFv5css.png" alt="springboot多模块开发3" loading="lazy"></p>
-<ol start="2">
-<li>
-<p><code>springboot</code>多模块的<code>@Resource</code>、<code>@Autowired</code> 注入为<code>NULL</code></p>
-<p>方法一：</p>
-</li>
-</ol>
-<p>​	导致注入失败的原因是因为使用了 <code>new</code> 去使用这个方法，只需要将此类自动注入即可解决问题</p>
-<p>报错的代码:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GetStudentController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping(path = &quot;/GetStudent&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> JsonResult&lt;String&gt; <span class="title function_">getStudent</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">var</span> <span class="variable">studentInformation</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">getStudent</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JsonResult</span>&lt;&gt;(studentInformation.getStudent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>修改之后的：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GetStudentController</span> &#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    getStudent studentInformation;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(path = &quot;/GetStudent&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> JsonResult&lt;String&gt; <span class="title function_">getStudent</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JsonResult</span>&lt;&gt;(studentInformation.getStudent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​	方法二：</p>
-<p>​	封装一个 <code>StaticMethodGetBean</code> 的类，此类实现了 <code>ApplicationContextAware</code> 接口</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StaticMethodGetBean</span>&lt;T&gt; <span class="keyword">implements</span> <span class="title class_">ApplicationContextAware</span> &#123;</span><br><span class="line">    <span class="comment">// Spring应用上下文，用于访问应用上下文中的bean</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ApplicationContext applicationContext;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置应用上下文。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> applicationContext Spring应用上下文实例</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setApplicationContext</span><span class="params">(ApplicationContext applicationContext)</span> &#123;</span><br><span class="line">        StaticMethodGetBean.applicationContext = applicationContext;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 通过类类型获取应用上下文中的bean。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> clazz 要获取的bean的类类型</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 返回bean的实例，如果不存在则返回null</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> &lt;T&gt; bean的类型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T <span class="title function_">getBean</span><span class="params">(Class&lt;T&gt; clazz)</span> &#123;</span><br><span class="line">        <span class="comment">// 尝试获取bean实例，如果不存在则返回null</span></span><br><span class="line">        <span class="keyword">return</span> applicationContext.getBean(clazz) != <span class="literal">null</span> ? applicationContext.getBean(clazz) : <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后在要使用的地方直接调用 <code>getBean</code> 方法获取即可</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GetStudentController</span>&#123;</span><br><span class="line"><span class="meta">@RequestMapping(path = &quot;/GetStudent&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="keyword">public</span> JsonResult&lt;String&gt; <span class="title function_">getStudent</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">var</span> <span class="variable">studentInformation</span> <span class="operator">=</span> StaticMethodGetBean.getBean(getStudent.class);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JsonResult</span>&lt;&gt;(studentInformation.getStudent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参考：<a href="https://blog.csdn.net/yangyifan0/article/details/130570051">SpringBoot 简单多模块构建_springboot创建多模块项目</a></p>
-<hr>
-<p><em>TODO</em></p>
-]]></content>
-      <categories>
-        <category>spring系列</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>java</tag>
-        <tag>springboot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>windows之重装系统</title>
-    <url>/2023/06/17/windows%E4%B9%8B%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h5 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h5>
-<p>之所以写这篇文章，是因为我朋友电脑出问题，把系统重装了一下，其实我在很早之前就写过一篇重装系统的教程，但是是放在了石墨文档上面，那时候还没有自己的个人博客呢（笑）</p>
-<h5 id="正文"><a class="header-anchor" href="#正文">¶</a>正文</h5>
-<p>此文章不会教你怎么装系统，但是我会把我以前写的那篇教程放出来，需要的可以自行下载查看</p>
-<blockquote>
-<p><a href="https://8.222.153.91:39811/down/iS8YyJSjuWpd.docx">下载链接:</a> 提取码:YunYi</p>
-</blockquote>
-<p>至于怎么获取Windows的系统镜像，你可以去阿里的国内镜像点去找，或者清华的镜像点也行。我并不会提供镜像的下载，毕竟一个镜像就有好几个g，我这小水管带宽可供不起.</p>
-<hr>
-<p>顺便吐槽一下，我朋友那电脑，真是大毛病没有，小毛病不断，不是网卡驱动掉了，就是电脑蓝屏，属实买的血亏。</p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>计算机知识</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>电脑技术</tag>
       </tags>
   </entry>
   <entry>
@@ -4072,14 +4072,58 @@ Shell选项:hB<br>
       </tags>
   </entry>
   <entry>
-    <title>测试文章</title>
-    <url>/2023/04/27/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<p>Test测试</p>
-<!-- more -->  
-<p><img src="/images/test.jpg" alt="图片" loading="lazy"></p>
+    <title>可道云桌面搭建笔记</title>
+    <url>/2023/09/08/%E5%8F%AF%E9%81%93%E4%BA%91%E6%A1%8C%E9%9D%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="可道云桌面搭建"><a class="header-anchor" href="#可道云桌面搭建">¶</a>可道云桌面搭建</h4>
+<ol>
+<li>先创建 dockerfile-two 及 kod-two 文件夹（因为我之前搭过一遍，但是忘记截图了，所以重搭一遍，防止文件名重复所以用 -two ）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p dockerfile-two/kod-two</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP6lYIe.png" alt="pP6lYIe.png" loading="lazy"></p>
+<ol start="2">
+<li>使用 scp 将所必要的文件传到服务器上（请务必不要照抄我的命令）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp .\source\* root@8.222.153.91:/root/dockerfile-two/kod-two/</span><br></pre></td></tr></table></figure>
+<ul>
+<li>实在不会上传那就用下面的这条命令吧（复制粘贴总会吧？）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl -O https://zero-li.fun/资源/source.tar ; tar -xf source.tar ; mv -f source/* ./ ; rm -rf sour*</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP61SeK.png" alt="pP61SeK.png" loading="lazy"></p>
+<ol start="3">
+<li>使用 vim 创建 dockerfile 文件并填入以下内容：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim dockerfile</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FROM centos:centos7    # 改为你的基础镜像</span><br><span class="line"></span><br><span class="line">ADD Centos-7.repo /etc/yum.repos.d/</span><br><span class="line"></span><br><span class="line">ADD epel-7.repo /etc/yum.repos.d/</span><br><span class="line"></span><br><span class="line">RUN yum -y install nginx php-fpm php-gd php-mbstring unzip</span><br><span class="line"></span><br><span class="line">RUN sed -i &#x27;/^user/c user=nginx&#x27; /etc/php-fpm.d/www.conf</span><br><span class="line"></span><br><span class="line">RUN sed -i &#x27;/^group/c group=nginx&#x27; /etc/php-fpm.d/www.conf</span><br><span class="line"></span><br><span class="line">COPY nginx.conf /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">RUN mkdir /code</span><br><span class="line"></span><br><span class="line">WORKDIR /code/</span><br><span class="line"></span><br><span class="line">COPY kodexplorer4.40.zip .</span><br><span class="line"></span><br><span class="line">RUN unzip kodexplorer4.40.zip</span><br><span class="line"></span><br><span class="line">RUN chown -R nginx.nginx .</span><br><span class="line"></span><br><span class="line">ADD init.sh /init.sh</span><br><span class="line"></span><br><span class="line">EXPOSE 80</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [&quot;/bin/bash&quot;,&quot;/init.sh&quot;]</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP68PxA.png" alt="pP68PxA.png" loading="lazy"></p>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP68krt.png" alt="pP68krt.png" loading="lazy"></p>
+<ol start="4">
+<li>然后用 vim 创建一个名为 <a href="http://init.sh">init.sh</a> 的 shell 脚本并写入以下内容：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim init.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">  </span><br><span class="line">php-fpm -D</span><br><span class="line"></span><br><span class="line">echo &quot;$1&quot; &gt;&gt; /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">nginx -g &#x27;daemon off;&#x27;</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP68UG4.png" alt="pP68UG4.png" loading="lazy"></p>
+<ol start="5">
+<li>之后执行以下命令</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker build -t kod:v1 . ; docker run -itd -p 25567:80 kod:v1 &#x27;#testtest&#x27;</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP68sZ6.png" alt="pP68sZ6.png" loading="lazy"></p>
+<ol start="6">
+<li>
+<p>在浏览器访问</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">你的IP:25567/kodexplorer4.40/index.php</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP68ydK.png" alt="pP68ydK.png" loading="lazy"></p>
+<hr>
+<p>示例：<a href="http://8.222.153.91:25569/kodexplorer4.40/index.php?user/login">可道云桌面</a></p>
+<p>END</p>
 ]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
       <tags>
         <tag>原创</tag>
+        <tag>可道云</tag>
       </tags>
   </entry>
   <entry>
@@ -4178,6 +4222,17 @@ Shell选项:hB<br>
       <tags>
         <tag>原创</tag>
         <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>测试文章</title>
+    <url>/2023/04/27/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<p>Test测试</p>
+<!-- more -->  
+<p><img src="/images/test.jpg" alt="图片" loading="lazy"></p>
+]]></content>
+      <tags>
+        <tag>原创</tag>
       </tags>
   </entry>
   <entry>
@@ -4339,61 +4394,6 @@ Shell选项:hB<br>
       <tags>
         <tag>原创</tag>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>可道云桌面搭建笔记</title>
-    <url>/2023/09/08/%E5%8F%AF%E9%81%93%E4%BA%91%E6%A1%8C%E9%9D%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="可道云桌面搭建"><a class="header-anchor" href="#可道云桌面搭建">¶</a>可道云桌面搭建</h4>
-<ol>
-<li>先创建 dockerfile-two 及 kod-two 文件夹（因为我之前搭过一遍，但是忘记截图了，所以重搭一遍，防止文件名重复所以用 -two ）</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p dockerfile-two/kod-two</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP6lYIe.png" alt="pP6lYIe.png" loading="lazy"></p>
-<ol start="2">
-<li>使用 scp 将所必要的文件传到服务器上（请务必不要照抄我的命令）</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp .\source\* root@8.222.153.91:/root/dockerfile-two/kod-two/</span><br></pre></td></tr></table></figure>
-<ul>
-<li>实在不会上传那就用下面的这条命令吧（复制粘贴总会吧？）</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl -O https://zero-li.fun/资源/source.tar ; tar -xf source.tar ; mv -f source/* ./ ; rm -rf sour*</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP61SeK.png" alt="pP61SeK.png" loading="lazy"></p>
-<ol start="3">
-<li>使用 vim 创建 dockerfile 文件并填入以下内容：</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim dockerfile</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FROM centos:centos7    # 改为你的基础镜像</span><br><span class="line"></span><br><span class="line">ADD Centos-7.repo /etc/yum.repos.d/</span><br><span class="line"></span><br><span class="line">ADD epel-7.repo /etc/yum.repos.d/</span><br><span class="line"></span><br><span class="line">RUN yum -y install nginx php-fpm php-gd php-mbstring unzip</span><br><span class="line"></span><br><span class="line">RUN sed -i &#x27;/^user/c user=nginx&#x27; /etc/php-fpm.d/www.conf</span><br><span class="line"></span><br><span class="line">RUN sed -i &#x27;/^group/c group=nginx&#x27; /etc/php-fpm.d/www.conf</span><br><span class="line"></span><br><span class="line">COPY nginx.conf /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">RUN mkdir /code</span><br><span class="line"></span><br><span class="line">WORKDIR /code/</span><br><span class="line"></span><br><span class="line">COPY kodexplorer4.40.zip .</span><br><span class="line"></span><br><span class="line">RUN unzip kodexplorer4.40.zip</span><br><span class="line"></span><br><span class="line">RUN chown -R nginx.nginx .</span><br><span class="line"></span><br><span class="line">ADD init.sh /init.sh</span><br><span class="line"></span><br><span class="line">EXPOSE 80</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [&quot;/bin/bash&quot;,&quot;/init.sh&quot;]</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP68PxA.png" alt="pP68PxA.png" loading="lazy"></p>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP68krt.png" alt="pP68krt.png" loading="lazy"></p>
-<ol start="4">
-<li>然后用 vim 创建一个名为 <a href="http://init.sh">init.sh</a> 的 shell 脚本并写入以下内容：</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim init.sh</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">  </span><br><span class="line">php-fpm -D</span><br><span class="line"></span><br><span class="line">echo &quot;$1&quot; &gt;&gt; /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line">nginx -g &#x27;daemon off;&#x27;</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP68UG4.png" alt="pP68UG4.png" loading="lazy"></p>
-<ol start="5">
-<li>之后执行以下命令</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker build -t kod:v1 . ; docker run -itd -p 25567:80 kod:v1 &#x27;#testtest&#x27;</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP68sZ6.png" alt="pP68sZ6.png" loading="lazy"></p>
-<ol start="6">
-<li>
-<p>在浏览器访问</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">你的IP:25567/kodexplorer4.40/index.php</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP68ydK.png" alt="pP68ydK.png" loading="lazy"></p>
-<hr>
-<p>示例：<a href="http://8.222.153.91:25569/kodexplorer4.40/index.php?user/login">可道云桌面</a></p>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>可道云</tag>
       </tags>
   </entry>
   <entry>
