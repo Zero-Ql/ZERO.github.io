@@ -437,107 +437,6 @@ CMD <span class="token punctuation">[</span><span class="token string">"/bin/bas
       </tags>
   </entry>
   <entry>
-    <title>Git同时部署多个仓库</title>
-    <url>/2023/10/26/Git%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AA%E4%BB%93%E5%BA%93/</url>
-    <content><![CDATA[<h4 id="私有仓库的配置"><a class="header-anchor" href="#私有仓库的配置">¶</a>私有仓库的配置</h4>
-<p>刚需：先在服务器端创建 git 用户，并且配置用户密码</p>
-<p>可以使用下面的命令创建和修改</p>
-<blockquote>
-<p>useradd git</p>
-<p>passwd git</p>
-<p>#注：密码要输入两次确认</p>
-</blockquote>
-<h5 id="服务器端配置："><a class="header-anchor" href="#服务器端配置：">¶</a>服务器端配置：</h5>
-<blockquote>
-<p>su git 	#切换到 git 用户</p>
-<p>cd 	#进入用户家目录</p>
-<p>mkdir .ssh ; cd .ssh  	#创建 .ssh 配置目录并进入</p>
-<p>touch authorized_keys 	#创建 authorized_keys 来存放公钥</p>
-<p>chmod 700 /home/git/.ssh/ ; chmod 600 /home/git/.ssh/authorized_keys 	#修改 .ssh 及 authorized_keys 的权限</p>
-<p>vim /etc/ssh/sshd_config</p>
-<p>#在此文件中查找以下字段是否存在或取消注释</p>
-<p>#1. RSAAuthentication yes</p>
-<p>#2. PubkeyAuthentication yes</p>
-<p>#3. AuthorizedkeysFile .ssh/authorized_keys</p>
-</blockquote>
-<h5 id="客户端生成公钥："><a class="header-anchor" href="#客户端生成公钥：">¶</a>客户端生成公钥：</h5>
-<blockquote>
-<p>ssh-keygen -t rsa -f “id_rsa_git” 	#使用 -f 来区分生成的公钥文件</p>
-</blockquote>
-<h4 id="配置-Github-和-Gitee-仓库"><a class="header-anchor" href="#配置-Github-和-Gitee-仓库">¶</a>配置 Github 和 Gitee 仓库</h4>
-<blockquote>
-<p>ssh-keygen -t rsa -C “<a href="mailto:2704984649@qq.com">2704984649@qq.com</a>” -f “id_rsa_gitee”</p>
-<p>ssh-keygen -t rsa -C “<a href="mailto:2704984649@qq.com">2704984649@qq.com</a>” -f “id_rsa_github”</p>
-</blockquote>
-<p>注：生成公钥请在 C:\Users\ 用户名 \ .ssh\ 这个目录下的终端里进行，文件名为 .pub 后缀的文件为公钥文件</p>
-<p>然后将不同仓库的公钥里的值分别添加到不同的仓库里即可</p>
-<p>私有仓库则将值添加到 git 用户的 .ssh/authorized_keys 里</p>
-<p>注：可以使用 echo “值” &gt;&gt; authorized_keys 将值追加到文件里，这样可以防止覆盖以前配置的 ssh 公钥，防止其他用户无法使用免密登录</p>
-<p>然后配置本地主机的 C:\Users\ 用户名 \ .ssh\ 这个目录下的 config.config 文件来解决 ssh 冲突问题 ，没有就创建一个，然后填入以下内容</p>
-<blockquote>
-<p>#git 用户</p>
-<p>Host githost 	#别名<br>
-HostName 8.222.153.91 	#主机地址<br>
-Post 5213 	#端口<br>
-User git 	#用户名<br>
-IdentityFile ~/.ssh/id_rsa.pub 	#公钥位置，一般位于 C:\\Users\qingtian\.ssh\ 下</p>
-<p>#root 用户</p>
-<p>Host roothost<br>
-HostName 8.222.153.91<br>
-Post 5213<br>
-User root<br>
-IdentityFile ~/.ssh/id_rsa.pub</p>
-<p>#git 登录 github</p>
-<p>Host <a href="http://github.com">github.com</a><br>
-HostName <a href="http://github.com">github.com</a><br>
-User git<br>
-IdentityFile ~/.ssh/id_rsa_github.pub</p>
-<p>#git 登录 gitee</p>
-<p>Host <a href="http://gitee.com">gitee.com</a><br>
-HostName <a href="http://gitee.com">gitee.com</a><br>
-User git<br>
-IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
-</blockquote>
-<p>也可以在使用 ssh 的时候在后面使用 -p 参数指定端口</p>
-<blockquote>
-<p>ssh <a href="mailto:git@8.222.153.91">git@8.222.153.91</a> -p 5213</p>
-</blockquote>
-<p>然后可以使用下面的命令测试登录：</p>
-<blockquote>
-<p>ssh -T <a href="mailto:git@gitee.com">git@gitee.com</a></p>
-<p>ssh -T <a href="mailto:git@github.com">git@github.com</a></p>
-</blockquote>
-<h4 id="查看-git-的-push-模式"><a class="header-anchor" href="#查看-git-的-push-模式">¶</a>查看 git 的 push 模式</h4>
-<blockquote>
-<p>git remote -v</p>
-<p>git remote set-url origin 你的仓库地址 	#修改不同的模式用不同的仓库地址</p>
-</blockquote>
-<h4 id="坑"><a class="header-anchor" href="#坑">¶</a>坑</h4>
-<ol>
-<li>如果使用 ssh -T <a href="mailto:git@gitee.com">git@gitee.com</a> 或者 ssh -T <a href="mailto:git@github.com">git@github.com</a> 来测试登录显示如下报错：</li>
-</ol>
-<blockquote>
-<p><a href="mailto:git@gitee.com">git@gitee.com</a>: Permission denied (publickey).</p>
-</blockquote>
-<h5 id="解决"><a class="header-anchor" href="#解决">¶</a>解决</h5>
-<p>如果检查公钥配置没有问题，使用下面的命令将本机的 git 仓库与相对应的 SSH Key 关联上即可</p>
-<blockquote>
-<p>ssh-agent bash 	#打开身份代理验证连接</p>
-<p>ssh-add ~/.ssh/id_rsa_gitee 	#你的 gitee 私钥文件位置</p>
-<p>ssh-add ~/.ssh/id_rsa_github 	#你的 github 私钥文件位置</p>
-</blockquote>
-<ol start="2">
-<li>在关闭 git bash 窗口后要重新添加关联，暂无解决办法</li>
-</ol>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git的使用</title>
     <url>/2023/10/26/Git%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h4 id="Git概念"><a class="header-anchor" href="#Git概念">¶</a>Git概念</h4>
@@ -918,6 +817,107 @@ Fast-forward
 <p><code>git remote rm &lt;仓库别名&gt;</code></p>
 <hr>
 <p>END</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git同时部署多个仓库</title>
+    <url>/2023/10/26/Git%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AA%E4%BB%93%E5%BA%93/</url>
+    <content><![CDATA[<h4 id="私有仓库的配置"><a class="header-anchor" href="#私有仓库的配置">¶</a>私有仓库的配置</h4>
+<p>刚需：先在服务器端创建 git 用户，并且配置用户密码</p>
+<p>可以使用下面的命令创建和修改</p>
+<blockquote>
+<p>useradd git</p>
+<p>passwd git</p>
+<p>#注：密码要输入两次确认</p>
+</blockquote>
+<h5 id="服务器端配置："><a class="header-anchor" href="#服务器端配置：">¶</a>服务器端配置：</h5>
+<blockquote>
+<p>su git 	#切换到 git 用户</p>
+<p>cd 	#进入用户家目录</p>
+<p>mkdir .ssh ; cd .ssh  	#创建 .ssh 配置目录并进入</p>
+<p>touch authorized_keys 	#创建 authorized_keys 来存放公钥</p>
+<p>chmod 700 /home/git/.ssh/ ; chmod 600 /home/git/.ssh/authorized_keys 	#修改 .ssh 及 authorized_keys 的权限</p>
+<p>vim /etc/ssh/sshd_config</p>
+<p>#在此文件中查找以下字段是否存在或取消注释</p>
+<p>#1. RSAAuthentication yes</p>
+<p>#2. PubkeyAuthentication yes</p>
+<p>#3. AuthorizedkeysFile .ssh/authorized_keys</p>
+</blockquote>
+<h5 id="客户端生成公钥："><a class="header-anchor" href="#客户端生成公钥：">¶</a>客户端生成公钥：</h5>
+<blockquote>
+<p>ssh-keygen -t rsa -f “id_rsa_git” 	#使用 -f 来区分生成的公钥文件</p>
+</blockquote>
+<h4 id="配置-Github-和-Gitee-仓库"><a class="header-anchor" href="#配置-Github-和-Gitee-仓库">¶</a>配置 Github 和 Gitee 仓库</h4>
+<blockquote>
+<p>ssh-keygen -t rsa -C “<a href="mailto:2704984649@qq.com">2704984649@qq.com</a>” -f “id_rsa_gitee”</p>
+<p>ssh-keygen -t rsa -C “<a href="mailto:2704984649@qq.com">2704984649@qq.com</a>” -f “id_rsa_github”</p>
+</blockquote>
+<p>注：生成公钥请在 C:\Users\ 用户名 \ .ssh\ 这个目录下的终端里进行，文件名为 .pub 后缀的文件为公钥文件</p>
+<p>然后将不同仓库的公钥里的值分别添加到不同的仓库里即可</p>
+<p>私有仓库则将值添加到 git 用户的 .ssh/authorized_keys 里</p>
+<p>注：可以使用 echo “值” &gt;&gt; authorized_keys 将值追加到文件里，这样可以防止覆盖以前配置的 ssh 公钥，防止其他用户无法使用免密登录</p>
+<p>然后配置本地主机的 C:\Users\ 用户名 \ .ssh\ 这个目录下的 config.config 文件来解决 ssh 冲突问题 ，没有就创建一个，然后填入以下内容</p>
+<blockquote>
+<p>#git 用户</p>
+<p>Host githost 	#别名<br>
+HostName 8.222.153.91 	#主机地址<br>
+Post 5213 	#端口<br>
+User git 	#用户名<br>
+IdentityFile ~/.ssh/id_rsa.pub 	#公钥位置，一般位于 C:\\Users\qingtian\.ssh\ 下</p>
+<p>#root 用户</p>
+<p>Host roothost<br>
+HostName 8.222.153.91<br>
+Post 5213<br>
+User root<br>
+IdentityFile ~/.ssh/id_rsa.pub</p>
+<p>#git 登录 github</p>
+<p>Host <a href="http://github.com">github.com</a><br>
+HostName <a href="http://github.com">github.com</a><br>
+User git<br>
+IdentityFile ~/.ssh/id_rsa_github.pub</p>
+<p>#git 登录 gitee</p>
+<p>Host <a href="http://gitee.com">gitee.com</a><br>
+HostName <a href="http://gitee.com">gitee.com</a><br>
+User git<br>
+IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
+</blockquote>
+<p>也可以在使用 ssh 的时候在后面使用 -p 参数指定端口</p>
+<blockquote>
+<p>ssh <a href="mailto:git@8.222.153.91">git@8.222.153.91</a> -p 5213</p>
+</blockquote>
+<p>然后可以使用下面的命令测试登录：</p>
+<blockquote>
+<p>ssh -T <a href="mailto:git@gitee.com">git@gitee.com</a></p>
+<p>ssh -T <a href="mailto:git@github.com">git@github.com</a></p>
+</blockquote>
+<h4 id="查看-git-的-push-模式"><a class="header-anchor" href="#查看-git-的-push-模式">¶</a>查看 git 的 push 模式</h4>
+<blockquote>
+<p>git remote -v</p>
+<p>git remote set-url origin 你的仓库地址 	#修改不同的模式用不同的仓库地址</p>
+</blockquote>
+<h4 id="坑"><a class="header-anchor" href="#坑">¶</a>坑</h4>
+<ol>
+<li>如果使用 ssh -T <a href="mailto:git@gitee.com">git@gitee.com</a> 或者 ssh -T <a href="mailto:git@github.com">git@github.com</a> 来测试登录显示如下报错：</li>
+</ol>
+<blockquote>
+<p><a href="mailto:git@gitee.com">git@gitee.com</a>: Permission denied (publickey).</p>
+</blockquote>
+<h5 id="解决"><a class="header-anchor" href="#解决">¶</a>解决</h5>
+<p>如果检查公钥配置没有问题，使用下面的命令将本机的 git 仓库与相对应的 SSH Key 关联上即可</p>
+<blockquote>
+<p>ssh-agent bash 	#打开身份代理验证连接</p>
+<p>ssh-add ~/.ssh/id_rsa_gitee 	#你的 gitee 私钥文件位置</p>
+<p>ssh-add ~/.ssh/id_rsa_github 	#你的 github 私钥文件位置</p>
+</blockquote>
+<ol start="2">
+<li>在关闭 git bash 窗口后要重新添加关联，暂无解决办法</li>
+</ol>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -1912,6 +1912,106 @@ console<span class="token punctuation">.</span><span class="token function">log<
       </tags>
   </entry>
   <entry>
+    <title>Linux2023.9.15作业</title>
+    <url>/2023/09/15/Linux2023-9-15%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[<blockquote>
+<p>题目要求：</p>
+<p>1、创建用户和用户组</p>
+<p>请按照以下要求创建用户、用户组：</p>
+<p>新建一个名为adminuser的组，组id为40000</p>
+<p>新建一个名为natasha的用户，并将adminuser作为其附属组</p>
+<p>新建一个名为harry的用户，并将adminuser作为其附属组</p>
+<p>新建一个名为sarah的用户，其不属于adminuser组，并将其shell设置为不可登陆shell</p>
+<p>natasha、harry和sarah三个用户的密码均设置为glegunge</p>
+<p>2、复制文件/etc/fstab到/var/tmp目录下，并按照以下要求配置/var/tmp/fstab文件的权限:</p>
+<p>该文件的所属人为root</p>
+<p>该文件的所属组为root</p>
+<p>该文件对任何人均没有执行权限</p>
+<p>用户natasha对该文件有读和写的权限</p>
+<p>用户harry对该文件既不能读也不能写</p>
+<p>所有其他用户（包括当前已有用户及未来创建的用户）对该文件都有读的权限</p>
+<p>3、打包文件</p>
+<p>请对/etc/sysconfig目录进行打包并用bzip2压缩，生成的文件保存为/root/sysconfig.tar.bz2</p>
+<p>4、创建一个大小为500M的分区，永久挂载到/test目录下</p>
+</blockquote>
+<hr>
+<h5 id="创建用户和用户组"><a class="header-anchor" href="#创建用户和用户组">¶</a>创建用户和用户组</h5>
+<ol>
+<li>新建一个名为adminuser的组，组id为40000</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">groupadd</span> <span class="token parameter variable">-g</span> <span class="token number">40000</span> adminuser<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="2">
+<li>新建一个名为natasha的用户，并将adminuser作为其附属组</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token parameter variable">-G</span> adminuser natasha<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="3">
+<li>新建一个名为harry的用户，并将adminuser作为其附属组</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token parameter variable">-G</span> adminuser harry<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="4">
+<li>新建一个名为sarah的用户，其不属于adminuser组，并将其shell设置为不可登陆shell</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token parameter variable">-s</span> /usr/sbin/nologin sarah<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWsWAf.png" alt="pPWsWAf.png" loading="lazy"></p>
+<ol start="5">
+<li>natasha、harry和sarah三个用户的密码均设置为glegunge</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">passwd</span> <span class="token operator">&lt;</span>用户名<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWsfN8.png" alt="pPWsfN8.png" loading="lazy"></p>
+<p>测试：</p>
+<p>查看组 id 及附属组</p>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWs2HP.png" alt="pPWs2HP.png" loading="lazy"></p>
+<p>测试 sarah 的 shell 登录</p>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWsqH0.png" alt="pPWsqH0.png" loading="lazy"></p>
+<h5 id="复制文件-etc-fstab到-var-tmp目录下，并按照以下要求配置-var-tmp-fstab文件的权限"><a class="header-anchor" href="#复制文件-etc-fstab到-var-tmp目录下，并按照以下要求配置-var-tmp-fstab文件的权限">¶</a>复制文件/etc/fstab到/var/tmp目录下，并按照以下要求配置/var/tmp/fstab文件的权限:</h5>
+<p>先复制</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> /etc/fstab /var/tmp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol>
+<li>该文件的所属人为root，该文件的所属组为root</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW6pi8.png" alt="pPW6pi8.png" loading="lazy"></p>
+<ol start="2">
+<li>该文件对任何人均没有执行权限，用户natasha对该文件有读和写的权限，用户harry对该文件既不能读也不能写</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW69JS.png" alt="pPW69JS.png" loading="lazy"></p>
+<ol start="3">
+<li>所有其他用户（包括当前已有用户及未来创建的用户）对该文件都有读的权限</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWyxdP.png" alt="pPWyxdP.png" loading="lazy"></p>
+<h5 id="打包文件"><a class="header-anchor" href="#打包文件">¶</a>打包文件</h5>
+<ol>
+<li>请对/etc/sysconfig目录进行打包并用bzip2压缩，生成的文件保存为/root/sysconfig.tar.bz2</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWyzIf.png" alt="pPWyzIf.png" loading="lazy"></p>
+<h5 id="创建分区"><a class="header-anchor" href="#创建分区">¶</a>创建分区</h5>
+<ol>
+<li>创建一个大小为500M的分区</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW26T1.png" alt="pPW26T1.png" loading="lazy"></p>
+<ol start="2">
+<li>使用 mkfs 将 sda4 格式化为 ext4 文件系统</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW2wSU.png" alt="pPW2wSU.png" loading="lazy"></p>
+<ol start="3">
+<li>将分区挂载到 /test 目录，如果没有请自行创建</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW2aWT.png" alt="pPW2aWT.png" loading="lazy"></p>
+<ol start="4">
+<li>使用开机自启实现永久挂载目录</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW2UYV.png" alt="pPW2UYV.png" loading="lazy"></p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>编程技巧</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaWeb</title>
     <url>/2024/04/16/JavaWeb/</url>
     <content><![CDATA[<h3 id="域"><a class="header-anchor" href="#域">¶</a>域</h3>
@@ -2545,106 +2645,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
       </tags>
   </entry>
   <entry>
-    <title>Linux2023.9.15作业</title>
-    <url>/2023/09/15/Linux2023-9-15%E4%BD%9C%E4%B8%9A/</url>
-    <content><![CDATA[<blockquote>
-<p>题目要求：</p>
-<p>1、创建用户和用户组</p>
-<p>请按照以下要求创建用户、用户组：</p>
-<p>新建一个名为adminuser的组，组id为40000</p>
-<p>新建一个名为natasha的用户，并将adminuser作为其附属组</p>
-<p>新建一个名为harry的用户，并将adminuser作为其附属组</p>
-<p>新建一个名为sarah的用户，其不属于adminuser组，并将其shell设置为不可登陆shell</p>
-<p>natasha、harry和sarah三个用户的密码均设置为glegunge</p>
-<p>2、复制文件/etc/fstab到/var/tmp目录下，并按照以下要求配置/var/tmp/fstab文件的权限:</p>
-<p>该文件的所属人为root</p>
-<p>该文件的所属组为root</p>
-<p>该文件对任何人均没有执行权限</p>
-<p>用户natasha对该文件有读和写的权限</p>
-<p>用户harry对该文件既不能读也不能写</p>
-<p>所有其他用户（包括当前已有用户及未来创建的用户）对该文件都有读的权限</p>
-<p>3、打包文件</p>
-<p>请对/etc/sysconfig目录进行打包并用bzip2压缩，生成的文件保存为/root/sysconfig.tar.bz2</p>
-<p>4、创建一个大小为500M的分区，永久挂载到/test目录下</p>
-</blockquote>
-<hr>
-<h5 id="创建用户和用户组"><a class="header-anchor" href="#创建用户和用户组">¶</a>创建用户和用户组</h5>
-<ol>
-<li>新建一个名为adminuser的组，组id为40000</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">groupadd</span> <span class="token parameter variable">-g</span> <span class="token number">40000</span> adminuser<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="2">
-<li>新建一个名为natasha的用户，并将adminuser作为其附属组</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token parameter variable">-G</span> adminuser natasha<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="3">
-<li>新建一个名为harry的用户，并将adminuser作为其附属组</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token parameter variable">-G</span> adminuser harry<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="4">
-<li>新建一个名为sarah的用户，其不属于adminuser组，并将其shell设置为不可登陆shell</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token parameter variable">-s</span> /usr/sbin/nologin sarah<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWsWAf.png" alt="pPWsWAf.png" loading="lazy"></p>
-<ol start="5">
-<li>natasha、harry和sarah三个用户的密码均设置为glegunge</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">passwd</span> <span class="token operator">&lt;</span>用户名<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWsfN8.png" alt="pPWsfN8.png" loading="lazy"></p>
-<p>测试：</p>
-<p>查看组 id 及附属组</p>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWs2HP.png" alt="pPWs2HP.png" loading="lazy"></p>
-<p>测试 sarah 的 shell 登录</p>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWsqH0.png" alt="pPWsqH0.png" loading="lazy"></p>
-<h5 id="复制文件-etc-fstab到-var-tmp目录下，并按照以下要求配置-var-tmp-fstab文件的权限"><a class="header-anchor" href="#复制文件-etc-fstab到-var-tmp目录下，并按照以下要求配置-var-tmp-fstab文件的权限">¶</a>复制文件/etc/fstab到/var/tmp目录下，并按照以下要求配置/var/tmp/fstab文件的权限:</h5>
-<p>先复制</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> /etc/fstab /var/tmp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol>
-<li>该文件的所属人为root，该文件的所属组为root</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW6pi8.png" alt="pPW6pi8.png" loading="lazy"></p>
-<ol start="2">
-<li>该文件对任何人均没有执行权限，用户natasha对该文件有读和写的权限，用户harry对该文件既不能读也不能写</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW69JS.png" alt="pPW69JS.png" loading="lazy"></p>
-<ol start="3">
-<li>所有其他用户（包括当前已有用户及未来创建的用户）对该文件都有读的权限</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWyxdP.png" alt="pPWyxdP.png" loading="lazy"></p>
-<h5 id="打包文件"><a class="header-anchor" href="#打包文件">¶</a>打包文件</h5>
-<ol>
-<li>请对/etc/sysconfig目录进行打包并用bzip2压缩，生成的文件保存为/root/sysconfig.tar.bz2</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWyzIf.png" alt="pPWyzIf.png" loading="lazy"></p>
-<h5 id="创建分区"><a class="header-anchor" href="#创建分区">¶</a>创建分区</h5>
-<ol>
-<li>创建一个大小为500M的分区</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW26T1.png" alt="pPW26T1.png" loading="lazy"></p>
-<ol start="2">
-<li>使用 mkfs 将 sda4 格式化为 ext4 文件系统</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW2wSU.png" alt="pPW2wSU.png" loading="lazy"></p>
-<ol start="3">
-<li>将分区挂载到 /test 目录，如果没有请自行创建</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW2aWT.png" alt="pPW2aWT.png" loading="lazy"></p>
-<ol start="4">
-<li>使用开机自启实现永久挂载目录</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW2UYV.png" alt="pPW2UYV.png" loading="lazy"></p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>编程技巧</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux2023-9-18作业</title>
     <url>/2023/09/18/Linux2023-9-18%E4%BD%9C%E4%B8%9A/</url>
     <content><![CDATA[<blockquote>
@@ -2781,59 +2781,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
       </tags>
   </entry>
   <entry>
-    <title>Selenium 的使用</title>
-    <url>/2024/03/05/Selenium-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h3 id="Selenium-介绍"><a class="header-anchor" href="#Selenium-介绍">¶</a><code>Selenium</code> 介绍</h3>
-<p><code>selenium</code> 是一个广泛使用的模拟浏览器运行的库，它是一个用于 <code>Web</code> 应用程序测试的工具。<code>Selenium</code> 测试直接运行在浏览器中，就像真正的用户在操作一样，并且支持大多数现代 <code>Web</code> 浏览器。</p>
-<h3 id="Selenium-自动化测试的八种定位方法"><a class="header-anchor" href="#Selenium-自动化测试的八种定位方法">¶</a><code>Selenium</code> 自动化测试的八种定位方法</h3>
-<h4 id="使用场景："><a class="header-anchor" href="#使用场景：">¶</a>使用场景：</h4>
-<p>① 优先用<code>id</code>、<code>name</code>（保证唯一性）</p>
-<p>② 是否是超链接，是超链接用<code>link_text</code>、<code>partial_link_text</code>，否则用<code>css_selector</code>、<code>xpath</code></p>
-<p>③ <code>class_name</code>、<code>tag_name</code>很少用，因为这俩个难以保证被定为元素或属性的唯一性</p>
-<h4 id="ID-定位"><a class="header-anchor" href="#ID-定位">¶</a><code>ID</code> 定位</h4>
-<p>方法原型：</p>
-<p><code>driver.find_element(By.ID,value)</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> value<span class="token operator">=</span><span class="token string">"username"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="Name-定位"><a class="header-anchor" href="#Name-定位">¶</a><code>Name</code> 定位</h4>
-<p>方法原型：</p>
-<p><code>driver.find_element(By.NAME,value)</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>NAME<span class="token punctuation">,</span> value<span class="token operator">=</span><span class="token string">"username"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="Class-定位"><a class="header-anchor" href="#Class-定位">¶</a><code>Class</code> 定位</h4>
-<p>方法原型：</p>
-<p><code>driver.find_element(By.CLASS_NAME,value)</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>CLASS_NAME<span class="token punctuation">,</span> value<span class="token operator">=</span><span class="token string">"username"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="Tag-Name-定位"><a class="header-anchor" href="#Tag-Name-定位">¶</a><code>Tag_Name</code> 定位</h4>
-<p>方法原型：</p>
-<p><code>driver.find_element(By.TAG_NAME,value)</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>TAG_NAME<span class="token punctuation">,</span>value<span class="token operator">=</span><span class="token string">"input"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="Link-Text-定位"><a class="header-anchor" href="#Link-Text-定位">¶</a><code>Link_Text</code> 定位</h4>
-<p>方法原型：</p>
-<p><code>driver.find_element(By.LINK_TEXT,value)</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span>value<span class="token operator">=</span><span class="token string">"登"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="Partial-Link-定位"><a class="header-anchor" href="#Partial-Link-定位">¶</a><code>Partial_Link</code> 定位</h4>
-<p>方法原型：</p>
-<p><code>driver.find_element(By.PARTIAL_LINK,value)</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>PARTIAL_LINK<span class="token punctuation">,</span>value<span class="token operator">=</span><span class="token string">"登录"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="Xpath-定位"><a class="header-anchor" href="#Xpath-定位">¶</a><code>Xpath</code> 定位</h4>
-<p>方法原型：</p>
-<p><code>driver.find_element(By.XPATH,value)</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 使用 XPATH 定位带有 id='login' 属性和 name='user' 属性的 input 标签</span>
-driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span>value<span class="token operator">=</span><span class="token string">"//input[@id='login' and @name='user']"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="Css-selector-定位"><a class="header-anchor" href="#Css-selector-定位">¶</a><code>Css_selector</code> 定位</h4>
-<p>方法原型：</p>
-<p><code>driver.find_element(By.CSS_SELECTOR,value)</code></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span>value<span class="token operator">=</span><span class="token string">"input#login"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>自动化测试笔记</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>python</tag>
-        <tag>selenium</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Spring-ResponseEntity</title>
     <url>/2024/04/22/Spring-ResponseEntity/</url>
     <content><![CDATA[<h3 id="ResponseEntity"><a class="header-anchor" href="#ResponseEntity">¶</a><em>ResponseEntity</em></h3>
@@ -2887,6 +2834,59 @@ driver<span class="token punctuation">.</span>find_element<span class="token pun
         <tag>java</tag>
         <tag>spring</tag>
         <tag>ResponseEntity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Selenium 的使用</title>
+    <url>/2024/03/05/Selenium-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="Selenium-介绍"><a class="header-anchor" href="#Selenium-介绍">¶</a><code>Selenium</code> 介绍</h3>
+<p><code>selenium</code> 是一个广泛使用的模拟浏览器运行的库，它是一个用于 <code>Web</code> 应用程序测试的工具。<code>Selenium</code> 测试直接运行在浏览器中，就像真正的用户在操作一样，并且支持大多数现代 <code>Web</code> 浏览器。</p>
+<h3 id="Selenium-自动化测试的八种定位方法"><a class="header-anchor" href="#Selenium-自动化测试的八种定位方法">¶</a><code>Selenium</code> 自动化测试的八种定位方法</h3>
+<h4 id="使用场景："><a class="header-anchor" href="#使用场景：">¶</a>使用场景：</h4>
+<p>① 优先用<code>id</code>、<code>name</code>（保证唯一性）</p>
+<p>② 是否是超链接，是超链接用<code>link_text</code>、<code>partial_link_text</code>，否则用<code>css_selector</code>、<code>xpath</code></p>
+<p>③ <code>class_name</code>、<code>tag_name</code>很少用，因为这俩个难以保证被定为元素或属性的唯一性</p>
+<h4 id="ID-定位"><a class="header-anchor" href="#ID-定位">¶</a><code>ID</code> 定位</h4>
+<p>方法原型：</p>
+<p><code>driver.find_element(By.ID,value)</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> value<span class="token operator">=</span><span class="token string">"username"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="Name-定位"><a class="header-anchor" href="#Name-定位">¶</a><code>Name</code> 定位</h4>
+<p>方法原型：</p>
+<p><code>driver.find_element(By.NAME,value)</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>NAME<span class="token punctuation">,</span> value<span class="token operator">=</span><span class="token string">"username"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="Class-定位"><a class="header-anchor" href="#Class-定位">¶</a><code>Class</code> 定位</h4>
+<p>方法原型：</p>
+<p><code>driver.find_element(By.CLASS_NAME,value)</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>CLASS_NAME<span class="token punctuation">,</span> value<span class="token operator">=</span><span class="token string">"username"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="Tag-Name-定位"><a class="header-anchor" href="#Tag-Name-定位">¶</a><code>Tag_Name</code> 定位</h4>
+<p>方法原型：</p>
+<p><code>driver.find_element(By.TAG_NAME,value)</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>TAG_NAME<span class="token punctuation">,</span>value<span class="token operator">=</span><span class="token string">"input"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="Link-Text-定位"><a class="header-anchor" href="#Link-Text-定位">¶</a><code>Link_Text</code> 定位</h4>
+<p>方法原型：</p>
+<p><code>driver.find_element(By.LINK_TEXT,value)</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span>value<span class="token operator">=</span><span class="token string">"登"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="Partial-Link-定位"><a class="header-anchor" href="#Partial-Link-定位">¶</a><code>Partial_Link</code> 定位</h4>
+<p>方法原型：</p>
+<p><code>driver.find_element(By.PARTIAL_LINK,value)</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>PARTIAL_LINK<span class="token punctuation">,</span>value<span class="token operator">=</span><span class="token string">"登录"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="Xpath-定位"><a class="header-anchor" href="#Xpath-定位">¶</a><code>Xpath</code> 定位</h4>
+<p>方法原型：</p>
+<p><code>driver.find_element(By.XPATH,value)</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 使用 XPATH 定位带有 id='login' 属性和 name='user' 属性的 input 标签</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span>value<span class="token operator">=</span><span class="token string">"//input[@id='login' and @name='user']"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="Css-selector-定位"><a class="header-anchor" href="#Css-selector-定位">¶</a><code>Css_selector</code> 定位</h4>
+<p>方法原型：</p>
+<p><code>driver.find_element(By.CSS_SELECTOR,value)</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>by<span class="token operator">=</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span>value<span class="token operator">=</span><span class="token string">"input#login"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>自动化测试笔记</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>python</tag>
+        <tag>selenium</tag>
       </tags>
   </entry>
   <entry>
@@ -3208,6 +3208,51 @@ driver<span class="token punctuation">.</span>find_element<span class="token pun
       </tags>
   </entry>
   <entry>
+    <title>Xmind破解</title>
+    <url>/2023/11/09/Xmind%E7%A0%B4%E8%A7%A3/</url>
+    <content><![CDATA[<h4 id="下载-Xmind"><a class="header-anchor" href="#下载-Xmind">¶</a>下载 Xmind</h4>
+<ol>
+<li>先去下载 Xmind 的最新版本</li>
+</ol>
+<blockquote>
+<p><a href="https://xmind.cn/">Xmind思维导图 | Xmind中文官方网站</a></p>
+</blockquote>
+<h4 id="激活"><a class="header-anchor" href="#激活">¶</a>激活</h4>
+<ol>
+<li>找到你的 Xmind 的 <code>account.json</code> 文件位置（一般在 <code>C:\Users\qingtian\AppData\Roaming\Xmind\Electron v3\vana\state</code> 下）</li>
+<li>将以下代码写入到 <code>account.json</code> 文件中（注意：你直接复制我文章的内容会有版权信息，请将信息删除之后再写入到文件里）</li>
+</ol>
+<p>然后右键此文件，选择属性，点击只读，确定保存</p>
+<blockquote>
+<p>{“region”:“us”,“openSignInDialogDate”:“2023-05-23T02:42:15.383Z”,“rawSubscriptionData”:“WUnYY8kQKgX3kjftuV3gnl+b7lLsBaQjZv1C8AbQBBIn9RiEkGiJGlk/9EAsI5E6uuxGTkhnf5D5Si2buztQGEaLXzVXzFzsMmdXw5fzb+Oo6I78/xNPCRfOKSOlrtOveGdYX+GZJKXJSG77/hb93Tgst5/v1BqS+PdKHwd3dMg=”}</p>
+</blockquote>
+<ol start="3">
+<li>之后在你电脑杀毒软件中拦截 Xmind 的联网请求，由于我电脑装的是火绒，所以使用火绒演示，其他杀毒软件请自行百度</li>
+</ol>
+<p>打开火绒，选择安全设置 》系统防护 》 联网控制，在里面找到添加规则，输入 xmind ，选择操作方式为阻止联网，然后保存即可</p>
+<h4 id="2023-12-12-更新"><a class="header-anchor" href="#2023-12-12-更新">¶</a>2023.12.12 更新</h4>
+<p>经过我的测试，这个激活码大概是在 <code>2023.11.25 9:16</code> 之前有效，<code>xmind</code> 应该是通过获取系统日期，然后加密和激活码中加密过的时间进行比较来判定是否生效。</p>
+<p>知道原因了，问题就好解决了，使用 <code>RunAsdate</code> 来让 <code>xmind</code> 运行在指定的时间即可。</p>
+<blockquote>
+<p>链接：<a href="https://zero-li.lanzout.com/iEqjz1hoph8d">RunAsdate</a><br>
+密码:i50f</p>
+</blockquote>
+<p>程序是汉化过的，不用担心看不懂。</p>
+<p>你可以使用 <code>RunAsdate</code> 创建一个指定的 <code>xmind</code> 文件快捷方式，这样就不用每次都打开 <code>RunAsdate</code>，直接使用快捷方式就行。</p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>编程技巧</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>破解</tag>
+        <tag>xmind</tag>
+        <tag>思维导图</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Win至Linux的免密登录</title>
     <url>/2023/09/09/Win%E8%87%B3Linux%E7%9A%84%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/</url>
     <content><![CDATA[<h4 id="配置-Windows-端"><a class="header-anchor" href="#配置-Windows-端">¶</a>配置 Windows 端</h4>
@@ -3281,51 +3326,6 @@ AuthorizedKeysFile .ssh/authorized_keys<span aria-hidden="true" class="line-numb
         <tag>原创</tag>
         <tag>电脑技术</tag>
         <tag>SSH</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Xmind破解</title>
-    <url>/2023/11/09/Xmind%E7%A0%B4%E8%A7%A3/</url>
-    <content><![CDATA[<h4 id="下载-Xmind"><a class="header-anchor" href="#下载-Xmind">¶</a>下载 Xmind</h4>
-<ol>
-<li>先去下载 Xmind 的最新版本</li>
-</ol>
-<blockquote>
-<p><a href="https://xmind.cn/">Xmind思维导图 | Xmind中文官方网站</a></p>
-</blockquote>
-<h4 id="激活"><a class="header-anchor" href="#激活">¶</a>激活</h4>
-<ol>
-<li>找到你的 Xmind 的 <code>account.json</code> 文件位置（一般在 <code>C:\Users\qingtian\AppData\Roaming\Xmind\Electron v3\vana\state</code> 下）</li>
-<li>将以下代码写入到 <code>account.json</code> 文件中（注意：你直接复制我文章的内容会有版权信息，请将信息删除之后再写入到文件里）</li>
-</ol>
-<p>然后右键此文件，选择属性，点击只读，确定保存</p>
-<blockquote>
-<p>{“region”:“us”,“openSignInDialogDate”:“2023-05-23T02:42:15.383Z”,“rawSubscriptionData”:“WUnYY8kQKgX3kjftuV3gnl+b7lLsBaQjZv1C8AbQBBIn9RiEkGiJGlk/9EAsI5E6uuxGTkhnf5D5Si2buztQGEaLXzVXzFzsMmdXw5fzb+Oo6I78/xNPCRfOKSOlrtOveGdYX+GZJKXJSG77/hb93Tgst5/v1BqS+PdKHwd3dMg=”}</p>
-</blockquote>
-<ol start="3">
-<li>之后在你电脑杀毒软件中拦截 Xmind 的联网请求，由于我电脑装的是火绒，所以使用火绒演示，其他杀毒软件请自行百度</li>
-</ol>
-<p>打开火绒，选择安全设置 》系统防护 》 联网控制，在里面找到添加规则，输入 xmind ，选择操作方式为阻止联网，然后保存即可</p>
-<h4 id="2023-12-12-更新"><a class="header-anchor" href="#2023-12-12-更新">¶</a>2023.12.12 更新</h4>
-<p>经过我的测试，这个激活码大概是在 <code>2023.11.25 9:16</code> 之前有效，<code>xmind</code> 应该是通过获取系统日期，然后加密和激活码中加密过的时间进行比较来判定是否生效。</p>
-<p>知道原因了，问题就好解决了，使用 <code>RunAsdate</code> 来让 <code>xmind</code> 运行在指定的时间即可。</p>
-<blockquote>
-<p>链接：<a href="https://zero-li.lanzout.com/iEqjz1hoph8d">RunAsdate</a><br>
-密码:i50f</p>
-</blockquote>
-<p>程序是汉化过的，不用担心看不懂。</p>
-<p>你可以使用 <code>RunAsdate</code> 创建一个指定的 <code>xmind</code> 文件快捷方式，这样就不用每次都打开 <code>RunAsdate</code>，直接使用快捷方式就行。</p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>编程技巧</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>破解</tag>
-        <tag>xmind</tag>
-        <tag>思维导图</tag>
       </tags>
   </entry>
   <entry>
@@ -4729,107 +4729,6 @@ site<span class="token punctuation">[</span><span class="token string">"zero"</s
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>springboot多模块开发</title>
-    <url>/2024/04/22/springboot%E5%A4%9A%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h3 id="介绍"><a class="header-anchor" href="#介绍">¶</a>介绍</h3>
-<p>为了解决项目越来越大的问题，使用了多模块开发来使层次更加清晰。</p>
-<p>架构大致如下：</p>
-<p><img src="https://s21.ax1x.com/2024/04/15/pFvWf3j.png" alt="springboot多模块开发1" loading="lazy"></p>
-<h3 id="流程"><a class="header-anchor" href="#流程">¶</a>流程</h3>
-<p>（1）新建 <code>springboot</code> 项目；<br>
-（2）在新建后的 <code>springboot</code> 项目中新建多个 <code>module(模块)</code>；<br>
-（3）修改 <code>pom</code> 文件以及删除多余的文件及文件夹；<br>
-（4）将原项目的代码放进去；</p>
-<h3 id="多模块开发的坑"><a class="header-anchor" href="#多模块开发的坑">¶</a>多模块开发的坑</h3>
-<p>由于第一次使用多模块开发，并不熟练，所以踩了很多坑，这里记录一下</p>
-<ol>
-<li>访问后台接口报<code>404</code></li>
-</ol>
-<p>​	访问所有接口都报404，这是由于<code>spring</code>没有扫描到你写的<code>bean</code>所导致的，一般来说，<code>spring</code> 容器只会扫描启动类所在的包以及其下的子包中的所有类，但是开发不会将所有的模块都放在一个包下面，所以如果你<code>service</code>、<code>dao</code>等模块放在了启动类所在的包之外，那么<code>spring</code>就不会去扫描注册这些<code>bean</code></p>
-<p>​	解决方法是在启动类的<code>@SpringBootApplication</code>注解上面加上<code>scanBasePackages=&#123;&quot;xxx.xxxxx.*&quot;&#125;</code></p>
-<p>​	<code>xxx.xxxxx</code> 是你所共有的包，就比如说我所有的模块都是以 <code>com.example.xxx</code> 开始。</p>
-<p>​	如：</p>
-<p><img src="https://s21.ax1x.com/2024/04/15/pFvfnqP.png" alt="springboot多模块开发2" loading="lazy"></p>
-<p>​	要查看 <code>spring</code> 有没有注册你的 <code>bean</code> 可以到服务的 <code>Actuator</code> 中查看</p>
-<p><img src="https://s21.ax1x.com/2024/04/15/pFv5css.png" alt="springboot多模块开发3" loading="lazy"></p>
-<ol start="2">
-<li>
-<p><code>springboot</code>多模块的<code>@Resource</code>、<code>@Autowired</code> 注入为<code>NULL</code></p>
-<p>方法一：</p>
-</li>
-</ol>
-<p>​	导致注入失败的原因是因为使用了 <code>new</code> 去使用这个方法，只需要将此类自动注入即可解决问题</p>
-<p>报错的代码:</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
-<span class="token keyword">class</span> <span class="token class-name">GetStudentController</span> <span class="token punctuation">&#123;</span>
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"/GetStudent"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token class-name">RequestMethod</span><span class="token punctuation">.</span><span class="token constant">GET</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token class-name">JsonResult</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">var</span> studentInformation <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">JsonResult</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>studentInformation<span class="token punctuation">.</span><span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>修改之后的：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
-<span class="token keyword">class</span> <span class="token class-name">GetStudentController</span> <span class="token punctuation">&#123;</span>
-    <span class="token annotation punctuation">@Resource</span>
-    getStudent studentInformation<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"/GetStudent"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token class-name">RequestMethod</span><span class="token punctuation">.</span><span class="token constant">GET</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token class-name">JsonResult</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">JsonResult</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>studentInformation<span class="token punctuation">.</span><span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>​	方法二：</p>
-<p>​	封装一个 <code>StaticMethodGetBean</code> 的类，此类实现了 <code>ApplicationContextAware</code> 接口</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StaticMethodGetBean</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token keyword">implements</span> <span class="token class-name">ApplicationContextAware</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// Spring应用上下文，用于访问应用上下文中的bean</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">ApplicationContext</span> applicationContext<span class="token punctuation">;</span>
-
-    <span class="token comment">/**
-     * 设置应用上下文。
-     * @param applicationContext Spring应用上下文实例
-     */</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setApplicationContext</span><span class="token punctuation">(</span><span class="token class-name">ApplicationContext</span> applicationContext<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">StaticMethodGetBean</span><span class="token punctuation">.</span>applicationContext <span class="token operator">=</span> applicationContext<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token comment">/**
-     * 通过类类型获取应用上下文中的bean。
-     *
-     * @param clazz 要获取的bean的类类型
-     * @return 返回bean的实例，如果不存在则返回null
-     * @param &lt;T> bean的类型
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token class-name">T</span> <span class="token function">getBean</span><span class="token punctuation">(</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> clazz<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 尝试获取bean实例，如果不存在则返回null</span>
-        <span class="token keyword">return</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>clazz<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>clazz<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>然后在要使用的地方直接调用 <code>getBean</code> 方法获取即可</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
-<span class="token keyword">class</span> <span class="token class-name">GetStudentController</span><span class="token punctuation">&#123;</span>
-<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"/GetStudent"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token class-name">RequestMethod</span><span class="token punctuation">.</span><span class="token constant">GET</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token class-name">JsonResult</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">var</span> studentInformation <span class="token operator">=</span> <span class="token class-name">StaticMethodGetBean</span><span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>getStudent<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">JsonResult</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>studentInformation<span class="token punctuation">.</span><span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>参考：<a href="https://blog.csdn.net/yangyifan0/article/details/130570051">SpringBoot 简单多模块构建_springboot创建多模块项目</a></p>
-<hr>
-<p><em>TODO</em></p>
-]]></content>
-      <categories>
-        <category>spring系列</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>java</tag>
-        <tag>springboot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>spring开发注解集合</title>
     <url>/2024/04/16/spring%E5%BC%80%E5%8F%91%E6%B3%A8%E8%A7%A3%E9%9B%86%E5%90%88/</url>
     <content><![CDATA[<h3 id="Spring-的常用注解"><a class="header-anchor" href="#Spring-的常用注解">¶</a>Spring 的常用注解</h3>
@@ -5078,6 +4977,107 @@ site<span class="token punctuation">[</span><span class="token string">"zero"</s
         <tag>原创</tag>
         <tag>java</tag>
         <tag>spring注解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>springboot多模块开发</title>
+    <url>/2024/04/22/springboot%E5%A4%9A%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h3 id="介绍"><a class="header-anchor" href="#介绍">¶</a>介绍</h3>
+<p>为了解决项目越来越大的问题，使用了多模块开发来使层次更加清晰。</p>
+<p>架构大致如下：</p>
+<p><img src="https://s21.ax1x.com/2024/04/15/pFvWf3j.png" alt="springboot多模块开发1" loading="lazy"></p>
+<h3 id="流程"><a class="header-anchor" href="#流程">¶</a>流程</h3>
+<p>（1）新建 <code>springboot</code> 项目；<br>
+（2）在新建后的 <code>springboot</code> 项目中新建多个 <code>module(模块)</code>；<br>
+（3）修改 <code>pom</code> 文件以及删除多余的文件及文件夹；<br>
+（4）将原项目的代码放进去；</p>
+<h3 id="多模块开发的坑"><a class="header-anchor" href="#多模块开发的坑">¶</a>多模块开发的坑</h3>
+<p>由于第一次使用多模块开发，并不熟练，所以踩了很多坑，这里记录一下</p>
+<ol>
+<li>访问后台接口报<code>404</code></li>
+</ol>
+<p>​	访问所有接口都报404，这是由于<code>spring</code>没有扫描到你写的<code>bean</code>所导致的，一般来说，<code>spring</code> 容器只会扫描启动类所在的包以及其下的子包中的所有类，但是开发不会将所有的模块都放在一个包下面，所以如果你<code>service</code>、<code>dao</code>等模块放在了启动类所在的包之外，那么<code>spring</code>就不会去扫描注册这些<code>bean</code></p>
+<p>​	解决方法是在启动类的<code>@SpringBootApplication</code>注解上面加上<code>scanBasePackages=&#123;&quot;xxx.xxxxx.*&quot;&#125;</code></p>
+<p>​	<code>xxx.xxxxx</code> 是你所共有的包，就比如说我所有的模块都是以 <code>com.example.xxx</code> 开始。</p>
+<p>​	如：</p>
+<p><img src="https://s21.ax1x.com/2024/04/15/pFvfnqP.png" alt="springboot多模块开发2" loading="lazy"></p>
+<p>​	要查看 <code>spring</code> 有没有注册你的 <code>bean</code> 可以到服务的 <code>Actuator</code> 中查看</p>
+<p><img src="https://s21.ax1x.com/2024/04/15/pFv5css.png" alt="springboot多模块开发3" loading="lazy"></p>
+<ol start="2">
+<li>
+<p><code>springboot</code>多模块的<code>@Resource</code>、<code>@Autowired</code> 注入为<code>NULL</code></p>
+<p>方法一：</p>
+</li>
+</ol>
+<p>​	导致注入失败的原因是因为使用了 <code>new</code> 去使用这个方法，只需要将此类自动注入即可解决问题</p>
+<p>报错的代码:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">class</span> <span class="token class-name">GetStudentController</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"/GetStudent"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token class-name">RequestMethod</span><span class="token punctuation">.</span><span class="token constant">GET</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">JsonResult</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">var</span> studentInformation <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">JsonResult</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>studentInformation<span class="token punctuation">.</span><span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>修改之后的：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">class</span> <span class="token class-name">GetStudentController</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Resource</span>
+    getStudent studentInformation<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"/GetStudent"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token class-name">RequestMethod</span><span class="token punctuation">.</span><span class="token constant">GET</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">JsonResult</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">JsonResult</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>studentInformation<span class="token punctuation">.</span><span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​	方法二：</p>
+<p>​	封装一个 <code>StaticMethodGetBean</code> 的类，此类实现了 <code>ApplicationContextAware</code> 接口</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StaticMethodGetBean</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token keyword">implements</span> <span class="token class-name">ApplicationContextAware</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Spring应用上下文，用于访问应用上下文中的bean</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">ApplicationContext</span> applicationContext<span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * 设置应用上下文。
+     * @param applicationContext Spring应用上下文实例
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setApplicationContext</span><span class="token punctuation">(</span><span class="token class-name">ApplicationContext</span> applicationContext<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">StaticMethodGetBean</span><span class="token punctuation">.</span>applicationContext <span class="token operator">=</span> applicationContext<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">/**
+     * 通过类类型获取应用上下文中的bean。
+     *
+     * @param clazz 要获取的bean的类类型
+     * @return 返回bean的实例，如果不存在则返回null
+     * @param &lt;T> bean的类型
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token class-name">T</span> <span class="token function">getBean</span><span class="token punctuation">(</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> clazz<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 尝试获取bean实例，如果不存在则返回null</span>
+        <span class="token keyword">return</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>clazz<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>clazz<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后在要使用的地方直接调用 <code>getBean</code> 方法获取即可</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">class</span> <span class="token class-name">GetStudentController</span><span class="token punctuation">&#123;</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"/GetStudent"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token class-name">RequestMethod</span><span class="token punctuation">.</span><span class="token constant">GET</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">JsonResult</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">var</span> studentInformation <span class="token operator">=</span> <span class="token class-name">StaticMethodGetBean</span><span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>getStudent<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">JsonResult</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>studentInformation<span class="token punctuation">.</span><span class="token function">getStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>参考：<a href="https://blog.csdn.net/yangyifan0/article/details/130570051">SpringBoot 简单多模块构建_springboot创建多模块项目</a></p>
+<hr>
+<p><em>TODO</em></p>
+]]></content>
+      <categories>
+        <category>spring系列</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>java</tag>
+        <tag>springboot</tag>
       </tags>
   </entry>
   <entry>
@@ -5642,6 +5642,30 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
       </tags>
   </entry>
   <entry>
+    <title>记一次电脑启动原神蓝屏解决方案</title>
+    <url>/2023/05/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B5%E8%84%91%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%A5%9E%E8%93%9D%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<ul>
+<li>
+<p>原因：</p>
+<p>电脑启动原神时蓝屏，退出代码为 kernel-security_check_failure（内核安全检查失败）</p>
+</li>
+<li>
+<p>解决方法：</p>
+<p>进入设置 windows 安全中心将内核隔离的内核模式硬件强制堆栈保护关闭即可</p>
+</li>
+</ul>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>编程技巧</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>计算机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记一次打暑假工的经历</title>
     <url>/2023/06/28/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%89%93%E6%9A%91%E5%81%87%E5%B7%A5%E7%9A%84%E7%BB%8F%E5%8E%86/</url>
     <content><![CDATA[<p>一切的不顺，全都来之于能力的不足</p>
@@ -5675,30 +5699,6 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
         <tag>原创</tag>
         <tag>记录</tag>
         <tag>暑假工</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>记一次电脑启动原神蓝屏解决方案</title>
-    <url>/2023/05/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B5%E8%84%91%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%A5%9E%E8%93%9D%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
-    <content><![CDATA[<ul>
-<li>
-<p>原因：</p>
-<p>电脑启动原神时蓝屏，退出代码为 kernel-security_check_failure（内核安全检查失败）</p>
-</li>
-<li>
-<p>解决方法：</p>
-<p>进入设置 windows 安全中心将内核隔离的内核模式硬件强制堆栈保护关闭即可</p>
-</li>
-</ul>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>编程技巧</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>计算机</tag>
       </tags>
   </entry>
   <entry>
