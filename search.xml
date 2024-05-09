@@ -6475,4 +6475,170 @@ WHERE condition;<span aria-hidden="true" class="line-numbers-rows"><span></span>
         <tag>MySQL</tag>
       </tags>
   </entry>
+  <entry>
+    <title>MySQL-3</title>
+    <url>/2024/05/09/MySQL-3/</url>
+    <content><![CDATA[<h3 id="LIKE-子句"><a class="header-anchor" href="#LIKE-子句">¶</a><em>LIKE</em> 子句</h3>
+<p><em>like</em> 子句用于指定 <em>update</em> 以及 <em>delete</em> 中的 <em>where</em> 条件.</p>
+<p>可以使用 <em><code>or</code></em> 或者 <em><code>and</code></em> 指定一个或者多个条件.</p>
+<p>基本语法：</p>
+<p><code>SELECT * FROM &lt;表名&gt; WHERE &lt;LIKE句所用的列名&gt; LIKE &lt;条件&gt;;</code></p>
+<p>例子：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id like 1;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>筛选 <em>user</em> 表中的所有行，<em>id</em> 列为 1 的所有列.</p>
+<h4 id="LIKE-通配符"><a class="header-anchor" href="#LIKE-通配符">¶</a><em>LIKE</em> 通配符</h4>
+<p>在 <em>like</em> 子句中，<code>%</code> 通配符与正则表达式的 <code>*</code> 作用相同，表示零个或多个字符.</p>
+<p>而 <code>_</code> 通配符表示一个字符.</p>
+<p>不区分大小写匹配：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id like 1 collate utf8mb4_general_ci;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用 <code>collate utf8mb4_general_ci</code> 定义 <em>utf8mb4</em> 字符集和大小写不敏感规则.</p>
+<h3 id="UNION-连接子句"><a class="header-anchor" href="#UNION-连接子句">¶</a><em>UNION</em> 连接子句</h3>
+<p>此操作符用于连接两个以上的 <em>SELECT</em> 语句的结果并去除重复行后组合到一个结果集中.</p>
+<p>每个 <em>UNION</em> 操作符必须由两个或者多个 <em>SELECT</em> 语句组成，每个 <em>SELECT</em> 语句的列数和数据类型必须一致.</p>
+<p>基本语法：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT column1, column2, ... FROM table1 WHERE condition1
+UNION
+SELECT column1, column2, ... FROM table2 WHERE condition2
+[ORDER BY column1, column2, ...];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>参数解析：</p>
+<ul>
+<li><code>ORDER BY</code>
+<ul>
+<li>可选子句，用于指定合并后的结果集的排序顺序.</li>
+</ul>
+</li>
+</ul>
+<p>例子：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id &lt; 2 union select * from user where id &gt; 2;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>筛选 <em>user</em> 表中 <em>id</em> 不等于 <em>2</em> 的所有行.</p>
+<h3 id="UNION-ALL"><a class="header-anchor" href="#UNION-ALL">¶</a><em>UNION ALL</em></h3>
+<p>此子句与 <em>UNION</em> 的不同在于展示出来的数据会包含重复数据。</p>
+<p>基本语法：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT column1, column2, ... FROM table1 WHERE condition1
+UNION ALL
+SELECT column1, column2, ... FROM table2 WHERE condition2
+[ORDER BY column1, column2, ...];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="ORDER-BY-语句"><a class="header-anchor" href="#ORDER-BY-语句">¶</a><em>ORDER BY</em> 语句</h3>
+<p>如果想要对读取的数据进行排序，可以使用此子句来设定你想按那个字段那种方式来进行排序，再返回搜索结果。此子句可以按照一个或多个值进行升序(<em>ASC</em>)或降序(<em>DESC</em>)排序.</p>
+<p>基本语法：</p>
+<p><code>SELECT column1,... FROM &lt;表名&gt; ORDER BY column1 [ASC | DESC], column2 [ASC | DESC],...;</code></p>
+<p>参数解析：</p>
+<ul>
+<li><code>ORDER BY</code>
+<ul>
+<li>用于指定排序顺序子句，<em>ASC</em> 表示升序（默认），<em>DESC</em> 表示降序.</li>
+</ul>
+</li>
+</ul>
+<p>使用拼音对汉字进行排序，如果使用 <em>gbk</em> 字符集，可以直接排序，如果使用 <em>utf8</em> 字符集，需要对字段进行转码.</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user order by convert(username using gbk);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-order-by.html">MySQL ORDER BY(排序) 语句 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="JOIN-连接"><a class="header-anchor" href="#JOIN-连接">¶</a><em>JOIN</em>(连接)</h3>
+<p>可以在 <em>SELECT</em> 、<em>UPDATE</em>、<em>DELETE</em> 语句中使用 JOIN 来联合多表查询.</p>
+<p>JOIN 按照功能大致分为三类：</p>
+<ul>
+<li><code>INNER JOIN</code>
+<ul>
+<li>获取两个表中字段匹配的记录，如果右表中匹配的行有字段为 <em>NULL</em>，则不显示此行.</li>
+</ul>
+</li>
+</ul>
+<p>基本语法：</p>
+<p><code>SELECT column1,... FROM &lt;表名1&gt; INNER JOIN &lt;表名2&gt; ON &lt;表名1.字段名&gt; = &lt;表名2.字段名&gt; ...;</code></p>
+<p>示例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 简单查询
+select * from user inner join scores on user.id &#x3D; scores.id;
+
+# 使用 as 定义别名
+select u.username,s.chinese,s.mathematics,s.english from user as u inner join scores as s on u.id &#x3D; s.id;
+
+# 多 inner join 查询
+select * from user as u 
+inner join scores as s on u.id &#x3D; s.id 
+inner join test_table as t on u.id &#x3D; t.id;
+
+# 使用 where 过滤记录
+select * from user as u
+inner join scores as s on u.id &#x3D; s.id
+inner join test_table as t on u.id &#x3D; t.id
+where u.birhdate &gt; &#39;2005-01-01&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>LEFT JOIN</code>
+<ul>
+<li>返回左表中的所有行，并包括右表中匹配的行，如果右表中匹配的行中没有值，则返回 <em>NULL</em> 值.</li>
+</ul>
+</li>
+</ul>
+<p>基本语法：</p>
+<p><code>SELECT column1,... FROM &lt;表名1&gt; left JOIN &lt;表名2&gt; ON &lt;表名1.字段名&gt; = &lt;表名2.字段名&gt; ...;</code></p>
+<p>示例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># left join 的使用方法同 inner join 一样
+select u.id,u.username,s.mathematics,s.chinese,s.english,t.age from user as u
+left join scores as s on u.id &#x3D; s.id
+left join test_table as t on s.id &#x3D; t.id;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-join.html">MySQL 连接的使用 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="NULL-处理"><a class="header-anchor" href="#NULL-处理">¶</a><em>NULL</em> 处理</h3>
+<p><em>MySQL</em> 提供了三个运算符来处理 <em>NULL</em> 值，在 <em>MySQL</em> 中，<em>NULL</em> 值通常表示缺失或未知数据，你不能使用 <code>=</code> 或者 <code>!=</code> 来查找 <em>NULL</em> 值，因为 <em>NULL</em> 值与其他任何值比较都为 <em>NULL</em> .</p>
+<ul>
+<li><code>IS NULL</code>
+<ul>
+<li>当列的值是 <em>NULL</em>，此运算符返回 <em>true</em> .</li>
+</ul>
+</li>
+<li><code>IS NOT NULL</code>
+<ul>
+<li>当列的值不为 <em>NULL</em>，此运算符返回 <em>true</em> .</li>
+</ul>
+</li>
+<li><code>&lt;=&gt;</code>
+<ul>
+<li>当比较的两个值相等或者都为 <em>NULL</em> 时返回 <em>true</em> .</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 判读 age 字段是否为 NULL
+select * from test_table as t where t.age is null;
+
+# 判断 age 字段是否不为 NULL
+select * from test_table as t where t.age is not null;
+
+# 判断 age 字段是否为 NULL，效果同 is 一样
+select * from test_table as t where t.age &lt;&#x3D;&gt; null;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="数据表清洗"><a class="header-anchor" href="#数据表清洗">¶</a>数据表清洗</h4>
+<p>将表中指定的列中所有的NULL值替换为 <code>0</code>.</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * , ifnull(t.age,0) as age from test_table as t;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="IFNULL-COALESCE"><a class="header-anchor" href="#IFNULL-COALESCE">¶</a>IFNULL &amp; COALESCE</h4>
+<p><code>IFNULL</code> 基本语法：</p>
+<p><code>IFNULL(expr1,expr2)</code></p>
+<p><em>ifnull</em> 是常用的用于处理 <em>NULL</em> 值的函数，其基本功能是如果参数 1 为 <em>NULL</em>，则返回参数 2 的值.</p>
+<p><code>COALESCE</code>基本语法：</p>
+<p><code>COALESCE(value1,value2,...,valueEn)</code></p>
+<p><em>coalesce</em> 可以看做是 <em>ifnull</em> 的增强版，其功能同 <em>ifnull</em> 相同，但是可以接受比 <em>ifnull</em> 更多的参数，如果参数 1 为 <em>NULL</em>，则返回其参数列表中第一个非 <em>NULL</em> 的表达式，如果所有提供的表达式都为 <em>NULL</em>，那么 <em>coalesce</em> 函数将返回 <em>NULL</em>.</p>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-null.html">MySQL NULL 值处理 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="正则表达式"><a class="header-anchor" href="#正则表达式">¶</a>正则表达式</h3>
+<p>MySQL 提供了正则表达式的匹配，用于提供比普通筛选更强大的功能.</p>
+<ul>
+<li><code>REGEXP</code>
+<ul>
+<li>regexp 是用于进行正则匹配的运算符.</li>
+</ul>
+</li>
+</ul>
+<p>基本语法：</p>
+<p><code>SELECT column1,column2,... FROM &lt;表名&gt; WHERE column_name regexp 'pattern'</code></p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 筛选出以 1 开头的 id
+select * from user as u where u.id regexp &#39;^[1*]&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-regexp.html">MySQL 正则表达式 | 菜鸟教程 (runoob.com)</a></p>
+<hr>
+<p><em>END</em></p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
 </search>
