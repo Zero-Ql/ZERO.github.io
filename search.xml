@@ -1,31 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2023年度总结</title>
-    <url>/2024/02/09/2023%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
-<p>先在这里提前祝大家新年快乐！新的一年要开开心心，顺顺利利的。🧨爆竹🎇烟花💥爆炸✨闪亮</p>
-<hr>
-<p>​	在2023年中，我拥有了人生中第一台云服务器，虽然是和朋友一起合租的，但是还是很开心，还搭建了人生中第一个个人博客，同时，还学会了很多东西，虽然是些皮毛，但是依然令人高兴，而这些都是值得铭记的。有开心的同时一样有伤心，这才是世间的规则，在这一年，继我奶奶走了之后，我爷爷也在十一月份离我们而去了，老天爷总是不公的，连留给我见最后一面的时间都不舍得给。</p>
-<p>​	在过去的一年中，经历了许许多多的事情，有开心，也有过不愉快，但是，这些都不重要了，因为已经过去了，人是要活在未来的，向前看才行。</p>
-<p>​	希望新的一年越来越好，能完成自己想做的事情。</p>
-<p>​	2024年的新年愿望是能有一台属于自己的服务器，能遇见一个喜欢的人。如此，安好。</p>
-<p>​	最后附上一张烟花</p>
-<p><img src="/images/yh.png" alt="烟花" loading="lazy"></p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>日记</category>
-      </categories>
-      <tags>
-        <tag>2023</tag>
-        <tag>年度总结</tag>
-        <tag>原创</tag>
-        <tag>记录</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker之nginx的负载均衡</title>
     <url>/2023/09/12/Docker%E4%B9%8Bnginx%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</url>
     <content><![CDATA[<h4 id="使用docker部署nginx的负载均衡"><a class="header-anchor" href="#使用docker部署nginx的负载均衡">¶</a>使用docker部署nginx的负载均衡</h4>
@@ -154,8 +129,8 @@ http <span class="token punctuation">&#123;</span>
         <category>笔记</category>
       </categories>
       <tags>
-        <tag>原创</tag>
         <tag>Docker</tag>
+        <tag>原创</tag>
       </tags>
   </entry>
   <entry>
@@ -178,8 +153,33 @@ http <span class="token punctuation">&#123;</span>
         <category>笔记</category>
       </categories>
       <tags>
-        <tag>原创</tag>
         <tag>Docker</tag>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2023年度总结</title>
+    <url>/2024/02/09/2023%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
+<p>先在这里提前祝大家新年快乐！新的一年要开开心心，顺顺利利的。🧨爆竹🎇烟花💥爆炸✨闪亮</p>
+<hr>
+<p>​	在2023年中，我拥有了人生中第一台云服务器，虽然是和朋友一起合租的，但是还是很开心，还搭建了人生中第一个个人博客，同时，还学会了很多东西，虽然是些皮毛，但是依然令人高兴，而这些都是值得铭记的。有开心的同时一样有伤心，这才是世间的规则，在这一年，继我奶奶走了之后，我爷爷也在十一月份离我们而去了，老天爷总是不公的，连留给我见最后一面的时间都不舍得给。</p>
+<p>​	在过去的一年中，经历了许许多多的事情，有开心，也有过不愉快，但是，这些都不重要了，因为已经过去了，人是要活在未来的，向前看才行。</p>
+<p>​	希望新的一年越来越好，能完成自己想做的事情。</p>
+<p>​	2024年的新年愿望是能有一台属于自己的服务器，能遇见一个喜欢的人。如此，安好。</p>
+<p>​	最后附上一张烟花</p>
+<p><img src="/images/yh.png" alt="烟花" loading="lazy"></p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>日记</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>2023</tag>
+        <tag>年度总结</tag>
+        <tag>记录</tag>
       </tags>
   </entry>
   <entry>
@@ -270,103 +270,8 @@ CMD <span class="token punctuation">[</span><span class="token string">"/bin/bas
         <category>笔记</category>
       </categories>
       <tags>
-        <tag>原创</tag>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker的使用-壹</title>
-    <url>/2023/09/05/Docker%E7%9A%84%E4%BD%BF%E7%94%A8-%E5%A3%B9/</url>
-    <content><![CDATA[<h4 id="Docker使用"><a class="header-anchor" href="#Docker使用">¶</a>Docker使用</h4>
-<ul>
-<li>在docker容器内运行应用程序</li>
-</ul>
-<blockquote>
-<p><code>docker run ubuntu:15.10 /bin/echo &quot;hello world&quot;</code></p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/05/pPsklv9.png" alt="docker使用1" loading="lazy"></p>
-<p>参数解析：</p>
-<ol>
-<li><code>docker</code>:Docker的二进制执行文件</li>
-<li><code>run</code>: 与Docker组合运行一个容器</li>
-<li><code>ubuntu:15.10</code>:要运行的镜像，本地没有就会从镜像仓库下载</li>
-<li><code>/bin/echo &quot;hello world&quot;</code>:在启动的容器里执行<code>echo</code>命令</li>
-</ol>
-<ul>
-<li>与docker容器进行交互</li>
-</ul>
-<blockquote>
-<p><code>docker run -t -i centos:centos7 /bin/bash</code></p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/05/pPskQgJ.png" alt="docker使用2" loading="lazy"></p>
-<p>参数解析：</p>
-<ol>
-<li><code>-t</code>:在新的容器里指定一个终端</li>
-<li><code>-i</code>: 允许与指定的终端进行交互</li>
-</ol>
-<p>注意：可以用<code>exit</code>退出伪终端</p>
-<ul>
-<li>通过ps查看正在运行的容器</li>
-</ul>
-<blockquote>
-<p><code>docker ps</code></p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/05/pPskM34.png" alt="docker的使用3" loading="lazy"></p>
-<p>参数解析：</p>
-<ol>
-<li>
-<p><code>CONTAINER ID</code>: 容器ID</p>
-</li>
-<li>
-<p><code>IMAGE</code>: 使用的镜像</p>
-</li>
-<li>
-<p><code>COMMAND</code>: 启动镜像时运行的命令</p>
-</li>
-<li>
-<p><code>CREATED</code>: 容器的创建时间</p>
-</li>
-<li>
-<p><code>STATUS</code>: 容器的状态 （容器的七种状态：</p>
-<p>1.<code>created</code> 已创建</p>
-<p>2.<code>restaring</code> 重启中</p>
-<p>3.<code>running</code>或<code>Up</code> 运行中</p>
-<p>4.<code>removing </code>迁移中</p>
-<p>5.<code>paused </code>暂停</p>
-<p>6.<code>exited </code>停止</p>
-<p>7.<code>dead </code>死亡）</p>
-</li>
-<li>
-<p><code>PORTS</code>: 容器的端口信息和使用的连接类型（<code>TCP/UDP</code>）</p>
-</li>
-<li>
-<p><code>NAMES</code>: 自动分配的容器名称</p>
-</li>
-</ol>
-<h5 id="常用命令"><a class="header-anchor" href="#常用命令">¶</a>常用命令</h5>
-<ol>
-<li><code>docker images</code>        	列出本地主机上的镜像</li>
-<li><code>docker search centos[:7] </code>      	 搜索镜像</li>
-<li><code>docker pull centos[:centos7] </code>      	 下载镜像</li>
-<li><code>docker tag centos:centos7 mycentos:centos7 </code>       	为镜像添加标签，其中分号前为镜像类型，分号后为镜像版本</li>
-<li><code>docker history centos:centos7 </code>       	查看镜像的构建历史信息</li>
-<li><code>docker rmi centos:centos7</code>        	删除镜像（可以使用<code>-f</code>强制删除，在删除使用tag标签标记的镜像时可以不用加<code>-f</code>参数）</li>
-<li><code>docker image prune [-a] [-f]</code>        清理镜像，加<code>-a</code>参数即删除所有无用的镜像，不仅仅是临时镜像 <code>-f</code>参数即可强制删除镜像而不提示</li>
-<li><code>docker image save centos:centos7 &gt; ./my-centos7.tar.gz </code>       导出镜像到当前目录，格式为一个压缩包（可以自行选择导出的位置）</li>
-<li><code>docker image load [-i] [-q] ./my-centos7.tar.gz</code>        将centos7的镜像压缩包导入，<code>-i</code>参数是指定导入的文件，<code>-q</code>参数是精简输出信息</li>
-<li><code>docker image inspect [-f] &#123; &#123;&quot;.Os&quot;&#125; &#125; centos:centos7</code>        查看镜像信息，可以使用<code>-f</code>参数获取指定信息</li>
-<li><code>docker restart $(docker ps -a -q)</code> 重启所有 docker 容器</li>
-</ol>
-<p>注意：[ ] 里的为可选内容，选择具体版本</p>
-<hr>
-<p>TODO</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
         <tag>原创</tag>
-        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -533,8 +438,103 @@ IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
         <category>编程技巧</category>
       </categories>
       <tags>
-        <tag>原创</tag>
         <tag>Docker</tag>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker的使用-壹</title>
+    <url>/2023/09/05/Docker%E7%9A%84%E4%BD%BF%E7%94%A8-%E5%A3%B9/</url>
+    <content><![CDATA[<h4 id="Docker使用"><a class="header-anchor" href="#Docker使用">¶</a>Docker使用</h4>
+<ul>
+<li>在docker容器内运行应用程序</li>
+</ul>
+<blockquote>
+<p><code>docker run ubuntu:15.10 /bin/echo &quot;hello world&quot;</code></p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/05/pPsklv9.png" alt="docker使用1" loading="lazy"></p>
+<p>参数解析：</p>
+<ol>
+<li><code>docker</code>:Docker的二进制执行文件</li>
+<li><code>run</code>: 与Docker组合运行一个容器</li>
+<li><code>ubuntu:15.10</code>:要运行的镜像，本地没有就会从镜像仓库下载</li>
+<li><code>/bin/echo &quot;hello world&quot;</code>:在启动的容器里执行<code>echo</code>命令</li>
+</ol>
+<ul>
+<li>与docker容器进行交互</li>
+</ul>
+<blockquote>
+<p><code>docker run -t -i centos:centos7 /bin/bash</code></p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/05/pPskQgJ.png" alt="docker使用2" loading="lazy"></p>
+<p>参数解析：</p>
+<ol>
+<li><code>-t</code>:在新的容器里指定一个终端</li>
+<li><code>-i</code>: 允许与指定的终端进行交互</li>
+</ol>
+<p>注意：可以用<code>exit</code>退出伪终端</p>
+<ul>
+<li>通过ps查看正在运行的容器</li>
+</ul>
+<blockquote>
+<p><code>docker ps</code></p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/05/pPskM34.png" alt="docker的使用3" loading="lazy"></p>
+<p>参数解析：</p>
+<ol>
+<li>
+<p><code>CONTAINER ID</code>: 容器ID</p>
+</li>
+<li>
+<p><code>IMAGE</code>: 使用的镜像</p>
+</li>
+<li>
+<p><code>COMMAND</code>: 启动镜像时运行的命令</p>
+</li>
+<li>
+<p><code>CREATED</code>: 容器的创建时间</p>
+</li>
+<li>
+<p><code>STATUS</code>: 容器的状态 （容器的七种状态：</p>
+<p>1.<code>created</code> 已创建</p>
+<p>2.<code>restaring</code> 重启中</p>
+<p>3.<code>running</code>或<code>Up</code> 运行中</p>
+<p>4.<code>removing </code>迁移中</p>
+<p>5.<code>paused </code>暂停</p>
+<p>6.<code>exited </code>停止</p>
+<p>7.<code>dead </code>死亡）</p>
+</li>
+<li>
+<p><code>PORTS</code>: 容器的端口信息和使用的连接类型（<code>TCP/UDP</code>）</p>
+</li>
+<li>
+<p><code>NAMES</code>: 自动分配的容器名称</p>
+</li>
+</ol>
+<h5 id="常用命令"><a class="header-anchor" href="#常用命令">¶</a>常用命令</h5>
+<ol>
+<li><code>docker images</code>        	列出本地主机上的镜像</li>
+<li><code>docker search centos[:7] </code>      	 搜索镜像</li>
+<li><code>docker pull centos[:centos7] </code>      	 下载镜像</li>
+<li><code>docker tag centos:centos7 mycentos:centos7 </code>       	为镜像添加标签，其中分号前为镜像类型，分号后为镜像版本</li>
+<li><code>docker history centos:centos7 </code>       	查看镜像的构建历史信息</li>
+<li><code>docker rmi centos:centos7</code>        	删除镜像（可以使用<code>-f</code>强制删除，在删除使用tag标签标记的镜像时可以不用加<code>-f</code>参数）</li>
+<li><code>docker image prune [-a] [-f]</code>        清理镜像，加<code>-a</code>参数即删除所有无用的镜像，不仅仅是临时镜像 <code>-f</code>参数即可强制删除镜像而不提示</li>
+<li><code>docker image save centos:centos7 &gt; ./my-centos7.tar.gz </code>       导出镜像到当前目录，格式为一个压缩包（可以自行选择导出的位置）</li>
+<li><code>docker image load [-i] [-q] ./my-centos7.tar.gz</code>        将centos7的镜像压缩包导入，<code>-i</code>参数是指定导入的文件，<code>-q</code>参数是精简输出信息</li>
+<li><code>docker image inspect [-f] &#123; &#123;&quot;.Os&quot;&#125; &#125; centos:centos7</code>        查看镜像信息，可以使用<code>-f</code>参数获取指定信息</li>
+<li><code>docker restart $(docker ps -a -q)</code> 重启所有 docker 容器</li>
+</ol>
+<p>注意：[ ] 里的为可选内容，选择具体版本</p>
+<hr>
+<p>TODO</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>原创</tag>
       </tags>
   </entry>
   <entry>
@@ -927,96 +927,6 @@ Fast-forward
       </tags>
   </entry>
   <entry>
-    <title>JSON</title>
-    <url>/2024/04/03/JSON/</url>
-    <content><![CDATA[<h3 id="JSON-简介"><a class="header-anchor" href="#JSON-简介">¶</a>JSON 简介</h3>
-<blockquote>
-<p><code>JSON</code>: <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation( <code>JavaScript</code> 对象表示法)</p>
-<p><code>JSON</code> 是存储和交换文本信息的语法，类似 <code>XML</code>。</p>
-<p><code>JSON</code> 比 <code>XML</code> 更小、更快，更易解析。</p>
-<p><code>JSON</code> 易于人阅读和编写。</p>
-<p><code>C</code>、<code>Python</code>、<code>C++</code>、<code>Java</code>、<code>PHP</code>、<code>Go</code>等编程语言都支持 <code>JSON</code></p>
-</blockquote>
-<p>例子：</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-    <span class="token property">"sites"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"bing"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.bing.com"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
-    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"google"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.google.com"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
-    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"baidu"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.baidu.com"</span> <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">]</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="对象"><a class="header-anchor" href="#对象">¶</a>对象</h3>
-<p>在 <code>JSON</code> 中使用<code>&#123;&#125;</code>来定义一个对象。左括号<code>&#123;</code>开始，右括号<code>&#125;</code>结束。每个 <code>&quot;键&quot;</code> 后跟一个冒号 <code>:</code> ，名称/值对使用逗号 <code>,</code> 分隔</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-	<span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"张三"</span><span class="token punctuation">,</span>
-    <span class="token property">"age"</span><span class="token operator">:</span><span class="token number">20</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="嵌套对象"><a class="header-anchor" href="#嵌套对象">¶</a>嵌套对象</h4>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-    <span class="token property">"num"</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">,</span>
-	<span class="token property">"student"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
-		<span class="token property">"namelist"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
-			<span class="token property">"name1"</span><span class="token operator">:</span><span class="token string">"张三"</span><span class="token punctuation">,</span>
-			<span class="token property">"name2"</span><span class="token operator">:</span><span class="token string">"李四"</span>
-		<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-		<span class="token property">"agelist"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
-			<span class="token property">"age1"</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span>
-			<span class="token property">"age2"</span><span class="token operator">:</span><span class="token number">21</span>
-		<span class="token punctuation">&#125;</span>
-	<span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="数组"><a class="header-anchor" href="#数组">¶</a>数组</h3>
-<p>中括号 <code>[]</code> 保存的数组是值（<code>value</code>）的有序集合。一个数组以左中括号 <code>[</code> 开始， 右中括号 <code>]</code> 结束，值之间使用逗号 <code>,</code> 分隔。</p>
-<p>值（<code>value</code>）可以是双引号括起来的字符串（<code>string</code>）、数值(<code>number</code>)、<code>true</code>、<code>false</code>、 <code>null</code>、对象（<code>object</code>）或者数组（<code>array</code>），它们是可以嵌套，值不能为键值对。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span><span class="token string">"str"</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="嵌套数组"><a class="header-anchor" href="#嵌套数组">¶</a>嵌套数组</h4>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
-  <span class="token punctuation">&#123;</span>
-    <span class="token property">"num"</span><span class="token operator">:</span> <span class="token number">2</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">[</span>
-    <span class="token punctuation">&#123;</span>
-      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"张三"</span><span class="token punctuation">,</span>
-      <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">20</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#123;</span>
-      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"李四"</span><span class="token punctuation">,</span>
-      <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">21</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">]</span>
-<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="JSON-parse"><a class="header-anchor" href="#JSON-parse">¶</a><code>JSON.parse()</code></h3>
-<p>此方法为 <code>JavaScript</code> 的内置函数，用于将 <code>JSON</code> 字符串解析为原生 <code>JavaScript</code> 对象或值</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>text<span class="token punctuation">[</span><span class="token punctuation">,</span> reviver<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><code>text</code></p>
-<p>​	要被解析成 <code>JavaScript</code> 值的字符串</p>
-<p><code>reviver</code>(可选)</p>
-<p>​	转换器，如果传入该参数 (函数)，可以用来修改解析生成的原始值，调用时机在 <code>parse</code> 函数返回之前</p>
-<p>返回值</p>
-<p>​	与给定的 <code>JSON text</code> 相对应的 <code>Object</code>、<code>Array</code>、<code>string</code>、<code>number</code>、<code>boolean</code> 或者 <code>null</code> 值</p>
-<p>异常</p>
-<p>​	若传入的字符串不符合 JSON 规范，则会抛出此异常</p>
-<p>使用 <code>reviver</code> 函数</p>
-<blockquote>
-<p>如果指定了 <code>reviver</code> 函数，则解析出的 <code>JavaScript</code> 值（解析值）会经过一次转换后才将被最终返回（返回值）。更具体点讲就是：解析值本身以及它所包含的所有属性，会按照一定的顺序（从最最里层的属性开始，一级级往外，最终到达顶层，也就是解析值本身）分别的去调用 <code>reviver</code> 函数，在调用过程中，当前属性所属的对象会作为 <code>this</code> 值，当前属性名和属性值会分别作为第一个和第二个参数传入 <code>reviver</code> 中。如果 <code>reviver</code> 返回 <code>undefined</code>，则当前属性会从所属对象中删除，如果返回了其他值，则返回的值会成为当前属性新的属性值。</p>
-<p>当遍历到最顶层的值（解析值）时，传入 <code>reviver</code> 函数的参数会是空字符串 <code>&quot;&quot;</code>（因为此时已经没有真正的属性）和当前的解析值（有可能已经被修改过了），当前的 <code>this</code> 值会是 <code>&#123;&quot;&quot;: 修改过的解析值&#125;</code>，在编写 <code>reviver</code> 函数时，要注意到这个特例。（这个函数的遍历顺序依照：从最内层开始，按照层级顺序，依次向外遍历）</p>
-</blockquote>
-<p>更多请参阅:</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse() - JavaScript | MDN (mozilla.org)</a></p>
-<p><a href="https://www.runoob.com/json/json-tutorial.html">JSON 教程 | 菜鸟教程 (runoob.com)</a></p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>前端学习笔记</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>JavaScript</tag>
-        <tag>JSON</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JUnit</title>
     <url>/2024/03/11/JUnit/</url>
     <content><![CDATA[<h3 id="JUnit-介绍"><a class="header-anchor" href="#JUnit-介绍">¶</a>JUnit 介绍</h3>
@@ -1249,6 +1159,96 @@ Fast-forward
         <tag>原创</tag>
         <tag>java</tag>
         <tag>junit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JSON</title>
+    <url>/2024/04/03/JSON/</url>
+    <content><![CDATA[<h3 id="JSON-简介"><a class="header-anchor" href="#JSON-简介">¶</a>JSON 简介</h3>
+<blockquote>
+<p><code>JSON</code>: <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation( <code>JavaScript</code> 对象表示法)</p>
+<p><code>JSON</code> 是存储和交换文本信息的语法，类似 <code>XML</code>。</p>
+<p><code>JSON</code> 比 <code>XML</code> 更小、更快，更易解析。</p>
+<p><code>JSON</code> 易于人阅读和编写。</p>
+<p><code>C</code>、<code>Python</code>、<code>C++</code>、<code>Java</code>、<code>PHP</code>、<code>Go</code>等编程语言都支持 <code>JSON</code></p>
+</blockquote>
+<p>例子：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"sites"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"bing"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.bing.com"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
+    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"google"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.google.com"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
+    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"baidu"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.baidu.com"</span> <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="对象"><a class="header-anchor" href="#对象">¶</a>对象</h3>
+<p>在 <code>JSON</code> 中使用<code>&#123;&#125;</code>来定义一个对象。左括号<code>&#123;</code>开始，右括号<code>&#125;</code>结束。每个 <code>&quot;键&quot;</code> 后跟一个冒号 <code>:</code> ，名称/值对使用逗号 <code>,</code> 分隔</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+	<span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"张三"</span><span class="token punctuation">,</span>
+    <span class="token property">"age"</span><span class="token operator">:</span><span class="token number">20</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="嵌套对象"><a class="header-anchor" href="#嵌套对象">¶</a>嵌套对象</h4>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"num"</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">,</span>
+	<span class="token property">"student"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
+		<span class="token property">"namelist"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
+			<span class="token property">"name1"</span><span class="token operator">:</span><span class="token string">"张三"</span><span class="token punctuation">,</span>
+			<span class="token property">"name2"</span><span class="token operator">:</span><span class="token string">"李四"</span>
+		<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+		<span class="token property">"agelist"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
+			<span class="token property">"age1"</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span>
+			<span class="token property">"age2"</span><span class="token operator">:</span><span class="token number">21</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="数组"><a class="header-anchor" href="#数组">¶</a>数组</h3>
+<p>中括号 <code>[]</code> 保存的数组是值（<code>value</code>）的有序集合。一个数组以左中括号 <code>[</code> 开始， 右中括号 <code>]</code> 结束，值之间使用逗号 <code>,</code> 分隔。</p>
+<p>值（<code>value</code>）可以是双引号括起来的字符串（<code>string</code>）、数值(<code>number</code>)、<code>true</code>、<code>false</code>、 <code>null</code>、对象（<code>object</code>）或者数组（<code>array</code>），它们是可以嵌套，值不能为键值对。</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span><span class="token string">"str"</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="嵌套数组"><a class="header-anchor" href="#嵌套数组">¶</a>嵌套数组</h4>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token property">"num"</span><span class="token operator">:</span> <span class="token number">2</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"张三"</span><span class="token punctuation">,</span>
+      <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">20</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"李四"</span><span class="token punctuation">,</span>
+      <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">21</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="JSON-parse"><a class="header-anchor" href="#JSON-parse">¶</a><code>JSON.parse()</code></h3>
+<p>此方法为 <code>JavaScript</code> 的内置函数，用于将 <code>JSON</code> 字符串解析为原生 <code>JavaScript</code> 对象或值</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>text<span class="token punctuation">[</span><span class="token punctuation">,</span> reviver<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>text</code></p>
+<p>​	要被解析成 <code>JavaScript</code> 值的字符串</p>
+<p><code>reviver</code>(可选)</p>
+<p>​	转换器，如果传入该参数 (函数)，可以用来修改解析生成的原始值，调用时机在 <code>parse</code> 函数返回之前</p>
+<p>返回值</p>
+<p>​	与给定的 <code>JSON text</code> 相对应的 <code>Object</code>、<code>Array</code>、<code>string</code>、<code>number</code>、<code>boolean</code> 或者 <code>null</code> 值</p>
+<p>异常</p>
+<p>​	若传入的字符串不符合 JSON 规范，则会抛出此异常</p>
+<p>使用 <code>reviver</code> 函数</p>
+<blockquote>
+<p>如果指定了 <code>reviver</code> 函数，则解析出的 <code>JavaScript</code> 值（解析值）会经过一次转换后才将被最终返回（返回值）。更具体点讲就是：解析值本身以及它所包含的所有属性，会按照一定的顺序（从最最里层的属性开始，一级级往外，最终到达顶层，也就是解析值本身）分别的去调用 <code>reviver</code> 函数，在调用过程中，当前属性所属的对象会作为 <code>this</code> 值，当前属性名和属性值会分别作为第一个和第二个参数传入 <code>reviver</code> 中。如果 <code>reviver</code> 返回 <code>undefined</code>，则当前属性会从所属对象中删除，如果返回了其他值，则返回的值会成为当前属性新的属性值。</p>
+<p>当遍历到最顶层的值（解析值）时，传入 <code>reviver</code> 函数的参数会是空字符串 <code>&quot;&quot;</code>（因为此时已经没有真正的属性）和当前的解析值（有可能已经被修改过了），当前的 <code>this</code> 值会是 <code>&#123;&quot;&quot;: 修改过的解析值&#125;</code>，在编写 <code>reviver</code> 函数时，要注意到这个特例。（这个函数的遍历顺序依照：从最内层开始，按照层级顺序，依次向外遍历）</p>
+</blockquote>
+<p>更多请参阅:</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse() - JavaScript | MDN (mozilla.org)</a></p>
+<p><a href="https://www.runoob.com/json/json-tutorial.html">JSON 教程 | 菜鸟教程 (runoob.com)</a></p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>JavaScript</tag>
+        <tag>JSON</tag>
       </tags>
   </entry>
   <entry>
@@ -3500,6 +3500,62 @@ driver<span class="token punctuation">.</span>find_element<span class="token pun
       </tags>
   </entry>
   <entry>
+    <title>Spring-ResponseEntity</title>
+    <url>/2024/04/22/Spring-ResponseEntity/</url>
+    <content><![CDATA[<h3 id="ResponseEntity"><a class="header-anchor" href="#ResponseEntity">¶</a><em>ResponseEntity</em></h3>
+<p><em>ResponseEntity</em> 是 <em>Spring Web MVC</em> 框架中提供的一个类，用于封装 <em>HTTP</em> 响应的详细信息。它允许开发者不仅定义返回给客户端的数据（通常作为请求处理的结果），还能够控制响应的状态码、头部信息以及主体内容的类型。</p>
+<h4 id="主要属性和功能："><a class="header-anchor" href="#主要属性和功能：">¶</a>主要属性和功能：</h4>
+<ol>
+<li><em>HTTP</em> 状态码（<em>HttpStatus</em>）：通过指定一个 <em>HttpStatus</em> 枚举值（如<code>OK</code>, <code>CREATED</code>, <code>BAD_REQUEST</code>, <code>NOT_FOUND</code>, 等），可以明确设置响应的状态码，以表明请求的处理结果是成功还是存在某种错误。</li>
+<li><em>HTTP</em> 头部（<em>HttpHeaders</em>）：可以通过 <em>ResponseEntity</em> 构造器或其 <em>headers</em>() 方法来设置或修改响应的头部字段，如 <code>Content-Type</code>、<code>Cache-Control</code>、<code>Location</code>等，以便控制客户端如何解析响应内容、缓存策略、重定向位置等。</li>
+<li>响应主体（<em>body</em>）：<em>ResponseEntity</em> 的主体可以承载任何类型的数据，如字符串、<code>JSON</code>对象、<code>XML</code>文档、自定义<code>Java</code>对象等。这些数据将作为<code>HTTP</code>响应的正文发送给客户端。主体类型可以与<code>Content-Type</code>头部字段对应，确保客户端能正确解析。</li>
+</ol>
+<p>典型用法：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Log4j2</span>
+<span class="token annotation punctuation">@RestControllerAdvice</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GlobalExceptionHandler</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">/**
+     * 处理所有未被其他异常处理器捕获的异常。
+     *
+     * @param e 抛出的异常对象
+     * @return 返回一个包含错误信息的ResponseEntity对象，状态码为500（内部服务器错误）
+     */</span>
+    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span><span class="token class-name">Exception</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@ResponseStatus</span><span class="token punctuation">(</span><span class="token class-name">HttpStatus</span><span class="token punctuation">.</span><span class="token constant">INTERNAL_SERVER_ERROR</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">ResponseEntity</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">handleException</span><span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 记录异常信息</span>
+        log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"系统异常：&#123;&#125;"</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 构建响应体，包含错误状态码、自定义错误信息和异常信息</span>
+        <span class="token keyword">return</span> <span class="token class-name">ResponseEntity</span>
+                <span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token class-name">HttpStatus</span><span class="token punctuation">.</span><span class="token constant">INTERNAL_SERVER_ERROR</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">headers</span><span class="token punctuation">(</span>httpheaders <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+                    <span class="token comment">// 设置响应头内容类型为JSON</span>
+                    httpheaders<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token class-name">MediaType</span><span class="token punctuation">.</span><span class="token constant">APPLICATION_JSON</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token comment">// 这里硬编码了access-token，实际应用中应根据需求设置</span>
+                    httpheaders<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"access-token"</span><span class="token punctuation">,</span> <span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+                <span class="token comment">// 将错误信息封装成JSON格式作为响应体的内容</span>
+                <span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span><span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"系统异常"</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://s21.ax1x.com/2024/04/22/pkpf0zD.png" alt="headers" loading="lazy"></p>
+<p>从 <em>ResponseEntity</em> 类的源码中可以看到，<em>headers</em> 方法返回的是 <em>this</em> 也就是类本身，所以可以进行链式调用</p>
+<p>而 <em>headers</em> 方法接收一个 <code>Consumer&lt;HttpHeaders&gt;</code>类型的参数 <code>headersConsumer</code>，该参数是一个函数接口，使用 <em>lambda</em> 表达式进行了匿名实现</p>
+<p>更多用法请参考：<a href="https://springdoc.cn/spring-response-entity/">使用 Spring ResponseEntity 处理 HTTP 响应 - spring 中文网 (springdoc.cn)</a></p>
+<hr>
+<p><em>END</em></p>
+]]></content>
+      <categories>
+        <category>工具类</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>java</tag>
+        <tag>spring</tag>
+        <tag>ResponseEntity</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SpringBoot基础</title>
     <url>/2024/04/16/SpringBoot%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h3 id="Springboot-简介"><a class="header-anchor" href="#Springboot-简介">¶</a><em>Springboot</em> 简介</h3>
@@ -3613,62 +3669,6 @@ driver<span class="token punctuation">.</span>find_element<span class="token pun
         <tag>原创</tag>
         <tag>java</tag>
         <tag>springboot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring-ResponseEntity</title>
-    <url>/2024/04/22/Spring-ResponseEntity/</url>
-    <content><![CDATA[<h3 id="ResponseEntity"><a class="header-anchor" href="#ResponseEntity">¶</a><em>ResponseEntity</em></h3>
-<p><em>ResponseEntity</em> 是 <em>Spring Web MVC</em> 框架中提供的一个类，用于封装 <em>HTTP</em> 响应的详细信息。它允许开发者不仅定义返回给客户端的数据（通常作为请求处理的结果），还能够控制响应的状态码、头部信息以及主体内容的类型。</p>
-<h4 id="主要属性和功能："><a class="header-anchor" href="#主要属性和功能：">¶</a>主要属性和功能：</h4>
-<ol>
-<li><em>HTTP</em> 状态码（<em>HttpStatus</em>）：通过指定一个 <em>HttpStatus</em> 枚举值（如<code>OK</code>, <code>CREATED</code>, <code>BAD_REQUEST</code>, <code>NOT_FOUND</code>, 等），可以明确设置响应的状态码，以表明请求的处理结果是成功还是存在某种错误。</li>
-<li><em>HTTP</em> 头部（<em>HttpHeaders</em>）：可以通过 <em>ResponseEntity</em> 构造器或其 <em>headers</em>() 方法来设置或修改响应的头部字段，如 <code>Content-Type</code>、<code>Cache-Control</code>、<code>Location</code>等，以便控制客户端如何解析响应内容、缓存策略、重定向位置等。</li>
-<li>响应主体（<em>body</em>）：<em>ResponseEntity</em> 的主体可以承载任何类型的数据，如字符串、<code>JSON</code>对象、<code>XML</code>文档、自定义<code>Java</code>对象等。这些数据将作为<code>HTTP</code>响应的正文发送给客户端。主体类型可以与<code>Content-Type</code>头部字段对应，确保客户端能正确解析。</li>
-</ol>
-<p>典型用法：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Log4j2</span>
-<span class="token annotation punctuation">@RestControllerAdvice</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GlobalExceptionHandler</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">/**
-     * 处理所有未被其他异常处理器捕获的异常。
-     *
-     * @param e 抛出的异常对象
-     * @return 返回一个包含错误信息的ResponseEntity对象，状态码为500（内部服务器错误）
-     */</span>
-    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span><span class="token class-name">Exception</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-    <span class="token annotation punctuation">@ResponseStatus</span><span class="token punctuation">(</span><span class="token class-name">HttpStatus</span><span class="token punctuation">.</span><span class="token constant">INTERNAL_SERVER_ERROR</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token class-name">ResponseEntity</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">handleException</span><span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 记录异常信息</span>
-        log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"系统异常：&#123;&#125;"</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">// 构建响应体，包含错误状态码、自定义错误信息和异常信息</span>
-        <span class="token keyword">return</span> <span class="token class-name">ResponseEntity</span>
-                <span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token class-name">HttpStatus</span><span class="token punctuation">.</span><span class="token constant">INTERNAL_SERVER_ERROR</span><span class="token punctuation">)</span>
-                <span class="token punctuation">.</span><span class="token function">headers</span><span class="token punctuation">(</span>httpheaders <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
-                    <span class="token comment">// 设置响应头内容类型为JSON</span>
-                    httpheaders<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token class-name">MediaType</span><span class="token punctuation">.</span><span class="token constant">APPLICATION_JSON</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token comment">// 这里硬编码了access-token，实际应用中应根据需求设置</span>
-                    httpheaders<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"access-token"</span><span class="token punctuation">,</span> <span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-                <span class="token comment">// 将错误信息封装成JSON格式作为响应体的内容</span>
-                <span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span><span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"系统异常"</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://s21.ax1x.com/2024/04/22/pkpf0zD.png" alt="headers" loading="lazy"></p>
-<p>从 <em>ResponseEntity</em> 类的源码中可以看到，<em>headers</em> 方法返回的是 <em>this</em> 也就是类本身，所以可以进行链式调用</p>
-<p>而 <em>headers</em> 方法接收一个 <code>Consumer&lt;HttpHeaders&gt;</code>类型的参数 <code>headersConsumer</code>，该参数是一个函数接口，使用 <em>lambda</em> 表达式进行了匿名实现</p>
-<p>更多用法请参考：<a href="https://springdoc.cn/spring-response-entity/">使用 Spring ResponseEntity 处理 HTTP 响应 - spring 中文网 (springdoc.cn)</a></p>
-<hr>
-<p><em>END</em></p>
-]]></content>
-      <categories>
-        <category>工具类</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>java</tag>
-        <tag>spring</tag>
-        <tag>ResponseEntity</tag>
       </tags>
   </entry>
   <entry>
@@ -4029,8 +4029,8 @@ AuthorizedKeysFile .ssh/authorized_keys<span aria-hidden="true" class="line-numb
         <category>笔记</category>
       </categories>
       <tags>
-        <tag>原创</tag>
         <tag>Docker</tag>
+        <tag>原创</tag>
       </tags>
   </entry>
   <entry>
@@ -4305,8 +4305,8 @@ systemctl disable frps<span aria-hidden="true" class="line-numbers-rows"><span><
         <category>笔记</category>
       </categories>
       <tags>
-        <tag>原创</tag>
         <tag>Docker</tag>
+        <tag>原创</tag>
         <tag>harbor</tag>
       </tags>
   </entry>
@@ -5385,13 +5385,13 @@ site<span class="token punctuation">[</span><span class="token string">"zero"</s
       </tags>
   </entry>
   <entry>
-    <title>shell脚本笔记-3</title>
-    <url>/2023/12/16/shell%E8%84%9A%E6%9C%AC%E7%AC%94%E8%AE%B0-3/</url>
+    <title>springboot全局异常处理</title>
+    <url>/2024/04/23/springboot%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>springboot全局异常处理</title>
-    <url>/2024/04/23/springboot%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
+    <title>shell脚本笔记-3</title>
+    <url>/2023/12/16/shell%E8%84%9A%E6%9C%AC%E7%AC%94%E8%AE%B0-3/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
@@ -5493,6 +5493,30 @@ site<span class="token punctuation">[</span><span class="token string">"zero"</s
         <tag>原创</tag>
         <tag>java</tag>
         <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>windows之重装系统</title>
+    <url>/2023/06/17/windows%E4%B9%8B%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h5 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h5>
+<p>之所以写这篇文章，是因为我朋友电脑出问题，把系统重装了一下，其实我在很早之前就写过一篇重装系统的教程，但是是放在了石墨文档上面，那时候还没有自己的个人博客呢（笑）</p>
+<h5 id="正文"><a class="header-anchor" href="#正文">¶</a>正文</h5>
+<p>此文章不会教你怎么装系统，但是我会把我以前写的那篇教程放出来，需要的可以自行下载查看</p>
+<blockquote>
+<p><a href="https://8.222.153.91:39811/down/iS8YyJSjuWpd.docx">下载链接:</a> 提取码:YunYi</p>
+</blockquote>
+<p>至于怎么获取Windows的系统镜像，你可以去阿里的国内镜像点去找，或者清华的镜像点也行。我并不会提供镜像的下载，毕竟一个镜像就有好几个g，我这小水管带宽可供不起.</p>
+<hr>
+<p>顺便吐槽一下，我朋友那电脑，真是大毛病没有，小毛病不断，不是网卡驱动掉了，就是电脑蓝屏，属实买的血亏。</p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>计算机知识</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>电脑技术</tag>
       </tags>
   </entry>
   <entry>
@@ -5744,30 +5768,6 @@ site<span class="token punctuation">[</span><span class="token string">"zero"</s
         <tag>原创</tag>
         <tag>java</tag>
         <tag>spring注解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>windows之重装系统</title>
-    <url>/2023/06/17/windows%E4%B9%8B%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h5 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h5>
-<p>之所以写这篇文章，是因为我朋友电脑出问题，把系统重装了一下，其实我在很早之前就写过一篇重装系统的教程，但是是放在了石墨文档上面，那时候还没有自己的个人博客呢（笑）</p>
-<h5 id="正文"><a class="header-anchor" href="#正文">¶</a>正文</h5>
-<p>此文章不会教你怎么装系统，但是我会把我以前写的那篇教程放出来，需要的可以自行下载查看</p>
-<blockquote>
-<p><a href="https://8.222.153.91:39811/down/iS8YyJSjuWpd.docx">下载链接:</a> 提取码:YunYi</p>
-</blockquote>
-<p>至于怎么获取Windows的系统镜像，你可以去阿里的国内镜像点去找，或者清华的镜像点也行。我并不会提供镜像的下载，毕竟一个镜像就有好几个g，我这小水管带宽可供不起.</p>
-<hr>
-<p>顺便吐槽一下，我朋友那电脑，真是大毛病没有，小毛病不断，不是网卡驱动掉了，就是电脑蓝屏，属实买的血亏。</p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>计算机知识</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>电脑技术</tag>
       </tags>
   </entry>
   <entry>
@@ -6245,6 +6245,17 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
       </tags>
   </entry>
   <entry>
+    <title>测试文章</title>
+    <url>/2023/04/27/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<p>Test测试</p>
+<!-- more -->  
+<p><img src="/images/test.jpg" alt="图片" loading="lazy"></p>
+]]></content>
+      <tags>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>湖北飞young算号器</title>
     <url>/2023/06/13/%E6%B9%96%E5%8C%97%E9%A3%9Eyoung%E7%AE%97%E5%8F%B7%E5%99%A8/</url>
     <content><![CDATA[<hr>
@@ -6294,17 +6305,6 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
         <tag>原创</tag>
         <tag>java</tag>
         <tag>破解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>测试文章</title>
-    <url>/2023/04/27/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<p>Test测试</p>
-<!-- more -->  
-<p><img src="/images/test.jpg" alt="图片" loading="lazy"></p>
-]]></content>
-      <tags>
-        <tag>原创</tag>
       </tags>
   </entry>
   <entry>
