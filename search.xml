@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>2023年度总结</title>
-    <url>/zero.github.io/2024/02/09/2023%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/</url>
+    <url>/2024/02/09/2023%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
 <p>先在这里提前祝大家新年快乐！新的一年要开开心心，顺顺利利的。🧨爆竹🎇烟花💥爆炸✨闪亮</p>
 <hr>
@@ -27,7 +27,7 @@
   </entry>
   <entry>
     <title>Docker之nginx的负载均衡</title>
-    <url>/zero.github.io/2023/09/12/Docker%E4%B9%8Bnginx%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</url>
+    <url>/2023/09/12/Docker%E4%B9%8Bnginx%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</url>
     <content><![CDATA[<h4 id="使用docker部署nginx的负载均衡"><a class="header-anchor" href="#使用docker部署nginx的负载均衡">¶</a>使用docker部署nginx的负载均衡</h4>
 <ol>
 <li>下载 nginx 和 tomcat 镜像</li>
@@ -160,7 +160,7 @@ http <span class="token punctuation">&#123;</span>
   </entry>
   <entry>
     <title>Docker构建镜像及使用的笔记</title>
-    <url>/zero.github.io/2023/09/11/Docker%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%9A%84%E7%AC%94%E8%AE%B0/</url>
+    <url>/2023/09/11/Docker%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%9A%84%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h4 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h4>
 <p>本文并不记录详细过程，只是为了记录一下大概构建及使用的经过（还有踩坑记录，重点！！！）</p>
 <hr>
@@ -184,7 +184,7 @@ http <span class="token punctuation">&#123;</span>
   </entry>
   <entry>
     <title>Docker的使用-叁</title>
-    <url>/zero.github.io/2023/09/08/Docker%E7%9A%84%E4%BD%BF%E7%94%A8-%E5%8F%81/</url>
+    <url>/2023/09/08/Docker%E7%9A%84%E4%BD%BF%E7%94%A8-%E5%8F%81/</url>
     <content><![CDATA[<h4 id="Dockerfile的使用"><a class="header-anchor" href="#Dockerfile的使用">¶</a>Dockerfile的使用</h4>
 <p>使用Dockerfile部署扫雷web程序</p>
 <ol>
@@ -276,7 +276,7 @@ CMD <span class="token punctuation">[</span><span class="token string">"/bin/bas
   </entry>
   <entry>
     <title>Docker的使用-壹</title>
-    <url>/zero.github.io/2023/09/05/Docker%E7%9A%84%E4%BD%BF%E7%94%A8-%E5%A3%B9/</url>
+    <url>/2023/09/05/Docker%E7%9A%84%E4%BD%BF%E7%94%A8-%E5%A3%B9/</url>
     <content><![CDATA[<h4 id="Docker使用"><a class="header-anchor" href="#Docker使用">¶</a>Docker使用</h4>
 <ul>
 <li>在docker容器内运行应用程序</li>
@@ -370,75 +370,8 @@ CMD <span class="token punctuation">[</span><span class="token string">"/bin/bas
       </tags>
   </entry>
   <entry>
-    <title>Docker部署</title>
-    <url>/zero.github.io/2023/09/04/Docker%E9%83%A8%E7%BD%B2/</url>
-    <content><![CDATA[<h3 id="Docker部署"><a class="header-anchor" href="#Docker部署">¶</a>Docker部署</h3>
-<blockquote>
-<p>前言：部署docker要先确保yum源保持最新</p>
-</blockquote>
-<hr>
-<p>1.先安装运行docker所必要的工具包</p>
-<blockquote>
-<p><code>yum install -y yum-utils device-mapper-persistent-data lvm2</code></p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/04/pPrVkQJ.png" alt="docker1" loading="lazy"></p>
-<p>2.添加docker源</p>
-<blockquote>
-<p><code>yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</code></p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/04/pPrViz4.png" alt="pPrViz4.png" loading="lazy"></p>
-<p>3.修改docker源为阿里源</p>
-<blockquote>
-<p><code>sed -i 's+download.docker.com+mirrors.aliyun.com/docker-ce+' /etc/yum.repos.d/docker-ce.repo</code></p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/04/pPrVPWF.png" alt="pPrVPWF.png" loading="lazy"></p>
-<p>4.更新docker源并安装docker</p>
-<blockquote>
-<p>更新源 <code>yum makecache fast</code></p>
-<p>安装 <code>yum  -y install docker-ce</code></p>
-<p>注意：在Centos8中本命令不适用，将fast去掉即可</p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/04/pPrV9iT.png" alt="pPrV9iT.png" loading="lazy"></p>
-<p><img src="https://s1.ax1x.com/2023/09/04/pPrVSoV.png" alt="pPrVSoV.png" loading="lazy"></p>
-<p>5.重启docker服务并设置下次启动生效</p>
-<blockquote>
-<p>重新启动 <code>systemctl  restart  docker</code></p>
-<p>设置下次启动生效 <code>systemctl  enable  docker</code></p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/04/pPrVCJU.png" alt="pPrVCJU.png" loading="lazy"></p>
-<p><img src="https://s1.ax1x.com/2023/09/04/pPrVAy9.png" alt="pPrVAy9.png" loading="lazy"></p>
-<p>6.配置镜像加速器</p>
-<blockquote>
-<p>用vim创建<code>daemon.json</code>文件</p>
-<p><code>vim /etc/docker/daemon.json</code></p>
-<p>写入以下内容:</p>
-<pre class="line-numbers language-none"><code class="language-none">&#123;
-&quot;registry-mirrors&quot;: [&quot;https:&#x2F;&#x2F;14lrk6zd.mirror.aliyuncs.com&quot;]
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/04/pPrVELR.png" alt="pPrVELR.png" loading="lazy"></p>
-<p><img src="https://s1.ax1x.com/2023/09/04/pPrVZe1.png" alt="pPrVZe1.png" loading="lazy"></p>
-<p>7.重新加载并重启docker</p>
-<blockquote>
-<p>重新加载 <code>systemctl  daemon-reload</code></p>
-<p>重启 <code>systemctl restart docker</code></p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/04/pPrVedx.png" alt="pPrVedx.png" loading="lazy"></p>
-<p><img src="https://s1.ax1x.com/2023/09/04/pPrVmo6.png" alt="pPrVmo6.png" loading="lazy"></p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>编程技巧</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git同时部署多个仓库</title>
-    <url>/zero.github.io/2023/10/26/Git%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AA%E4%BB%93%E5%BA%93/</url>
+    <url>/2023/10/26/Git%E5%90%8C%E6%97%B6%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AA%E4%BB%93%E5%BA%93/</url>
     <content><![CDATA[<h4 id="私有仓库的配置"><a class="header-anchor" href="#私有仓库的配置">¶</a>私有仓库的配置</h4>
 <p>刚需：先在服务器端创建 git 用户，并且配置用户密码</p>
 <p>可以使用下面的命令创建和修改</p>
@@ -538,98 +471,75 @@ IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
       </tags>
   </entry>
   <entry>
-    <title>JSON</title>
-    <url>/zero.github.io/2024/04/03/JSON/</url>
-    <content><![CDATA[<h3 id="JSON-简介"><a class="header-anchor" href="#JSON-简介">¶</a>JSON 简介</h3>
+    <title>Docker部署</title>
+    <url>/2023/09/04/Docker%E9%83%A8%E7%BD%B2/</url>
+    <content><![CDATA[<h3 id="Docker部署"><a class="header-anchor" href="#Docker部署">¶</a>Docker部署</h3>
 <blockquote>
-<p><code>JSON</code>: <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation( <code>JavaScript</code> 对象表示法)</p>
-<p><code>JSON</code> 是存储和交换文本信息的语法，类似 <code>XML</code>。</p>
-<p><code>JSON</code> 比 <code>XML</code> 更小、更快，更易解析。</p>
-<p><code>JSON</code> 易于人阅读和编写。</p>
-<p><code>C</code>、<code>Python</code>、<code>C++</code>、<code>Java</code>、<code>PHP</code>、<code>Go</code>等编程语言都支持 <code>JSON</code></p>
+<p>前言：部署docker要先确保yum源保持最新</p>
 </blockquote>
-<p>例子：</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-    <span class="token property">"sites"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"bing"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.bing.com"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
-    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"google"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.google.com"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
-    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"baidu"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.baidu.com"</span> <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">]</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="对象"><a class="header-anchor" href="#对象">¶</a>对象</h3>
-<p>在 <code>JSON</code> 中使用<code>&#123;&#125;</code>来定义一个对象。左括号<code>&#123;</code>开始，右括号<code>&#125;</code>结束。每个 <code>&quot;键&quot;</code> 后跟一个冒号 <code>:</code> ，名称/值对使用逗号 <code>,</code> 分隔</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-	<span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"张三"</span><span class="token punctuation">,</span>
-    <span class="token property">"age"</span><span class="token operator">:</span><span class="token number">20</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="嵌套对象"><a class="header-anchor" href="#嵌套对象">¶</a>嵌套对象</h4>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-    <span class="token property">"num"</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">,</span>
-	<span class="token property">"student"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
-		<span class="token property">"namelist"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
-			<span class="token property">"name1"</span><span class="token operator">:</span><span class="token string">"张三"</span><span class="token punctuation">,</span>
-			<span class="token property">"name2"</span><span class="token operator">:</span><span class="token string">"李四"</span>
-		<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-		<span class="token property">"agelist"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
-			<span class="token property">"age1"</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span>
-			<span class="token property">"age2"</span><span class="token operator">:</span><span class="token number">21</span>
-		<span class="token punctuation">&#125;</span>
-	<span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="数组"><a class="header-anchor" href="#数组">¶</a>数组</h3>
-<p>中括号 <code>[]</code> 保存的数组是值（<code>value</code>）的有序集合。一个数组以左中括号 <code>[</code> 开始， 右中括号 <code>]</code> 结束，值之间使用逗号 <code>,</code> 分隔。</p>
-<p>值（<code>value</code>）可以是双引号括起来的字符串（<code>string</code>）、数值(<code>number</code>)、<code>true</code>、<code>false</code>、 <code>null</code>、对象（<code>object</code>）或者数组（<code>array</code>），它们是可以嵌套，值不能为键值对。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span><span class="token string">"str"</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="嵌套数组"><a class="header-anchor" href="#嵌套数组">¶</a>嵌套数组</h4>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
-  <span class="token punctuation">&#123;</span>
-    <span class="token property">"num"</span><span class="token operator">:</span> <span class="token number">2</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">[</span>
-    <span class="token punctuation">&#123;</span>
-      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"张三"</span><span class="token punctuation">,</span>
-      <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">20</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#123;</span>
-      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"李四"</span><span class="token punctuation">,</span>
-      <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">21</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">]</span>
-<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="JSON-parse"><a class="header-anchor" href="#JSON-parse">¶</a><code>JSON.parse()</code></h3>
-<p>此方法为 <code>JavaScript</code> 的内置函数，用于将 <code>JSON</code> 字符串解析为原生 <code>JavaScript</code> 对象或值</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>text<span class="token punctuation">[</span><span class="token punctuation">,</span> reviver<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><code>text</code></p>
-<p>​	要被解析成 <code>JavaScript</code> 值的字符串</p>
-<p><code>reviver</code>(可选)</p>
-<p>​	转换器，如果传入该参数 (函数)，可以用来修改解析生成的原始值，调用时机在 <code>parse</code> 函数返回之前</p>
-<p>返回值</p>
-<p>​	与给定的 <code>JSON text</code> 相对应的 <code>Object</code>、<code>Array</code>、<code>string</code>、<code>number</code>、<code>boolean</code> 或者 <code>null</code> 值</p>
-<p>异常</p>
-<p>​	若传入的字符串不符合 JSON 规范，则会抛出此异常</p>
-<p>使用 <code>reviver</code> 函数</p>
+<hr>
+<p>1.先安装运行docker所必要的工具包</p>
 <blockquote>
-<p>如果指定了 <code>reviver</code> 函数，则解析出的 <code>JavaScript</code> 值（解析值）会经过一次转换后才将被最终返回（返回值）。更具体点讲就是：解析值本身以及它所包含的所有属性，会按照一定的顺序（从最最里层的属性开始，一级级往外，最终到达顶层，也就是解析值本身）分别的去调用 <code>reviver</code> 函数，在调用过程中，当前属性所属的对象会作为 <code>this</code> 值，当前属性名和属性值会分别作为第一个和第二个参数传入 <code>reviver</code> 中。如果 <code>reviver</code> 返回 <code>undefined</code>，则当前属性会从所属对象中删除，如果返回了其他值，则返回的值会成为当前属性新的属性值。</p>
-<p>当遍历到最顶层的值（解析值）时，传入 <code>reviver</code> 函数的参数会是空字符串 <code>&quot;&quot;</code>（因为此时已经没有真正的属性）和当前的解析值（有可能已经被修改过了），当前的 <code>this</code> 值会是 <code>&#123;&quot;&quot;: 修改过的解析值&#125;</code>，在编写 <code>reviver</code> 函数时，要注意到这个特例。（这个函数的遍历顺序依照：从最内层开始，按照层级顺序，依次向外遍历）</p>
+<p><code>yum install -y yum-utils device-mapper-persistent-data lvm2</code></p>
 </blockquote>
-<p>更多请参阅:</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse() - JavaScript | MDN (mozilla.org)</a></p>
-<p><a href="https://www.runoob.com/json/json-tutorial.html">JSON 教程 | 菜鸟教程 (runoob.com)</a></p>
+<p><img src="https://s1.ax1x.com/2023/09/04/pPrVkQJ.png" alt="docker1" loading="lazy"></p>
+<p>2.添加docker源</p>
+<blockquote>
+<p><code>yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</code></p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/04/pPrViz4.png" alt="pPrViz4.png" loading="lazy"></p>
+<p>3.修改docker源为阿里源</p>
+<blockquote>
+<p><code>sed -i 's+download.docker.com+mirrors.aliyun.com/docker-ce+' /etc/yum.repos.d/docker-ce.repo</code></p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/04/pPrVPWF.png" alt="pPrVPWF.png" loading="lazy"></p>
+<p>4.更新docker源并安装docker</p>
+<blockquote>
+<p>更新源 <code>yum makecache fast</code></p>
+<p>安装 <code>yum  -y install docker-ce</code></p>
+<p>注意：在Centos8中本命令不适用，将fast去掉即可</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/04/pPrV9iT.png" alt="pPrV9iT.png" loading="lazy"></p>
+<p><img src="https://s1.ax1x.com/2023/09/04/pPrVSoV.png" alt="pPrVSoV.png" loading="lazy"></p>
+<p>5.重启docker服务并设置下次启动生效</p>
+<blockquote>
+<p>重新启动 <code>systemctl  restart  docker</code></p>
+<p>设置下次启动生效 <code>systemctl  enable  docker</code></p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/04/pPrVCJU.png" alt="pPrVCJU.png" loading="lazy"></p>
+<p><img src="https://s1.ax1x.com/2023/09/04/pPrVAy9.png" alt="pPrVAy9.png" loading="lazy"></p>
+<p>6.配置镜像加速器</p>
+<blockquote>
+<p>用vim创建<code>daemon.json</code>文件</p>
+<p><code>vim /etc/docker/daemon.json</code></p>
+<p>写入以下内容:</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+&quot;registry-mirrors&quot;: [&quot;https:&#x2F;&#x2F;14lrk6zd.mirror.aliyuncs.com&quot;]
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/04/pPrVELR.png" alt="pPrVELR.png" loading="lazy"></p>
+<p><img src="https://s1.ax1x.com/2023/09/04/pPrVZe1.png" alt="pPrVZe1.png" loading="lazy"></p>
+<p>7.重新加载并重启docker</p>
+<blockquote>
+<p>重新加载 <code>systemctl  daemon-reload</code></p>
+<p>重启 <code>systemctl restart docker</code></p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/04/pPrVedx.png" alt="pPrVedx.png" loading="lazy"></p>
+<p><img src="https://s1.ax1x.com/2023/09/04/pPrVmo6.png" alt="pPrVmo6.png" loading="lazy"></p>
 <hr>
 <p>END</p>
 ]]></content>
       <categories>
-        <category>前端学习笔记</category>
+        <category>编程技巧</category>
       </categories>
       <tags>
         <tag>原创</tag>
-        <tag>JavaScript</tag>
-        <tag>JSON</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
     <title>Git的使用</title>
-    <url>/zero.github.io/2023/10/26/Git%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <url>/2023/10/26/Git%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h4 id="Git概念"><a class="header-anchor" href="#Git概念">¶</a>Git概念</h4>
 <p>git 分为工作区、暂存区和版本库</p>
 <p>工作区：就是你能直接看见的文件</p>
@@ -1017,8 +927,98 @@ Fast-forward
       </tags>
   </entry>
   <entry>
+    <title>JSON</title>
+    <url>/2024/04/03/JSON/</url>
+    <content><![CDATA[<h3 id="JSON-简介"><a class="header-anchor" href="#JSON-简介">¶</a>JSON 简介</h3>
+<blockquote>
+<p><code>JSON</code>: <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation( <code>JavaScript</code> 对象表示法)</p>
+<p><code>JSON</code> 是存储和交换文本信息的语法，类似 <code>XML</code>。</p>
+<p><code>JSON</code> 比 <code>XML</code> 更小、更快，更易解析。</p>
+<p><code>JSON</code> 易于人阅读和编写。</p>
+<p><code>C</code>、<code>Python</code>、<code>C++</code>、<code>Java</code>、<code>PHP</code>、<code>Go</code>等编程语言都支持 <code>JSON</code></p>
+</blockquote>
+<p>例子：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"sites"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"bing"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.bing.com"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
+    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"google"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.google.com"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
+    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"baidu"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.baidu.com"</span> <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="对象"><a class="header-anchor" href="#对象">¶</a>对象</h3>
+<p>在 <code>JSON</code> 中使用<code>&#123;&#125;</code>来定义一个对象。左括号<code>&#123;</code>开始，右括号<code>&#125;</code>结束。每个 <code>&quot;键&quot;</code> 后跟一个冒号 <code>:</code> ，名称/值对使用逗号 <code>,</code> 分隔</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+	<span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"张三"</span><span class="token punctuation">,</span>
+    <span class="token property">"age"</span><span class="token operator">:</span><span class="token number">20</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="嵌套对象"><a class="header-anchor" href="#嵌套对象">¶</a>嵌套对象</h4>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"num"</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">,</span>
+	<span class="token property">"student"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
+		<span class="token property">"namelist"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
+			<span class="token property">"name1"</span><span class="token operator">:</span><span class="token string">"张三"</span><span class="token punctuation">,</span>
+			<span class="token property">"name2"</span><span class="token operator">:</span><span class="token string">"李四"</span>
+		<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+		<span class="token property">"agelist"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
+			<span class="token property">"age1"</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span>
+			<span class="token property">"age2"</span><span class="token operator">:</span><span class="token number">21</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="数组"><a class="header-anchor" href="#数组">¶</a>数组</h3>
+<p>中括号 <code>[]</code> 保存的数组是值（<code>value</code>）的有序集合。一个数组以左中括号 <code>[</code> 开始， 右中括号 <code>]</code> 结束，值之间使用逗号 <code>,</code> 分隔。</p>
+<p>值（<code>value</code>）可以是双引号括起来的字符串（<code>string</code>）、数值(<code>number</code>)、<code>true</code>、<code>false</code>、 <code>null</code>、对象（<code>object</code>）或者数组（<code>array</code>），它们是可以嵌套，值不能为键值对。</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span><span class="token string">"str"</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="嵌套数组"><a class="header-anchor" href="#嵌套数组">¶</a>嵌套数组</h4>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token property">"num"</span><span class="token operator">:</span> <span class="token number">2</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"张三"</span><span class="token punctuation">,</span>
+      <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">20</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"李四"</span><span class="token punctuation">,</span>
+      <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">21</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="JSON-parse"><a class="header-anchor" href="#JSON-parse">¶</a><code>JSON.parse()</code></h3>
+<p>此方法为 <code>JavaScript</code> 的内置函数，用于将 <code>JSON</code> 字符串解析为原生 <code>JavaScript</code> 对象或值</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>text<span class="token punctuation">[</span><span class="token punctuation">,</span> reviver<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>text</code></p>
+<p>​	要被解析成 <code>JavaScript</code> 值的字符串</p>
+<p><code>reviver</code>(可选)</p>
+<p>​	转换器，如果传入该参数 (函数)，可以用来修改解析生成的原始值，调用时机在 <code>parse</code> 函数返回之前</p>
+<p>返回值</p>
+<p>​	与给定的 <code>JSON text</code> 相对应的 <code>Object</code>、<code>Array</code>、<code>string</code>、<code>number</code>、<code>boolean</code> 或者 <code>null</code> 值</p>
+<p>异常</p>
+<p>​	若传入的字符串不符合 JSON 规范，则会抛出此异常</p>
+<p>使用 <code>reviver</code> 函数</p>
+<blockquote>
+<p>如果指定了 <code>reviver</code> 函数，则解析出的 <code>JavaScript</code> 值（解析值）会经过一次转换后才将被最终返回（返回值）。更具体点讲就是：解析值本身以及它所包含的所有属性，会按照一定的顺序（从最最里层的属性开始，一级级往外，最终到达顶层，也就是解析值本身）分别的去调用 <code>reviver</code> 函数，在调用过程中，当前属性所属的对象会作为 <code>this</code> 值，当前属性名和属性值会分别作为第一个和第二个参数传入 <code>reviver</code> 中。如果 <code>reviver</code> 返回 <code>undefined</code>，则当前属性会从所属对象中删除，如果返回了其他值，则返回的值会成为当前属性新的属性值。</p>
+<p>当遍历到最顶层的值（解析值）时，传入 <code>reviver</code> 函数的参数会是空字符串 <code>&quot;&quot;</code>（因为此时已经没有真正的属性）和当前的解析值（有可能已经被修改过了），当前的 <code>this</code> 值会是 <code>&#123;&quot;&quot;: 修改过的解析值&#125;</code>，在编写 <code>reviver</code> 函数时，要注意到这个特例。（这个函数的遍历顺序依照：从最内层开始，按照层级顺序，依次向外遍历）</p>
+</blockquote>
+<p>更多请参阅:</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse() - JavaScript | MDN (mozilla.org)</a></p>
+<p><a href="https://www.runoob.com/json/json-tutorial.html">JSON 教程 | 菜鸟教程 (runoob.com)</a></p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>JavaScript</tag>
+        <tag>JSON</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JUnit</title>
-    <url>/zero.github.io/2024/03/11/JUnit/</url>
+    <url>/2024/03/11/JUnit/</url>
     <content><![CDATA[<h3 id="JUnit-介绍"><a class="header-anchor" href="#JUnit-介绍">¶</a>JUnit 介绍</h3>
 <p>在编写程序的过程中，我们常常需要对一个单独的模块进行测试，以判断其是否符合要求。</p>
 <h4 id="Test-注解"><a class="header-anchor" href="#Test-注解">¶</a><code>@Test</code> 注解</h4>
@@ -1253,7 +1253,7 @@ Fast-forward
   </entry>
   <entry>
     <title>Java-lambda的方法引用</title>
-    <url>/zero.github.io/2023/07/11/Java-lambda%E7%9A%84%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8/</url>
+    <url>/2023/07/11/Java-lambda%E7%9A%84%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8/</url>
     <content><![CDATA[<h5 id="方法引用"><a class="header-anchor" href="#方法引用">¶</a>方法引用</h5>
 <p>方法引用有四种引用方法</p>
 <table>
@@ -1407,7 +1407,7 @@ Fast-forward
   </entry>
   <entry>
     <title>Java线程池</title>
-    <url>/zero.github.io/2023/04/28/Java/</url>
+    <url>/2023/04/28/Java/</url>
     <content><![CDATA[<h5 id="Future"><a class="header-anchor" href="#Future">¶</a>Future</h5>
 <p>此类用于异步存储计算结果</p>
 <ul>
@@ -1625,7 +1625,7 @@ Fast-forward
   </entry>
   <entry>
     <title>JavaScript笔记 - 1</title>
-    <url>/zero.github.io/2023/11/22/JavaScript%E7%AC%94%E8%AE%B0/</url>
+    <url>/2023/11/22/JavaScript%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h3 id="说明"><a class="header-anchor" href="#说明">¶</a>说明</h3>
 <blockquote>
 <p>因本人主学<code>Java</code>,所以下文包括以后的笔记绝大部分都是与Java做对比</p>
@@ -1912,108 +1912,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
       </tags>
   </entry>
   <entry>
-    <title>Linux2023.9.15作业</title>
-    <url>/zero.github.io/2023/09/15/Linux2023-9-15%E4%BD%9C%E4%B8%9A/</url>
-    <content><![CDATA[<blockquote>
-<p>题目要求：</p>
-<p>1、创建用户和用户组</p>
-<p>请按照以下要求创建用户、用户组：</p>
-<p>新建一个名为adminuser的组，组id为40000</p>
-<p>新建一个名为natasha的用户，并将adminuser作为其附属组</p>
-<p>新建一个名为harry的用户，并将adminuser作为其附属组</p>
-<p>新建一个名为sarah的用户，其不属于adminuser组，并将其shell设置为不可登陆shell</p>
-<p>natasha、harry和sarah三个用户的密码均设置为glegunge</p>
-<p>2、复制文件/etc/fstab到/var/tmp目录下，并按照以下要求配置/var/tmp/fstab文件的权限:</p>
-<p>该文件的所属人为root</p>
-<p>该文件的所属组为root</p>
-<p>该文件对任何人均没有执行权限</p>
-<p>用户natasha对该文件有读和写的权限</p>
-<p>用户harry对该文件既不能读也不能写</p>
-<p>所有其他用户（包括当前已有用户及未来创建的用户）对该文件都有读的权限</p>
-<p>3、打包文件</p>
-<p>请对/etc/sysconfig目录进行打包并用bzip2压缩，生成的文件保存为/root/sysconfig.tar.bz2</p>
-<p>4、创建一个大小为500M的分区，永久挂载到/test目录下</p>
-</blockquote>
-<hr>
-<h5 id="创建用户和用户组"><a class="header-anchor" href="#创建用户和用户组">¶</a>创建用户和用户组</h5>
-<ol>
-<li>新建一个名为adminuser的组，组id为40000</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">groupadd</span> <span class="token parameter variable">-g</span> <span class="token number">40000</span> adminuser<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="2">
-<li>新建一个名为natasha的用户，并将adminuser作为其附属组</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token parameter variable">-G</span> adminuser natasha<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="3">
-<li>新建一个名为harry的用户，并将adminuser作为其附属组</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token parameter variable">-G</span> adminuser harry<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="4">
-<li>新建一个名为sarah的用户，其不属于adminuser组，并将其shell设置为不可登陆shell</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token parameter variable">-s</span> /usr/sbin/nologin sarah<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWsWAf.png" alt="pPWsWAf.png" loading="lazy"></p>
-<ol start="5">
-<li>natasha、harry和sarah三个用户的密码均设置为glegunge</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">passwd</span> <span class="token operator">&lt;</span>用户名<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWsfN8.png" alt="pPWsfN8.png" loading="lazy"></p>
-<p>测试：</p>
-<p>查看组 id 及附属组</p>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWs2HP.png" alt="pPWs2HP.png" loading="lazy"></p>
-<p>测试 sarah 的 shell 登录</p>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWsqH0.png" alt="pPWsqH0.png" loading="lazy"></p>
-<h5 id="复制文件-etc-fstab到-var-tmp目录下，并按照以下要求配置-var-tmp-fstab文件的权限"><a class="header-anchor" href="#复制文件-etc-fstab到-var-tmp目录下，并按照以下要求配置-var-tmp-fstab文件的权限">¶</a>复制文件/etc/fstab到/var/tmp目录下，并按照以下要求配置/var/tmp/fstab文件的权限:</h5>
-<p>先复制</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> /etc/fstab /var/tmp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol>
-<li>该文件的所属人为root，该文件的所属组为root</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW6pi8.png" alt="pPW6pi8.png" loading="lazy"></p>
-<ol start="2">
-<li>该文件对任何人均没有执行权限，用户natasha对该文件有读和写的权限，用户harry对该文件既不能读也不能写</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW69JS.png" alt="pPW69JS.png" loading="lazy"></p>
-<ol start="3">
-<li>所有其他用户（包括当前已有用户及未来创建的用户）对该文件都有读的权限</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWyxdP.png" alt="pPWyxdP.png" loading="lazy"></p>
-<h5 id="打包文件"><a class="header-anchor" href="#打包文件">¶</a>打包文件</h5>
-<ol>
-<li>请对/etc/sysconfig目录进行打包并用bzip2压缩，生成的文件保存为/root/sysconfig.tar.bz2</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPWyzIf.png" alt="pPWyzIf.png" loading="lazy"></p>
-<h5 id="创建分区"><a class="header-anchor" href="#创建分区">¶</a>创建分区</h5>
-<ol>
-<li>创建一个大小为500M的分区</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW26T1.png" alt="pPW26T1.png" loading="lazy"></p>
-<ol start="2">
-<li>使用 mkfs 将 sda4 格式化为 ext4 文件系统</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW2wSU.png" alt="pPW2wSU.png" loading="lazy"></p>
-<ol start="3">
-<li>将分区挂载到 /test 目录，如果没有请自行创建</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW2aWT.png" alt="pPW2aWT.png" loading="lazy"></p>
-<ol start="4">
-<li>使用开机自启实现永久挂载目录</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/15/pPW2UYV.png" alt="pPW2UYV.png" loading="lazy"></p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>编程技巧</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaWeb</title>
-    <url>/zero.github.io/2024/04/16/JavaWeb/</url>
+    <url>/2024/04/16/JavaWeb/</url>
     <content><![CDATA[<h3 id="域"><a class="header-anchor" href="#域">¶</a>域</h3>
 <ul>
 <li>
@@ -2645,8 +2545,108 @@ console<span class="token punctuation">.</span><span class="token function">log<
       </tags>
   </entry>
   <entry>
+    <title>Linux2023.9.15作业</title>
+    <url>/2023/09/15/Linux2023-9-15%E4%BD%9C%E4%B8%9A/</url>
+    <content><![CDATA[<blockquote>
+<p>题目要求：</p>
+<p>1、创建用户和用户组</p>
+<p>请按照以下要求创建用户、用户组：</p>
+<p>新建一个名为adminuser的组，组id为40000</p>
+<p>新建一个名为natasha的用户，并将adminuser作为其附属组</p>
+<p>新建一个名为harry的用户，并将adminuser作为其附属组</p>
+<p>新建一个名为sarah的用户，其不属于adminuser组，并将其shell设置为不可登陆shell</p>
+<p>natasha、harry和sarah三个用户的密码均设置为glegunge</p>
+<p>2、复制文件/etc/fstab到/var/tmp目录下，并按照以下要求配置/var/tmp/fstab文件的权限:</p>
+<p>该文件的所属人为root</p>
+<p>该文件的所属组为root</p>
+<p>该文件对任何人均没有执行权限</p>
+<p>用户natasha对该文件有读和写的权限</p>
+<p>用户harry对该文件既不能读也不能写</p>
+<p>所有其他用户（包括当前已有用户及未来创建的用户）对该文件都有读的权限</p>
+<p>3、打包文件</p>
+<p>请对/etc/sysconfig目录进行打包并用bzip2压缩，生成的文件保存为/root/sysconfig.tar.bz2</p>
+<p>4、创建一个大小为500M的分区，永久挂载到/test目录下</p>
+</blockquote>
+<hr>
+<h5 id="创建用户和用户组"><a class="header-anchor" href="#创建用户和用户组">¶</a>创建用户和用户组</h5>
+<ol>
+<li>新建一个名为adminuser的组，组id为40000</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">groupadd</span> <span class="token parameter variable">-g</span> <span class="token number">40000</span> adminuser<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="2">
+<li>新建一个名为natasha的用户，并将adminuser作为其附属组</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token parameter variable">-G</span> adminuser natasha<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="3">
+<li>新建一个名为harry的用户，并将adminuser作为其附属组</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token parameter variable">-G</span> adminuser harry<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="4">
+<li>新建一个名为sarah的用户，其不属于adminuser组，并将其shell设置为不可登陆shell</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token parameter variable">-s</span> /usr/sbin/nologin sarah<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWsWAf.png" alt="pPWsWAf.png" loading="lazy"></p>
+<ol start="5">
+<li>natasha、harry和sarah三个用户的密码均设置为glegunge</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">passwd</span> <span class="token operator">&lt;</span>用户名<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWsfN8.png" alt="pPWsfN8.png" loading="lazy"></p>
+<p>测试：</p>
+<p>查看组 id 及附属组</p>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWs2HP.png" alt="pPWs2HP.png" loading="lazy"></p>
+<p>测试 sarah 的 shell 登录</p>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWsqH0.png" alt="pPWsqH0.png" loading="lazy"></p>
+<h5 id="复制文件-etc-fstab到-var-tmp目录下，并按照以下要求配置-var-tmp-fstab文件的权限"><a class="header-anchor" href="#复制文件-etc-fstab到-var-tmp目录下，并按照以下要求配置-var-tmp-fstab文件的权限">¶</a>复制文件/etc/fstab到/var/tmp目录下，并按照以下要求配置/var/tmp/fstab文件的权限:</h5>
+<p>先复制</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> /etc/fstab /var/tmp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol>
+<li>该文件的所属人为root，该文件的所属组为root</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW6pi8.png" alt="pPW6pi8.png" loading="lazy"></p>
+<ol start="2">
+<li>该文件对任何人均没有执行权限，用户natasha对该文件有读和写的权限，用户harry对该文件既不能读也不能写</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW69JS.png" alt="pPW69JS.png" loading="lazy"></p>
+<ol start="3">
+<li>所有其他用户（包括当前已有用户及未来创建的用户）对该文件都有读的权限</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWyxdP.png" alt="pPWyxdP.png" loading="lazy"></p>
+<h5 id="打包文件"><a class="header-anchor" href="#打包文件">¶</a>打包文件</h5>
+<ol>
+<li>请对/etc/sysconfig目录进行打包并用bzip2压缩，生成的文件保存为/root/sysconfig.tar.bz2</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPWyzIf.png" alt="pPWyzIf.png" loading="lazy"></p>
+<h5 id="创建分区"><a class="header-anchor" href="#创建分区">¶</a>创建分区</h5>
+<ol>
+<li>创建一个大小为500M的分区</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW26T1.png" alt="pPW26T1.png" loading="lazy"></p>
+<ol start="2">
+<li>使用 mkfs 将 sda4 格式化为 ext4 文件系统</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW2wSU.png" alt="pPW2wSU.png" loading="lazy"></p>
+<ol start="3">
+<li>将分区挂载到 /test 目录，如果没有请自行创建</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW2aWT.png" alt="pPW2aWT.png" loading="lazy"></p>
+<ol start="4">
+<li>使用开机自启实现永久挂载目录</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/15/pPW2UYV.png" alt="pPW2UYV.png" loading="lazy"></p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>编程技巧</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux2023-9-18作业</title>
-    <url>/zero.github.io/2023/09/18/Linux2023-9-18%E4%BD%9C%E4%B8%9A/</url>
+    <url>/2023/09/18/Linux2023-9-18%E4%BD%9C%E4%B8%9A/</url>
     <content><![CDATA[<blockquote>
 <p>题目要求：</p>
 <p>1、破解centos7操作系统密码为flectrag</p>
@@ -2718,7 +2718,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   </entry>
   <entry>
     <title>Mermaid画图测试</title>
-    <url>/zero.github.io/2023/04/29/Mermaid%E7%94%BB%E5%9B%BE%E6%B5%8B%E8%AF%95/</url>
+    <url>/2023/04/29/Mermaid%E7%94%BB%E5%9B%BE%E6%B5%8B%E8%AF%95/</url>
     <content><![CDATA[<h4 id="流程图"><a class="header-anchor" href="#流程图">¶</a>流程图</h4>
 <ul>
 <li>语法解释:<code>graph</code>表示声明一张流程图 <code>TD</code>表示方向 T(top)-D(down) 由上至下 <code>()</code>表示圆形框 <code>&#123;&#125;</code>表示菱形框</li>
@@ -2781,160 +2781,221 @@ console<span class="token punctuation">.</span><span class="token function">log<
       </tags>
   </entry>
   <entry>
-    <title>MySQL-3</title>
-    <url>/zero.github.io/2024/05/09/MySQL-3/</url>
-    <content><![CDATA[<h3 id="LIKE-子句"><a class="header-anchor" href="#LIKE-子句">¶</a><em>LIKE</em> 子句</h3>
-<p><em>like</em> 子句用于指定 <em>update</em> 以及 <em>delete</em> 中的 <em>where</em> 条件.</p>
-<p>可以使用 <em><code>or</code></em> 或者 <em><code>and</code></em> 指定一个或者多个条件.</p>
-<p>基本语法：</p>
-<p><code>SELECT * FROM &lt;表名&gt; WHERE &lt;LIKE句所用的列名&gt; LIKE &lt;条件&gt;;</code></p>
-<p>例子：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id like 1;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>筛选 <em>user</em> 表中的所有行，<em>id</em> 列为 1 的所有列.</p>
-<h4 id="LIKE-通配符"><a class="header-anchor" href="#LIKE-通配符">¶</a><em>LIKE</em> 通配符</h4>
-<p>在 <em>like</em> 子句中，<code>%</code> 通配符与正则表达式的 <code>*</code> 作用相同，表示零个或多个字符.</p>
-<p>而 <code>_</code> 通配符表示一个字符.</p>
-<p>不区分大小写匹配：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id like 1 collate utf8mb4_general_ci;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>使用 <code>collate utf8mb4_general_ci</code> 定义 <em>utf8mb4</em> 字符集和大小写不敏感规则.</p>
-<h3 id="UNION-连接子句"><a class="header-anchor" href="#UNION-连接子句">¶</a><em>UNION</em> 连接子句</h3>
-<p>此操作符用于连接两个以上的 <em>SELECT</em> 语句的结果并去除重复行后组合到一个结果集中.</p>
-<p>每个 <em>UNION</em> 操作符必须由两个或者多个 <em>SELECT</em> 语句组成，每个 <em>SELECT</em> 语句的列数和数据类型必须一致.</p>
-<p>基本语法：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT column1, column2, ... FROM table1 WHERE condition1
-UNION
-SELECT column1, column2, ... FROM table2 WHERE condition2
-[ORDER BY column1, column2, ...];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>参数解析：</p>
+    <title>MySQL-1</title>
+    <url>/2024/05/06/MySQL-1/</url>
+    <content><![CDATA[<h3 id="MySQL-简介"><a class="header-anchor" href="#MySQL-简介">¶</a>MySQL 简介</h3>
+<p><em>MySQL</em> 是一款广泛使用的关系型数据库管理系统（<em>RDBMS</em>），由瑞典 <em>MySQL AB</em> 公司最初开发，目前隶属于 <em>Oracle</em> 公司。<em>MySQL</em> 以其开源、稳定、高效、可扩展性强等特点而著名，是互联网行业中最为流行的数据库解决方案之一。</p>
+<p><em>MySQL</em> 命令关键字本身是不区分大小写的，但是数据库名、表名、列名、别名等在不同的操作系统下区分大小写的情况有所不同：</p>
 <ul>
-<li><code>ORDER BY</code>
+<li>在 <em>Windows</em> 系统下，<em>MySQL</em> 的表名、数据库名等默认是不区分大小写的，这是由于<code>lower_case_table_names</code>系统变量默认设置为1，它会使得 <em>MySQL</em> 在存储和查找表名时统一转换为小写。</li>
+<li>在 <em>Linux</em> 系统和其他大多数 <em>Unix-like</em> 系统中，默认情况下 <em>MySQL</em> 是区分大小写的，也就是说，数据库名、表名等必须准确匹配其创建时的大小写。</li>
+</ul>
+<p>另外，尽管 <em>MySQL</em> 的关键字不区分大小写，但在编写 <em>SQL</em> 语句时，为了提高代码可读性和遵循行业标准，通常建议将 <em>SQL</em> 关键字大写，而标识符（如表名、列名）则根据实际情况保持一致的大小写规则。对于列名和列别名，无论在何种操作系统下，<em>MySQL</em> 内部都是忽略大小写的。不过要注意的是，如果启用了特定的排序规则（<em>collation</em>），即使在不区分大小写的环境中，也可能存在区分大小写的情况，尤其是在涉及到字符串比较时。</p>
+<h3 id="MySQL-相关术语"><a class="header-anchor" href="#MySQL-相关术语">¶</a>MySQL 相关术语</h3>
 <ul>
-<li>可选子句，用于指定合并后的结果集的排序顺序.</li>
+<li><strong>数据库:</strong> 数据库是一些关联表的集合。</li>
+<li><strong>数据表:</strong> 表是数据的矩阵。在一个数据库中的表看起来像一个简单的电子表格。</li>
+<li><strong>列:</strong> 一列(数据元素) 包含了相同类型的数据, 例如邮政编码的数据。</li>
+<li>**行：**一行（元组，或记录）是一组相关的数据，例如一条用户订阅的数据。</li>
+<li><strong>冗余</strong>：存储两倍数据，冗余降低了性能，但提高了数据的安全性。</li>
+<li><strong>主键</strong>：主键是唯一的。一个数据表中只能包含一个主键。你可以使用主键来查询数据。</li>
+<li>**外键：**外键用于关联两个表。</li>
+<li><strong>复合键</strong>：复合键（组合键）将多个列作为一个索引键，一般用于复合索引。</li>
+<li>**索引：**使用索引可快速访问数据库表中的特定信息。索引是对数据库表中一列或多列的值进行排序的一种结构。类似于书籍的目录。</li>
+<li><strong>参照完整性:</strong> 参照的完整性要求关系中不允许引用不存在的实体。与实体完整性是关系模型必须满足的完整性约束条件，目的是保证数据的一致性。</li>
+</ul>
+<h3 id="关系型数据库"><a class="header-anchor" href="#关系型数据库">¶</a>关系型数据库</h3>
+<p>MySQL 为关系型数据库(<em>Relational Database Management System</em>), 这种所谓的&quot;<u>关系型</u>“可以理解为”<u>表格</u>&quot;的概念, 一个关系型数据库由一个或数个表格组成, 如图所示的一个表格:</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/0921_1.jpg" alt="img" loading="lazy"></p>
+<ul>
+<li><strong>表头(header):</strong> 每一列的名称;</li>
+<li><strong>列(col):</strong> 具有相同数据类型的数据的集合;</li>
+<li><strong>行(row):</strong> 每一行用来描述某条记录的具体信息;</li>
+<li><strong>值(value):</strong> 行的具体信息, 每个值必须与该列的数据类型相同;</li>
+<li><strong>键(key)</strong>: 键的值在当前列中具有唯一性。</li>
+</ul>
+<h3 id="MySQL-数据类型"><a class="header-anchor" href="#MySQL-数据类型">¶</a>MySQL 数据类型</h3>
+<p>MySQL数据类型大致分为五类，<u>数值</u>、<u>日期\时间</u>、<u>字符串(字符)</u>、<u>空间类型</u> 和 <em><u>JSON</u></em> 类型，这五大类中又分为许多子类型：</p>
+<h4 id="数值类型"><a class="header-anchor" href="#数值类型">¶</a>数值类型</h4>
+<p>这些类型包括严格数值数据类型( <code>INTEGER</code>、<code>SMALLINT</code>、<code>DECIMAL</code> 和 <code>NUMERIC</code> )，以及近似数值数据类型( <code>FLOAT</code>、<code>REAL</code> 和 <code>DOUBLE PRECISION</code>)。</p>
+<table>
+    <thead>
+        <tr>
+            <th>类型</th>
+            <th>大小</th>
+            <th>范围（有符号）</th>
+            <th>范围（无符号）</th>
+            <th>用途</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>TINYINT</td>
+            <td>1 Bytes</td>
+            <td>(-128, 127)</td>
+            <td>(0, 255)</td>
+            <td>小整数值</td>
+        </tr>
+        <tr>
+            <td>SMALLINT</td>
+            <td>2 Bytes</td>
+            <td>(-32 768, 32 767)</td>
+            <td>(0, 65 535)</td>
+            <td>大整数值</td>
+        </tr>
+        <tr>
+            <td>MEDIUMINT</td>
+            <td>3 Bytes</td>
+            <td>(-8 388 608, 8 388 607)</td>
+            <td>(0, 16 777 215)</td>
+            <td>大整数值</td>
+        </tr>
+        <tr>
+            <td>INT 或 INTEGER</td>
+            <td>4 Bytes</td>
+            <td>(-2 147 483 648, 2 147 483 647)</td>
+            <td>(0, 4 294 967 295)</td>
+            <td>大整数值</td>
+        </tr>
+        <tr>
+            <td>BIGINT</td>
+            <td>8 Bytes</td>
+            <td>(-9 223 372 036 854 775 808, 9 223 372 036 854 775 807)</td>
+            <td>(0, 18 446 744 073 709 551 615)</td>
+            <td>极大整数值</td>
+        </tr>
+        <tr>
+            <td>FLOAT</td>
+            <td>4 Bytes</td>
+            <td>(-3.402 823 466 E+38, -1.175 494 351 E-38), (1.175 494 351 E-38, 3.402 823 466 E+38)</td>
+            <td>(0, (1.175 494 351 E-38, 3.402 823 466 E+38)</td>
+            <td>单精度浮点数值</td>
+        </tr>
+        <tr>
+            <td>DOUBLE</td>
+            <td>8 Bytes</td>
+            <td>(-1.797 693 134 862 315 7 E+308, -2.225 073 858 507 201 4 E-308), (2.225 073 858 507 201 4 E-308, 1.797 693 134 862 315 7 E+308)</td>
+            <td>(0, (2.225 073 858 507 201 4 E-308, 1.797 693 134 862 315 7 E+308)</td>
+            <td>双精度浮点数值</td>
+        </tr>
+        <tr>
+            <td>DECIMAL</td>
+            <td>对DECIMAL(M,D)，如果M>D，为M+2否则为D+2</td>
+            <td>依赖于M和D的值</td>
+            <td>依赖于M和D的值</td>
+            <td>小数值</td>
+        </tr>
+    </tbody>
+</table>
+<h4 id="日期和时间类型"><a class="header-anchor" href="#日期和时间类型">¶</a>日期和时间类型</h4>
+<p>表示时间值的日期和时间类型为 <code>DATETIME</code>、<code>DATE</code>、<code>TIMESTAMP</code>、<code>TIME</code>和<code>YEAR</code>。</p>
+<p>每个时间类型有一个有效值范围和一个&quot;零&quot;值，当指定不合法的 <em>MySQL</em> 不能表示的值时使用&quot;零&quot;值。</p>
+<table>     <thead>         <tr>             <th>类型</th>             <th>大小</th>             <th>范围</th>             <th>格式</th>             <th>用途</th>         </tr>     </thead>     <tbody>         <tr>             <td>DATE</td>             <td>3 bytes</td>             <td>1000-01-01/9999-12-31</td>             <td>YYYY-MM-DD</td>             <td>日期值</td>         </tr>         <tr>             <td>TIME</td>             <td>3 bytes</td>             <td>'-838:59:59'/'838:59:59'</td>             <td>HH:MM:SS</td>             <td>时间值或持续时间</td>         </tr>         <tr>             <td>YEAR</td>             <td>1 byte</td>             <td>1901/2155</td>             <td>YYYY</td>             <td>年份值</td>         </tr>         <tr>             <td>DATETIME</td>             <td>8 bytes</td>             <td>'1000-01-01 00:00:00' 到 '9999-12-31 23:59:59'</td>             <td>YYYY-MM-DD hh:mm:ss</td>             <td>混合日期和时间值</td>         </tr>         <tr>             <td>TIMESTAMP</td>             <td>4 bytes</td>             <td>'1970-01-01 00:00:01' UTC 到 '2038-01-19 03:14:07'UTC <br/>结束时间是第 <b>2147483647</b> 秒，北京时间 <b>2038-1-19 11:14:07</b>，格林尼治时间 2038年1月19日 凌晨 03:14:07</td>             <td>YYYY-MM-DD hh:mm:ss</td>             <td>混合日期和时间值，时间戳</td>         </tr>     </tbody> </table>
+<h4 id="字符串类型"><a class="header-anchor" href="#字符串类型">¶</a>字符串类型</h4>
+<p>字符串类型指 <code>CHAR</code>、<code>VARCHAR</code>、<code>BINARY</code>、<code>VARBINARY</code>、<code>BLOB</code>、<code>TEXT</code>、<code>ENUM</code>和<code>SET</code>。该节描述了这些类型如何工作以及如何在查询中使用这些类型。</p>
+<table>
+    <thead>
+        <tr>
+            <th>类型</th>
+            <th>大小</th>
+            <th>用途</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CHAR</td>
+            <td>0-255 bytes</td>
+            <td>定长字符串</td>
+        </tr>
+        <tr>
+            <td>VARCHAR</td>
+            <td>0-65535 bytes</td>
+            <td>变长字符串</td>
+        </tr>
+        <tr>
+            <td>TINYBLOB</td>
+            <td>0-255 bytes</td>
+            <td>不超过 255 个字符的二进制字符串</td>
+        </tr>
+        <tr>
+            <td>TINYTEXT</td>
+            <td>0-255 bytes</td>
+            <td>短文本字符串</td>
+        </tr>
+        <tr>
+            <td>BLOB</td>
+            <td>0-65 535 bytes</td>
+            <td>二进制形式的长文本数据</td>
+        </tr>
+        <tr>
+            <td>TEXT</td>
+            <td>0-65 535 bytes</td>
+            <td>长文本数据</td>
+        </tr>
+        <tr>
+            <td>MEDIUMBLOB</td>
+            <td>0-16 777 215 bytes</td>
+            <td>二进制形式的中等长度文本数据</td>
+        </tr>
+        <tr>
+            <td>MEDIUMTEXT</td>
+            <td>0-16 777 215 bytes</td>
+            <td>中等长度文本数据</td>
+        </tr>
+        <tr>
+            <td>LONGBLOB</td>
+            <td>0-4 294 967 295 bytes</td>
+            <td>二进制形式的极大文本数据</td>
+        </tr>
+        <tr>
+            <td>LONGTEXT</td>
+            <td>0-4 294 967 295 bytes</td>
+            <td>极大文本数据</td>
+        </tr>
+    </tbody>
+</table>
+- `char(n)` 和 `varchar(n)` 中括号中 `n` 代表字符的个数，并不代表字节个数，比如 `CHAR(30)` 就可以存储 30 个字符。
+<ul>
+<li>
+<p><code>CHAR</code> 和 <code>VARCHAR</code> 类型类似，但它们保存和检索的方式不同。它们的最大长度和是否尾部空格被保留等方面也不同。在存储或检索过程中不进行大小写转换。</p>
+</li>
+<li>
+<p><code>BINARY</code>  和 <code>VARBINARY</code> 类似于 <code>CHAR</code> 和 <code>VARCHAR</code>，不同的是它们包含二进制字符串而不要非二进制字符串。也就是说，它们包含字节字符串而不是字符字符串。这说明它们没有字符集，并且排序和比较基于列值字节的数值值。</p>
+</li>
+<li>
+<p><code>BLOB</code> 是一个二进制大对象，可以容纳可变数量的数据。</p>
+<ul>
+<li><code>TINYBLOB</code></li>
+<li><code>BLOB</code></li>
+<li><code>MEDIUMBLOB</code></li>
+<li><code>LONGBLOB</code></li>
+</ul>
+</li>
+<li>
+<p><code>TEXT</code> 是文本对象，同 <code>BLOB</code> 一样，也有四种类型。</p>
+<ul>
+<li><code>TINYTEXT</code></li>
+<li><code>TEXT</code></li>
+<li><code>MEDIUMTEXT</code></li>
+<li><code>LONGTEXT</code></li>
 </ul>
 </li>
 </ul>
-<p>例子：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id &lt; 2 union select * from user where id &gt; 2;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>筛选 <em>user</em> 表中 <em>id</em> 不等于 <em>2</em> 的所有行.</p>
-<h3 id="UNION-ALL"><a class="header-anchor" href="#UNION-ALL">¶</a><em>UNION ALL</em></h3>
-<p>此子句与 <em>UNION</em> 的不同在于展示出来的数据会包含重复数据。</p>
-<p>基本语法：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT column1, column2, ... FROM table1 WHERE condition1
-UNION ALL
-SELECT column1, column2, ... FROM table2 WHERE condition2
-[ORDER BY column1, column2, ...];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="ORDER-BY-语句"><a class="header-anchor" href="#ORDER-BY-语句">¶</a><em>ORDER BY</em> 语句</h3>
-<p>如果想要对读取的数据进行排序，可以使用此子句来设定你想按那个字段那种方式来进行排序，再返回搜索结果。此子句可以按照一个或多个值进行升序(<em>ASC</em>)或降序(<em>DESC</em>)排序.</p>
-<p>基本语法：</p>
-<p><code>SELECT column1,... FROM &lt;表名&gt; ORDER BY column1 [ASC | DESC], column2 [ASC | DESC],...;</code></p>
-<p>参数解析：</p>
+<h4 id="枚举与集合类型"><a class="header-anchor" href="#枚举与集合类型">¶</a>枚举与集合类型</h4>
 <ul>
-<li><code>ORDER BY</code>
-<ul>
-<li>用于指定排序顺序子句，<em>ASC</em> 表示升序（默认），<em>DESC</em> 表示降序.</li>
+<li><code>ENUM</code>：枚举类型，用于存取单一的值，可以选择一个预定义的集合。</li>
+<li><code>SET</code>：集合类型，用于存储多个值，可以选择多个预定义的集合。</li>
 </ul>
-</li>
-</ul>
-<p>使用拼音对汉字进行排序，如果使用 <em>gbk</em> 字符集，可以直接排序，如果使用 <em>utf8</em> 字符集，需要对字段进行转码.</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user order by convert(username using gbk);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-order-by.html">MySQL ORDER BY(排序) 语句 | 菜鸟教程 (runoob.com)</a></p>
-<h3 id="JOIN-连接"><a class="header-anchor" href="#JOIN-连接">¶</a><em>JOIN</em>(连接)</h3>
-<p>可以在 <em>SELECT</em> 、<em>UPDATE</em>、<em>DELETE</em> 语句中使用 JOIN 来联合多表查询.</p>
-<p>JOIN 按照功能大致分为三类：</p>
-<ul>
-<li><code>INNER JOIN</code>
-<ul>
-<li>获取两个表中字段匹配的记录，如果右表中匹配的行有字段为 <em>NULL</em>，则不显示此行.</li>
-</ul>
-</li>
-</ul>
-<p>基本语法：</p>
-<p><code>SELECT column1,... FROM &lt;表名1&gt; INNER JOIN &lt;表名2&gt; ON &lt;表名1.字段名&gt; = &lt;表名2.字段名&gt; ...;</code></p>
-<p>示例：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 简单查询
-select * from user inner join scores on user.id &#x3D; scores.id;
-
-# 使用 as 定义别名
-select u.username,s.chinese,s.mathematics,s.english from user as u inner join scores as s on u.id &#x3D; s.id;
-
-# 多 inner join 查询
-select * from user as u 
-inner join scores as s on u.id &#x3D; s.id 
-inner join test_table as t on u.id &#x3D; t.id;
-
-# 使用 where 过滤记录
-select * from user as u
-inner join scores as s on u.id &#x3D; s.id
-inner join test_table as t on u.id &#x3D; t.id
-where u.birhdate &gt; &#39;2005-01-01&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li><code>LEFT JOIN</code>
-<ul>
-<li>返回左表中的所有行，并包括右表中匹配的行，如果右表中匹配的行中没有值，则返回 <em>NULL</em> 值.</li>
-</ul>
-</li>
-</ul>
-<p>基本语法：</p>
-<p><code>SELECT column1,... FROM &lt;表名1&gt; left JOIN &lt;表名2&gt; ON &lt;表名1.字段名&gt; = &lt;表名2.字段名&gt; ...;</code></p>
-<p>示例：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># left join 的使用方法同 inner join 一样
-select u.id,u.username,s.mathematics,s.chinese,s.english,t.age from user as u
-left join scores as s on u.id &#x3D; s.id
-left join test_table as t on s.id &#x3D; t.id;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-join.html">MySQL 连接的使用 | 菜鸟教程 (runoob.com)</a></p>
-<h3 id="NULL-处理"><a class="header-anchor" href="#NULL-处理">¶</a><em>NULL</em> 处理</h3>
-<p><em>MySQL</em> 提供了三个运算符来处理 <em>NULL</em> 值，在 <em>MySQL</em> 中，<em>NULL</em> 值通常表示缺失或未知数据，你不能使用 <code>=</code> 或者 <code>!=</code> 来查找 <em>NULL</em> 值，因为 <em>NULL</em> 值与其他任何值比较都为 <em>NULL</em> .</p>
-<ul>
-<li><code>IS NULL</code>
-<ul>
-<li>当列的值是 <em>NULL</em>，此运算符返回 <em>true</em> .</li>
-</ul>
-</li>
-<li><code>IS NOT NULL</code>
-<ul>
-<li>当列的值不为 <em>NULL</em>，此运算符返回 <em>true</em> .</li>
-</ul>
-</li>
-<li><code>&lt;=&gt;</code>
-<ul>
-<li>当比较的两个值相等或者都为 <em>NULL</em> 时返回 <em>true</em> .</li>
-</ul>
-</li>
-</ul>
-<p>示例：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 判读 age 字段是否为 NULL
-select * from test_table as t where t.age is null;
-
-# 判断 age 字段是否不为 NULL
-select * from test_table as t where t.age is not null;
-
-# 判断 age 字段是否为 NULL，效果同 is 一样
-select * from test_table as t where t.age &lt;&#x3D;&gt; null;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="数据表清洗"><a class="header-anchor" href="#数据表清洗">¶</a>数据表清洗</h4>
-<p>将表中指定的列中所有的NULL值替换为 <code>0</code>.</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * , ifnull(t.age,0) as age from test_table as t;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="IFNULL-COALESCE"><a class="header-anchor" href="#IFNULL-COALESCE">¶</a>IFNULL &amp; COALESCE</h4>
-<p><code>IFNULL</code> 基本语法：</p>
-<p><code>IFNULL(expr1,expr2)</code></p>
-<p><em>ifnull</em> 是常用的用于处理 <em>NULL</em> 值的函数，其基本功能是如果参数 1 为 <em>NULL</em>，则返回参数 2 的值.</p>
-<p><code>COALESCE</code>基本语法：</p>
-<p><code>COALESCE(value1,value2,...,valueEn)</code></p>
-<p><em>coalesce</em> 可以看做是 <em>ifnull</em> 的增强版，其功能同 <em>ifnull</em> 相同，但是可以接受比 <em>ifnull</em> 更多的参数，如果参数 1 为 <em>NULL</em>，则返回其参数列表中第一个非 <em>NULL</em> 的表达式，如果所有提供的表达式都为 <em>NULL</em>，那么 <em>coalesce</em> 函数将返回 <em>NULL</em>.</p>
-<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-null.html">MySQL NULL 值处理 | 菜鸟教程 (runoob.com)</a></p>
-<h3 id="正则表达式"><a class="header-anchor" href="#正则表达式">¶</a>正则表达式</h3>
-<p>MySQL 提供了正则表达式的匹配，用于提供比普通筛选更强大的功能.</p>
-<ul>
-<li><code>REGEXP</code>
-<ul>
-<li>regexp 是用于进行正则匹配的运算符.</li>
-</ul>
-</li>
-</ul>
-<p>基本语法：</p>
-<p><code>SELECT column1,column2,... FROM &lt;表名&gt; WHERE column_name regexp 'pattern'</code></p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 筛选出以 1 开头的 id
-select * from user as u where u.id regexp &#39;^[1*]&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-regexp.html">MySQL 正则表达式 | 菜鸟教程 (runoob.com)</a></p>
+<h4 id="空间数据类型"><a class="header-anchor" href="#空间数据类型">¶</a>空间数据类型</h4>
+<p><code>GEOMETRY</code>, <code>POINT</code>, <code>LINESTRING</code>, <code>POLYGON</code>, <code>MULTIPOINT</code>, <code>MULTILINESTRING</code>, <code>MULTIPOLYGON</code>, <code>GEOMETRYCOLLECTION</code>: 用于存储空间数据（地理信息、几何图形等）。</p>
+<h4 id="JSON-数据类型"><a class="header-anchor" href="#JSON-数据类型">¶</a>JSON 数据类型</h4>
+<p>​	<em>MySQL</em> 从<code>5.7.8</code>版本开始就支持存储原生的 <em>JSON</em> 类型的数据，我们可以 <em>MySQL</em> 中存储 <em>JSON</em> 对象或 <em>JSON</em> 数组。<em>JSON</em> 数据并不是以字符串的形式存储，而是使用一种允许快速读取文本元素的内部二进制格式进行存储的,在 <em>JSON</em> 数据列中插入或者更新的时候将会自动验证 <em>JSON</em> 文本数据是否正确，未通过验证的文本将产生一个错误信息。</p>
+<p>​	<em>JSON</em> 与 <em>BLOB</em> 和 <em>TEXT</em> 类型一样，设置 <em>JSON</em> 类型的字段时不能设置默认值，其默认值只能为 <em>NULL</em> 。</p>
+<p>​	<em>JSON</em> 类型的存储长度与 <code>LONGBLOB</code> 、<code>LONGTEXT</code> 类型长度相同，但是最大长度不能超过 <em>max_allowed_packet</em> 系统变量设置的值。</p>
+<p>​</p>
+<h3 id="数据类型的选择"><a class="header-anchor" href="#数据类型的选择">¶</a>数据类型的选择</h3>
+<p>​	在 <code>MySQL 5.0</code> 及以上的版本里，一个汉字占用的长度跟编码有关，在 <em>UTF-8</em> 编码下，一个汉字占用 3 个字节，<em>GBK</em> 编码下一个汉字占用 2 个字节。</p>
+<p>​	选择数据类型通常选择更小的，以及更简单的类型，同时应该避免使用 <em>NULL</em> 。 对于经常变化的字段应该使用 <code>varchar</code>，知道固定长度的用 <code>char</code>，尽量使用 <code>varchar</code>，能用 <code>varchar</code> 的地方不用 <code>text</code>，对于超过 255 字符的只能使用 <code>varchar</code> 或 <code>text</code>。</p>
 <hr>
 <p><em>END</em></p>
 ]]></content>
@@ -2948,7 +3009,7 @@ select * from user as u where u.id regexp &#39;^[1*]&#39;;<span aria-hidden="tru
   </entry>
   <entry>
     <title>MySQL-2</title>
-    <url>/zero.github.io/2024/05/06/MySQL-2/</url>
+    <url>/2024/05/06/MySQL-2/</url>
     <content><![CDATA[<h2 id="MySQL-基本操作"><a class="header-anchor" href="#MySQL-基本操作">¶</a>MySQL 基本操作</h2>
 <h3 id="对数据库操作"><a class="header-anchor" href="#对数据库操作">¶</a>对数据库操作</h3>
 <h4 id="创建数据库"><a class="header-anchor" href="#创建数据库">¶</a>创建数据库</h4>
@@ -3220,221 +3281,160 @@ WHERE condition;<span aria-hidden="true" class="line-numbers-rows"><span></span>
       </tags>
   </entry>
   <entry>
-    <title>MySQL-1</title>
-    <url>/zero.github.io/2024/05/06/MySQL-1/</url>
-    <content><![CDATA[<h3 id="MySQL-简介"><a class="header-anchor" href="#MySQL-简介">¶</a>MySQL 简介</h3>
-<p><em>MySQL</em> 是一款广泛使用的关系型数据库管理系统（<em>RDBMS</em>），由瑞典 <em>MySQL AB</em> 公司最初开发，目前隶属于 <em>Oracle</em> 公司。<em>MySQL</em> 以其开源、稳定、高效、可扩展性强等特点而著名，是互联网行业中最为流行的数据库解决方案之一。</p>
-<p><em>MySQL</em> 命令关键字本身是不区分大小写的，但是数据库名、表名、列名、别名等在不同的操作系统下区分大小写的情况有所不同：</p>
+    <title>MySQL-3</title>
+    <url>/2024/05/09/MySQL-3/</url>
+    <content><![CDATA[<h3 id="LIKE-子句"><a class="header-anchor" href="#LIKE-子句">¶</a><em>LIKE</em> 子句</h3>
+<p><em>like</em> 子句用于指定 <em>update</em> 以及 <em>delete</em> 中的 <em>where</em> 条件.</p>
+<p>可以使用 <em><code>or</code></em> 或者 <em><code>and</code></em> 指定一个或者多个条件.</p>
+<p>基本语法：</p>
+<p><code>SELECT * FROM &lt;表名&gt; WHERE &lt;LIKE句所用的列名&gt; LIKE &lt;条件&gt;;</code></p>
+<p>例子：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id like 1;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>筛选 <em>user</em> 表中的所有行，<em>id</em> 列为 1 的所有列.</p>
+<h4 id="LIKE-通配符"><a class="header-anchor" href="#LIKE-通配符">¶</a><em>LIKE</em> 通配符</h4>
+<p>在 <em>like</em> 子句中，<code>%</code> 通配符与正则表达式的 <code>*</code> 作用相同，表示零个或多个字符.</p>
+<p>而 <code>_</code> 通配符表示一个字符.</p>
+<p>不区分大小写匹配：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id like 1 collate utf8mb4_general_ci;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用 <code>collate utf8mb4_general_ci</code> 定义 <em>utf8mb4</em> 字符集和大小写不敏感规则.</p>
+<h3 id="UNION-连接子句"><a class="header-anchor" href="#UNION-连接子句">¶</a><em>UNION</em> 连接子句</h3>
+<p>此操作符用于连接两个以上的 <em>SELECT</em> 语句的结果并去除重复行后组合到一个结果集中.</p>
+<p>每个 <em>UNION</em> 操作符必须由两个或者多个 <em>SELECT</em> 语句组成，每个 <em>SELECT</em> 语句的列数和数据类型必须一致.</p>
+<p>基本语法：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT column1, column2, ... FROM table1 WHERE condition1
+UNION
+SELECT column1, column2, ... FROM table2 WHERE condition2
+[ORDER BY column1, column2, ...];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>参数解析：</p>
 <ul>
-<li>在 <em>Windows</em> 系统下，<em>MySQL</em> 的表名、数据库名等默认是不区分大小写的，这是由于<code>lower_case_table_names</code>系统变量默认设置为1，它会使得 <em>MySQL</em> 在存储和查找表名时统一转换为小写。</li>
-<li>在 <em>Linux</em> 系统和其他大多数 <em>Unix-like</em> 系统中，默认情况下 <em>MySQL</em> 是区分大小写的，也就是说，数据库名、表名等必须准确匹配其创建时的大小写。</li>
-</ul>
-<p>另外，尽管 <em>MySQL</em> 的关键字不区分大小写，但在编写 <em>SQL</em> 语句时，为了提高代码可读性和遵循行业标准，通常建议将 <em>SQL</em> 关键字大写，而标识符（如表名、列名）则根据实际情况保持一致的大小写规则。对于列名和列别名，无论在何种操作系统下，<em>MySQL</em> 内部都是忽略大小写的。不过要注意的是，如果启用了特定的排序规则（<em>collation</em>），即使在不区分大小写的环境中，也可能存在区分大小写的情况，尤其是在涉及到字符串比较时。</p>
-<h3 id="MySQL-相关术语"><a class="header-anchor" href="#MySQL-相关术语">¶</a>MySQL 相关术语</h3>
+<li><code>ORDER BY</code>
 <ul>
-<li><strong>数据库:</strong> 数据库是一些关联表的集合。</li>
-<li><strong>数据表:</strong> 表是数据的矩阵。在一个数据库中的表看起来像一个简单的电子表格。</li>
-<li><strong>列:</strong> 一列(数据元素) 包含了相同类型的数据, 例如邮政编码的数据。</li>
-<li>**行：**一行（元组，或记录）是一组相关的数据，例如一条用户订阅的数据。</li>
-<li><strong>冗余</strong>：存储两倍数据，冗余降低了性能，但提高了数据的安全性。</li>
-<li><strong>主键</strong>：主键是唯一的。一个数据表中只能包含一个主键。你可以使用主键来查询数据。</li>
-<li>**外键：**外键用于关联两个表。</li>
-<li><strong>复合键</strong>：复合键（组合键）将多个列作为一个索引键，一般用于复合索引。</li>
-<li>**索引：**使用索引可快速访问数据库表中的特定信息。索引是对数据库表中一列或多列的值进行排序的一种结构。类似于书籍的目录。</li>
-<li><strong>参照完整性:</strong> 参照的完整性要求关系中不允许引用不存在的实体。与实体完整性是关系模型必须满足的完整性约束条件，目的是保证数据的一致性。</li>
-</ul>
-<h3 id="关系型数据库"><a class="header-anchor" href="#关系型数据库">¶</a>关系型数据库</h3>
-<p>MySQL 为关系型数据库(<em>Relational Database Management System</em>), 这种所谓的&quot;<u>关系型</u>“可以理解为”<u>表格</u>&quot;的概念, 一个关系型数据库由一个或数个表格组成, 如图所示的一个表格:</p>
-<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/0921_1.jpg" alt="img" loading="lazy"></p>
-<ul>
-<li><strong>表头(header):</strong> 每一列的名称;</li>
-<li><strong>列(col):</strong> 具有相同数据类型的数据的集合;</li>
-<li><strong>行(row):</strong> 每一行用来描述某条记录的具体信息;</li>
-<li><strong>值(value):</strong> 行的具体信息, 每个值必须与该列的数据类型相同;</li>
-<li><strong>键(key)</strong>: 键的值在当前列中具有唯一性。</li>
-</ul>
-<h3 id="MySQL-数据类型"><a class="header-anchor" href="#MySQL-数据类型">¶</a>MySQL 数据类型</h3>
-<p>MySQL数据类型大致分为五类，<u>数值</u>、<u>日期\时间</u>、<u>字符串(字符)</u>、<u>空间类型</u> 和 <em><u>JSON</u></em> 类型，这五大类中又分为许多子类型：</p>
-<h4 id="数值类型"><a class="header-anchor" href="#数值类型">¶</a>数值类型</h4>
-<p>这些类型包括严格数值数据类型( <code>INTEGER</code>、<code>SMALLINT</code>、<code>DECIMAL</code> 和 <code>NUMERIC</code> )，以及近似数值数据类型( <code>FLOAT</code>、<code>REAL</code> 和 <code>DOUBLE PRECISION</code>)。</p>
-<table>
-    <thead>
-        <tr>
-            <th>类型</th>
-            <th>大小</th>
-            <th>范围（有符号）</th>
-            <th>范围（无符号）</th>
-            <th>用途</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>TINYINT</td>
-            <td>1 Bytes</td>
-            <td>(-128, 127)</td>
-            <td>(0, 255)</td>
-            <td>小整数值</td>
-        </tr>
-        <tr>
-            <td>SMALLINT</td>
-            <td>2 Bytes</td>
-            <td>(-32 768, 32 767)</td>
-            <td>(0, 65 535)</td>
-            <td>大整数值</td>
-        </tr>
-        <tr>
-            <td>MEDIUMINT</td>
-            <td>3 Bytes</td>
-            <td>(-8 388 608, 8 388 607)</td>
-            <td>(0, 16 777 215)</td>
-            <td>大整数值</td>
-        </tr>
-        <tr>
-            <td>INT 或 INTEGER</td>
-            <td>4 Bytes</td>
-            <td>(-2 147 483 648, 2 147 483 647)</td>
-            <td>(0, 4 294 967 295)</td>
-            <td>大整数值</td>
-        </tr>
-        <tr>
-            <td>BIGINT</td>
-            <td>8 Bytes</td>
-            <td>(-9 223 372 036 854 775 808, 9 223 372 036 854 775 807)</td>
-            <td>(0, 18 446 744 073 709 551 615)</td>
-            <td>极大整数值</td>
-        </tr>
-        <tr>
-            <td>FLOAT</td>
-            <td>4 Bytes</td>
-            <td>(-3.402 823 466 E+38, -1.175 494 351 E-38), (1.175 494 351 E-38, 3.402 823 466 E+38)</td>
-            <td>(0, (1.175 494 351 E-38, 3.402 823 466 E+38)</td>
-            <td>单精度浮点数值</td>
-        </tr>
-        <tr>
-            <td>DOUBLE</td>
-            <td>8 Bytes</td>
-            <td>(-1.797 693 134 862 315 7 E+308, -2.225 073 858 507 201 4 E-308), (2.225 073 858 507 201 4 E-308, 1.797 693 134 862 315 7 E+308)</td>
-            <td>(0, (2.225 073 858 507 201 4 E-308, 1.797 693 134 862 315 7 E+308)</td>
-            <td>双精度浮点数值</td>
-        </tr>
-        <tr>
-            <td>DECIMAL</td>
-            <td>对DECIMAL(M,D)，如果M>D，为M+2否则为D+2</td>
-            <td>依赖于M和D的值</td>
-            <td>依赖于M和D的值</td>
-            <td>小数值</td>
-        </tr>
-    </tbody>
-</table>
-<h4 id="日期和时间类型"><a class="header-anchor" href="#日期和时间类型">¶</a>日期和时间类型</h4>
-<p>表示时间值的日期和时间类型为 <code>DATETIME</code>、<code>DATE</code>、<code>TIMESTAMP</code>、<code>TIME</code>和<code>YEAR</code>。</p>
-<p>每个时间类型有一个有效值范围和一个&quot;零&quot;值，当指定不合法的 <em>MySQL</em> 不能表示的值时使用&quot;零&quot;值。</p>
-<table>     <thead>         <tr>             <th>类型</th>             <th>大小</th>             <th>范围</th>             <th>格式</th>             <th>用途</th>         </tr>     </thead>     <tbody>         <tr>             <td>DATE</td>             <td>3 bytes</td>             <td>1000-01-01/9999-12-31</td>             <td>YYYY-MM-DD</td>             <td>日期值</td>         </tr>         <tr>             <td>TIME</td>             <td>3 bytes</td>             <td>'-838:59:59'/'838:59:59'</td>             <td>HH:MM:SS</td>             <td>时间值或持续时间</td>         </tr>         <tr>             <td>YEAR</td>             <td>1 byte</td>             <td>1901/2155</td>             <td>YYYY</td>             <td>年份值</td>         </tr>         <tr>             <td>DATETIME</td>             <td>8 bytes</td>             <td>'1000-01-01 00:00:00' 到 '9999-12-31 23:59:59'</td>             <td>YYYY-MM-DD hh:mm:ss</td>             <td>混合日期和时间值</td>         </tr>         <tr>             <td>TIMESTAMP</td>             <td>4 bytes</td>             <td>'1970-01-01 00:00:01' UTC 到 '2038-01-19 03:14:07'UTC <br/>结束时间是第 <b>2147483647</b> 秒，北京时间 <b>2038-1-19 11:14:07</b>，格林尼治时间 2038年1月19日 凌晨 03:14:07</td>             <td>YYYY-MM-DD hh:mm:ss</td>             <td>混合日期和时间值，时间戳</td>         </tr>     </tbody> </table>
-<h4 id="字符串类型"><a class="header-anchor" href="#字符串类型">¶</a>字符串类型</h4>
-<p>字符串类型指 <code>CHAR</code>、<code>VARCHAR</code>、<code>BINARY</code>、<code>VARBINARY</code>、<code>BLOB</code>、<code>TEXT</code>、<code>ENUM</code>和<code>SET</code>。该节描述了这些类型如何工作以及如何在查询中使用这些类型。</p>
-<table>
-    <thead>
-        <tr>
-            <th>类型</th>
-            <th>大小</th>
-            <th>用途</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>CHAR</td>
-            <td>0-255 bytes</td>
-            <td>定长字符串</td>
-        </tr>
-        <tr>
-            <td>VARCHAR</td>
-            <td>0-65535 bytes</td>
-            <td>变长字符串</td>
-        </tr>
-        <tr>
-            <td>TINYBLOB</td>
-            <td>0-255 bytes</td>
-            <td>不超过 255 个字符的二进制字符串</td>
-        </tr>
-        <tr>
-            <td>TINYTEXT</td>
-            <td>0-255 bytes</td>
-            <td>短文本字符串</td>
-        </tr>
-        <tr>
-            <td>BLOB</td>
-            <td>0-65 535 bytes</td>
-            <td>二进制形式的长文本数据</td>
-        </tr>
-        <tr>
-            <td>TEXT</td>
-            <td>0-65 535 bytes</td>
-            <td>长文本数据</td>
-        </tr>
-        <tr>
-            <td>MEDIUMBLOB</td>
-            <td>0-16 777 215 bytes</td>
-            <td>二进制形式的中等长度文本数据</td>
-        </tr>
-        <tr>
-            <td>MEDIUMTEXT</td>
-            <td>0-16 777 215 bytes</td>
-            <td>中等长度文本数据</td>
-        </tr>
-        <tr>
-            <td>LONGBLOB</td>
-            <td>0-4 294 967 295 bytes</td>
-            <td>二进制形式的极大文本数据</td>
-        </tr>
-        <tr>
-            <td>LONGTEXT</td>
-            <td>0-4 294 967 295 bytes</td>
-            <td>极大文本数据</td>
-        </tr>
-    </tbody>
-</table>
-- `char(n)` 和 `varchar(n)` 中括号中 `n` 代表字符的个数，并不代表字节个数，比如 `CHAR(30)` 就可以存储 30 个字符。
-<ul>
-<li>
-<p><code>CHAR</code> 和 <code>VARCHAR</code> 类型类似，但它们保存和检索的方式不同。它们的最大长度和是否尾部空格被保留等方面也不同。在存储或检索过程中不进行大小写转换。</p>
-</li>
-<li>
-<p><code>BINARY</code>  和 <code>VARBINARY</code> 类似于 <code>CHAR</code> 和 <code>VARCHAR</code>，不同的是它们包含二进制字符串而不要非二进制字符串。也就是说，它们包含字节字符串而不是字符字符串。这说明它们没有字符集，并且排序和比较基于列值字节的数值值。</p>
-</li>
-<li>
-<p><code>BLOB</code> 是一个二进制大对象，可以容纳可变数量的数据。</p>
-<ul>
-<li><code>TINYBLOB</code></li>
-<li><code>BLOB</code></li>
-<li><code>MEDIUMBLOB</code></li>
-<li><code>LONGBLOB</code></li>
-</ul>
-</li>
-<li>
-<p><code>TEXT</code> 是文本对象，同 <code>BLOB</code> 一样，也有四种类型。</p>
-<ul>
-<li><code>TINYTEXT</code></li>
-<li><code>TEXT</code></li>
-<li><code>MEDIUMTEXT</code></li>
-<li><code>LONGTEXT</code></li>
+<li>可选子句，用于指定合并后的结果集的排序顺序.</li>
 </ul>
 </li>
 </ul>
-<h4 id="枚举与集合类型"><a class="header-anchor" href="#枚举与集合类型">¶</a>枚举与集合类型</h4>
+<p>例子：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id &lt; 2 union select * from user where id &gt; 2;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>筛选 <em>user</em> 表中 <em>id</em> 不等于 <em>2</em> 的所有行.</p>
+<h3 id="UNION-ALL"><a class="header-anchor" href="#UNION-ALL">¶</a><em>UNION ALL</em></h3>
+<p>此子句与 <em>UNION</em> 的不同在于展示出来的数据会包含重复数据。</p>
+<p>基本语法：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT column1, column2, ... FROM table1 WHERE condition1
+UNION ALL
+SELECT column1, column2, ... FROM table2 WHERE condition2
+[ORDER BY column1, column2, ...];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="ORDER-BY-语句"><a class="header-anchor" href="#ORDER-BY-语句">¶</a><em>ORDER BY</em> 语句</h3>
+<p>如果想要对读取的数据进行排序，可以使用此子句来设定你想按那个字段那种方式来进行排序，再返回搜索结果。此子句可以按照一个或多个值进行升序(<em>ASC</em>)或降序(<em>DESC</em>)排序.</p>
+<p>基本语法：</p>
+<p><code>SELECT column1,... FROM &lt;表名&gt; ORDER BY column1 [ASC | DESC], column2 [ASC | DESC],...;</code></p>
+<p>参数解析：</p>
 <ul>
-<li><code>ENUM</code>：枚举类型，用于存取单一的值，可以选择一个预定义的集合。</li>
-<li><code>SET</code>：集合类型，用于存储多个值，可以选择多个预定义的集合。</li>
+<li><code>ORDER BY</code>
+<ul>
+<li>用于指定排序顺序子句，<em>ASC</em> 表示升序（默认），<em>DESC</em> 表示降序.</li>
 </ul>
-<h4 id="空间数据类型"><a class="header-anchor" href="#空间数据类型">¶</a>空间数据类型</h4>
-<p><code>GEOMETRY</code>, <code>POINT</code>, <code>LINESTRING</code>, <code>POLYGON</code>, <code>MULTIPOINT</code>, <code>MULTILINESTRING</code>, <code>MULTIPOLYGON</code>, <code>GEOMETRYCOLLECTION</code>: 用于存储空间数据（地理信息、几何图形等）。</p>
-<h4 id="JSON-数据类型"><a class="header-anchor" href="#JSON-数据类型">¶</a>JSON 数据类型</h4>
-<p>​	<em>MySQL</em> 从<code>5.7.8</code>版本开始就支持存储原生的 <em>JSON</em> 类型的数据，我们可以 <em>MySQL</em> 中存储 <em>JSON</em> 对象或 <em>JSON</em> 数组。<em>JSON</em> 数据并不是以字符串的形式存储，而是使用一种允许快速读取文本元素的内部二进制格式进行存储的,在 <em>JSON</em> 数据列中插入或者更新的时候将会自动验证 <em>JSON</em> 文本数据是否正确，未通过验证的文本将产生一个错误信息。</p>
-<p>​	<em>JSON</em> 与 <em>BLOB</em> 和 <em>TEXT</em> 类型一样，设置 <em>JSON</em> 类型的字段时不能设置默认值，其默认值只能为 <em>NULL</em> 。</p>
-<p>​	<em>JSON</em> 类型的存储长度与 <code>LONGBLOB</code> 、<code>LONGTEXT</code> 类型长度相同，但是最大长度不能超过 <em>max_allowed_packet</em> 系统变量设置的值。</p>
-<p>​</p>
-<h3 id="数据类型的选择"><a class="header-anchor" href="#数据类型的选择">¶</a>数据类型的选择</h3>
-<p>​	在 <code>MySQL 5.0</code> 及以上的版本里，一个汉字占用的长度跟编码有关，在 <em>UTF-8</em> 编码下，一个汉字占用 3 个字节，<em>GBK</em> 编码下一个汉字占用 2 个字节。</p>
-<p>​	选择数据类型通常选择更小的，以及更简单的类型，同时应该避免使用 <em>NULL</em> 。 对于经常变化的字段应该使用 <code>varchar</code>，知道固定长度的用 <code>char</code>，尽量使用 <code>varchar</code>，能用 <code>varchar</code> 的地方不用 <code>text</code>，对于超过 255 字符的只能使用 <code>varchar</code> 或 <code>text</code>。</p>
+</li>
+</ul>
+<p>使用拼音对汉字进行排序，如果使用 <em>gbk</em> 字符集，可以直接排序，如果使用 <em>utf8</em> 字符集，需要对字段进行转码.</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user order by convert(username using gbk);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-order-by.html">MySQL ORDER BY(排序) 语句 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="JOIN-连接"><a class="header-anchor" href="#JOIN-连接">¶</a><em>JOIN</em>(连接)</h3>
+<p>可以在 <em>SELECT</em> 、<em>UPDATE</em>、<em>DELETE</em> 语句中使用 JOIN 来联合多表查询.</p>
+<p>JOIN 按照功能大致分为三类：</p>
+<ul>
+<li><code>INNER JOIN</code>
+<ul>
+<li>获取两个表中字段匹配的记录，如果右表中匹配的行有字段为 <em>NULL</em>，则不显示此行.</li>
+</ul>
+</li>
+</ul>
+<p>基本语法：</p>
+<p><code>SELECT column1,... FROM &lt;表名1&gt; INNER JOIN &lt;表名2&gt; ON &lt;表名1.字段名&gt; = &lt;表名2.字段名&gt; ...;</code></p>
+<p>示例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 简单查询
+select * from user inner join scores on user.id &#x3D; scores.id;
+
+# 使用 as 定义别名
+select u.username,s.chinese,s.mathematics,s.english from user as u inner join scores as s on u.id &#x3D; s.id;
+
+# 多 inner join 查询
+select * from user as u 
+inner join scores as s on u.id &#x3D; s.id 
+inner join test_table as t on u.id &#x3D; t.id;
+
+# 使用 where 过滤记录
+select * from user as u
+inner join scores as s on u.id &#x3D; s.id
+inner join test_table as t on u.id &#x3D; t.id
+where u.birhdate &gt; &#39;2005-01-01&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>LEFT JOIN</code>
+<ul>
+<li>返回左表中的所有行，并包括右表中匹配的行，如果右表中匹配的行中没有值，则返回 <em>NULL</em> 值.</li>
+</ul>
+</li>
+</ul>
+<p>基本语法：</p>
+<p><code>SELECT column1,... FROM &lt;表名1&gt; left JOIN &lt;表名2&gt; ON &lt;表名1.字段名&gt; = &lt;表名2.字段名&gt; ...;</code></p>
+<p>示例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># left join 的使用方法同 inner join 一样
+select u.id,u.username,s.mathematics,s.chinese,s.english,t.age from user as u
+left join scores as s on u.id &#x3D; s.id
+left join test_table as t on s.id &#x3D; t.id;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-join.html">MySQL 连接的使用 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="NULL-处理"><a class="header-anchor" href="#NULL-处理">¶</a><em>NULL</em> 处理</h3>
+<p><em>MySQL</em> 提供了三个运算符来处理 <em>NULL</em> 值，在 <em>MySQL</em> 中，<em>NULL</em> 值通常表示缺失或未知数据，你不能使用 <code>=</code> 或者 <code>!=</code> 来查找 <em>NULL</em> 值，因为 <em>NULL</em> 值与其他任何值比较都为 <em>NULL</em> .</p>
+<ul>
+<li><code>IS NULL</code>
+<ul>
+<li>当列的值是 <em>NULL</em>，此运算符返回 <em>true</em> .</li>
+</ul>
+</li>
+<li><code>IS NOT NULL</code>
+<ul>
+<li>当列的值不为 <em>NULL</em>，此运算符返回 <em>true</em> .</li>
+</ul>
+</li>
+<li><code>&lt;=&gt;</code>
+<ul>
+<li>当比较的两个值相等或者都为 <em>NULL</em> 时返回 <em>true</em> .</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 判读 age 字段是否为 NULL
+select * from test_table as t where t.age is null;
+
+# 判断 age 字段是否不为 NULL
+select * from test_table as t where t.age is not null;
+
+# 判断 age 字段是否为 NULL，效果同 is 一样
+select * from test_table as t where t.age &lt;&#x3D;&gt; null;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="数据表清洗"><a class="header-anchor" href="#数据表清洗">¶</a>数据表清洗</h4>
+<p>将表中指定的列中所有的NULL值替换为 <code>0</code>.</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * , ifnull(t.age,0) as age from test_table as t;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="IFNULL-COALESCE"><a class="header-anchor" href="#IFNULL-COALESCE">¶</a>IFNULL &amp; COALESCE</h4>
+<p><code>IFNULL</code> 基本语法：</p>
+<p><code>IFNULL(expr1,expr2)</code></p>
+<p><em>ifnull</em> 是常用的用于处理 <em>NULL</em> 值的函数，其基本功能是如果参数 1 为 <em>NULL</em>，则返回参数 2 的值.</p>
+<p><code>COALESCE</code>基本语法：</p>
+<p><code>COALESCE(value1,value2,...,valueEn)</code></p>
+<p><em>coalesce</em> 可以看做是 <em>ifnull</em> 的增强版，其功能同 <em>ifnull</em> 相同，但是可以接受比 <em>ifnull</em> 更多的参数，如果参数 1 为 <em>NULL</em>，则返回其参数列表中第一个非 <em>NULL</em> 的表达式，如果所有提供的表达式都为 <em>NULL</em>，那么 <em>coalesce</em> 函数将返回 <em>NULL</em>.</p>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-null.html">MySQL NULL 值处理 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="正则表达式"><a class="header-anchor" href="#正则表达式">¶</a>正则表达式</h3>
+<p>MySQL 提供了正则表达式的匹配，用于提供比普通筛选更强大的功能.</p>
+<ul>
+<li><code>REGEXP</code>
+<ul>
+<li>regexp 是用于进行正则匹配的运算符.</li>
+</ul>
+</li>
+</ul>
+<p>基本语法：</p>
+<p><code>SELECT column1,column2,... FROM &lt;表名&gt; WHERE column_name regexp 'pattern'</code></p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 筛选出以 1 开头的 id
+select * from user as u where u.id regexp &#39;^[1*]&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-regexp.html">MySQL 正则表达式 | 菜鸟教程 (runoob.com)</a></p>
 <hr>
 <p><em>END</em></p>
 ]]></content>
@@ -3448,7 +3448,7 @@ WHERE condition;<span aria-hidden="true" class="line-numbers-rows"><span></span>
   </entry>
   <entry>
     <title>Selenium 的使用</title>
-    <url>/zero.github.io/2024/03/05/Selenium-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <url>/2024/03/05/Selenium-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h3 id="Selenium-介绍"><a class="header-anchor" href="#Selenium-介绍">¶</a><code>Selenium</code> 介绍</h3>
 <p><code>selenium</code> 是一个广泛使用的模拟浏览器运行的库，它是一个用于 <code>Web</code> 应用程序测试的工具。<code>Selenium</code> 测试直接运行在浏览器中，就像真正的用户在操作一样，并且支持大多数现代 <code>Web</code> 浏览器。</p>
 <h3 id="Selenium-自动化测试的八种定位方法"><a class="header-anchor" href="#Selenium-自动化测试的八种定位方法">¶</a><code>Selenium</code> 自动化测试的八种定位方法</h3>
@@ -3500,64 +3500,8 @@ driver<span class="token punctuation">.</span>find_element<span class="token pun
       </tags>
   </entry>
   <entry>
-    <title>Spring-ResponseEntity</title>
-    <url>/zero.github.io/2024/04/22/Spring-ResponseEntity/</url>
-    <content><![CDATA[<h3 id="ResponseEntity"><a class="header-anchor" href="#ResponseEntity">¶</a><em>ResponseEntity</em></h3>
-<p><em>ResponseEntity</em> 是 <em>Spring Web MVC</em> 框架中提供的一个类，用于封装 <em>HTTP</em> 响应的详细信息。它允许开发者不仅定义返回给客户端的数据（通常作为请求处理的结果），还能够控制响应的状态码、头部信息以及主体内容的类型。</p>
-<h4 id="主要属性和功能："><a class="header-anchor" href="#主要属性和功能：">¶</a>主要属性和功能：</h4>
-<ol>
-<li><em>HTTP</em> 状态码（<em>HttpStatus</em>）：通过指定一个 <em>HttpStatus</em> 枚举值（如<code>OK</code>, <code>CREATED</code>, <code>BAD_REQUEST</code>, <code>NOT_FOUND</code>, 等），可以明确设置响应的状态码，以表明请求的处理结果是成功还是存在某种错误。</li>
-<li><em>HTTP</em> 头部（<em>HttpHeaders</em>）：可以通过 <em>ResponseEntity</em> 构造器或其 <em>headers</em>() 方法来设置或修改响应的头部字段，如 <code>Content-Type</code>、<code>Cache-Control</code>、<code>Location</code>等，以便控制客户端如何解析响应内容、缓存策略、重定向位置等。</li>
-<li>响应主体（<em>body</em>）：<em>ResponseEntity</em> 的主体可以承载任何类型的数据，如字符串、<code>JSON</code>对象、<code>XML</code>文档、自定义<code>Java</code>对象等。这些数据将作为<code>HTTP</code>响应的正文发送给客户端。主体类型可以与<code>Content-Type</code>头部字段对应，确保客户端能正确解析。</li>
-</ol>
-<p>典型用法：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Log4j2</span>
-<span class="token annotation punctuation">@RestControllerAdvice</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GlobalExceptionHandler</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">/**
-     * 处理所有未被其他异常处理器捕获的异常。
-     *
-     * @param e 抛出的异常对象
-     * @return 返回一个包含错误信息的ResponseEntity对象，状态码为500（内部服务器错误）
-     */</span>
-    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span><span class="token class-name">Exception</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-    <span class="token annotation punctuation">@ResponseStatus</span><span class="token punctuation">(</span><span class="token class-name">HttpStatus</span><span class="token punctuation">.</span><span class="token constant">INTERNAL_SERVER_ERROR</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token class-name">ResponseEntity</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">handleException</span><span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 记录异常信息</span>
-        log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"系统异常：&#123;&#125;"</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">// 构建响应体，包含错误状态码、自定义错误信息和异常信息</span>
-        <span class="token keyword">return</span> <span class="token class-name">ResponseEntity</span>
-                <span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token class-name">HttpStatus</span><span class="token punctuation">.</span><span class="token constant">INTERNAL_SERVER_ERROR</span><span class="token punctuation">)</span>
-                <span class="token punctuation">.</span><span class="token function">headers</span><span class="token punctuation">(</span>httpheaders <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
-                    <span class="token comment">// 设置响应头内容类型为JSON</span>
-                    httpheaders<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token class-name">MediaType</span><span class="token punctuation">.</span><span class="token constant">APPLICATION_JSON</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token comment">// 这里硬编码了access-token，实际应用中应根据需求设置</span>
-                    httpheaders<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"access-token"</span><span class="token punctuation">,</span> <span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-                <span class="token comment">// 将错误信息封装成JSON格式作为响应体的内容</span>
-                <span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span><span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"系统异常"</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://s21.ax1x.com/2024/04/22/pkpf0zD.png" alt="headers" loading="lazy"></p>
-<p>从 <em>ResponseEntity</em> 类的源码中可以看到，<em>headers</em> 方法返回的是 <em>this</em> 也就是类本身，所以可以进行链式调用</p>
-<p>而 <em>headers</em> 方法接收一个 <code>Consumer&lt;HttpHeaders&gt;</code>类型的参数 <code>headersConsumer</code>，该参数是一个函数接口，使用 <em>lambda</em> 表达式进行了匿名实现</p>
-<p>更多用法请参考：<a href="https://springdoc.cn/spring-response-entity/">使用 Spring ResponseEntity 处理 HTTP 响应 - spring 中文网 (springdoc.cn)</a></p>
-<hr>
-<p><em>END</em></p>
-]]></content>
-      <categories>
-        <category>工具类</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>java</tag>
-        <tag>spring</tag>
-        <tag>ResponseEntity</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SpringBoot基础</title>
-    <url>/zero.github.io/2024/04/16/SpringBoot%E5%9F%BA%E7%A1%80/</url>
+    <url>/2024/04/16/SpringBoot%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h3 id="Springboot-简介"><a class="header-anchor" href="#Springboot-简介">¶</a><em>Springboot</em> 简介</h3>
 <blockquote>
 <blockquote>
@@ -3672,8 +3616,64 @@ driver<span class="token punctuation">.</span>find_element<span class="token pun
       </tags>
   </entry>
   <entry>
+    <title>Spring-ResponseEntity</title>
+    <url>/2024/04/22/Spring-ResponseEntity/</url>
+    <content><![CDATA[<h3 id="ResponseEntity"><a class="header-anchor" href="#ResponseEntity">¶</a><em>ResponseEntity</em></h3>
+<p><em>ResponseEntity</em> 是 <em>Spring Web MVC</em> 框架中提供的一个类，用于封装 <em>HTTP</em> 响应的详细信息。它允许开发者不仅定义返回给客户端的数据（通常作为请求处理的结果），还能够控制响应的状态码、头部信息以及主体内容的类型。</p>
+<h4 id="主要属性和功能："><a class="header-anchor" href="#主要属性和功能：">¶</a>主要属性和功能：</h4>
+<ol>
+<li><em>HTTP</em> 状态码（<em>HttpStatus</em>）：通过指定一个 <em>HttpStatus</em> 枚举值（如<code>OK</code>, <code>CREATED</code>, <code>BAD_REQUEST</code>, <code>NOT_FOUND</code>, 等），可以明确设置响应的状态码，以表明请求的处理结果是成功还是存在某种错误。</li>
+<li><em>HTTP</em> 头部（<em>HttpHeaders</em>）：可以通过 <em>ResponseEntity</em> 构造器或其 <em>headers</em>() 方法来设置或修改响应的头部字段，如 <code>Content-Type</code>、<code>Cache-Control</code>、<code>Location</code>等，以便控制客户端如何解析响应内容、缓存策略、重定向位置等。</li>
+<li>响应主体（<em>body</em>）：<em>ResponseEntity</em> 的主体可以承载任何类型的数据，如字符串、<code>JSON</code>对象、<code>XML</code>文档、自定义<code>Java</code>对象等。这些数据将作为<code>HTTP</code>响应的正文发送给客户端。主体类型可以与<code>Content-Type</code>头部字段对应，确保客户端能正确解析。</li>
+</ol>
+<p>典型用法：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Log4j2</span>
+<span class="token annotation punctuation">@RestControllerAdvice</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GlobalExceptionHandler</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">/**
+     * 处理所有未被其他异常处理器捕获的异常。
+     *
+     * @param e 抛出的异常对象
+     * @return 返回一个包含错误信息的ResponseEntity对象，状态码为500（内部服务器错误）
+     */</span>
+    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span><span class="token class-name">Exception</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@ResponseStatus</span><span class="token punctuation">(</span><span class="token class-name">HttpStatus</span><span class="token punctuation">.</span><span class="token constant">INTERNAL_SERVER_ERROR</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">ResponseEntity</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">handleException</span><span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 记录异常信息</span>
+        log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"系统异常：&#123;&#125;"</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 构建响应体，包含错误状态码、自定义错误信息和异常信息</span>
+        <span class="token keyword">return</span> <span class="token class-name">ResponseEntity</span>
+                <span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token class-name">HttpStatus</span><span class="token punctuation">.</span><span class="token constant">INTERNAL_SERVER_ERROR</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">headers</span><span class="token punctuation">(</span>httpheaders <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
+                    <span class="token comment">// 设置响应头内容类型为JSON</span>
+                    httpheaders<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token class-name">MediaType</span><span class="token punctuation">.</span><span class="token constant">APPLICATION_JSON</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token comment">// 这里硬编码了access-token，实际应用中应根据需求设置</span>
+                    httpheaders<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"access-token"</span><span class="token punctuation">,</span> <span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+                <span class="token comment">// 将错误信息封装成JSON格式作为响应体的内容</span>
+                <span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span><span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"系统异常"</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://s21.ax1x.com/2024/04/22/pkpf0zD.png" alt="headers" loading="lazy"></p>
+<p>从 <em>ResponseEntity</em> 类的源码中可以看到，<em>headers</em> 方法返回的是 <em>this</em> 也就是类本身，所以可以进行链式调用</p>
+<p>而 <em>headers</em> 方法接收一个 <code>Consumer&lt;HttpHeaders&gt;</code>类型的参数 <code>headersConsumer</code>，该参数是一个函数接口，使用 <em>lambda</em> 表达式进行了匿名实现</p>
+<p>更多用法请参考：<a href="https://springdoc.cn/spring-response-entity/">使用 Spring ResponseEntity 处理 HTTP 响应 - spring 中文网 (springdoc.cn)</a></p>
+<hr>
+<p><em>END</em></p>
+]]></content>
+      <categories>
+        <category>工具类</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>java</tag>
+        <tag>spring</tag>
+        <tag>ResponseEntity</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SpringMVC</title>
-    <url>/zero.github.io/2024/04/16/SpringMVC/</url>
+    <url>/2024/04/16/SpringMVC/</url>
     <content><![CDATA[<h3 id="Spring-MVC原理"><a class="header-anchor" href="#Spring-MVC原理">¶</a>Spring MVC原理</h3>
 <h4 id="Spring-MVC工作原理图"><a class="header-anchor" href="#Spring-MVC工作原理图">¶</a><code>Spring MVC工作原理图</code></h4>
 <p><img src="https://s21.ax1x.com/2024/04/17/pFxTxC6.png" alt="img" loading="lazy"></p>
@@ -3701,7 +3701,7 @@ driver<span class="token punctuation">.</span>find_element<span class="token pun
   </entry>
   <entry>
     <title>Spring基础</title>
-    <url>/zero.github.io/2024/04/16/Spring%E5%9F%BA%E7%A1%80/</url>
+    <url>/2024/04/16/Spring%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h3 id="Spring、Spring-MVC、Spring-Boot、Spring-Cloud"><a class="header-anchor" href="#Spring、Spring-MVC、Spring-Boot、Spring-Cloud">¶</a>Spring、Spring MVC、Spring Boot、Spring Cloud</h3>
 <blockquote>
 <ol>
@@ -3800,7 +3800,7 @@ driver<span class="token punctuation">.</span>find_element<span class="token pun
   </entry>
   <entry>
     <title>Typora的破解</title>
-    <url>/zero.github.io/2023/11/07/Typora%E7%9A%84%E7%A0%B4%E8%A7%A3/</url>
+    <url>/2023/11/07/Typora%E7%9A%84%E7%A0%B4%E8%A7%A3/</url>
     <content><![CDATA[<h4 id="前言（废话）"><a class="header-anchor" href="#前言（废话）">¶</a>前言（<s>废话</s>）</h4>
 <p>介绍一下 Typora 是什么…</p>
 <blockquote>
@@ -3875,7 +3875,7 @@ driver<span class="token punctuation">.</span>find_element<span class="token pun
   </entry>
   <entry>
     <title>Win至Linux的免密登录</title>
-    <url>/zero.github.io/2023/09/09/Win%E8%87%B3Linux%E7%9A%84%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/</url>
+    <url>/2023/09/09/Win%E8%87%B3Linux%E7%9A%84%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/</url>
     <content><![CDATA[<h4 id="配置-Windows-端"><a class="header-anchor" href="#配置-Windows-端">¶</a>配置 Windows 端</h4>
 <ol>
 <li>先在 Windows 下生成公钥文件</li>
@@ -3951,7 +3951,7 @@ AuthorizedKeysFile .ssh/authorized_keys<span aria-hidden="true" class="line-numb
   </entry>
   <entry>
     <title>Xmind破解</title>
-    <url>/zero.github.io/2023/11/09/Xmind%E7%A0%B4%E8%A7%A3/</url>
+    <url>/2023/11/09/Xmind%E7%A0%B4%E8%A7%A3/</url>
     <content><![CDATA[<h4 id="下载-Xmind"><a class="header-anchor" href="#下载-Xmind">¶</a>下载 Xmind</h4>
 <ol>
 <li>先去下载 Xmind 的最新版本</li>
@@ -3996,7 +3996,7 @@ AuthorizedKeysFile .ssh/authorized_keys<span aria-hidden="true" class="line-numb
   </entry>
   <entry>
     <title>Docker的使用-贰</title>
-    <url>/zero.github.io/2023/09/05/docker%E7%9A%84%E4%BD%BF%E7%94%A8-%E8%B4%B0/</url>
+    <url>/2023/09/05/docker%E7%9A%84%E4%BD%BF%E7%94%A8-%E8%B4%B0/</url>
     <content><![CDATA[<h4 id="Docker容器的应用"><a class="header-anchor" href="#Docker容器的应用">¶</a>Docker容器的应用</h4>
 <blockquote>
 <p>前言：使用Docker部署nginx站点实现外网访问</p>
@@ -4035,7 +4035,7 @@ AuthorizedKeysFile .ssh/authorized_keys<span aria-hidden="true" class="line-numb
   </entry>
   <entry>
     <title>frp之内网穿透</title>
-    <url>/zero.github.io/2023/05/08/frp%E4%B9%8B%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
+    <url>/2023/05/08/frp%E4%B9%8B%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
     <content><![CDATA[<p><img src="https://s1.ax1x.com/2023/05/01/p98QaIP.jpg" alt="p98QaIP.jpg" loading="lazy"></p>
 <span id="more"></span>
 <h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
@@ -4207,8 +4207,112 @@ systemctl disable frps<span aria-hidden="true" class="line-numbers-rows"><span><
       </tags>
   </entry>
   <entry>
+    <title>harbor本地仓库搭建</title>
+    <url>/2023/09/12/harbor%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h4 id="创建-Harbor-仓库"><a class="header-anchor" href="#创建-Harbor-仓库">¶</a>创建 Harbor 仓库</h4>
+<ol>
+<li>访问官方网站下载官方镜像源</li>
+</ol>
+<blockquote>
+<p>官方网站： <a href="https://goharbor.io/">Harbor (goharbor.io)</a></p>
+</blockquote>
+<ol start="2">
+<li>使用 scp 将下载的官方镜像上传到服务器</li>
+</ol>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">scp <span class="token operator">-</span>P 2000 <span class="token punctuation">.</span>\harbor-offline-installer-v2<span class="token punctuation">.</span>7<span class="token punctuation">.</span>3<span class="token punctuation">.</span>tgz root@你服务器的ip:<span class="token operator">/</span>root/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注：使用 -P 参数可以指定 scp 的端口号</p>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPg4W1U.png" alt="pPg4W1U.png" loading="lazy"></p>
+<ol start="3">
+<li>使用下面的命令解压文件</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> harbor-offline-installer-v2.7.3.tgz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="4">
+<li>使用 vim 更改 harbor.yml.tmep 的内容</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> harbor.yml.tmep<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>将 hostname 修改为自己的 ip 地址，然后将 https 全部注释掉，同时也可以更改密码</p>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgHXgP.png" alt="pPgHXgP.png" loading="lazy"></p>
+<ol start="5">
+<li>使用 yum 下载 epel-release 及 docker-compose</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token parameter variable">-y</span> <span class="token function">install</span> epel-release <span class="token punctuation">;</span> yum <span class="token parameter variable">-y</span> <span class="token function">install</span> <span class="token function">docker-compose</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注：由于不可抗力的原因（我服务器带不动 [倒] ），下面的所有演示都是在我室友的虚拟机上完成的</p>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgORaD.png" alt="pPgORaD.png" loading="lazy"></p>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgO2VO.png" alt="pPgO2VO.png" loading="lazy"></p>
+<ol start="6">
+<li>安装 harbor</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mv</span> ./harbor.yml.tmep ./harbor.yml <span class="token punctuation">;</span> ./install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注：安装之前请先将 harbor.yml.tmep文件改为 harbor.yml ，要不然会找不到文件</p>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgXj0K.png" alt="pPgXj0K.png" loading="lazy"></p>
+<ol start="7">
+<li>在浏览器中访问</li>
+</ol>
+<p>在浏览器中输入：</p>
+<blockquote>
+<p>你的IP/harbor</p>
+<p>由于我用的是室友的电脑中的虚拟机来做的，在我电脑上是直接访问不到虚拟机里的，所以做了个 net 端口转发使我电脑能够访问，你们在自己的浏览器中就不需要输入端口号了，默认 80</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgjrB6.png" alt="pPgjrB6.png" loading="lazy"></p>
+<ol start="8">
+<li>输入账号密码</li>
+</ol>
+<blockquote>
+<p>账号默认为 admin，密码默认为Harbor12345，如果你更改了默认密码那就填你改的密码</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgjXgs.png" alt="pPgjXgs.png" loading="lazy"></p>
+<ol start="9">
+<li>点击新建项目来新建一个仓库</li>
+</ol>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgvLdK.png" alt="pPgvLdK.png" loading="lazy"></p>
+<ol start="10">
+<li>修改 Docker 配置</li>
+</ol>
+<p>因为我使用的使 http 协议，而 docker 默认为 https，所以需要将本地私有仓库添加到信任仓库中</p>
+<p>使用下面的命令修改配置文件：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/docker/daemon.json<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注意：你在配置 daemon 文件的时候，除了最后一个键值对后面不用英文逗号，其他都要</p>
+<p><img src="https://z1.ax1x.com/2023/09/13/pPRpcxe.png" alt="pPRpcxe.png" loading="lazy"></p>
+<ol start="11">
+<li>刷新刚刚编辑的 daemon.json 文件并重启 docker</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl daemon.json <span class="token punctuation">;</span> systemctl restart <span class="token function">docker</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="12">
+<li>给要推送的镜像添加 tag 标签</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> tag centos:centos7 <span class="token number">192.168</span>.100.10/zero/centos:centos7<span class="token punctuation">]</span>
+<span class="token comment"># 注：ip 后面的为你在仓库命名空间创建的仓库名</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="https://z1.ax1x.com/2023/09/13/pPRAdS0.png" alt="pPRAdS0.png" loading="lazy"></p>
+<ol start="13">
+<li>在终端登录至搭建的 harbor 私有仓库</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> login http://192.168.100.10 <span class="token parameter variable">-u</span> admin <span class="token parameter variable">-p</span> <span class="token number">123456</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://z1.ax1x.com/2023/09/13/pPRAUWq.png" alt="pPRAUWq.png" loading="lazy"></p>
+<ol start="14">
+<li>使用 push 命令上传镜像</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> push <span class="token number">192.168</span>.100.10/zero/centos:centos7<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://z1.ax1x.com/2023/09/13/pPRANYn.png" alt="pPRANYn.png" loading="lazy"></p>
+<ol start="15">
+<li>从浏览器进入 harbor 仓库管理界面</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/13/pPRAwlV.png" alt="pPRAwlV.png" loading="lazy"></p>
+<p>可以看到，已经上传到 zero 仓库了</p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>Docker</tag>
+        <tag>harbor</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo及SSL获取</title>
-    <url>/zero.github.io/2023/04/30/hexo%E7%9A%84%E9%83%A8%E7%BD%B2%E5%8F%8ASSL%E5%BA%94%E7%94%A8/</url>
+    <url>/2023/04/30/hexo%E7%9A%84%E9%83%A8%E7%BD%B2%E5%8F%8ASSL%E5%BA%94%E7%94%A8/</url>
     <content><![CDATA[<h4 id="注意：本文只记录大概过程-具体教程百度上都有"><a class="header-anchor" href="#注意：本文只记录大概过程-具体教程百度上都有">¶</a>注意：本文只记录大概过程( 具体教程百度上都有 )</h4>
 <hr>
 <h5 id="hexo"><a class="header-anchor" href="#hexo">¶</a>hexo</h5>
@@ -4308,7 +4412,7 @@ systemctl disable frps<span aria-hidden="true" class="line-numbers-rows"><span><
   </entry>
   <entry>
     <title>JavaFx使用Maven打包及运行</title>
-    <url>/zero.github.io/2023/05/02/javafx%E4%BD%BF%E7%94%A8maven%E6%89%93%E5%8C%85%E5%8F%8A%E8%BF%90%E8%A1%8C/</url>
+    <url>/2023/05/02/javafx%E4%BD%BF%E7%94%A8maven%E6%89%93%E5%8C%85%E5%8F%8A%E8%BF%90%E8%A1%8C/</url>
     <content><![CDATA[<h4 id="javafx使用maven打包依赖及运行"><a class="header-anchor" href="#javafx使用maven打包依赖及运行">¶</a>javafx使用maven打包依赖及运行</h4>
 <p>1.先照图打包<br>
 <img src="https://s1.ax1x.com/2023/04/07/ppTPAZ6.png" alt="1" loading="lazy"><br>
@@ -4333,7 +4437,7 @@ ws.Run &quot;.\bin\app.bat&quot;,0<span aria-hidden="true" class="line-numbers-r
   </entry>
   <entry>
     <title>Maven的使用</title>
-    <url>/zero.github.io/2023/07/08/maven%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <url>/2023/07/08/maven%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>maven的项目结构</p>
 <p><img src="https://s1.ax1x.com/2023/07/08/pCgiQts.png" alt="pCgiQts.png" loading="lazy"></p>
 <ul>
@@ -4544,8 +4648,313 @@ ws.Run &quot;.\bin\app.bat&quot;,0<span aria-hidden="true" class="line-numbers-r
       </tags>
   </entry>
   <entry>
+    <title>shell脚本笔记-1</title>
+    <url>/2023/12/15/shell%E8%84%9A%E6%9C%AC%E7%AC%94%E8%AE%B0-1/</url>
+    <content><![CDATA[<h3 id="Shell命令解释器"><a class="header-anchor" href="#Shell命令解释器">¶</a>Shell命令解释器</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /etc/shells<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>shell 的命令解释器用于执行 shell 命令或 shell 脚本文件，Centos 下有四种解释器，一般用默认的 /bin/bash 即可</p>
+<h3 id="执行Shell脚本"><a class="header-anchor" href="#执行Shell脚本">¶</a>执行Shell脚本</h3>
+<p>要执行 shell 脚本有两种方法：</p>
+<ol>
+<li>将要执行的 <code>.sh</code> 脚本通过 <code>chmod</code> 给予可执行权限，然后执行</li>
+<li>不赋予可执行权限，通过 <code>bash xxx.sh</code> 或 <code>sh xxx.sh</code> 来执行</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> +x ./hello.sh    <span class="token comment"># 方法一</span>
+
+./hello.sh    <span class="token comment"># 方法二</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>使用 <code>.sh</code> 为后缀只是为了方便区分，对实际运行脚本没有任何影响</p>
+<h4 id="Shell变量"><a class="header-anchor" href="#Shell变量">¶</a>Shell变量</h4>
+<p>shell 脚本定义变量除了等号两边不能加空格，其他和别的编程语言大差不差（值得一提的是，变量名不支持中文命名，其他大部分编程语言是支持的）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"hello world"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="变量类型"><a class="header-anchor" href="#变量类型">¶</a>变量类型</h4>
+<p>在运行 shell 时，会同时存在三种变量类型：</p>
+<ol>
+<li>局部变量：局部变量在脚本或命令中被定义，只能由当前对象使用，无法被其他 shell 启动的对象访问</li>
+<li>环境变量：环境变量是所有的脚本或程序都能访问的，某些程序或脚本需要环境变量来维持运行，必要时也可以由 shell 脚本自己定义环境变量</li>
+<li>shell 变量：shell 变量是由 shell 程序设置的特殊变量，shell 变量中有一部分是环境变量，有一部分是局部变量，这些变量保证了 shell 的正常运行</li>
+</ol>
+<h4 id="使用变量"><a class="header-anchor" href="#使用变量">¶</a>使用变量</h4>
+<p>要使用定义过的变量，只需在变量名前加美元符号，最好在变量名外加花括号以区分边界</p>
+<p><img src="https://s1.ax1x.com/2023/09/09/pP6gZdO.png" alt="shell1" loading="lazy"></p>
+<p><img src="https://s1.ax1x.com/2023/09/09/pP6gVeK.png" alt="shell2" loading="lazy"></p>
+<h4 id="只读变量"><a class="header-anchor" href="#只读变量">¶</a>只读变量</h4>
+<p>使用 readonly 可以将变量定义为只读变量，只读变量不能被改变</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">readonly</span> name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="删除变量"><a class="header-anchor" href="#删除变量">¶</a>删除变量</h4>
+<p>使用 unset 删除变量</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">unset</span> name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="Shell-传递参数"><a class="header-anchor" href="#Shell-传递参数">¶</a>Shell 传递参数</h3>
+<p>有一些特殊变量在 shell 脚本中有特殊含义，如：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数处理</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>$#</code></td>
+<td style="text-align:center">传递到脚本的参数个数</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$*</code></td>
+<td style="text-align:center">以一个单字符串的形式输出所有向脚本输入的参数</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$$</code></td>
+<td style="text-align:center">脚本运行的当前进程 <code>ID</code> 号</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$!</code></td>
+<td style="text-align:center">后台运行的最后一个进程的<code>ID</code>号</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$@</code></td>
+<td style="text-align:center">与<code>$&#123;*&#125;</code>效果相同，但是加引号时会返回以引号括起来的每个参数，与<code>$&#123;*&#125;</code>的区别是<code>$&#123;*&#125;</code>将所有参数当一个字符串处理，而<code>$&#123;@&#125;</code>则是分别处理每个参数</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$-</code></td>
+<td style="text-align:center">显示 Shell 使用的当前选项，与 <code>set</code> 命令功能相同</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$?</code></td>
+<td style="text-align:center">显示最后命令的退出状态。<code>0</code> 表示没有错误，其他任何值都表明有错误</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$0</code></td>
+<td style="text-align:center">表示脚本的名称</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$1</code></td>
+<td style="text-align:center">表示脚本的参数，可以有多个，用<code>$&#123;1&#125;</code> 、<code>$&#123;2&#125;</code> …表示</td>
+</tr>
+</tbody>
+</table>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"有<span class="token variable">$&#123;<span class="token operator">#</span>&#125;</span>个参数"</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"参数:<span class="token variable">$&#123;*&#125;</span>"</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"进程ID:<span class="token variable">$&#123;$&#125;</span>"</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"最后一个进程ID:<span class="token variable">$&#123;<span class="token operator">!</span>&#125;</span>"</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"Shell选项:<span class="token variable">$&#123;-&#125;</span>"</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"脚本name:<span class="token variable">$&#123;0&#125;</span>"</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$&#123;1&#125;</span> + <span class="token variable">$&#123;2&#125;</span> = "</span><span class="token variable"><span class="token variable">`</span><span class="token function">expr</span> $<span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">&#125;</span> + $<span class="token punctuation">&#123;</span><span class="token number">2</span><span class="token punctuation">&#125;</span><span class="token variable">`</span></span>
+
+<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;?&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输入：</p>
+<blockquote>
+<p>bash ./test.sh 10 20</p>
+</blockquote>
+<p>输出结果：</p>
+<blockquote>
+<p>有2个参数<br>
+参数:10 20<br>
+进程ID:71819<br>
+最后一个进程ID:<br>
+Shell选项:hB<br>
+脚本name:./test.sh<br>
+10 + 20 = 30<br>
+0</p>
+</blockquote>
+<h3 id="Shell字符串"><a class="header-anchor" href="#Shell字符串">¶</a>Shell字符串</h3>
+<p>shell 的字符串可以加双引号、单引号，也可以不加引号</p>
+<h4 id="单引号"><a class="header-anchor" href="#单引号">¶</a>单引号</h4>
+<ul>
+<li>
+<p>加单引号的字符串中的变量是无效的，可以使用单引号将变量引用起来达到拼接字符串的目的</p>
+</li>
+<li>
+<p>单引号字符串中不能出现单独的单引号，转义后也不行，只能成对出现</p>
+</li>
+</ul>
+<h4 id="双引号"><a class="header-anchor" href="#双引号">¶</a>双引号</h4>
+<ul>
+<li>双引号中可以有变量</li>
+<li>双引号中可以出现转义字符</li>
+</ul>
+<h4 id="拼接字符串"><a class="header-anchor" href="#拼接字符串">¶</a>拼接字符串</h4>
+<p>使用双引号拼接字符串：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+<span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"QSky"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"Hello! <span class="token variable">$&#123;name&#125;</span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>输出结果：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Hello<span class="token operator">!</span> QSky<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://s1.ax1x.com/2023/09/09/pP6RMrt.png" alt="shell3" loading="lazy"></p>
+<p>输出结果：</p>
+<blockquote>
+<p>string hello world</p>
+<p>string ${name}</p>
+<p>string hello world</p>
+<p>“string” hello world</p>
+</blockquote>
+<h4 id="获取字符串的长度"><a class="header-anchor" href="#获取字符串的长度">¶</a>获取字符串的长度</h4>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">str</span><span class="token operator">=</span><span class="token string">"hello world"</span>
+
+<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;<span class="token operator">#</span>str&#125;</span>    <span class="token comment"># $&#123;#str&#125; 等价于 $&#123;#str[0]&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>输出结果：</p>
+<blockquote>
+<p>11</p>
+</blockquote>
+<h4 id="提取子字符串"><a class="header-anchor" href="#提取子字符串">¶</a>提取子字符串</h4>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">str</span><span class="token operator">=</span><span class="token string">"hello world"</span>
+
+<span class="token comment"># 语法：字符串变量名:要提取的子串的开始位置:要提取的子串的结束位置</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;str<span class="token operator">:</span>6<span class="token operator">:</span>8&#125;</span>    <span class="token comment"># 第一个字符 'h' 索引为0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出结果：</p>
+<blockquote>
+<p>world</p>
+</blockquote>
+<h4 id="查找字符串"><a class="header-anchor" href="#查找字符串">¶</a>查找字符串</h4>
+<p>查找字符 <code>i</code> 或 <code>o</code> 的位置，哪个先出现就计算哪个</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">str</span><span class="token operator">=</span><span class="token string">"hello world"</span>
+<span class="token builtin class-name">echo</span> <span class="token variable"><span class="token variable">`</span><span class="token function">expr</span> index <span class="token string">"<span class="token variable">$str</span>"</span> or<span class="token variable">`</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>输出结果：</p>
+<blockquote>
+<p>5</p>
+</blockquote>
+<h3 id="Shell数组"><a class="header-anchor" href="#Shell数组">¶</a>Shell数组</h3>
+<p>和大多数编程语言一样，shell 脚本也有数组，但与其他编程语言不同的是，shell 不支持多维数组，不过 shell 的数组并没有长度限制，并且可以使用不连续的下标，下标范围也没有限制</p>
+<h4 id="定义-shell-数组"><a class="header-anchor" href="#定义-shell-数组">¶</a>定义 shell 数组</h4>
+<p>数组用小括号来表示，用空格区分值</p>
+<p>格式：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">array_name</span><span class="token operator">=</span><span class="token punctuation">(</span>value0 value1 value2 value3<span class="token punctuation">)</span>
+
+<span class="token comment"># 或</span>
+
+<span class="token assign-left variable">array_name</span><span class="token operator">=</span><span class="token punctuation">(</span>
+value0
+value1
+value2
+value3
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>示例：</p>
+<pre class="line-numbers language-none"><code class="language-none">array_name&#x3D;(
+
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>也能单独定义数组的单个元素</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">array_name<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span>value0
+
+array_name<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>value1
+
+array_name<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token operator">=</span>value5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="读取数组"><a class="header-anchor" href="#读取数组">¶</a>读取数组</h4>
+<p>和其他编程语言一样，shell 同样是通过数组名加下标来读取元素</p>
+<pre class="line-numbers language-none"><code class="language-none">$&#123;数组名[下标]&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>可以使用 <code>@</code> 或 <code>*</code> 读取数组的全部元素：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+  
+<span class="token assign-left variable">str</span><span class="token operator">=</span><span class="token punctuation">(</span>
+<span class="token string">'string '</span><span class="token variable">$&#123;name&#125;</span><span class="token string">''</span>
+<span class="token string">'string $&#123;name&#125;'</span>
+<span class="token string">"string <span class="token variable">$&#123;name&#125;</span>"</span>
+<span class="token string">"<span class="token entity" title="\&quot;">\"</span>string<span class="token entity" title="\&quot;">\"</span> <span class="token variable">$&#123;name&#125;</span>"</span>
+<span class="token punctuation">)</span>
+
+<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;str<span class="token punctuation">[</span>@<span class="token punctuation">]</span>&#125;</span> <span class="token comment"># 和 echo $&#123;str[*]&#125; 效果相同</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出结果：</p>
+<blockquote>
+<h6 id="为了便于阅读，我给输出结果分段处理了"><a class="header-anchor" href="#为了便于阅读，我给输出结果分段处理了">¶</a>为了便于阅读，我给输出结果分段处理了</h6>
+<p>string hello world</p>
+<p>string ${name}</p>
+<p>string hello world</p>
+<p>“string” hello world</p>
+</blockquote>
+<h4 id="获取数组的长度"><a class="header-anchor" href="#获取数组的长度">¶</a>获取数组的长度</h4>
+<p>获取数组长度的方法与获取字符串长度的方法相似</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token assign-left variable">array_name</span><span class="token operator">=</span><span class="token punctuation">(</span>
+value0
+value1
+value2
+value3
+<span class="token punctuation">)</span>
+
+<span class="token assign-left variable">length_1</span><span class="token operator">=</span><span class="token variable">$&#123;<span class="token operator">#</span>array_name<span class="token punctuation">[</span>@<span class="token punctuation">]</span>&#125;</span>
+
+<span class="token comment"># 或</span>
+
+<span class="token assign-left variable">length_2</span><span class="token operator">=</span><span class="token variable">$&#123;<span class="token operator">#</span>array_name<span class="token punctuation">[</span>*<span class="token punctuation">]</span>&#125;</span>
+
+<span class="token comment"># 获取单个数组元素的长度</span>
+
+<span class="token assign-left variable">length_3</span><span class="token operator">=</span><span class="token variable">$&#123;<span class="token operator">#</span>array_name<span class="token punctuation">[</span>2<span class="token punctuation">]</span>&#125;</span>
+
+<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;length_1&#125;</span> <span class="token variable">$&#123;length_2&#125;</span> <span class="token variable">$&#123;length_3&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出结果：</p>
+<blockquote>
+<p>4 4 6</p>
+<p>注：6 为第二个下标所表示的元素的长度</p>
+</blockquote>
+<h4 id="关联数组"><a class="header-anchor" href="#关联数组">¶</a>关联数组</h4>
+<p>bash 脚本支持关联数组，可以使用任意的字符串或者整数来作为下标来访问数组。</p>
+<p>关联数组的键是唯一的，有点类似于其他编程语言的键值对。</p>
+<p>语法：</p>
+<blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">declare</span> <span class="token parameter variable">-A</span> array-name<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"key_1"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"value_1"</span>
+<span class="token punctuation">[</span><span class="token string">"key_2"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"value_2"</span>
+<span class="token punctuation">[</span><span class="token string">"key_3"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"value_3"</span>
+<span class="token punctuation">[</span><span class="token string">"key_4"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"value_4"</span>
+<span class="token punctuation">..</span>.
+<span class="token punctuation">[</span><span class="token string">"key_n"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"value_n"</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</blockquote>
+<p>使用 <code>declare</code> 命令来声明，<code>-A</code> 选项就是用于声明一个关联数组。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">declare</span> <span class="token parameter variable">-A</span> <span class="token assign-left variable">site</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"QSky"</span>
+<span class="token punctuation">[</span><span class="token string">"url"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"zero-li.fun"</span>
+<span class="token punctuation">)</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;site<span class="token punctuation">[</span>@<span class="token punctuation">]</span>&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出结果：</p>
+<blockquote>
+<p>zero-li.fun QSky</p>
+</blockquote>
+<p>同样可以先声明再赋值：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+<span class="token builtin class-name">declare</span> <span class="token parameter variable">-A</span> site
+site<span class="token punctuation">[</span><span class="token string">"zero"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"zero-li.fun"</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;site<span class="token punctuation">[</span>"zero"<span class="token punctuation">]</span>&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出结果：</p>
+<blockquote>
+<p>zero-li.fun</p>
+</blockquote>
+<h3 id="Shell-注释"><a class="header-anchor" href="#Shell-注释">¶</a>Shell 注释</h3>
+<p>在 shell 脚本中，以 <code>#</code> 开头的就是注释。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 这是一句注释</span>
+<span class="token builtin class-name">echo</span> 注释的内容并不会被执行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="多行注释"><a class="header-anchor" href="#多行注释">¶</a>多行注释</h4>
+<p>可以使用 <code>:</code> 命令，并用单引号 <code>'</code> 将多行内容括起来。</p>
+<p>语法：<code>:</code> + <code> </code> (空格) + <code>'</code> (单引号)</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">:</span> <span class="token string">'
+这是多段注释
+可以有多行内容
+'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>shell常用命令及关键字：</p>
+<p><code>readonly</code>：将变量定义为只读，无法更改其值</p>
+<p><code>unset</code>：删除变量，无法删除只读变量</p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>shell脚本笔记 - 2</title>
-    <url>/zero.github.io/2023/11/27/shell%E8%84%9A%E6%9C%AC%E7%AC%94%E8%AE%B0-2/</url>
+    <url>/2023/11/27/shell%E8%84%9A%E6%9C%AC%E7%AC%94%E8%AE%B0-2/</url>
     <content><![CDATA[<h3 id="Shell"><a class="header-anchor" href="#Shell">¶</a>Shell</h3>
 <p>原生 bash 不支持简单的数学运算，但是可以通过其他命令来实现。</p>
 <h4 id="expr"><a class="header-anchor" href="#expr">¶</a><code>expr</code></h4>
@@ -4976,427 +5385,18 @@ ws.Run &quot;.\bin\app.bat&quot;,0<span aria-hidden="true" class="line-numbers-r
       </tags>
   </entry>
   <entry>
-    <title>shell脚本笔记-1</title>
-    <url>/zero.github.io/2023/12/15/shell%E8%84%9A%E6%9C%AC%E7%AC%94%E8%AE%B0-1/</url>
-    <content><![CDATA[<h3 id="Shell命令解释器"><a class="header-anchor" href="#Shell命令解释器">¶</a>Shell命令解释器</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /etc/shells<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>shell 的命令解释器用于执行 shell 命令或 shell 脚本文件，Centos 下有四种解释器，一般用默认的 /bin/bash 即可</p>
-<h3 id="执行Shell脚本"><a class="header-anchor" href="#执行Shell脚本">¶</a>执行Shell脚本</h3>
-<p>要执行 shell 脚本有两种方法：</p>
-<ol>
-<li>将要执行的 <code>.sh</code> 脚本通过 <code>chmod</code> 给予可执行权限，然后执行</li>
-<li>不赋予可执行权限，通过 <code>bash xxx.sh</code> 或 <code>sh xxx.sh</code> 来执行</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> +x ./hello.sh    <span class="token comment"># 方法一</span>
-
-./hello.sh    <span class="token comment"># 方法二</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>使用 <code>.sh</code> 为后缀只是为了方便区分，对实际运行脚本没有任何影响</p>
-<h4 id="Shell变量"><a class="header-anchor" href="#Shell变量">¶</a>Shell变量</h4>
-<p>shell 脚本定义变量除了等号两边不能加空格，其他和别的编程语言大差不差（值得一提的是，变量名不支持中文命名，其他大部分编程语言是支持的）</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"hello world"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="变量类型"><a class="header-anchor" href="#变量类型">¶</a>变量类型</h4>
-<p>在运行 shell 时，会同时存在三种变量类型：</p>
-<ol>
-<li>局部变量：局部变量在脚本或命令中被定义，只能由当前对象使用，无法被其他 shell 启动的对象访问</li>
-<li>环境变量：环境变量是所有的脚本或程序都能访问的，某些程序或脚本需要环境变量来维持运行，必要时也可以由 shell 脚本自己定义环境变量</li>
-<li>shell 变量：shell 变量是由 shell 程序设置的特殊变量，shell 变量中有一部分是环境变量，有一部分是局部变量，这些变量保证了 shell 的正常运行</li>
-</ol>
-<h4 id="使用变量"><a class="header-anchor" href="#使用变量">¶</a>使用变量</h4>
-<p>要使用定义过的变量，只需在变量名前加美元符号，最好在变量名外加花括号以区分边界</p>
-<p><img src="https://s1.ax1x.com/2023/09/09/pP6gZdO.png" alt="shell1" loading="lazy"></p>
-<p><img src="https://s1.ax1x.com/2023/09/09/pP6gVeK.png" alt="shell2" loading="lazy"></p>
-<h4 id="只读变量"><a class="header-anchor" href="#只读变量">¶</a>只读变量</h4>
-<p>使用 readonly 可以将变量定义为只读变量，只读变量不能被改变</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">readonly</span> name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="删除变量"><a class="header-anchor" href="#删除变量">¶</a>删除变量</h4>
-<p>使用 unset 删除变量</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">unset</span> name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="Shell-传递参数"><a class="header-anchor" href="#Shell-传递参数">¶</a>Shell 传递参数</h3>
-<p>有一些特殊变量在 shell 脚本中有特殊含义，如：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">参数处理</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>$#</code></td>
-<td style="text-align:center">传递到脚本的参数个数</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>$*</code></td>
-<td style="text-align:center">以一个单字符串的形式输出所有向脚本输入的参数</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>$$</code></td>
-<td style="text-align:center">脚本运行的当前进程 <code>ID</code> 号</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>$!</code></td>
-<td style="text-align:center">后台运行的最后一个进程的<code>ID</code>号</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>$@</code></td>
-<td style="text-align:center">与<code>$&#123;*&#125;</code>效果相同，但是加引号时会返回以引号括起来的每个参数，与<code>$&#123;*&#125;</code>的区别是<code>$&#123;*&#125;</code>将所有参数当一个字符串处理，而<code>$&#123;@&#125;</code>则是分别处理每个参数</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>$-</code></td>
-<td style="text-align:center">显示 Shell 使用的当前选项，与 <code>set</code> 命令功能相同</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>$?</code></td>
-<td style="text-align:center">显示最后命令的退出状态。<code>0</code> 表示没有错误，其他任何值都表明有错误</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>$0</code></td>
-<td style="text-align:center">表示脚本的名称</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>$1</code></td>
-<td style="text-align:center">表示脚本的参数，可以有多个，用<code>$&#123;1&#125;</code> 、<code>$&#123;2&#125;</code> …表示</td>
-</tr>
-</tbody>
-</table>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
-
-<span class="token builtin class-name">echo</span> <span class="token string">"有<span class="token variable">$&#123;<span class="token operator">#</span>&#125;</span>个参数"</span>
-
-<span class="token builtin class-name">echo</span> <span class="token string">"参数:<span class="token variable">$&#123;*&#125;</span>"</span>
-
-<span class="token builtin class-name">echo</span> <span class="token string">"进程ID:<span class="token variable">$&#123;$&#125;</span>"</span>
-
-<span class="token builtin class-name">echo</span> <span class="token string">"最后一个进程ID:<span class="token variable">$&#123;<span class="token operator">!</span>&#125;</span>"</span>
-
-<span class="token builtin class-name">echo</span> <span class="token string">"Shell选项:<span class="token variable">$&#123;-&#125;</span>"</span>
-
-<span class="token builtin class-name">echo</span> <span class="token string">"脚本name:<span class="token variable">$&#123;0&#125;</span>"</span>
-
-<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$&#123;1&#125;</span> + <span class="token variable">$&#123;2&#125;</span> = "</span><span class="token variable"><span class="token variable">`</span><span class="token function">expr</span> $<span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">&#125;</span> + $<span class="token punctuation">&#123;</span><span class="token number">2</span><span class="token punctuation">&#125;</span><span class="token variable">`</span></span>
-
-<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;?&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>输入：</p>
-<blockquote>
-<p>bash ./test.sh 10 20</p>
-</blockquote>
-<p>输出结果：</p>
-<blockquote>
-<p>有2个参数<br>
-参数:10 20<br>
-进程ID:71819<br>
-最后一个进程ID:<br>
-Shell选项:hB<br>
-脚本name:./test.sh<br>
-10 + 20 = 30<br>
-0</p>
-</blockquote>
-<h3 id="Shell字符串"><a class="header-anchor" href="#Shell字符串">¶</a>Shell字符串</h3>
-<p>shell 的字符串可以加双引号、单引号，也可以不加引号</p>
-<h4 id="单引号"><a class="header-anchor" href="#单引号">¶</a>单引号</h4>
-<ul>
-<li>
-<p>加单引号的字符串中的变量是无效的，可以使用单引号将变量引用起来达到拼接字符串的目的</p>
-</li>
-<li>
-<p>单引号字符串中不能出现单独的单引号，转义后也不行，只能成对出现</p>
-</li>
-</ul>
-<h4 id="双引号"><a class="header-anchor" href="#双引号">¶</a>双引号</h4>
-<ul>
-<li>双引号中可以有变量</li>
-<li>双引号中可以出现转义字符</li>
-</ul>
-<h4 id="拼接字符串"><a class="header-anchor" href="#拼接字符串">¶</a>拼接字符串</h4>
-<p>使用双引号拼接字符串：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
-<span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"QSky"</span>
-<span class="token builtin class-name">echo</span> <span class="token string">"Hello! <span class="token variable">$&#123;name&#125;</span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>输出结果：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Hello<span class="token operator">!</span> QSky<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://s1.ax1x.com/2023/09/09/pP6RMrt.png" alt="shell3" loading="lazy"></p>
-<p>输出结果：</p>
-<blockquote>
-<p>string hello world</p>
-<p>string ${name}</p>
-<p>string hello world</p>
-<p>“string” hello world</p>
-</blockquote>
-<h4 id="获取字符串的长度"><a class="header-anchor" href="#获取字符串的长度">¶</a>获取字符串的长度</h4>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">str</span><span class="token operator">=</span><span class="token string">"hello world"</span>
-
-<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;<span class="token operator">#</span>str&#125;</span>    <span class="token comment"># $&#123;#str&#125; 等价于 $&#123;#str[0]&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>输出结果：</p>
-<blockquote>
-<p>11</p>
-</blockquote>
-<h4 id="提取子字符串"><a class="header-anchor" href="#提取子字符串">¶</a>提取子字符串</h4>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">str</span><span class="token operator">=</span><span class="token string">"hello world"</span>
-
-<span class="token comment"># 语法：字符串变量名:要提取的子串的开始位置:要提取的子串的结束位置</span>
-<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;str<span class="token operator">:</span>6<span class="token operator">:</span>8&#125;</span>    <span class="token comment"># 第一个字符 'h' 索引为0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>输出结果：</p>
-<blockquote>
-<p>world</p>
-</blockquote>
-<h4 id="查找字符串"><a class="header-anchor" href="#查找字符串">¶</a>查找字符串</h4>
-<p>查找字符 <code>i</code> 或 <code>o</code> 的位置，哪个先出现就计算哪个</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">str</span><span class="token operator">=</span><span class="token string">"hello world"</span>
-<span class="token builtin class-name">echo</span> <span class="token variable"><span class="token variable">`</span><span class="token function">expr</span> index <span class="token string">"<span class="token variable">$str</span>"</span> or<span class="token variable">`</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>输出结果：</p>
-<blockquote>
-<p>5</p>
-</blockquote>
-<h3 id="Shell数组"><a class="header-anchor" href="#Shell数组">¶</a>Shell数组</h3>
-<p>和大多数编程语言一样，shell 脚本也有数组，但与其他编程语言不同的是，shell 不支持多维数组，不过 shell 的数组并没有长度限制，并且可以使用不连续的下标，下标范围也没有限制</p>
-<h4 id="定义-shell-数组"><a class="header-anchor" href="#定义-shell-数组">¶</a>定义 shell 数组</h4>
-<p>数组用小括号来表示，用空格区分值</p>
-<p>格式：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">array_name</span><span class="token operator">=</span><span class="token punctuation">(</span>value0 value1 value2 value3<span class="token punctuation">)</span>
-
-<span class="token comment"># 或</span>
-
-<span class="token assign-left variable">array_name</span><span class="token operator">=</span><span class="token punctuation">(</span>
-value0
-value1
-value2
-value3
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>示例：</p>
-<pre class="line-numbers language-none"><code class="language-none">array_name&#x3D;(
-
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>也能单独定义数组的单个元素</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">array_name<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span>value0
-
-array_name<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>value1
-
-array_name<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token operator">=</span>value5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="读取数组"><a class="header-anchor" href="#读取数组">¶</a>读取数组</h4>
-<p>和其他编程语言一样，shell 同样是通过数组名加下标来读取元素</p>
-<pre class="line-numbers language-none"><code class="language-none">$&#123;数组名[下标]&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>可以使用 <code>@</code> 或 <code>*</code> 读取数组的全部元素：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
-  
-<span class="token assign-left variable">str</span><span class="token operator">=</span><span class="token punctuation">(</span>
-<span class="token string">'string '</span><span class="token variable">$&#123;name&#125;</span><span class="token string">''</span>
-<span class="token string">'string $&#123;name&#125;'</span>
-<span class="token string">"string <span class="token variable">$&#123;name&#125;</span>"</span>
-<span class="token string">"<span class="token entity" title="\&quot;">\"</span>string<span class="token entity" title="\&quot;">\"</span> <span class="token variable">$&#123;name&#125;</span>"</span>
-<span class="token punctuation">)</span>
-
-<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;str<span class="token punctuation">[</span>@<span class="token punctuation">]</span>&#125;</span> <span class="token comment"># 和 echo $&#123;str[*]&#125; 效果相同</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>输出结果：</p>
-<blockquote>
-<h6 id="为了便于阅读，我给输出结果分段处理了"><a class="header-anchor" href="#为了便于阅读，我给输出结果分段处理了">¶</a>为了便于阅读，我给输出结果分段处理了</h6>
-<p>string hello world</p>
-<p>string ${name}</p>
-<p>string hello world</p>
-<p>“string” hello world</p>
-</blockquote>
-<h4 id="获取数组的长度"><a class="header-anchor" href="#获取数组的长度">¶</a>获取数组的长度</h4>
-<p>获取数组长度的方法与获取字符串长度的方法相似</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
-
-<span class="token assign-left variable">array_name</span><span class="token operator">=</span><span class="token punctuation">(</span>
-value0
-value1
-value2
-value3
-<span class="token punctuation">)</span>
-
-<span class="token assign-left variable">length_1</span><span class="token operator">=</span><span class="token variable">$&#123;<span class="token operator">#</span>array_name<span class="token punctuation">[</span>@<span class="token punctuation">]</span>&#125;</span>
-
-<span class="token comment"># 或</span>
-
-<span class="token assign-left variable">length_2</span><span class="token operator">=</span><span class="token variable">$&#123;<span class="token operator">#</span>array_name<span class="token punctuation">[</span>*<span class="token punctuation">]</span>&#125;</span>
-
-<span class="token comment"># 获取单个数组元素的长度</span>
-
-<span class="token assign-left variable">length_3</span><span class="token operator">=</span><span class="token variable">$&#123;<span class="token operator">#</span>array_name<span class="token punctuation">[</span>2<span class="token punctuation">]</span>&#125;</span>
-
-<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;length_1&#125;</span> <span class="token variable">$&#123;length_2&#125;</span> <span class="token variable">$&#123;length_3&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>输出结果：</p>
-<blockquote>
-<p>4 4 6</p>
-<p>注：6 为第二个下标所表示的元素的长度</p>
-</blockquote>
-<h4 id="关联数组"><a class="header-anchor" href="#关联数组">¶</a>关联数组</h4>
-<p>bash 脚本支持关联数组，可以使用任意的字符串或者整数来作为下标来访问数组。</p>
-<p>关联数组的键是唯一的，有点类似于其他编程语言的键值对。</p>
-<p>语法：</p>
-<blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">declare</span> <span class="token parameter variable">-A</span> array-name<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"key_1"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"value_1"</span>
-<span class="token punctuation">[</span><span class="token string">"key_2"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"value_2"</span>
-<span class="token punctuation">[</span><span class="token string">"key_3"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"value_3"</span>
-<span class="token punctuation">[</span><span class="token string">"key_4"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"value_4"</span>
-<span class="token punctuation">..</span>.
-<span class="token punctuation">[</span><span class="token string">"key_n"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"value_n"</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</blockquote>
-<p>使用 <code>declare</code> 命令来声明，<code>-A</code> 选项就是用于声明一个关联数组。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
-
-<span class="token builtin class-name">declare</span> <span class="token parameter variable">-A</span> <span class="token assign-left variable">site</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"QSky"</span>
-<span class="token punctuation">[</span><span class="token string">"url"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"zero-li.fun"</span>
-<span class="token punctuation">)</span>
-<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;site<span class="token punctuation">[</span>@<span class="token punctuation">]</span>&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>输出结果：</p>
-<blockquote>
-<p>zero-li.fun QSky</p>
-</blockquote>
-<p>同样可以先声明再赋值：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
-<span class="token builtin class-name">declare</span> <span class="token parameter variable">-A</span> site
-site<span class="token punctuation">[</span><span class="token string">"zero"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"zero-li.fun"</span>
-<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;site<span class="token punctuation">[</span>"zero"<span class="token punctuation">]</span>&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>输出结果：</p>
-<blockquote>
-<p>zero-li.fun</p>
-</blockquote>
-<h3 id="Shell-注释"><a class="header-anchor" href="#Shell-注释">¶</a>Shell 注释</h3>
-<p>在 shell 脚本中，以 <code>#</code> 开头的就是注释。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 这是一句注释</span>
-<span class="token builtin class-name">echo</span> 注释的内容并不会被执行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="多行注释"><a class="header-anchor" href="#多行注释">¶</a>多行注释</h4>
-<p>可以使用 <code>:</code> 命令，并用单引号 <code>'</code> 将多行内容括起来。</p>
-<p>语法：<code>:</code> + <code> </code> (空格) + <code>'</code> (单引号)</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">:</span> <span class="token string">'
-这是多段注释
-可以有多行内容
-'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>shell常用命令及关键字：</p>
-<p><code>readonly</code>：将变量定义为只读，无法更改其值</p>
-<p><code>unset</code>：删除变量，无法删除只读变量</p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>harbor本地仓库搭建</title>
-    <url>/zero.github.io/2023/09/12/harbor%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h4 id="创建-Harbor-仓库"><a class="header-anchor" href="#创建-Harbor-仓库">¶</a>创建 Harbor 仓库</h4>
-<ol>
-<li>访问官方网站下载官方镜像源</li>
-</ol>
-<blockquote>
-<p>官方网站： <a href="https://goharbor.io/">Harbor (goharbor.io)</a></p>
-</blockquote>
-<ol start="2">
-<li>使用 scp 将下载的官方镜像上传到服务器</li>
-</ol>
-<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">scp <span class="token operator">-</span>P 2000 <span class="token punctuation">.</span>\harbor-offline-installer-v2<span class="token punctuation">.</span>7<span class="token punctuation">.</span>3<span class="token punctuation">.</span>tgz root@你服务器的ip:<span class="token operator">/</span>root/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>注：使用 -P 参数可以指定 scp 的端口号</p>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPg4W1U.png" alt="pPg4W1U.png" loading="lazy"></p>
-<ol start="3">
-<li>使用下面的命令解压文件</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> harbor-offline-installer-v2.7.3.tgz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="4">
-<li>使用 vim 更改 harbor.yml.tmep 的内容</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> harbor.yml.tmep<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>将 hostname 修改为自己的 ip 地址，然后将 https 全部注释掉，同时也可以更改密码</p>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgHXgP.png" alt="pPgHXgP.png" loading="lazy"></p>
-<ol start="5">
-<li>使用 yum 下载 epel-release 及 docker-compose</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token parameter variable">-y</span> <span class="token function">install</span> epel-release <span class="token punctuation">;</span> yum <span class="token parameter variable">-y</span> <span class="token function">install</span> <span class="token function">docker-compose</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>注：由于不可抗力的原因（我服务器带不动 [倒] ），下面的所有演示都是在我室友的虚拟机上完成的</p>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgORaD.png" alt="pPgORaD.png" loading="lazy"></p>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgO2VO.png" alt="pPgO2VO.png" loading="lazy"></p>
-<ol start="6">
-<li>安装 harbor</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mv</span> ./harbor.yml.tmep ./harbor.yml <span class="token punctuation">;</span> ./install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>注：安装之前请先将 harbor.yml.tmep文件改为 harbor.yml ，要不然会找不到文件</p>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgXj0K.png" alt="pPgXj0K.png" loading="lazy"></p>
-<ol start="7">
-<li>在浏览器中访问</li>
-</ol>
-<p>在浏览器中输入：</p>
-<blockquote>
-<p>你的IP/harbor</p>
-<p>由于我用的是室友的电脑中的虚拟机来做的，在我电脑上是直接访问不到虚拟机里的，所以做了个 net 端口转发使我电脑能够访问，你们在自己的浏览器中就不需要输入端口号了，默认 80</p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgjrB6.png" alt="pPgjrB6.png" loading="lazy"></p>
-<ol start="8">
-<li>输入账号密码</li>
-</ol>
-<blockquote>
-<p>账号默认为 admin，密码默认为Harbor12345，如果你更改了默认密码那就填你改的密码</p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgjXgs.png" alt="pPgjXgs.png" loading="lazy"></p>
-<ol start="9">
-<li>点击新建项目来新建一个仓库</li>
-</ol>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgvLdK.png" alt="pPgvLdK.png" loading="lazy"></p>
-<ol start="10">
-<li>修改 Docker 配置</li>
-</ol>
-<p>因为我使用的使 http 协议，而 docker 默认为 https，所以需要将本地私有仓库添加到信任仓库中</p>
-<p>使用下面的命令修改配置文件：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/docker/daemon.json<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>注意：你在配置 daemon 文件的时候，除了最后一个键值对后面不用英文逗号，其他都要</p>
-<p><img src="https://z1.ax1x.com/2023/09/13/pPRpcxe.png" alt="pPRpcxe.png" loading="lazy"></p>
-<ol start="11">
-<li>刷新刚刚编辑的 daemon.json 文件并重启 docker</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl daemon.json <span class="token punctuation">;</span> systemctl restart <span class="token function">docker</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="12">
-<li>给要推送的镜像添加 tag 标签</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> tag centos:centos7 <span class="token number">192.168</span>.100.10/zero/centos:centos7<span class="token punctuation">]</span>
-<span class="token comment"># 注：ip 后面的为你在仓库命名空间创建的仓库名</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://z1.ax1x.com/2023/09/13/pPRAdS0.png" alt="pPRAdS0.png" loading="lazy"></p>
-<ol start="13">
-<li>在终端登录至搭建的 harbor 私有仓库</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> login http://192.168.100.10 <span class="token parameter variable">-u</span> admin <span class="token parameter variable">-p</span> <span class="token number">123456</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://z1.ax1x.com/2023/09/13/pPRAUWq.png" alt="pPRAUWq.png" loading="lazy"></p>
-<ol start="14">
-<li>使用 push 命令上传镜像</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> push <span class="token number">192.168</span>.100.10/zero/centos:centos7<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://z1.ax1x.com/2023/09/13/pPRANYn.png" alt="pPRANYn.png" loading="lazy"></p>
-<ol start="15">
-<li>从浏览器进入 harbor 仓库管理界面</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/13/pPRAwlV.png" alt="pPRAwlV.png" loading="lazy"></p>
-<p>可以看到，已经上传到 zero 仓库了</p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>Docker</tag>
-        <tag>harbor</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>shell脚本笔记-3</title>
-    <url>/zero.github.io/2023/12/16/shell%E8%84%9A%E6%9C%AC%E7%AC%94%E8%AE%B0-3/</url>
+    <url>/2023/12/16/shell%E8%84%9A%E6%9C%AC%E7%AC%94%E8%AE%B0-3/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>springboot全局异常处理</title>
-    <url>/zero.github.io/2024/04/23/springboot%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
+    <url>/2024/04/23/springboot%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>springboot多模块开发</title>
-    <url>/zero.github.io/2024/04/22/springboot%E5%A4%9A%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
+    <url>/2024/04/22/springboot%E5%A4%9A%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
     <content><![CDATA[<h3 id="介绍"><a class="header-anchor" href="#介绍">¶</a>介绍</h3>
 <p>为了解决项目越来越大的问题，使用了多模块开发来使层次更加清晰。</p>
 <p>架构大致如下：</p>
@@ -5497,7 +5497,7 @@ site<span class="token punctuation">[</span><span class="token string">"zero"</s
   </entry>
   <entry>
     <title>spring开发注解集合</title>
-    <url>/zero.github.io/2024/04/16/spring%E5%BC%80%E5%8F%91%E6%B3%A8%E8%A7%A3%E9%9B%86%E5%90%88/</url>
+    <url>/2024/04/16/spring%E5%BC%80%E5%8F%91%E6%B3%A8%E8%A7%A3%E9%9B%86%E5%90%88/</url>
     <content><![CDATA[<h3 id="Spring-的常用注解"><a class="header-anchor" href="#Spring-的常用注解">¶</a>Spring 的常用注解</h3>
 <ul>
 <li>
@@ -5748,7 +5748,7 @@ site<span class="token punctuation">[</span><span class="token string">"zero"</s
   </entry>
   <entry>
     <title>windows之重装系统</title>
-    <url>/zero.github.io/2023/06/17/windows%E4%B9%8B%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/</url>
+    <url>/2023/06/17/windows%E4%B9%8B%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<h5 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h5>
 <p>之所以写这篇文章，是因为我朋友电脑出问题，把系统重装了一下，其实我在很早之前就写过一篇重装系统的教程，但是是放在了石墨文档上面，那时候还没有自己的个人博客呢（笑）</p>
 <h5 id="正文"><a class="header-anchor" href="#正文">¶</a>正文</h5>
@@ -5772,7 +5772,7 @@ site<span class="token punctuation">[</span><span class="token string">"zero"</s
   </entry>
   <entry>
     <title>windows重装系统重制版</title>
-    <url>/zero.github.io/2023/11/29/windows%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E5%88%B6%E7%89%88/</url>
+    <url>/2023/11/29/windows%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%87%8D%E5%88%B6%E7%89%88/</url>
     <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
 <p><strong>重要</strong>：在阅读本文章前请确保你已拥有以下技能：</p>
 <ul>
@@ -5848,7 +5848,7 @@ site<span class="token punctuation">[</span><span class="token string">"zero"</s
   </entry>
   <entry>
     <title>任意版本win远程桌面使用内网穿透连接</title>
-    <url>/zero.github.io/2023/11/28/%E4%BB%BB%E6%84%8F%E7%89%88%E6%9C%ACwin%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E4%BD%BF%E7%94%A8%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%BF%9E%E6%8E%A5/</url>
+    <url>/2023/11/28/%E4%BB%BB%E6%84%8F%E7%89%88%E6%9C%ACwin%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E4%BD%BF%E7%94%A8%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E8%BF%9E%E6%8E%A5/</url>
     <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
 <p><b>重要</b>：请不要问我为什么不能访问 GitHub 网站这种问题</p>
 <p>win 系统并不能使用 ssh 来连接，但是可以使用 win 自带的远程桌面来连接。</p>
@@ -5952,7 +5952,7 @@ site<span class="token punctuation">[</span><span class="token string">"zero"</s
   </entry>
   <entry>
     <title>使用cAdvisor+Prometheus+Grafana监控Docker容器</title>
-    <url>/zero.github.io/2023/09/26/%E4%BD%BF%E7%94%A8cAdvisor-Prometheus-Grafana%E7%9B%91%E6%8E%A7Docker%E5%AE%B9%E5%99%A8/</url>
+    <url>/2023/09/26/%E4%BD%BF%E7%94%A8cAdvisor-Prometheus-Grafana%E7%9B%91%E6%8E%A7Docker%E5%AE%B9%E5%99%A8/</url>
     <content><![CDATA[<h4 id="1-0-下载镜像"><a class="header-anchor" href="#1-0-下载镜像">¶</a>1.0 下载镜像</h4>
 <ol>
 <li>先使用下面的命令下载必要的镜像</li>
@@ -6059,7 +6059,7 @@ scrape_configs:
   </entry>
   <entry>
     <title>可道云桌面搭建笔记</title>
-    <url>/zero.github.io/2023/09/08/%E5%8F%AF%E9%81%93%E4%BA%91%E6%A1%8C%E9%9D%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
+    <url>/2023/09/08/%E5%8F%AF%E9%81%93%E4%BA%91%E6%A1%8C%E9%9D%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h4 id="可道云桌面搭建"><a class="header-anchor" href="#可道云桌面搭建">¶</a>可道云桌面搭建</h4>
 <ol>
 <li>先创建 dockerfile-two 及 kod-two 文件夹（因为我之前搭过一遍，但是忘记截图了，所以重搭一遍，防止文件名重复所以用 -two ）</li>
@@ -6148,7 +6148,7 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
   </entry>
   <entry>
     <title>安利几个好用的网站</title>
-    <url>/zero.github.io/2023/05/02/%E5%AE%89%E5%88%A9%E5%87%A0%E4%B8%AA%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BD%91%E7%AB%99/</url>
+    <url>/2023/05/02/%E5%AE%89%E5%88%A9%E5%87%A0%E4%B8%AA%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BD%91%E7%AB%99/</url>
     <content><![CDATA[<h4 id="今天来分享几个十分好用的网站"><a class="header-anchor" href="#今天来分享几个十分好用的网站">¶</a>今天来分享几个十分好用的网站</h4>
 <hr>
 <h5 id="游戏类"><a class="header-anchor" href="#游戏类">¶</a>游戏类</h5>
@@ -6245,19 +6245,8 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
       </tags>
   </entry>
   <entry>
-    <title>测试文章</title>
-    <url>/zero.github.io/2023/04/27/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<p>Test测试</p>
-<!-- more -->  
-<p><img src="/images/test.jpg" alt="图片" loading="lazy"></p>
-]]></content>
-      <tags>
-        <tag>原创</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>湖北飞young算号器</title>
-    <url>/zero.github.io/2023/06/13/%E6%B9%96%E5%8C%97%E9%A3%9Eyoung%E7%AE%97%E5%8F%B7%E5%99%A8/</url>
+    <url>/2023/06/13/%E6%B9%96%E5%8C%97%E9%A3%9Eyoung%E7%AE%97%E5%8F%B7%E5%99%A8/</url>
     <content><![CDATA[<hr>
 <h4 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h4>
 <ul>
@@ -6308,8 +6297,19 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
       </tags>
   </entry>
   <entry>
+    <title>测试文章</title>
+    <url>/2023/04/27/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<p>Test测试</p>
+<!-- more -->  
+<p><img src="/images/test.jpg" alt="图片" loading="lazy"></p>
+]]></content>
+      <tags>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记一次打暑假工的经历</title>
-    <url>/zero.github.io/2023/06/28/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%89%93%E6%9A%91%E5%81%87%E5%B7%A5%E7%9A%84%E7%BB%8F%E5%8E%86/</url>
+    <url>/2023/06/28/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%89%93%E6%9A%91%E5%81%87%E5%B7%A5%E7%9A%84%E7%BB%8F%E5%8E%86/</url>
     <content><![CDATA[<p>一切的不顺，全都来之于能力的不足</p>
 <span id="more"></span>
 <h4 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h4>
@@ -6345,7 +6345,7 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
   </entry>
   <entry>
     <title>记一次电脑启动原神蓝屏解决方案</title>
-    <url>/zero.github.io/2023/05/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B5%E8%84%91%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%A5%9E%E8%93%9D%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <url>/2023/05/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%94%B5%E8%84%91%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%A5%9E%E8%93%9D%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
     <content><![CDATA[<ul>
 <li>
 <p>原因：</p>
@@ -6369,7 +6369,7 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
   </entry>
   <entry>
     <title>谈谈看完《孤注一掷》的感想</title>
-    <url>/zero.github.io/2023/09/16/%E8%B0%88%E8%B0%88%E7%9C%8B%E5%AE%8C%E3%80%8A%E5%AD%A4%E6%B3%A8%E4%B8%80%E6%8E%B7%E3%80%8B%E7%9A%84%E6%84%9F%E6%83%B3/</url>
+    <url>/2023/09/16/%E8%B0%88%E8%B0%88%E7%9C%8B%E5%AE%8C%E3%80%8A%E5%AD%A4%E6%B3%A8%E4%B8%80%E6%8E%B7%E3%80%8B%E7%9A%84%E6%84%9F%E6%83%B3/</url>
     <content><![CDATA[<h4 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h4>
 <p>我并没有什么文采，也不懂什么高深的遣词造句，此篇如其名，只是谈一下我对看完这部电影的浅薄感想！</p>
 <p>就这么多吧，将就着看看就成，不必当真。</p>
@@ -6395,7 +6395,7 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
   </entry>
   <entry>
     <title>运算符级别比较</title>
-    <url>/zero.github.io/2023/05/02/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%BA%A7%E5%88%AB%E6%AF%94%E8%BE%83/</url>
+    <url>/2023/05/02/%E8%BF%90%E7%AE%97%E7%AC%A6%E7%BA%A7%E5%88%AB%E6%AF%94%E8%BE%83/</url>
     <content><![CDATA[<hr>
 <h3 id="运算符级别"><a class="header-anchor" href="#运算符级别">¶</a>运算符级别</h3>
 <ul>
@@ -6423,7 +6423,7 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
   </entry>
   <entry>
     <title>集合-Map</title>
-    <url>/zero.github.io/2023/05/02/%E9%9B%86%E5%90%88-Map/</url>
+    <url>/2023/05/02/%E9%9B%86%E5%90%88-Map/</url>
     <content><![CDATA[<h4 id="Map接口-双列队列"><a class="header-anchor" href="#Map接口-双列队列">¶</a>Map接口(双列队列)</h4>
 <ul>
 <li>
@@ -6531,7 +6531,7 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
   </entry>
   <entry>
     <title>集合接口的继承及实现概览</title>
-    <url>/zero.github.io/2023/05/14/%E9%9B%86%E5%90%88%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF%E5%8F%8A%E5%AE%9E%E7%8E%B0%E6%A6%82%E8%A7%88/</url>
+    <url>/2023/05/14/%E9%9B%86%E5%90%88%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF%E5%8F%8A%E5%AE%9E%E7%8E%B0%E6%A6%82%E8%A7%88/</url>
     <content><![CDATA[<h5 id="Map-根接口-包含键和值"><a class="header-anchor" href="#Map-根接口-包含键和值">¶</a>Map    --根接口(包含键和值)</h5>
 <p>直接继承的接口</p>
 <ul>
