@@ -6641,4 +6641,195 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
         <tag>集合</tag>
       </tags>
   </entry>
+  <entry>
+    <title>MySQL-4</title>
+    <url>/2024/05/13/MySQL-4/</url>
+    <content><![CDATA[<h3 id="事务"><a class="header-anchor" href="#事务">¶</a>事务</h3>
+<p><em>MySQL</em> 中，<u>事务</u>(<em><code>Transaction</code></em>)是一组 <em>SQL</em> 语句的执行，它们被视为一个单独的工作单元. 这组操作要么全部成功执行，要么全部不执行，是一个 “全有或全无” 的原则. <u>事务</u>的主要目的是为了保证数据的完整性和一致性.</p>
+<p>基本特性(<em><strong>ACID</strong></em> 属性)：</p>
+<ul>
+<li><strong>原子性</strong>(<strong>A</strong>tomicity)
+<ul>
+<li><u>事务</u>是一个原子操作单元，<u>事务</u>中的所有操作要么全部执行成功，要么全部不执行，不会仅执行部分操作，<u>事务</u>在执行过程中发生错误，会被回滚（<code>Rollback</code>）到<u>事务</u>开始前的状态.</li>
+</ul>
+</li>
+<li><strong>一致性</strong>(<strong>C</strong>onsistency)
+<ul>
+<li><u>事务</u>执行前后，数据库从一个一致状态转换到另一个一致状态。即使在<u>事务</u>执行过程中出现错误，数据库也能够保持数据的完整性.</li>
+</ul>
+</li>
+<li><strong>隔离性</strong>(<strong>I</strong>solation)
+<ul>
+<li>多个<u>事务</u>并发执行时，每个<u>事务</u>好像是在独立地处理数据，即一个<u>事务</u>内部的操作对其他<u>事务</u>是隔离的，这可以防止并发<u>事务</u>之间的相互干扰，<u>事务</u>隔离分为不同级别，包括读未提交（<code>Read uncommitted</code>）、读提交（<code>read committed</code>）、可重复读（<code>repeatable read</code>）和串行化（<code>Serializable</code>）.</li>
+</ul>
+</li>
+<li><strong>持久性</strong>(<strong>D</strong>urability)
+<ul>
+<li>一旦<u>事务</u>提交（<code>commit</code>），其结果就是永久性的，即使系统发生故障也不会丢失已提交<u>事务</u>的结果.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><em>只有使用了 lnnodb 数据库引擎的数据库或表才支持事务.</em></p>
+<p><em>在 MySQL 命令行的默认设置下，事务都是自动提交的，即执行 SQL 语句后就会马上执行 COMMIT 操作。因此要显式地开启一个事务务须使用命令 BEGIN 或 START TRANSACTION，或者执行命令 SET AUTOCOMMIT=0，用来禁止使用当前会话的自动提交.</em></p>
+</blockquote>
+<h3 id="事务操作"><a class="header-anchor" href="#事务操作">¶</a>事务操作</h3>
+<ul>
+<li><code>BEGIN</code> 或 <code>START TRANSACTION</code>
+<ul>
+<li>显示开启一个事务.</li>
+</ul>
+</li>
+<li><code>COMMIT</code>
+<ul>
+<li>提交事务，并对已对数据库进行的所有修改变为永久.</li>
+</ul>
+</li>
+<li><code>ROLLBACK</code>
+<ul>
+<li>回滚事务。结束用户的事务，并撤销正在进行的所有未提交的修改.</li>
+</ul>
+</li>
+<li><code>SAVEPOINT &lt;identifier&gt;</code>
+<ul>
+<li><code>savepoint</code> 允许在事务中创建一个标记点，一个事务中可以有多个标记点.</li>
+</ul>
+</li>
+<li><code>RELEASE SAVEPOINT &lt;identifier&gt;</code>
+<ul>
+<li>删除一个事务的标记点，当没有指定的标记点时，该语句会抛出一个异常.</li>
+</ul>
+</li>
+<li><code>ROLLBACK TO &lt;identifier&gt;</code>
+<ul>
+<li>将事务回滚到标记点.</li>
+</ul>
+</li>
+</ul>
+<p>事务处理流程：</p>
+<p><img src="https://s21.ax1x.com/2024/05/10/pkZG5WQ.png" alt="mysql_1" loading="lazy"></p>
+<p>示例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 开启一个事务
+begin;
+
+# 更改 user 表的 birhdate 列的值为 &#39;2024-05-09&#39; 的值为 NULL
+update user as u set birhdate&#x3D;NULL where u.birhdate&#x3D;&#39;2024-05-09&#39;;
+
+# 提交事务
+commit;
+# or 回滚事务
+rollback;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-transaction.html">MySQL 事务 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="ALTER-命令"><a class="header-anchor" href="#ALTER-命令">¶</a>ALTER 命令</h3>
+<p>ALTER 命令是用于修改现有数据库表结构的重要语句，通过它，你可以执行多种表结构的更改操作，而不必删除并重新创建表.</p>
+<p>常用操作：</p>
+<ul>
+<li>添加列
+<ul>
+<li><code>ALTER TABLE table_name ADD column_name data_type;</code>
+<ul>
+<li>示例：<code>alter table user add birth_date date;</code>，向 <code>user</code> 表添加 <code>birth_date</code> 日期列.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>删除列
+<ul>
+<li><code>ALTER TABLE table_name DROP COLUMN column_name;</code>
+<ul>
+<li>示例：<code>alter table user drop column birth_date;</code>，将 <code>user</code> 表的 <code>birth_date</code> 列删除.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>修改列的数据类型
+<ul>
+<li><code>ALTER TABLE table_name MODIFY column_name new_data_type;</code>
+<ul>
+<li>示例：<code>alter table user modify id varchar(10);</code> ，将 <code>id</code> 列的字段类型修改为变长字符串类型.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>改变列名及数据类型：
+<ul>
+<li><code>ALTER TABLE table_name CHANGE column_name new_column_name new_data_type;</code></li>
+<li>示例：<code>alter table user change birhdate birth_date date;</code>，将 <code>birhdate</code> 列名改为 <code>birth_date</code> 并将列类型改为 <code>date</code>；</li>
+</ul>
+</li>
+<li>添加主键
+<ul>
+<li><code>ALTER TABLE table_name ADD PRIMARY KEY(column_name);</code>
+<ul>
+<li>示例：<code>alter table user add primary key(id);</code>，将 <code>id</code> 设置为 <code>test_table</code> 表的主键.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>添加唯一键
+<ul>
+<li><code>ALTER TABLE table_name ADD UNIQUE(column_name);</code>
+<ul>
+<li>示例：<code>alter table user add unique(id);</code>，将 <code>id</code> 列设置为唯一键.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>添加外键约束
+<ul>
+<li><code> ALTER TABLE table_name ADD CONSTRAINT fk_constraint_name FOREIGN KEY(column_name) REFERENCES referenced_table_name(referenced_column_name);</code>
+<ul>
+<li>示例：<code>alter table orders add constraint fk_user_id foreign key(id) references user(id);</code>，将<code>orders</code> 的 <code>id</code> 设置为外键，引用 <code>user</code> 的 <code>id</code> 列.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>设置默认值
+<ul>
+<li><code>ALTER TABLE table_name ALTER column_name SET DEFAULT value;</code>
+<ul>
+<li>示例：<code>alter table orders alter order_date set default '1970-01-01';</code>，将 <code>order_date</code> 的默认值设置为 <code>1970-01-01</code> .</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>删除默认值
+<ul>
+<li><code>ALTER TABLE table_name ALTER order_date DROP DEFAULT;</code>
+<ul>
+<li>示例：<code>alter table orders alter order_date drop default;</code>，将 <code>order_date</code> 列的默认值删除.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>修改表名
+<ul>
+<li><code>ALTER TABLE table_name RENAME TO new_table;</code>
+<ul>
+<li>示例：<code>alter table test_table rename to user_age;</code>，将 <code>test_table</code> 表名改为 <code>user_age</code> .</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>修改存储引擎
+<ul>
+<li><code>ALTER TABLE table_name ENGINE=value;</code>
+<ul>
+<li>示例：<code>alter table user engine=myisam;</code>，将 user 表的存储引擎改为 <code>myisam</code> .</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><em>END</em></p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
 </search>
