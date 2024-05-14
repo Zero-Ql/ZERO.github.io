@@ -3315,6 +3315,8 @@ VALUES(NULL, 1, &#39;张三&#39;);<span aria-hidden="true" class="line-numbers-r
 </ul>
 </li>
 </ul>
+<p>在使用 <code>INSERT INTO</code> 插入数据时，如果设置了唯一键并且已经有此条数据，则 <code>SQL</code> 语句将无法执行成功，并会抛出错误 .</p>
+<p>可以使用 <code>INSERT IGNORE INTO</code> 来插入数据，与 <code>INSERT INTO</code> 的区别在于会忽略数据库中已经存在的数据，如果数据库中没有此条数据，则插入新的数据，如果有数据存在就跳过这条数据，这样就可以保留数据库中已经存在的数据，达到在间隙中插入数据的目的。</p>
 <h3 id="查"><a class="header-anchor" href="#查">¶</a>查</h3>
 <p><code>SELECT * FROM &lt;表名&gt;;</code></p>
 <p>基本语法：</p>
@@ -3363,9 +3365,12 @@ FROM table_name
 </ul>
 </li>
 </ul>
+<p>如果你需要过滤重复的数据，可以使用 <code>DISTINCT</code> 关键字来过滤重复的数据。</p>
+<p>基本语法：<code>SELECT DISTINCT &lt;列名&gt; FROM table_name;</code></p>
 <p>更多使用示例请参考：</p>
 <p><a href="https://www.runoob.com/mysql/mysql-select-query.html">MySQL 查询数据 | 菜鸟教程 (runoob.com)</a></p>
 <p><a href="https://www.runoob.com/mysql/mysql-where-clause.html">MySQL WHERE 子句 | 菜鸟教程 (runoob.com)</a></p>
+<p><a href="https://www.runoob.com/mysql/mysql-handling-duplicates.html">MySQL 处理重复数据 | 菜鸟教程 (runoob.com)</a></p>
 <h3 id="改"><a class="header-anchor" href="#改">¶</a>改</h3>
 <p><code>UPDATE &lt;表名&gt; SET column1=value1, column2=value2, ...</code>;</p>
 <p>基本语法：</p>
@@ -6848,8 +6853,8 @@ commit;
 # or 回滚事务
 rollback;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-transaction.html">MySQL 事务 | 菜鸟教程 (runoob.com)</a></p>
-<h3 id="ALTER-命令"><a class="header-anchor" href="#ALTER-命令">¶</a>ALTER 命令</h3>
-<p>ALTER 命令是用于修改现有数据库表结构的重要语句，通过它，你可以执行多种表结构的更改操作，而不必删除并重新创建表.</p>
+<h3 id="ALTER-命令"><a class="header-anchor" href="#ALTER-命令">¶</a><em>ALTER</em> 命令</h3>
+<p><em>ALTER</em> 命令是用于修改现有数据库表结构的重要语句，通过它，你可以执行多种表结构的更改操作，而不必删除并重新创建表.</p>
 <p>常用操作：</p>
 <ul>
 <li>添加列
@@ -6949,6 +6954,105 @@ rollback;<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 </ul>
 </li>
 </ul>
+<h3 id="数据备份与恢复"><a class="header-anchor" href="#数据备份与恢复">¶</a>数据备份与恢复</h3>
+<p>​	使用 <code>MYSQLDUMP</code> 命令可以备份和还原数据库。如果只想复制一张表，可以使用 <code>mysqldump</code> 命令导出该表的结构和数据，然后导入到新的数据库或新的表中，也可以导出所有的表结构及数据，以达到复制数据库的目的 .</p>
+<ul>
+<li>备份表数据：
+<ul>
+<li><code>mysqldump -h &lt;ip&gt; -u &lt;user_name&gt; -p [-d] &lt;db_name&gt; &lt;table_name&gt; &gt; &lt;table_name.sql&gt;;</code>
+<ul>
+<li>示例：<code>mysqldump -h localhost -uroot -p test_mysql user &gt; user.sql;</code>，将本地的 <code>test_mysql</code> 数据库的 <code>user</code> 表导出到当前目录下名为 <code>user.sql</code> 的文件中 .</li>
+<li>-<code>d</code> 参数为可选，加上此参数则只导出表结构而不包含数据 .</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>还原表数据：
+<ul>
+<li><code>source &lt;path&gt;;</code>
+<ul>
+<li>示例：<code>source D:/user.sql;</code>，将 D 盘根目录下的 <code>user.sql</code> 文件导入到当前选择的数据库中 .</li>
+<li>此命令需要在 <em>MySQL</em> 中执行 .</li>
+<li>可以使用此方法还原所有表数据，即还原数据库 .</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>备份数据库：
+<ul>
+<li><code>mysqldump -h &lt;ip&gt; -u &lt;user_name&gt; -p [-d] &lt;db_name&gt; &gt; &lt;new_db_name.sql&gt;;</code>
+<ul>
+<li>示例：<code>mysqldump -h localhost -uroot -p test_mysql &gt; test_mysql.sql;</code>，将本地的 <code>test_mysql</code> 数据库的所有表导出到当前目录下名为 <code>test_mysql.sql</code> 的文件中 .</li>
+<li>-<code>d</code> 参数为可选，加上此参数则只导出表结构而不包含数据 .</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>更多使用示例请参考：<a href="https://blog.csdn.net/weixin_45299340/article/details/121380058">mysql导入导出命令详细总结，看这一篇就够了_mysql 导入导出命令-CSDN博客</a></p>
+<h3 id="元数据"><a class="header-anchor" href="#元数据">¶</a>元数据</h3>
+<p>元数据是用于描述数据的数据。元数据在 <em>MySQL</em> 中是指关于数据库及其内容(如表、列、索引等)的信息。</p>
+<p>元数据存储在系统表中，这些表位于 <em>MySQL</em> 数据库的 <code>information_schema</code> 数据库中，通过查询这些系统表，可以获取关于数据库的结构、对象和其他相关信息的详细信息。</p>
+<p>常用的元数据查询：</p>
+<ul>
+<li>查看表的索引
+<ul>
+<li><code>SHOW INDEX FROM table_name;</code></li>
+</ul>
+</li>
+<li>查看表的创建语句
+<ul>
+<li><code>SHOW CREATE TABLE table_name;</code></li>
+</ul>
+</li>
+<li>查看表的行数
+<ul>
+<li><code>SELECT COUNT(*) FROM table_name;</code></li>
+</ul>
+</li>
+</ul>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-database-info.html">MySQL 元数据 | 菜鸟教程 (runoob.com)</a></p>
+<hr>
+<p><em>END</em></p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL-5</title>
+    <url>/2024/05/14/MySQL-5/</url>
+    <content><![CDATA[<h3 id="SQL-注入"><a class="header-anchor" href="#SQL-注入">¶</a><em>SQL</em> 注入</h3>
+<blockquote>
+<p>如果您通过网页获取用户输入的数据并将其插入一个 <em>MySQL</em> 数据库，那么就有可能发生 <em>SQL</em> 注入安全的问题。</p>
+<p>所谓 <em>SQL</em> 注入，就是通过把 <em>SQL</em> 命令插入到 <em>Web</em> 表单递交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的 <em>SQL</em> 命令。</p>
+<p><em>MySQL</em> 注入是指攻击者通过恶意构造的输入，成功地执行恶意的 <em>SQL</em> 查询，这通常发生在用户输入未经适当验证或转义的情况下，攻击者试图在输入中插入 <em>SQL</em> 代码，以执行意外的查询或破坏数据库。</p>
+<p>我们永远不要信任用户的输入，我们必须认定用户输入的数据都是不安全的，我们都需要对用户输入的数据进行过滤处理。</p>
+</blockquote>
+<h3 id="防范注入"><a class="header-anchor" href="#防范注入">¶</a>防范注入</h3>
+<ol>
+<li><strong>使用参数化查询或预编译语句</strong>：使用参数化查询（<em>Prepared Statements</em>）可以有效防止 <em>SQL</em> 注入，因为它们在执行查询之前将输入数据与查询语句分离。</li>
+<li><strong>输入验证和转义</strong>：对用户输入进行适当的验证，并使用合适的转义函数（如<code>mysqli_real_escape_string</code>）来处理输入，以防止恶意注入。</li>
+<li><strong>最小权限原则</strong>：给予数据库用户最小的权限，确保它们只能执行必要的操作，以降低潜在的损害。</li>
+<li><strong>使用 <em>ORM</em> 框架</strong>：使用对象关系映射（<em>ORM</em>）框架（如<em>Hibernate</em>、<em>Sequelize</em>）可以帮助抽象 <em>SQL</em> 查询，从而降低 <em>SQL</em> 注入的风险。</li>
+<li><strong>禁用错误消息显示</strong>：在生产环境中，禁用显示详细的错误消息，以防止攻击者获取有关数据库结构的敏感信息。</li>
+</ol>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-sql-injection.html">MySQL 及 SQL 注入 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="函数"><a class="header-anchor" href="#函数">¶</a>函数</h3>
+<p><em>MySQL</em> 的函数可以执行很多操作，具体请查看：<a href="https://www.runoob.com/mysql/mysql-functions.html">MySQL 函数 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="MySQL-运算符"><a class="header-anchor" href="#MySQL-运算符">¶</a>MySQL 运算符</h3>
+<p>运算符大致分为以下几种：</p>
+<ul>
+<li>算术运算符</li>
+<li>比较运算符</li>
+<li>逻辑运算符</li>
+<li>位运算符</li>
+</ul>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-operator.html">MySQL 运算符 | 菜鸟教程 (runoob.com)</a></p>
 <hr>
 <p><em>END</em></p>
 ]]></content>
