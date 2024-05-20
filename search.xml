@@ -1,147 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2023年度总结</title>
-    <url>/2024/02/09/2023%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
-<p>先在这里提前祝大家新年快乐！新的一年要开开心心，顺顺利利的。🧨爆竹🎇烟花💥爆炸✨闪亮</p>
-<hr>
-<p>​	在2023年中，我拥有了人生中第一台云服务器，虽然是和朋友一起合租的，但是还是很开心，还搭建了人生中第一个个人博客，同时，还学会了很多东西，虽然是些皮毛，但是依然令人高兴，而这些都是值得铭记的。有开心的同时一样有伤心，这才是世间的规则，在这一年，继我奶奶走了之后，我爷爷也在十一月份离我们而去了，老天爷总是不公的，连留给我见最后一面的时间都不舍得给。</p>
-<p>​	在过去的一年中，经历了许许多多的事情，有开心，也有过不愉快，但是，这些都不重要了，因为已经过去了，人是要活在未来的，向前看才行。</p>
-<p>​	希望新的一年越来越好，能完成自己想做的事情。</p>
-<p>​	2024年的新年愿望是能有一台属于自己的服务器，能遇见一个喜欢的人。如此，安好。</p>
-<p>​	最后附上一张烟花</p>
-<p><img src="/images/yh.png" alt="烟花" loading="lazy"></p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>日记</category>
-      </categories>
-      <tags>
-        <tag>2023</tag>
-        <tag>年度总结</tag>
-        <tag>原创</tag>
-        <tag>记录</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker构建镜像及使用的笔记</title>
-    <url>/2023/09/11/Docker%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%9A%84%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h4>
-<p>本文并不记录详细过程，只是为了记录一下大概构建及使用的经过（还有踩坑记录，重点！！！）</p>
-<hr>
-<h4 id="开始"><a class="header-anchor" href="#开始">¶</a>开始</h4>
-<p>由于一些特殊原因，我需要一个包含 nodejs 的基础镜像来构建一个新的镜像，但是由于各种原因，没能下成，并且我也不知道哪些镜像中含有 nodejs，所以没办法，只能自己构建一个含有 nodejs 的镜像，为了使镜像最小化，我选择了 alpine 发行的 Linux 镜像</p>
-<p>直接 docker pull alpine ，没毛病，下好之后准备 run 的，结果发现根本没有 bash 这个命令，查过资料才发现，它还是用的 sh 。。。。</p>
-<p>好了，重新 run ，<code>docker run -it alpine /bin/sh</code> .</p>
-<p>这下没毛病了，进了终端，然后竟然发现无从下手！！！（毕竟 alpine 跟 centos 不一样），一开始用的 yum ，结果直接 not found ，，查了资料发现，这玩意儿连 yum 都没有。。只能用 apk ，不愧是最小的 Linux .</p>
-<p>在用 apk 将 nodejs 下好后，直接构建，然后尼玛又少了 npm ，淦！</p>
-<p>同样的方法，用 apk 下好之后，构建！！！不出意外的话又出意外了，构建的时候有一步比较吃 cpu 资源 ，我用服务器构建了两次，</p>
-<hr>
-<p>TODO</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker的使用-叁</title>
-    <url>/2023/09/08/Docker%E7%9A%84%E4%BD%BF%E7%94%A8-%E5%8F%81/</url>
-    <content><![CDATA[<h4 id="Dockerfile的使用"><a class="header-anchor" href="#Dockerfile的使用">¶</a>Dockerfile的使用</h4>
-<p>使用Dockerfile部署扫雷web程序</p>
-<ol>
-<li>
-<p>先将必要的文件上传至服务器，然后在当前目录创建init.sh和dockerfile文件</p>
-<p>友情提示：可以使用 scp 上传</p>
-<ul>
-<li>scp 不会用那就用下面的这条命令，我把资源都打包到我服务器上了，可以直接下：</li>
-</ul>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-O</span> https://zero-li.fun/资源/source.tar <span class="token punctuation">;</span> <span class="token function">tar</span> <span class="token parameter variable">-xf</span> source.tar <span class="token punctuation">;</span> <span class="token function">mv</span> <span class="token parameter variable">-f</span> source/* ./ <span class="token punctuation">;</span> <span class="token function">rm</span> <span class="token parameter variable">-rf</span> sour*<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP6Celd.png" alt="pP6Celd.png" loading="lazy"></p>
-</li>
-<li>
-<p>通过 vim 向 dockerfile  <a href="http://xn--init-990g.sh">及init.sh</a> 写入以下内容：</p>
-</li>
-</ol>
-<blockquote>
-<p>请不要照抄我的配置，每句后面都有注释，稍微动一下脑子就行了，要不然寄</p>
-</blockquote>
-<p>使用dockerfile之前，你首先要确保你的当前目录下有以下几个文件：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ls</span> <span class="token parameter variable">-a</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<blockquote>
-<p>Centos-7.repo</p>
-<p>epel-7.repo</p>
-<p>saolei.zip</p>
-<p>dockerfile</p>
-<p><a href="http://init.sh">init.sh</a></p>
-</blockquote>
-<p>你还要确保你的本地有 centos:centos7 这个镜像</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> images<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://s1.ax1x.com/2023/09/10/pPcdAF1.png" alt="pPcdAF1.png" loading="lazy"></p>
-<p>没有怎么办？凉拌！！！</p>
-<p>用下面这条命令下载：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull centos:centos7 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>要是还报错，那你就自己百度去吧，问题奇奇怪怪的</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">FROM centos:centos7    <span class="token comment"># 这是你要使用的基础镜像，记住改为自己的基础镜像(如果你使用了上面的 pull 下载了镜像，就不需要改)</span>
-  
-ADD Centos-7.repo /etc/yum.repos.d/    <span class="token comment"># 这条命令的意思是添加Centos7.repo文件到容器的/etc/yum.repos.d下</span>
-
-ADD epel-7.repo /etc/yum.repos.d/    <span class="token comment"># 同上</span>
-
-RUN yum <span class="token parameter variable">-y</span> <span class="token function">install</span> tomcat <span class="token function">unzip</span> <span class="token function">curl</span>    <span class="token comment"># 运行 yum 命令安装 tomcat 、 unzip 、 curl ，其中 -y 表示安装过程中的选择全部为 yes</span>
-
-WORKDIR /var/lib/tomcat/webapps/    <span class="token comment"># 指定工作目录</span>
-
-RUN <span class="token function">curl</span> <span class="token parameter variable">-O</span> https://zero-li.fun/资源/saolei.zip    <span class="token comment"># 从指定站点下载 saolei.zip 资源</span>
-
-RUN <span class="token function">unzip</span> saolei.zip    <span class="token comment"># 解压 saolei.zip 文件</span>
-
-RUN <span class="token function">mv</span> saolei ROOT     <span class="token comment"># 将 saolei 移动至 ROOT 文件或目录</span>
-
-ADD init.sh /init.sh    <span class="token comment"># 添加 init.sh 至 /init.sh</span>
-
-EXPOSE <span class="token number">8080</span>    <span class="token comment"># 声明 8080 端口 ，此时并没有开放此端口</span>
-
-CMD <span class="token punctuation">[</span><span class="token string">"/bin/bash"</span>,<span class="token string">"/init.sh"</span><span class="token punctuation">]</span>    <span class="token comment"># 在容器启动时运行 /init.sh 脚本</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
-  
-/usr/libexec/tomcat/server start    <span class="token comment"># 在指定目录启动 tomcat server 服务器                </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<ol start="3">
-<li>直接构建镜像</li>
-</ol>
-<blockquote>
-<p>docker build -t saolei:v1 .</p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP6PyUf.png" alt="pP6PyUf.png" loading="lazy"></p>
-<ol start="4">
-<li>运行容器</li>
-</ol>
-<blockquote>
-<p>docker run -itd -P saolei:v1</p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP6PWvj.png" alt="pP6PWvj.png" loading="lazy"></p>
-<ol start="5">
-<li>在浏览器通过 ”你的IP“:开放的随机端口/saolei.jsp 访问</li>
-</ol>
-<p><img src="https://s1.ax1x.com/2023/09/08/pP6PjM9.png" alt="pP6PjM9.png" loading="lazy"></p>
-<hr>
-<p>示例: <a href="http://8.222.153.91:32770/saolei.jsp?level=8&amp;leiNum=8&amp;size=8">扫雷</a></p>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker之nginx的负载均衡</title>
     <url>/2023/09/12/Docker%E4%B9%8Bnginx%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</url>
     <content><![CDATA[<h4 id="使用docker部署nginx的负载均衡"><a class="header-anchor" href="#使用docker部署nginx的负载均衡">¶</a>使用docker部署nginx的负载均衡</h4>
@@ -270,8 +129,149 @@ http <span class="token punctuation">&#123;</span>
         <category>笔记</category>
       </categories>
       <tags>
-        <tag>原创</tag>
         <tag>Docker</tag>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2023年度总结</title>
+    <url>/2024/02/09/2023%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
+<p>先在这里提前祝大家新年快乐！新的一年要开开心心，顺顺利利的。🧨爆竹🎇烟花💥爆炸✨闪亮</p>
+<hr>
+<p>​	在2023年中，我拥有了人生中第一台云服务器，虽然是和朋友一起合租的，但是还是很开心，还搭建了人生中第一个个人博客，同时，还学会了很多东西，虽然是些皮毛，但是依然令人高兴，而这些都是值得铭记的。有开心的同时一样有伤心，这才是世间的规则，在这一年，继我奶奶走了之后，我爷爷也在十一月份离我们而去了，老天爷总是不公的，连留给我见最后一面的时间都不舍得给。</p>
+<p>​	在过去的一年中，经历了许许多多的事情，有开心，也有过不愉快，但是，这些都不重要了，因为已经过去了，人是要活在未来的，向前看才行。</p>
+<p>​	希望新的一年越来越好，能完成自己想做的事情。</p>
+<p>​	2024年的新年愿望是能有一台属于自己的服务器，能遇见一个喜欢的人。如此，安好。</p>
+<p>​	最后附上一张烟花</p>
+<p><img src="https://figurebed.yunyat.cloud/imgs/20240520143957.png" alt="yh" loading="lazy"></p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>日记</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>2023</tag>
+        <tag>年度总结</tag>
+        <tag>记录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker构建镜像及使用的笔记</title>
+    <url>/2023/09/11/Docker%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%9A%84%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h4>
+<p>本文并不记录详细过程，只是为了记录一下大概构建及使用的经过（还有踩坑记录，重点！！！）</p>
+<hr>
+<h4 id="开始"><a class="header-anchor" href="#开始">¶</a>开始</h4>
+<p>由于一些特殊原因，我需要一个包含 nodejs 的基础镜像来构建一个新的镜像，但是由于各种原因，没能下成，并且我也不知道哪些镜像中含有 nodejs，所以没办法，只能自己构建一个含有 nodejs 的镜像，为了使镜像最小化，我选择了 alpine 发行的 Linux 镜像</p>
+<p>直接 docker pull alpine ，没毛病，下好之后准备 run 的，结果发现根本没有 bash 这个命令，查过资料才发现，它还是用的 sh 。。。。</p>
+<p>好了，重新 run ，<code>docker run -it alpine /bin/sh</code> .</p>
+<p>这下没毛病了，进了终端，然后竟然发现无从下手！！！（毕竟 alpine 跟 centos 不一样），一开始用的 yum ，结果直接 not found ，，查了资料发现，这玩意儿连 yum 都没有。。只能用 apk ，不愧是最小的 Linux .</p>
+<p>在用 apk 将 nodejs 下好后，直接构建，然后尼玛又少了 npm ，淦！</p>
+<p>同样的方法，用 apk 下好之后，构建！！！不出意外的话又出意外了，构建的时候有一步比较吃 cpu 资源 ，我用服务器构建了两次，</p>
+<hr>
+<p>TODO</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker的使用-叁</title>
+    <url>/2023/09/08/Docker%E7%9A%84%E4%BD%BF%E7%94%A8-%E5%8F%81/</url>
+    <content><![CDATA[<h4 id="Dockerfile的使用"><a class="header-anchor" href="#Dockerfile的使用">¶</a>Dockerfile的使用</h4>
+<p>使用Dockerfile部署扫雷web程序</p>
+<ol>
+<li>
+<p>先将必要的文件上传至服务器，然后在当前目录创建init.sh和dockerfile文件</p>
+<p>友情提示：可以使用 scp 上传</p>
+<ul>
+<li>scp 不会用那就用下面的这条命令，我把资源都打包到我服务器上了，可以直接下：</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-O</span> https://zero-li.fun/资源/source.tar <span class="token punctuation">;</span> <span class="token function">tar</span> <span class="token parameter variable">-xf</span> source.tar <span class="token punctuation">;</span> <span class="token function">mv</span> <span class="token parameter variable">-f</span> source/* ./ <span class="token punctuation">;</span> <span class="token function">rm</span> <span class="token parameter variable">-rf</span> sour*<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP6Celd.png" alt="pP6Celd.png" loading="lazy"></p>
+</li>
+<li>
+<p>通过 vim 向 dockerfile  <a href="http://xn--init-990g.sh">及init.sh</a> 写入以下内容：</p>
+</li>
+</ol>
+<blockquote>
+<p>请不要照抄我的配置，每句后面都有注释，稍微动一下脑子就行了，要不然寄</p>
+</blockquote>
+<p>使用dockerfile之前，你首先要确保你的当前目录下有以下几个文件：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ls</span> <span class="token parameter variable">-a</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>Centos-7.repo</p>
+<p>epel-7.repo</p>
+<p>saolei.zip</p>
+<p>dockerfile</p>
+<p><a href="http://init.sh">init.sh</a></p>
+</blockquote>
+<p>你还要确保你的本地有 centos:centos7 这个镜像</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> images<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://s1.ax1x.com/2023/09/10/pPcdAF1.png" alt="pPcdAF1.png" loading="lazy"></p>
+<p>没有怎么办？凉拌！！！</p>
+<p>用下面这条命令下载：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull centos:centos7 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>要是还报错，那你就自己百度去吧，问题奇奇怪怪的</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">FROM centos:centos7    <span class="token comment"># 这是你要使用的基础镜像，记住改为自己的基础镜像(如果你使用了上面的 pull 下载了镜像，就不需要改)</span>
+  
+ADD Centos-7.repo /etc/yum.repos.d/    <span class="token comment"># 这条命令的意思是添加Centos7.repo文件到容器的/etc/yum.repos.d下</span>
+
+ADD epel-7.repo /etc/yum.repos.d/    <span class="token comment"># 同上</span>
+
+RUN yum <span class="token parameter variable">-y</span> <span class="token function">install</span> tomcat <span class="token function">unzip</span> <span class="token function">curl</span>    <span class="token comment"># 运行 yum 命令安装 tomcat 、 unzip 、 curl ，其中 -y 表示安装过程中的选择全部为 yes</span>
+
+WORKDIR /var/lib/tomcat/webapps/    <span class="token comment"># 指定工作目录</span>
+
+RUN <span class="token function">curl</span> <span class="token parameter variable">-O</span> https://zero-li.fun/资源/saolei.zip    <span class="token comment"># 从指定站点下载 saolei.zip 资源</span>
+
+RUN <span class="token function">unzip</span> saolei.zip    <span class="token comment"># 解压 saolei.zip 文件</span>
+
+RUN <span class="token function">mv</span> saolei ROOT     <span class="token comment"># 将 saolei 移动至 ROOT 文件或目录</span>
+
+ADD init.sh /init.sh    <span class="token comment"># 添加 init.sh 至 /init.sh</span>
+
+EXPOSE <span class="token number">8080</span>    <span class="token comment"># 声明 8080 端口 ，此时并没有开放此端口</span>
+
+CMD <span class="token punctuation">[</span><span class="token string">"/bin/bash"</span>,<span class="token string">"/init.sh"</span><span class="token punctuation">]</span>    <span class="token comment"># 在容器启动时运行 /init.sh 脚本</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+  
+/usr/libexec/tomcat/server start    <span class="token comment"># 在指定目录启动 tomcat server 服务器                </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>直接构建镜像</li>
+</ol>
+<blockquote>
+<p>docker build -t saolei:v1 .</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP6PyUf.png" alt="pP6PyUf.png" loading="lazy"></p>
+<ol start="4">
+<li>运行容器</li>
+</ol>
+<blockquote>
+<p>docker run -itd -P saolei:v1</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP6PWvj.png" alt="pP6PWvj.png" loading="lazy"></p>
+<ol start="5">
+<li>在浏览器通过 ”你的IP“:开放的随机端口/saolei.jsp 访问</li>
+</ol>
+<p><img src="https://s1.ax1x.com/2023/09/08/pP6PjM9.png" alt="pP6PjM9.png" loading="lazy"></p>
+<hr>
+<p>示例: <a href="http://8.222.153.91:32770/saolei.jsp?level=8&amp;leiNum=8&amp;size=8">扫雷</a></p>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>原创</tag>
       </tags>
   </entry>
   <entry>
@@ -365,8 +365,8 @@ http <span class="token punctuation">&#123;</span>
         <category>笔记</category>
       </categories>
       <tags>
-        <tag>原创</tag>
         <tag>Docker</tag>
+        <tag>原创</tag>
       </tags>
   </entry>
   <entry>
@@ -432,8 +432,8 @@ http <span class="token punctuation">&#123;</span>
         <category>编程技巧</category>
       </categories>
       <tags>
-        <tag>原创</tag>
         <tag>Docker</tag>
+        <tag>原创</tag>
       </tags>
   </entry>
   <entry>
@@ -535,6 +535,96 @@ IdentityFile ~/.ssh/id_rsa_gitee.pub</p>
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JSON</title>
+    <url>/2024/04/03/JSON/</url>
+    <content><![CDATA[<h3 id="JSON-简介"><a class="header-anchor" href="#JSON-简介">¶</a>JSON 简介</h3>
+<blockquote>
+<p><code>JSON</code>: <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation( <code>JavaScript</code> 对象表示法)</p>
+<p><code>JSON</code> 是存储和交换文本信息的语法，类似 <code>XML</code>。</p>
+<p><code>JSON</code> 比 <code>XML</code> 更小、更快，更易解析。</p>
+<p><code>JSON</code> 易于人阅读和编写。</p>
+<p><code>C</code>、<code>Python</code>、<code>C++</code>、<code>Java</code>、<code>PHP</code>、<code>Go</code>等编程语言都支持 <code>JSON</code></p>
+</blockquote>
+<p>例子：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"sites"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"bing"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.bing.com"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
+    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"google"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.google.com"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
+    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"baidu"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.baidu.com"</span> <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="对象"><a class="header-anchor" href="#对象">¶</a>对象</h3>
+<p>在 <code>JSON</code> 中使用<code>&#123;&#125;</code>来定义一个对象。左括号<code>&#123;</code>开始，右括号<code>&#125;</code>结束。每个 <code>&quot;键&quot;</code> 后跟一个冒号 <code>:</code> ，名称/值对使用逗号 <code>,</code> 分隔</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+	<span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"张三"</span><span class="token punctuation">,</span>
+    <span class="token property">"age"</span><span class="token operator">:</span><span class="token number">20</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="嵌套对象"><a class="header-anchor" href="#嵌套对象">¶</a>嵌套对象</h4>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"num"</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">,</span>
+	<span class="token property">"student"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
+		<span class="token property">"namelist"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
+			<span class="token property">"name1"</span><span class="token operator">:</span><span class="token string">"张三"</span><span class="token punctuation">,</span>
+			<span class="token property">"name2"</span><span class="token operator">:</span><span class="token string">"李四"</span>
+		<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+		<span class="token property">"agelist"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
+			<span class="token property">"age1"</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span>
+			<span class="token property">"age2"</span><span class="token operator">:</span><span class="token number">21</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="数组"><a class="header-anchor" href="#数组">¶</a>数组</h3>
+<p>中括号 <code>[]</code> 保存的数组是值（<code>value</code>）的有序集合。一个数组以左中括号 <code>[</code> 开始， 右中括号 <code>]</code> 结束，值之间使用逗号 <code>,</code> 分隔。</p>
+<p>值（<code>value</code>）可以是双引号括起来的字符串（<code>string</code>）、数值(<code>number</code>)、<code>true</code>、<code>false</code>、 <code>null</code>、对象（<code>object</code>）或者数组（<code>array</code>），它们是可以嵌套，值不能为键值对。</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span><span class="token string">"str"</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="嵌套数组"><a class="header-anchor" href="#嵌套数组">¶</a>嵌套数组</h4>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token property">"num"</span><span class="token operator">:</span> <span class="token number">2</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"张三"</span><span class="token punctuation">,</span>
+      <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">20</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"李四"</span><span class="token punctuation">,</span>
+      <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">21</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="JSON-parse"><a class="header-anchor" href="#JSON-parse">¶</a><code>JSON.parse()</code></h3>
+<p>此方法为 <code>JavaScript</code> 的内置函数，用于将 <code>JSON</code> 字符串解析为原生 <code>JavaScript</code> 对象或值</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>text<span class="token punctuation">[</span><span class="token punctuation">,</span> reviver<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>text</code></p>
+<p>​	要被解析成 <code>JavaScript</code> 值的字符串</p>
+<p><code>reviver</code>(可选)</p>
+<p>​	转换器，如果传入该参数 (函数)，可以用来修改解析生成的原始值，调用时机在 <code>parse</code> 函数返回之前</p>
+<p>返回值</p>
+<p>​	与给定的 <code>JSON text</code> 相对应的 <code>Object</code>、<code>Array</code>、<code>string</code>、<code>number</code>、<code>boolean</code> 或者 <code>null</code> 值</p>
+<p>异常</p>
+<p>​	若传入的字符串不符合 JSON 规范，则会抛出此异常</p>
+<p>使用 <code>reviver</code> 函数</p>
+<blockquote>
+<p>如果指定了 <code>reviver</code> 函数，则解析出的 <code>JavaScript</code> 值（解析值）会经过一次转换后才将被最终返回（返回值）。更具体点讲就是：解析值本身以及它所包含的所有属性，会按照一定的顺序（从最最里层的属性开始，一级级往外，最终到达顶层，也就是解析值本身）分别的去调用 <code>reviver</code> 函数，在调用过程中，当前属性所属的对象会作为 <code>this</code> 值，当前属性名和属性值会分别作为第一个和第二个参数传入 <code>reviver</code> 中。如果 <code>reviver</code> 返回 <code>undefined</code>，则当前属性会从所属对象中删除，如果返回了其他值，则返回的值会成为当前属性新的属性值。</p>
+<p>当遍历到最顶层的值（解析值）时，传入 <code>reviver</code> 函数的参数会是空字符串 <code>&quot;&quot;</code>（因为此时已经没有真正的属性）和当前的解析值（有可能已经被修改过了），当前的 <code>this</code> 值会是 <code>&#123;&quot;&quot;: 修改过的解析值&#125;</code>，在编写 <code>reviver</code> 函数时，要注意到这个特例。（这个函数的遍历顺序依照：从最内层开始，按照层级顺序，依次向外遍历）</p>
+</blockquote>
+<p>更多请参阅:</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse() - JavaScript | MDN (mozilla.org)</a></p>
+<p><a href="https://www.runoob.com/json/json-tutorial.html">JSON 教程 | 菜鸟教程 (runoob.com)</a></p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>JavaScript</tag>
+        <tag>JSON</tag>
       </tags>
   </entry>
   <entry>
@@ -924,96 +1014,6 @@ Fast-forward
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JSON</title>
-    <url>/2024/04/03/JSON/</url>
-    <content><![CDATA[<h3 id="JSON-简介"><a class="header-anchor" href="#JSON-简介">¶</a>JSON 简介</h3>
-<blockquote>
-<p><code>JSON</code>: <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation( <code>JavaScript</code> 对象表示法)</p>
-<p><code>JSON</code> 是存储和交换文本信息的语法，类似 <code>XML</code>。</p>
-<p><code>JSON</code> 比 <code>XML</code> 更小、更快，更易解析。</p>
-<p><code>JSON</code> 易于人阅读和编写。</p>
-<p><code>C</code>、<code>Python</code>、<code>C++</code>、<code>Java</code>、<code>PHP</code>、<code>Go</code>等编程语言都支持 <code>JSON</code></p>
-</blockquote>
-<p>例子：</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-    <span class="token property">"sites"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"bing"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.bing.com"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
-    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"google"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.google.com"</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> 
-    <span class="token punctuation">&#123;</span> <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"baidu"</span> <span class="token punctuation">,</span> <span class="token property">"url"</span><span class="token operator">:</span><span class="token string">"www.baidu.com"</span> <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">]</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="对象"><a class="header-anchor" href="#对象">¶</a>对象</h3>
-<p>在 <code>JSON</code> 中使用<code>&#123;&#125;</code>来定义一个对象。左括号<code>&#123;</code>开始，右括号<code>&#125;</code>结束。每个 <code>&quot;键&quot;</code> 后跟一个冒号 <code>:</code> ，名称/值对使用逗号 <code>,</code> 分隔</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-	<span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"张三"</span><span class="token punctuation">,</span>
-    <span class="token property">"age"</span><span class="token operator">:</span><span class="token number">20</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="嵌套对象"><a class="header-anchor" href="#嵌套对象">¶</a>嵌套对象</h4>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-    <span class="token property">"num"</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">,</span>
-	<span class="token property">"student"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
-		<span class="token property">"namelist"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
-			<span class="token property">"name1"</span><span class="token operator">:</span><span class="token string">"张三"</span><span class="token punctuation">,</span>
-			<span class="token property">"name2"</span><span class="token operator">:</span><span class="token string">"李四"</span>
-		<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-		<span class="token property">"agelist"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
-			<span class="token property">"age1"</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span>
-			<span class="token property">"age2"</span><span class="token operator">:</span><span class="token number">21</span>
-		<span class="token punctuation">&#125;</span>
-	<span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="数组"><a class="header-anchor" href="#数组">¶</a>数组</h3>
-<p>中括号 <code>[]</code> 保存的数组是值（<code>value</code>）的有序集合。一个数组以左中括号 <code>[</code> 开始， 右中括号 <code>]</code> 结束，值之间使用逗号 <code>,</code> 分隔。</p>
-<p>值（<code>value</code>）可以是双引号括起来的字符串（<code>string</code>）、数值(<code>number</code>)、<code>true</code>、<code>false</code>、 <code>null</code>、对象（<code>object</code>）或者数组（<code>array</code>），它们是可以嵌套，值不能为键值对。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span><span class="token string">"str"</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="嵌套数组"><a class="header-anchor" href="#嵌套数组">¶</a>嵌套数组</h4>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
-  <span class="token punctuation">&#123;</span>
-    <span class="token property">"num"</span><span class="token operator">:</span> <span class="token number">2</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token punctuation">[</span>
-    <span class="token punctuation">&#123;</span>
-      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"张三"</span><span class="token punctuation">,</span>
-      <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">20</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token punctuation">&#123;</span>
-      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"李四"</span><span class="token punctuation">,</span>
-      <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">21</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">]</span>
-<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="JSON-parse"><a class="header-anchor" href="#JSON-parse">¶</a><code>JSON.parse()</code></h3>
-<p>此方法为 <code>JavaScript</code> 的内置函数，用于将 <code>JSON</code> 字符串解析为原生 <code>JavaScript</code> 对象或值</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>text<span class="token punctuation">[</span><span class="token punctuation">,</span> reviver<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><code>text</code></p>
-<p>​	要被解析成 <code>JavaScript</code> 值的字符串</p>
-<p><code>reviver</code>(可选)</p>
-<p>​	转换器，如果传入该参数 (函数)，可以用来修改解析生成的原始值，调用时机在 <code>parse</code> 函数返回之前</p>
-<p>返回值</p>
-<p>​	与给定的 <code>JSON text</code> 相对应的 <code>Object</code>、<code>Array</code>、<code>string</code>、<code>number</code>、<code>boolean</code> 或者 <code>null</code> 值</p>
-<p>异常</p>
-<p>​	若传入的字符串不符合 JSON 规范，则会抛出此异常</p>
-<p>使用 <code>reviver</code> 函数</p>
-<blockquote>
-<p>如果指定了 <code>reviver</code> 函数，则解析出的 <code>JavaScript</code> 值（解析值）会经过一次转换后才将被最终返回（返回值）。更具体点讲就是：解析值本身以及它所包含的所有属性，会按照一定的顺序（从最最里层的属性开始，一级级往外，最终到达顶层，也就是解析值本身）分别的去调用 <code>reviver</code> 函数，在调用过程中，当前属性所属的对象会作为 <code>this</code> 值，当前属性名和属性值会分别作为第一个和第二个参数传入 <code>reviver</code> 中。如果 <code>reviver</code> 返回 <code>undefined</code>，则当前属性会从所属对象中删除，如果返回了其他值，则返回的值会成为当前属性新的属性值。</p>
-<p>当遍历到最顶层的值（解析值）时，传入 <code>reviver</code> 函数的参数会是空字符串 <code>&quot;&quot;</code>（因为此时已经没有真正的属性）和当前的解析值（有可能已经被修改过了），当前的 <code>this</code> 值会是 <code>&#123;&quot;&quot;: 修改过的解析值&#125;</code>，在编写 <code>reviver</code> 函数时，要注意到这个特例。（这个函数的遍历顺序依照：从最内层开始，按照层级顺序，依次向外遍历）</p>
-</blockquote>
-<p>更多请参阅:</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse() - JavaScript | MDN (mozilla.org)</a></p>
-<p><a href="https://www.runoob.com/json/json-tutorial.html">JSON 教程 | 菜鸟教程 (runoob.com)</a></p>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>前端学习笔记</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>JavaScript</tag>
-        <tag>JSON</tag>
       </tags>
   </entry>
   <entry>
@@ -3414,172 +3414,6 @@ WHERE condition;<span aria-hidden="true" class="line-numbers-rows"><span></span>
       </tags>
   </entry>
   <entry>
-    <title>MySQL-3</title>
-    <url>/2024/05/09/MySQL-3/</url>
-    <content><![CDATA[<h3 id="LIKE-子句"><a class="header-anchor" href="#LIKE-子句">¶</a><em>LIKE</em> 子句</h3>
-<p><em>like</em> 子句用于指定 <em>update</em> 以及 <em>delete</em> 中的 <em>where</em> 条件.</p>
-<p>可以使用 <em><code>or</code></em> 或者 <em><code>and</code></em> 指定一个或者多个条件.</p>
-<p>基本语法：</p>
-<p><code>SELECT * FROM &lt;表名&gt; WHERE &lt;LIKE句所用的列名&gt; LIKE &lt;条件&gt;;</code></p>
-<p>例子：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id like 1;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>筛选 <em>user</em> 表中的所有行，<em>id</em> 列为 1 的所有列.</p>
-<h4 id="LIKE-通配符"><a class="header-anchor" href="#LIKE-通配符">¶</a><em>LIKE</em> 通配符</h4>
-<p>在 <em>like</em> 子句中，<code>%</code> 通配符与正则表达式的 <code>*</code> 作用相同，表示零个或多个字符.</p>
-<p>而 <code>_</code> 通配符表示一个字符.</p>
-<p>不区分大小写匹配：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id like 1 collate utf8mb4_general_ci;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>使用 <code>collate utf8mb4_general_ci</code> 定义 <em>utf8mb4</em> 字符集和大小写不敏感规则.</p>
-<h3 id="UNION-连接子句"><a class="header-anchor" href="#UNION-连接子句">¶</a><em>UNION</em> 连接子句</h3>
-<p>此操作符用于连接两个以上的 <em>SELECT</em> 语句的结果并去除重复行后组合到一个结果集中.</p>
-<p>每个 <em>UNION</em> 操作符必须由两个或者多个 <em>SELECT</em> 语句组成，每个 <em>SELECT</em> 语句的列数和数据类型必须一致.</p>
-<p>基本语法：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT column1, column2, ... FROM table1 WHERE condition1
-UNION
-SELECT column1, column2, ... FROM table2 WHERE condition2
-[ORDER BY column1, column2, ...];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>参数解析：</p>
-<ul>
-<li><code>ORDER BY</code>
-<ul>
-<li>可选子句，用于指定合并后的结果集的排序顺序.</li>
-</ul>
-</li>
-</ul>
-<p>例子：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id &lt; 2 union select * from user where id &gt; 2;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>筛选 <em>user</em> 表中 <em>id</em> 不等于 <em>2</em> 的所有行.</p>
-<h3 id="UNION-ALL"><a class="header-anchor" href="#UNION-ALL">¶</a><em>UNION ALL</em></h3>
-<p>此子句与 <em>UNION</em> 的不同在于展示出来的数据会包含重复数据。</p>
-<p>基本语法：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT column1, column2, ... FROM table1 WHERE condition1
-UNION ALL
-SELECT column1, column2, ... FROM table2 WHERE condition2
-[ORDER BY column1, column2, ...];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="ORDER-BY-语句"><a class="header-anchor" href="#ORDER-BY-语句">¶</a><em>ORDER BY</em> 语句</h3>
-<p>如果想要对读取的数据进行排序，可以使用此子句来设定你想按那个字段那种方式来进行排序，再返回搜索结果。此子句可以按照一个或多个值进行升序(<em>ASC</em>)或降序(<em>DESC</em>)排序.</p>
-<p>基本语法：</p>
-<p><code>SELECT column1,... FROM &lt;表名&gt; ORDER BY column1 [ASC | DESC], column2 [ASC | DESC],...;</code></p>
-<p>参数解析：</p>
-<ul>
-<li><code>ORDER BY</code>
-<ul>
-<li>用于指定排序顺序子句，<em>ASC</em> 表示升序（默认），<em>DESC</em> 表示降序.</li>
-</ul>
-</li>
-</ul>
-<p>使用拼音对汉字进行排序，如果使用 <em>gbk</em> 字符集，可以直接排序，如果使用 <em>utf8</em> 字符集，需要对字段进行转码.</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user order by convert(username using gbk);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-order-by.html">MySQL ORDER BY(排序) 语句 | 菜鸟教程 (runoob.com)</a></p>
-<h3 id="JOIN-连接"><a class="header-anchor" href="#JOIN-连接">¶</a><em>JOIN</em>(连接)</h3>
-<p>可以在 <em>SELECT</em> 、<em>UPDATE</em>、<em>DELETE</em> 语句中使用 JOIN 来联合多表查询.</p>
-<p>JOIN 按照功能大致分为三类：</p>
-<ul>
-<li><code>INNER JOIN</code>
-<ul>
-<li>获取两个表中字段匹配的记录，如果右表中匹配的行有字段为 <em>NULL</em>，则不显示此行.</li>
-</ul>
-</li>
-</ul>
-<p>基本语法：</p>
-<p><code>SELECT column1,... FROM &lt;表名1&gt; INNER JOIN &lt;表名2&gt; ON &lt;表名1.字段名&gt; = &lt;表名2.字段名&gt; ...;</code></p>
-<p>示例：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 简单查询
-select * from user inner join scores on user.id &#x3D; scores.id;
-
-# 使用 as 定义别名
-select u.username,s.chinese,s.mathematics,s.english from user as u inner join scores as s on u.id &#x3D; s.id;
-
-# 多 inner join 查询
-select * from user as u 
-inner join scores as s on u.id &#x3D; s.id 
-inner join test_table as t on u.id &#x3D; t.id;
-
-# 使用 where 过滤记录
-select * from user as u
-inner join scores as s on u.id &#x3D; s.id
-inner join test_table as t on u.id &#x3D; t.id
-where u.birhdate &gt; &#39;2005-01-01&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li><code>LEFT JOIN</code>
-<ul>
-<li>返回左表中的所有行，并包括右表中匹配的行，如果右表中匹配的行中没有值，则返回 <em>NULL</em> 值.</li>
-</ul>
-</li>
-</ul>
-<p>基本语法：</p>
-<p><code>SELECT column1,... FROM &lt;表名1&gt; left JOIN &lt;表名2&gt; ON &lt;表名1.字段名&gt; = &lt;表名2.字段名&gt; ...;</code></p>
-<p>示例：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># left join 的使用方法同 inner join 一样
-select u.id,u.username,s.mathematics,s.chinese,s.english,t.age from user as u
-left join scores as s on u.id &#x3D; s.id
-left join test_table as t on s.id &#x3D; t.id;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-join.html">MySQL 连接的使用 | 菜鸟教程 (runoob.com)</a></p>
-<h3 id="NULL-处理"><a class="header-anchor" href="#NULL-处理">¶</a><em>NULL</em> 处理</h3>
-<p><em>MySQL</em> 提供了三个运算符来处理 <em>NULL</em> 值，在 <em>MySQL</em> 中，<em>NULL</em> 值通常表示缺失或未知数据，你不能使用 <code>=</code> 或者 <code>!=</code> 来查找 <em>NULL</em> 值，因为 <em>NULL</em> 值与其他任何值比较都为 <em>NULL</em> .</p>
-<ul>
-<li><code>IS NULL</code>
-<ul>
-<li>当列的值是 <em>NULL</em>，此运算符返回 <em>true</em> .</li>
-</ul>
-</li>
-<li><code>IS NOT NULL</code>
-<ul>
-<li>当列的值不为 <em>NULL</em>，此运算符返回 <em>true</em> .</li>
-</ul>
-</li>
-<li><code>&lt;=&gt;</code>
-<ul>
-<li>当比较的两个值相等或者都为 <em>NULL</em> 时返回 <em>true</em> .</li>
-</ul>
-</li>
-</ul>
-<p>示例：</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 判读 age 字段是否为 NULL
-select * from test_table as t where t.age is null;
-
-# 判断 age 字段是否不为 NULL
-select * from test_table as t where t.age is not null;
-
-# 判断 age 字段是否为 NULL，效果同 is 一样
-select * from test_table as t where t.age &lt;&#x3D;&gt; null;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="数据表清洗"><a class="header-anchor" href="#数据表清洗">¶</a>数据表清洗</h4>
-<p>将表中指定的列中所有的NULL值替换为 <code>0</code>.</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * , ifnull(t.age,0) as age from test_table as t;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="IFNULL-COALESCE"><a class="header-anchor" href="#IFNULL-COALESCE">¶</a>IFNULL &amp; COALESCE</h4>
-<p><code>IFNULL</code> 基本语法：</p>
-<p><code>IFNULL(expr1,expr2)</code></p>
-<p><em>ifnull</em> 是常用的用于处理 <em>NULL</em> 值的函数，其基本功能是如果参数 1 为 <em>NULL</em>，则返回参数 2 的值.</p>
-<p><code>COALESCE</code>基本语法：</p>
-<p><code>COALESCE(value1,value2,...,valueEn)</code></p>
-<p><em>coalesce</em> 可以看做是 <em>ifnull</em> 的增强版，其功能同 <em>ifnull</em> 相同，但是可以接受比 <em>ifnull</em> 更多的参数，如果参数 1 为 <em>NULL</em>，则返回其参数列表中第一个非 <em>NULL</em> 的表达式，如果所有提供的表达式都为 <em>NULL</em>，那么 <em>coalesce</em> 函数将返回 <em>NULL</em>.</p>
-<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-null.html">MySQL NULL 值处理 | 菜鸟教程 (runoob.com)</a></p>
-<h3 id="正则表达式"><a class="header-anchor" href="#正则表达式">¶</a>正则表达式</h3>
-<p>MySQL 提供了正则表达式的匹配，用于提供比普通筛选更强大的功能.</p>
-<ul>
-<li><code>REGEXP</code>
-<ul>
-<li>regexp 是用于进行正则匹配的运算符.</li>
-</ul>
-</li>
-</ul>
-<p>基本语法：</p>
-<p><code>SELECT column1,column2,... FROM &lt;表名&gt; WHERE column_name regexp 'pattern'</code></p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 筛选出以 1 开头的 id
-select * from user as u where u.id regexp &#39;^[1*]&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-regexp.html">MySQL 正则表达式 | 菜鸟教程 (runoob.com)</a></p>
-<hr>
-<p><em>END</em></p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL-4</title>
     <url>/2024/05/13/MySQL-4/</url>
     <content><![CDATA[<h3 id="事务"><a class="header-anchor" href="#事务">¶</a>事务</h3>
@@ -3817,6 +3651,172 @@ rollback;<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 </li>
 </ul>
 <p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-database-info.html">MySQL 元数据 | 菜鸟教程 (runoob.com)</a></p>
+<hr>
+<p><em>END</em></p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL-3</title>
+    <url>/2024/05/09/MySQL-3/</url>
+    <content><![CDATA[<h3 id="LIKE-子句"><a class="header-anchor" href="#LIKE-子句">¶</a><em>LIKE</em> 子句</h3>
+<p><em>like</em> 子句用于指定 <em>update</em> 以及 <em>delete</em> 中的 <em>where</em> 条件.</p>
+<p>可以使用 <em><code>or</code></em> 或者 <em><code>and</code></em> 指定一个或者多个条件.</p>
+<p>基本语法：</p>
+<p><code>SELECT * FROM &lt;表名&gt; WHERE &lt;LIKE句所用的列名&gt; LIKE &lt;条件&gt;;</code></p>
+<p>例子：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id like 1;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>筛选 <em>user</em> 表中的所有行，<em>id</em> 列为 1 的所有列.</p>
+<h4 id="LIKE-通配符"><a class="header-anchor" href="#LIKE-通配符">¶</a><em>LIKE</em> 通配符</h4>
+<p>在 <em>like</em> 子句中，<code>%</code> 通配符与正则表达式的 <code>*</code> 作用相同，表示零个或多个字符.</p>
+<p>而 <code>_</code> 通配符表示一个字符.</p>
+<p>不区分大小写匹配：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id like 1 collate utf8mb4_general_ci;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用 <code>collate utf8mb4_general_ci</code> 定义 <em>utf8mb4</em> 字符集和大小写不敏感规则.</p>
+<h3 id="UNION-连接子句"><a class="header-anchor" href="#UNION-连接子句">¶</a><em>UNION</em> 连接子句</h3>
+<p>此操作符用于连接两个以上的 <em>SELECT</em> 语句的结果并去除重复行后组合到一个结果集中.</p>
+<p>每个 <em>UNION</em> 操作符必须由两个或者多个 <em>SELECT</em> 语句组成，每个 <em>SELECT</em> 语句的列数和数据类型必须一致.</p>
+<p>基本语法：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT column1, column2, ... FROM table1 WHERE condition1
+UNION
+SELECT column1, column2, ... FROM table2 WHERE condition2
+[ORDER BY column1, column2, ...];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>参数解析：</p>
+<ul>
+<li><code>ORDER BY</code>
+<ul>
+<li>可选子句，用于指定合并后的结果集的排序顺序.</li>
+</ul>
+</li>
+</ul>
+<p>例子：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user where id &lt; 2 union select * from user where id &gt; 2;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>筛选 <em>user</em> 表中 <em>id</em> 不等于 <em>2</em> 的所有行.</p>
+<h3 id="UNION-ALL"><a class="header-anchor" href="#UNION-ALL">¶</a><em>UNION ALL</em></h3>
+<p>此子句与 <em>UNION</em> 的不同在于展示出来的数据会包含重复数据。</p>
+<p>基本语法：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT column1, column2, ... FROM table1 WHERE condition1
+UNION ALL
+SELECT column1, column2, ... FROM table2 WHERE condition2
+[ORDER BY column1, column2, ...];<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="ORDER-BY-语句"><a class="header-anchor" href="#ORDER-BY-语句">¶</a><em>ORDER BY</em> 语句</h3>
+<p>如果想要对读取的数据进行排序，可以使用此子句来设定你想按那个字段那种方式来进行排序，再返回搜索结果。此子句可以按照一个或多个值进行升序(<em>ASC</em>)或降序(<em>DESC</em>)排序.</p>
+<p>基本语法：</p>
+<p><code>SELECT column1,... FROM &lt;表名&gt; ORDER BY column1 [ASC | DESC], column2 [ASC | DESC],...;</code></p>
+<p>参数解析：</p>
+<ul>
+<li><code>ORDER BY</code>
+<ul>
+<li>用于指定排序顺序子句，<em>ASC</em> 表示升序（默认），<em>DESC</em> 表示降序.</li>
+</ul>
+</li>
+</ul>
+<p>使用拼音对汉字进行排序，如果使用 <em>gbk</em> 字符集，可以直接排序，如果使用 <em>utf8</em> 字符集，需要对字段进行转码.</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * from user order by convert(username using gbk);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-order-by.html">MySQL ORDER BY(排序) 语句 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="JOIN-连接"><a class="header-anchor" href="#JOIN-连接">¶</a><em>JOIN</em>(连接)</h3>
+<p>可以在 <em>SELECT</em> 、<em>UPDATE</em>、<em>DELETE</em> 语句中使用 JOIN 来联合多表查询.</p>
+<p>JOIN 按照功能大致分为三类：</p>
+<ul>
+<li><code>INNER JOIN</code>
+<ul>
+<li>获取两个表中字段匹配的记录，如果右表中匹配的行有字段为 <em>NULL</em>，则不显示此行.</li>
+</ul>
+</li>
+</ul>
+<p>基本语法：</p>
+<p><code>SELECT column1,... FROM &lt;表名1&gt; INNER JOIN &lt;表名2&gt; ON &lt;表名1.字段名&gt; = &lt;表名2.字段名&gt; ...;</code></p>
+<p>示例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 简单查询
+select * from user inner join scores on user.id &#x3D; scores.id;
+
+# 使用 as 定义别名
+select u.username,s.chinese,s.mathematics,s.english from user as u inner join scores as s on u.id &#x3D; s.id;
+
+# 多 inner join 查询
+select * from user as u 
+inner join scores as s on u.id &#x3D; s.id 
+inner join test_table as t on u.id &#x3D; t.id;
+
+# 使用 where 过滤记录
+select * from user as u
+inner join scores as s on u.id &#x3D; s.id
+inner join test_table as t on u.id &#x3D; t.id
+where u.birhdate &gt; &#39;2005-01-01&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>LEFT JOIN</code>
+<ul>
+<li>返回左表中的所有行，并包括右表中匹配的行，如果右表中匹配的行中没有值，则返回 <em>NULL</em> 值.</li>
+</ul>
+</li>
+</ul>
+<p>基本语法：</p>
+<p><code>SELECT column1,... FROM &lt;表名1&gt; left JOIN &lt;表名2&gt; ON &lt;表名1.字段名&gt; = &lt;表名2.字段名&gt; ...;</code></p>
+<p>示例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># left join 的使用方法同 inner join 一样
+select u.id,u.username,s.mathematics,s.chinese,s.english,t.age from user as u
+left join scores as s on u.id &#x3D; s.id
+left join test_table as t on s.id &#x3D; t.id;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-join.html">MySQL 连接的使用 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="NULL-处理"><a class="header-anchor" href="#NULL-处理">¶</a><em>NULL</em> 处理</h3>
+<p><em>MySQL</em> 提供了三个运算符来处理 <em>NULL</em> 值，在 <em>MySQL</em> 中，<em>NULL</em> 值通常表示缺失或未知数据，你不能使用 <code>=</code> 或者 <code>!=</code> 来查找 <em>NULL</em> 值，因为 <em>NULL</em> 值与其他任何值比较都为 <em>NULL</em> .</p>
+<ul>
+<li><code>IS NULL</code>
+<ul>
+<li>当列的值是 <em>NULL</em>，此运算符返回 <em>true</em> .</li>
+</ul>
+</li>
+<li><code>IS NOT NULL</code>
+<ul>
+<li>当列的值不为 <em>NULL</em>，此运算符返回 <em>true</em> .</li>
+</ul>
+</li>
+<li><code>&lt;=&gt;</code>
+<ul>
+<li>当比较的两个值相等或者都为 <em>NULL</em> 时返回 <em>true</em> .</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 判读 age 字段是否为 NULL
+select * from test_table as t where t.age is null;
+
+# 判断 age 字段是否不为 NULL
+select * from test_table as t where t.age is not null;
+
+# 判断 age 字段是否为 NULL，效果同 is 一样
+select * from test_table as t where t.age &lt;&#x3D;&gt; null;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="数据表清洗"><a class="header-anchor" href="#数据表清洗">¶</a>数据表清洗</h4>
+<p>将表中指定的列中所有的NULL值替换为 <code>0</code>.</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select * , ifnull(t.age,0) as age from test_table as t;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="IFNULL-COALESCE"><a class="header-anchor" href="#IFNULL-COALESCE">¶</a>IFNULL &amp; COALESCE</h4>
+<p><code>IFNULL</code> 基本语法：</p>
+<p><code>IFNULL(expr1,expr2)</code></p>
+<p><em>ifnull</em> 是常用的用于处理 <em>NULL</em> 值的函数，其基本功能是如果参数 1 为 <em>NULL</em>，则返回参数 2 的值.</p>
+<p><code>COALESCE</code>基本语法：</p>
+<p><code>COALESCE(value1,value2,...,valueEn)</code></p>
+<p><em>coalesce</em> 可以看做是 <em>ifnull</em> 的增强版，其功能同 <em>ifnull</em> 相同，但是可以接受比 <em>ifnull</em> 更多的参数，如果参数 1 为 <em>NULL</em>，则返回其参数列表中第一个非 <em>NULL</em> 的表达式，如果所有提供的表达式都为 <em>NULL</em>，那么 <em>coalesce</em> 函数将返回 <em>NULL</em>.</p>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-null.html">MySQL NULL 值处理 | 菜鸟教程 (runoob.com)</a></p>
+<h3 id="正则表达式"><a class="header-anchor" href="#正则表达式">¶</a>正则表达式</h3>
+<p>MySQL 提供了正则表达式的匹配，用于提供比普通筛选更强大的功能.</p>
+<ul>
+<li><code>REGEXP</code>
+<ul>
+<li>regexp 是用于进行正则匹配的运算符.</li>
+</ul>
+</li>
+</ul>
+<p>基本语法：</p>
+<p><code>SELECT column1,column2,... FROM &lt;表名&gt; WHERE column_name regexp 'pattern'</code></p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 筛选出以 1 开头的 id
+select * from user as u where u.id regexp &#39;^[1*]&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>更多使用示例请参考：<a href="https://www.runoob.com/mysql/mysql-regexp.html">MySQL 正则表达式 | 菜鸟教程 (runoob.com)</a></p>
 <hr>
 <p><em>END</em></p>
 ]]></content>
@@ -4373,45 +4373,6 @@ AuthorizedKeysFile .ssh/authorized_keys<span aria-hidden="true" class="line-numb
       </tags>
   </entry>
   <entry>
-    <title>Docker的使用-贰</title>
-    <url>/2023/09/05/docker%E7%9A%84%E4%BD%BF%E7%94%A8-%E8%B4%B0/</url>
-    <content><![CDATA[<h4 id="Docker容器的应用"><a class="header-anchor" href="#Docker容器的应用">¶</a>Docker容器的应用</h4>
-<blockquote>
-<p>前言：使用Docker部署nginx站点实现外网访问</p>
-</blockquote>
-<p>1.先创建一个nginx站点</p>
-<blockquote>
-<p><code>docker run --name nginx-one -itd -P nginx:latest</code></p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/05/pPsFU6s.png" alt="nginx1" loading="lazy"></p>
-<p>2.将本地的<code>./nginx/www</code>、<code>./nginx/logs</code>、<code>./nginx/conf</code>分别挂载到容器的<code>/usr/share/nginx/html</code>、<code>/var/log/nginx</code>、<code>/etc/nginx/nginx.conf</code>并且将主机端口25568映射到容器的80端口</p>
-<blockquote>
-<p><code>docker run -itd -p 25568:80 --name nginx-two -v /root/nginx/www:/usr/share/nginx/html -v /root/nginx/logs:/var/log/nginx -v /root/nginx/conf/nginx.conf:/etc/nginx/nginx.conf nginx:latest</code></p>
-<p>注意：挂载之前要用<code>docker cp f9226f7ac7f7:/etc/nginx/nginx.conf ./nginx/conf/</code>命令将<code>nginx.conf</code>文件<code>copy</code>到本地，要不然会报挂载错误，使用本命令时注意将容器ID改为自己的</p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/05/pPsFwmq.png" alt="nginx2" loading="lazy"></p>
-<p>3.在本地的<code>/root/nginx/www</code>文件夹下创建<code>index.html</code></p>
-<blockquote>
-<p><code>cd /root/nginx/www; vim index.html</code></p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/05/pPsFaXn.png" alt="nginx3" loading="lazy"></p>
-<p>4.直接在浏览器访问你服务器的ip加之前指定的端口(由于我服务器防火墙没开放20000端口，所以用25568代替一下)</p>
-<p><img src="https://s1.ax1x.com/2023/09/05/pPsFNlj.png" alt="nginx4" loading="lazy"></p>
-<blockquote>
-<p>点击连接访问<a href="http://8.222.153.91:25568">nginx站点</a></p>
-</blockquote>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Xmind破解</title>
     <url>/2023/11/09/Xmind%E7%A0%B4%E8%A7%A3/</url>
     <content><![CDATA[<h4 id="下载-Xmind"><a class="header-anchor" href="#下载-Xmind">¶</a>下载 Xmind</h4>
@@ -4454,6 +4415,149 @@ AuthorizedKeysFile .ssh/authorized_keys<span aria-hidden="true" class="line-numb
         <tag>破解</tag>
         <tag>xmind</tag>
         <tag>思维导图</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker的使用-贰</title>
+    <url>/2023/09/05/docker%E7%9A%84%E4%BD%BF%E7%94%A8-%E8%B4%B0/</url>
+    <content><![CDATA[<h4 id="Docker容器的应用"><a class="header-anchor" href="#Docker容器的应用">¶</a>Docker容器的应用</h4>
+<blockquote>
+<p>前言：使用Docker部署nginx站点实现外网访问</p>
+</blockquote>
+<p>1.先创建一个nginx站点</p>
+<blockquote>
+<p><code>docker run --name nginx-one -itd -P nginx:latest</code></p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/05/pPsFU6s.png" alt="nginx1" loading="lazy"></p>
+<p>2.将本地的<code>./nginx/www</code>、<code>./nginx/logs</code>、<code>./nginx/conf</code>分别挂载到容器的<code>/usr/share/nginx/html</code>、<code>/var/log/nginx</code>、<code>/etc/nginx/nginx.conf</code>并且将主机端口25568映射到容器的80端口</p>
+<blockquote>
+<p><code>docker run -itd -p 25568:80 --name nginx-two -v /root/nginx/www:/usr/share/nginx/html -v /root/nginx/logs:/var/log/nginx -v /root/nginx/conf/nginx.conf:/etc/nginx/nginx.conf nginx:latest</code></p>
+<p>注意：挂载之前要用<code>docker cp f9226f7ac7f7:/etc/nginx/nginx.conf ./nginx/conf/</code>命令将<code>nginx.conf</code>文件<code>copy</code>到本地，要不然会报挂载错误，使用本命令时注意将容器ID改为自己的</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/05/pPsFwmq.png" alt="nginx2" loading="lazy"></p>
+<p>3.在本地的<code>/root/nginx/www</code>文件夹下创建<code>index.html</code></p>
+<blockquote>
+<p><code>cd /root/nginx/www; vim index.html</code></p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/05/pPsFaXn.png" alt="nginx3" loading="lazy"></p>
+<p>4.直接在浏览器访问你服务器的ip加之前指定的端口(由于我服务器防火墙没开放20000端口，所以用25568代替一下)</p>
+<p><img src="https://s1.ax1x.com/2023/09/05/pPsFNlj.png" alt="nginx4" loading="lazy"></p>
+<blockquote>
+<p>点击连接访问<a href="http://8.222.153.91:25568">nginx站点</a></p>
+</blockquote>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>harbor本地仓库搭建</title>
+    <url>/2023/09/12/harbor%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h4 id="创建-Harbor-仓库"><a class="header-anchor" href="#创建-Harbor-仓库">¶</a>创建 Harbor 仓库</h4>
+<ol>
+<li>访问官方网站下载官方镜像源</li>
+</ol>
+<blockquote>
+<p>官方网站： <a href="https://goharbor.io/">Harbor (goharbor.io)</a></p>
+</blockquote>
+<ol start="2">
+<li>使用 scp 将下载的官方镜像上传到服务器</li>
+</ol>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">scp <span class="token operator">-</span>P 2000 <span class="token punctuation">.</span>\harbor-offline-installer-v2<span class="token punctuation">.</span>7<span class="token punctuation">.</span>3<span class="token punctuation">.</span>tgz root@你服务器的ip:<span class="token operator">/</span>root/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注：使用 -P 参数可以指定 scp 的端口号</p>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPg4W1U.png" alt="pPg4W1U.png" loading="lazy"></p>
+<ol start="3">
+<li>使用下面的命令解压文件</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> harbor-offline-installer-v2.7.3.tgz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="4">
+<li>使用 vim 更改 harbor.yml.tmep 的内容</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> harbor.yml.tmep<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>将 hostname 修改为自己的 ip 地址，然后将 https 全部注释掉，同时也可以更改密码</p>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgHXgP.png" alt="pPgHXgP.png" loading="lazy"></p>
+<ol start="5">
+<li>使用 yum 下载 epel-release 及 docker-compose</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token parameter variable">-y</span> <span class="token function">install</span> epel-release <span class="token punctuation">;</span> yum <span class="token parameter variable">-y</span> <span class="token function">install</span> <span class="token function">docker-compose</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注：由于不可抗力的原因（我服务器带不动 [倒] ），下面的所有演示都是在我室友的虚拟机上完成的</p>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgORaD.png" alt="pPgORaD.png" loading="lazy"></p>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgO2VO.png" alt="pPgO2VO.png" loading="lazy"></p>
+<ol start="6">
+<li>安装 harbor</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mv</span> ./harbor.yml.tmep ./harbor.yml <span class="token punctuation">;</span> ./install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注：安装之前请先将 harbor.yml.tmep文件改为 harbor.yml ，要不然会找不到文件</p>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgXj0K.png" alt="pPgXj0K.png" loading="lazy"></p>
+<ol start="7">
+<li>在浏览器中访问</li>
+</ol>
+<p>在浏览器中输入：</p>
+<blockquote>
+<p>你的IP/harbor</p>
+<p>由于我用的是室友的电脑中的虚拟机来做的，在我电脑上是直接访问不到虚拟机里的，所以做了个 net 端口转发使我电脑能够访问，你们在自己的浏览器中就不需要输入端口号了，默认 80</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgjrB6.png" alt="pPgjrB6.png" loading="lazy"></p>
+<ol start="8">
+<li>输入账号密码</li>
+</ol>
+<blockquote>
+<p>账号默认为 admin，密码默认为Harbor12345，如果你更改了默认密码那就填你改的密码</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgjXgs.png" alt="pPgjXgs.png" loading="lazy"></p>
+<ol start="9">
+<li>点击新建项目来新建一个仓库</li>
+</ol>
+<p><img src="https://s1.ax1x.com/2023/09/12/pPgvLdK.png" alt="pPgvLdK.png" loading="lazy"></p>
+<ol start="10">
+<li>修改 Docker 配置</li>
+</ol>
+<p>因为我使用的使 http 协议，而 docker 默认为 https，所以需要将本地私有仓库添加到信任仓库中</p>
+<p>使用下面的命令修改配置文件：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/docker/daemon.json<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注意：你在配置 daemon 文件的时候，除了最后一个键值对后面不用英文逗号，其他都要</p>
+<p><img src="https://z1.ax1x.com/2023/09/13/pPRpcxe.png" alt="pPRpcxe.png" loading="lazy"></p>
+<ol start="11">
+<li>刷新刚刚编辑的 daemon.json 文件并重启 docker</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl daemon.json <span class="token punctuation">;</span> systemctl restart <span class="token function">docker</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="12">
+<li>给要推送的镜像添加 tag 标签</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> tag centos:centos7 <span class="token number">192.168</span>.100.10/zero/centos:centos7<span class="token punctuation">]</span>
+<span class="token comment"># 注：ip 后面的为你在仓库命名空间创建的仓库名</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="https://z1.ax1x.com/2023/09/13/pPRAdS0.png" alt="pPRAdS0.png" loading="lazy"></p>
+<ol start="13">
+<li>在终端登录至搭建的 harbor 私有仓库</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> login http://192.168.100.10 <span class="token parameter variable">-u</span> admin <span class="token parameter variable">-p</span> <span class="token number">123456</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://z1.ax1x.com/2023/09/13/pPRAUWq.png" alt="pPRAUWq.png" loading="lazy"></p>
+<ol start="14">
+<li>使用 push 命令上传镜像</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> push <span class="token number">192.168</span>.100.10/zero/centos:centos7<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://z1.ax1x.com/2023/09/13/pPRANYn.png" alt="pPRANYn.png" loading="lazy"></p>
+<ol start="15">
+<li>从浏览器进入 harbor 仓库管理界面</li>
+</ol>
+<p><img src="https://z1.ax1x.com/2023/09/13/pPRAwlV.png" alt="pPRAwlV.png" loading="lazy"></p>
+<p>可以看到，已经上传到 zero 仓库了</p>
+<hr>
+<p>END</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>原创</tag>
+        <tag>harbor</tag>
       </tags>
   </entry>
   <entry>
@@ -4630,107 +4734,28 @@ systemctl disable frps<span aria-hidden="true" class="line-numbers-rows"><span><
       </tags>
   </entry>
   <entry>
-    <title>harbor本地仓库搭建</title>
-    <url>/2023/09/12/harbor%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h4 id="创建-Harbor-仓库"><a class="header-anchor" href="#创建-Harbor-仓库">¶</a>创建 Harbor 仓库</h4>
-<ol>
-<li>访问官方网站下载官方镜像源</li>
-</ol>
-<blockquote>
-<p>官方网站： <a href="https://goharbor.io/">Harbor (goharbor.io)</a></p>
-</blockquote>
-<ol start="2">
-<li>使用 scp 将下载的官方镜像上传到服务器</li>
-</ol>
-<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">scp <span class="token operator">-</span>P 2000 <span class="token punctuation">.</span>\harbor-offline-installer-v2<span class="token punctuation">.</span>7<span class="token punctuation">.</span>3<span class="token punctuation">.</span>tgz root@你服务器的ip:<span class="token operator">/</span>root/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>注：使用 -P 参数可以指定 scp 的端口号</p>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPg4W1U.png" alt="pPg4W1U.png" loading="lazy"></p>
-<ol start="3">
-<li>使用下面的命令解压文件</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> harbor-offline-installer-v2.7.3.tgz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="4">
-<li>使用 vim 更改 harbor.yml.tmep 的内容</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> harbor.yml.tmep<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>将 hostname 修改为自己的 ip 地址，然后将 https 全部注释掉，同时也可以更改密码</p>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgHXgP.png" alt="pPgHXgP.png" loading="lazy"></p>
-<ol start="5">
-<li>使用 yum 下载 epel-release 及 docker-compose</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token parameter variable">-y</span> <span class="token function">install</span> epel-release <span class="token punctuation">;</span> yum <span class="token parameter variable">-y</span> <span class="token function">install</span> <span class="token function">docker-compose</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>注：由于不可抗力的原因（我服务器带不动 [倒] ），下面的所有演示都是在我室友的虚拟机上完成的</p>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgORaD.png" alt="pPgORaD.png" loading="lazy"></p>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgO2VO.png" alt="pPgO2VO.png" loading="lazy"></p>
-<ol start="6">
-<li>安装 harbor</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mv</span> ./harbor.yml.tmep ./harbor.yml <span class="token punctuation">;</span> ./install.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>注：安装之前请先将 harbor.yml.tmep文件改为 harbor.yml ，要不然会找不到文件</p>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgXj0K.png" alt="pPgXj0K.png" loading="lazy"></p>
-<ol start="7">
-<li>在浏览器中访问</li>
-</ol>
-<p>在浏览器中输入：</p>
-<blockquote>
-<p>你的IP/harbor</p>
-<p>由于我用的是室友的电脑中的虚拟机来做的，在我电脑上是直接访问不到虚拟机里的，所以做了个 net 端口转发使我电脑能够访问，你们在自己的浏览器中就不需要输入端口号了，默认 80</p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgjrB6.png" alt="pPgjrB6.png" loading="lazy"></p>
-<ol start="8">
-<li>输入账号密码</li>
-</ol>
-<blockquote>
-<p>账号默认为 admin，密码默认为Harbor12345，如果你更改了默认密码那就填你改的密码</p>
-</blockquote>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgjXgs.png" alt="pPgjXgs.png" loading="lazy"></p>
-<ol start="9">
-<li>点击新建项目来新建一个仓库</li>
-</ol>
-<p><img src="https://s1.ax1x.com/2023/09/12/pPgvLdK.png" alt="pPgvLdK.png" loading="lazy"></p>
-<ol start="10">
-<li>修改 Docker 配置</li>
-</ol>
-<p>因为我使用的使 http 协议，而 docker 默认为 https，所以需要将本地私有仓库添加到信任仓库中</p>
-<p>使用下面的命令修改配置文件：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/docker/daemon.json<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>注意：你在配置 daemon 文件的时候，除了最后一个键值对后面不用英文逗号，其他都要</p>
-<p><img src="https://z1.ax1x.com/2023/09/13/pPRpcxe.png" alt="pPRpcxe.png" loading="lazy"></p>
-<ol start="11">
-<li>刷新刚刚编辑的 daemon.json 文件并重启 docker</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl daemon.json <span class="token punctuation">;</span> systemctl restart <span class="token function">docker</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="12">
-<li>给要推送的镜像添加 tag 标签</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> tag centos:centos7 <span class="token number">192.168</span>.100.10/zero/centos:centos7<span class="token punctuation">]</span>
-<span class="token comment"># 注：ip 后面的为你在仓库命名空间创建的仓库名</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://z1.ax1x.com/2023/09/13/pPRAdS0.png" alt="pPRAdS0.png" loading="lazy"></p>
-<ol start="13">
-<li>在终端登录至搭建的 harbor 私有仓库</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> login http://192.168.100.10 <span class="token parameter variable">-u</span> admin <span class="token parameter variable">-p</span> <span class="token number">123456</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://z1.ax1x.com/2023/09/13/pPRAUWq.png" alt="pPRAUWq.png" loading="lazy"></p>
-<ol start="14">
-<li>使用 push 命令上传镜像</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> push <span class="token number">192.168</span>.100.10/zero/centos:centos7<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://z1.ax1x.com/2023/09/13/pPRANYn.png" alt="pPRANYn.png" loading="lazy"></p>
-<ol start="15">
-<li>从浏览器进入 harbor 仓库管理界面</li>
-</ol>
-<p><img src="https://z1.ax1x.com/2023/09/13/pPRAwlV.png" alt="pPRAwlV.png" loading="lazy"></p>
-<p>可以看到，已经上传到 zero 仓库了</p>
+    <title>JavaFx使用Maven打包及运行</title>
+    <url>/2023/05/02/javafx%E4%BD%BF%E7%94%A8maven%E6%89%93%E5%8C%85%E5%8F%8A%E8%BF%90%E8%A1%8C/</url>
+    <content><![CDATA[<h4 id="javafx使用maven打包依赖及运行"><a class="header-anchor" href="#javafx使用maven打包依赖及运行">¶</a>javafx使用maven打包依赖及运行</h4>
+<p>1.先照图打包<br>
+<img src="https://s1.ax1x.com/2023/04/07/ppTPAZ6.png" alt="1" loading="lazy"><br>
+2.在target下会生成app文件夹和压缩包，进入app/bin/目录，里面有app.bat批处理文件，双击即可运行<br>
+3.可以在app目录下写一个脚本文件来运行app.bat，以便隐藏cmd命令窗口<br>
+<img src="https://s1.ax1x.com/2023/04/07/ppTP6FU.png" alt="3" loading="lazy"><br>
+4.脚本代码<br>
+<img src="https://s1.ax1x.com/2023/04/07/ppTP5ex.png" alt="4" loading="lazy"></p>
+<pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">set ws&#x3D;WScript.CreateObject(&quot;WScript.Shell&quot;)
+ws.Run &quot;.\bin\app.bat&quot;,0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <hr>
 <p>END</p>
 ]]></content>
       <categories>
-        <category>笔记</category>
+        <category>编程技巧</category>
       </categories>
       <tags>
         <tag>原创</tag>
-        <tag>Docker</tag>
-        <tag>harbor</tag>
+        <tag>java</tag>
+        <tag>javafx</tag>
       </tags>
   </entry>
   <entry>
@@ -4831,31 +4856,6 @@ systemctl disable frps<span aria-hidden="true" class="line-numbers-rows"><span><
       <tags>
         <tag>原创</tag>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaFx使用Maven打包及运行</title>
-    <url>/2023/05/02/javafx%E4%BD%BF%E7%94%A8maven%E6%89%93%E5%8C%85%E5%8F%8A%E8%BF%90%E8%A1%8C/</url>
-    <content><![CDATA[<h4 id="javafx使用maven打包依赖及运行"><a class="header-anchor" href="#javafx使用maven打包依赖及运行">¶</a>javafx使用maven打包依赖及运行</h4>
-<p>1.先照图打包<br>
-<img src="https://s1.ax1x.com/2023/04/07/ppTPAZ6.png" alt="1" loading="lazy"><br>
-2.在target下会生成app文件夹和压缩包，进入app/bin/目录，里面有app.bat批处理文件，双击即可运行<br>
-3.可以在app目录下写一个脚本文件来运行app.bat，以便隐藏cmd命令窗口<br>
-<img src="https://s1.ax1x.com/2023/04/07/ppTP6FU.png" alt="3" loading="lazy"><br>
-4.脚本代码<br>
-<img src="https://s1.ax1x.com/2023/04/07/ppTP5ex.png" alt="4" loading="lazy"></p>
-<pre class="line-numbers language-vbscript" data-language="vbscript"><code class="language-vbscript">set ws&#x3D;WScript.CreateObject(&quot;WScript.Shell&quot;)
-ws.Run &quot;.\bin\app.bat&quot;,0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<hr>
-<p>END</p>
-]]></content>
-      <categories>
-        <category>编程技巧</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>java</tag>
-        <tag>javafx</tag>
       </tags>
   </entry>
   <entry>
@@ -5808,13 +5808,13 @@ site<span class="token punctuation">[</span><span class="token string">"zero"</s
       </tags>
   </entry>
   <entry>
-    <title>shell脚本笔记-3</title>
-    <url>/2023/12/16/shell%E8%84%9A%E6%9C%AC%E7%AC%94%E8%AE%B0-3/</url>
+    <title>springboot全局异常处理</title>
+    <url>/2024/04/23/springboot%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>springboot全局异常处理</title>
-    <url>/2024/04/23/springboot%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</url>
+    <title>shell脚本笔记-3</title>
+    <url>/2023/12/16/shell%E8%84%9A%E6%9C%AC%E7%AC%94%E8%AE%B0-3/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
@@ -6570,6 +6570,71 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
       </tags>
   </entry>
   <entry>
+    <title>测试文章</title>
+    <url>/2023/04/27/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<p>Test测试</p>
+<!-- more -->  
+<p><img src="https://figurebed.yunyat.cloud/imgs/20240520143343.jpeg" alt="test" loading="lazy"></p>
+<p><img src="https://figurebed.yunyat.cloud/imgs/20240520144618.jpeg" alt="wallhaven-2em38y" loading="lazy"></p>
+<p><img src="https://figurebed.yunyat.cloud/imgs/20240520160056.jpeg" alt="wallhaven-dp19wl" loading="lazy"></p>
+]]></content>
+      <tags>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>湖北飞young算号器</title>
+    <url>/2023/06/13/%E6%B9%96%E5%8C%97%E9%A3%9Eyoung%E7%AE%97%E5%8F%B7%E5%99%A8/</url>
+    <content><![CDATA[<hr>
+<h4 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h4>
+<ul>
+<li>
+<p>关于校园网</p>
+<p>​		基本上上过大学的因该都知道校园网这个东西，由于在学校，单纯只用流量的话很不划算，所以大部分人都会去办一个校园网，但是校园网一般都会限制用户的登录数量，比如限制你只能登录三台设备等等，所以，有很多人都会选择去买一个破解路由器，但是这又有一个新的问题，破解路由器的价格几乎比正常路由器贵个一半左右，这是很不划算的。当然，你也可以选择不去买破解路由器，去用一些别的方法来绕过校园网的登录设备限制，比如抓包等等。</p>
+</li>
+<li>
+<p>破解限制</p>
+<p>​		如上面提到的，破解的方法无非也就那几种，其实破解路由器也是在路由器中内置了算法，使用破解路由器要方便一些。如果你不想花很大的代价，那其实也是有办法的，上有政策，下有对策。在网上其实早就有大佬去逆向过飞young的拨号程序，所以本文也只是沿着大佬们的足迹去走而已。</p>
+</li>
+</ul>
+<hr>
+<h4 id="正文"><a class="header-anchor" href="#正文">¶</a>正文</h4>
+<p>​	我所使用的方法其实就是将飞young加密后的密码算出来，然后使用别人写的拨号程序来进行拨号认证而已（至于为什么要用别人的程序，因为我懒，不想自己写了）。</p>
+<p>​	整个认证流程就是将加密后的密码及一些别的参数通过发包发送到飞young的认证服务器，让服务器误以为是飞young的拨号程序发的认证包，然后返回认证信息。</p>
+<ul>
+<li>
+<p>密码加密算法</p>
+<p>其实飞young的加密算法不止一套（听别的大佬说，貌似有三四套，淦），当初我算出来的密码和抓包抓出来的密码不管怎样都不一样，把我差点没气死。经过某位大佬的提点，才终于醒悟，我的算好器使用的算法是手机端的，而抓包抓的是pc端的程序，它两使用的算法都不一样，怎么可能算出来的密码一样（🌿此处省略一万字）</p>
+<p>加密的流程其实就是先把初始密码rc4一下，再md5一下（其实还是很简单的有木有ಥ_ಥ）</p>
+</li>
+<li>
+<p>程序</p>
+<p>关于 飞young的密码程序我写了两个版本的，有 GUI 和无 GUI ， 建议使用无 GUI 版的（如果你不想折腾的话）</p>
+<p>GUI 版纯粹是当初闲的，用 JavaFx 去写一个图形化界面。</p>
+</li>
+<li>
+<p>使用</p>
+<p><strong>重要：使用前你需要自行准备好一个能正常上网的路由器，并确保你或你宿舍中有人已经办理了一条宽带。</strong></p>
+<p>先将算 31 天密码的程序下载下来，然后将 cyoung 也下载下来，运行程序，Password.txt 里面的东西就是你的 31 天密码，然后按照 cyoung 的文档填就好了</p>
+</li>
+</ul>
+<p>注意：密码一般来说是你身份证后六位（如果你没有改密码的话）</p>
+<h4 id="免责声明"><a class="header-anchor" href="#免责声明">¶</a>免责声明</h4>
+<p>本博客所发布的一切文件仅限用于学习和研究目的；不得将上述内容用于商业或者非法用途，否则，一切后果请用户自负。您必须在下载后的24个小时之内，从您的电脑中彻底删除上述文件。 如果您喜欢该程序，请支持正版软件，购买注册，得到更好的正版服务。如有侵权请邮件与我联系处理。</p>
+<hr>
+<p>无 GUI 版：<a href="https://zero-li.lanzout.com/b04ws2pwj">点击下载</a> 密码:enwb</p>
+<p>GUI 版：点击链接访问<a href="https://github.com/Zero-Ql/feiyoung">Github</a></p>
+]]></content>
+      <categories>
+        <category>编程技巧</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+        <tag>java</tag>
+        <tag>破解</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>安利几个好用的网站</title>
     <url>/2023/05/02/%E5%AE%89%E5%88%A9%E5%87%A0%E4%B8%AA%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BD%91%E7%AB%99/</url>
     <content><![CDATA[<h4 id="今天来分享几个十分好用的网站"><a class="header-anchor" href="#今天来分享几个十分好用的网站">¶</a>今天来分享几个十分好用的网站</h4>
@@ -6665,69 +6730,6 @@ nginx <span class="token parameter variable">-g</span> <span class="token string
       <tags>
         <tag>原创</tag>
         <tag>分享</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>测试文章</title>
-    <url>/2023/04/27/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<p>Test测试</p>
-<!-- more -->  
-<p><img src="/images/test.jpg" alt="图片" loading="lazy"></p>
-]]></content>
-      <tags>
-        <tag>原创</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>湖北飞young算号器</title>
-    <url>/2023/06/13/%E6%B9%96%E5%8C%97%E9%A3%9Eyoung%E7%AE%97%E5%8F%B7%E5%99%A8/</url>
-    <content><![CDATA[<hr>
-<h4 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h4>
-<ul>
-<li>
-<p>关于校园网</p>
-<p>​		基本上上过大学的因该都知道校园网这个东西，由于在学校，单纯只用流量的话很不划算，所以大部分人都会去办一个校园网，但是校园网一般都会限制用户的登录数量，比如限制你只能登录三台设备等等，所以，有很多人都会选择去买一个破解路由器，但是这又有一个新的问题，破解路由器的价格几乎比正常路由器贵个一半左右，这是很不划算的。当然，你也可以选择不去买破解路由器，去用一些别的方法来绕过校园网的登录设备限制，比如抓包等等。</p>
-</li>
-<li>
-<p>破解限制</p>
-<p>​		如上面提到的，破解的方法无非也就那几种，其实破解路由器也是在路由器中内置了算法，使用破解路由器要方便一些。如果你不想花很大的代价，那其实也是有办法的，上有政策，下有对策。在网上其实早就有大佬去逆向过飞young的拨号程序，所以本文也只是沿着大佬们的足迹去走而已。</p>
-</li>
-</ul>
-<hr>
-<h4 id="正文"><a class="header-anchor" href="#正文">¶</a>正文</h4>
-<p>​	我所使用的方法其实就是将飞young加密后的密码算出来，然后使用别人写的拨号程序来进行拨号认证而已（至于为什么要用别人的程序，因为我懒，不想自己写了）。</p>
-<p>​	整个认证流程就是将加密后的密码及一些别的参数通过发包发送到飞young的认证服务器，让服务器误以为是飞young的拨号程序发的认证包，然后返回认证信息。</p>
-<ul>
-<li>
-<p>密码加密算法</p>
-<p>其实飞young的加密算法不止一套（听别的大佬说，貌似有三四套，淦），当初我算出来的密码和抓包抓出来的密码不管怎样都不一样，把我差点没气死。经过某位大佬的提点，才终于醒悟，我的算好器使用的算法是手机端的，而抓包抓的是pc端的程序，它两使用的算法都不一样，怎么可能算出来的密码一样（🌿此处省略一万字）</p>
-<p>加密的流程其实就是先把初始密码rc4一下，再md5一下（其实还是很简单的有木有ಥ_ಥ）</p>
-</li>
-<li>
-<p>程序</p>
-<p>关于 飞young的密码程序我写了两个版本的，有 GUI 和无 GUI ， 建议使用无 GUI 版的（如果你不想折腾的话）</p>
-<p>GUI 版纯粹是当初闲的，用 JavaFx 去写一个图形化界面。</p>
-</li>
-<li>
-<p>使用</p>
-<p><strong>重要：使用前你需要自行准备好一个能正常上网的路由器，并确保你或你宿舍中有人已经办理了一条宽带。</strong></p>
-<p>先将算 31 天密码的程序下载下来，然后将 cyoung 也下载下来，运行程序，Password.txt 里面的东西就是你的 31 天密码，然后按照 cyoung 的文档填就好了</p>
-</li>
-</ul>
-<p>注意：密码一般来说是你身份证后六位（如果你没有改密码的话）</p>
-<h4 id="免责声明"><a class="header-anchor" href="#免责声明">¶</a>免责声明</h4>
-<p>本博客所发布的一切文件仅限用于学习和研究目的；不得将上述内容用于商业或者非法用途，否则，一切后果请用户自负。您必须在下载后的24个小时之内，从您的电脑中彻底删除上述文件。 如果您喜欢该程序，请支持正版软件，购买注册，得到更好的正版服务。如有侵权请邮件与我联系处理。</p>
-<hr>
-<p>无 GUI 版：<a href="https://zero-li.lanzout.com/b04ws2pwj">点击下载</a> 密码:enwb</p>
-<p>GUI 版：点击链接访问<a href="https://github.com/Zero-Ql/feiyoung">Github</a></p>
-]]></content>
-      <categories>
-        <category>编程技巧</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>java</tag>
-        <tag>破解</tag>
       </tags>
   </entry>
   <entry>
